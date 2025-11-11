@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cahg2cogmbwae"]
+
+[ext_resource type="Script" uid="uid://bho3lehmadwfg" path="res://scenes/components/entities/health_bar.gd" id="1_atoxo"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_atoxo"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atoxo"]
+bg_color = Color(0.6, 0, 0, 0.078431375)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52mkm"]
+bg_color = Color(0.16999999, 0.6, 0, 1)
+
+[node name="HealthBar" type="Sprite3D"]
+billboard = 2
+texture = SubResource("ViewportTexture_atoxo")
+script = ExtResource("1_atoxo")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(200, 25)
+size_2d_override = Vector2i(100, 20)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_right = 200.0
+offset_bottom = 15.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_atoxo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_52mkm")
+value = 50.0
+rounded = true
+show_percentage = false

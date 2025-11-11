@@ -1,0 +1,77 @@
+[gd_scene load_steps=14 format=3 uid="uid://2c5wbo30qr6t"]
+
+[ext_resource type="Script" uid="uid://co05522ifjsgl" path="res://scenes/objects/wood_box/wood_box.gd" id="1_v73se"]
+[ext_resource type="Script" uid="uid://d2kkwux61u3vr" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_gftlw"]
+[ext_resource type="Material" uid="uid://djjwuh3t4tgsg" path="res://resources/materials/fire_material.tres" id="2_v73se"]
+[ext_resource type="PackedScene" uid="uid://cadnxif7rc8x6" path="res://scenes/components/physic/status_manager.tscn" id="3_vcypb"]
+[ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://scenes/components/physic/status_receiver.tscn" id="4_1bmi6"]
+[ext_resource type="PackedScene" uid="uid://6kwajc2m7wut" path="res://scenes/components/entities/life_component.tscn" id="6_gftlw"]
+[ext_resource type="PackedScene" uid="uid://cahg2cogmbwae" path="res://scenes/components/entities/health_bar.tscn" id="7_vcypb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bmi6"]
+albedo_color = Color(0.83333325, 1, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bmi6"]
+size = Vector3(0.21, 0.21, 0.21)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v73se"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vquhi"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fjwrh"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e81tp"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="WoodBox" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
+script = ExtResource("1_v73se")
+fine_material = SubResource("StandardMaterial3D_1bmi6")
+on_fire_material = ExtResource("2_v73se")
+metadata/_custom_type_script = "uid://0p0evtue2h4p"
+
+[node name="StatusManager" parent="." node_paths=PackedStringArray("emit_shape") instance=ExtResource("3_vcypb")]
+emit_shape = NodePath("StatusReceiver2/CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusManager"]
+shape = SubResource("BoxShape3D_1bmi6")
+
+[node name="StatusReceiver2" parent="StatusManager" instance=ExtResource("4_1bmi6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusManager/StatusReceiver2"]
+shape = SubResource("BoxShape3D_v73se")
+
+[node name="LifeComponent" parent="." instance=ExtResource("6_gftlw")]
+current_life = 100
+
+[node name="HealthBar" parent="." instance=ExtResource("7_vcypb")]
+texture = SubResource("ViewportTexture_vquhi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fjwrh")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_1bmi6")
+material_overlay = SubResource("StandardMaterial3D_1bmi6")
+mesh = SubResource("BoxMesh_e81tp")
+
+[node name="XRToolsGrabPointHand" type="Marker3D" parent="."]
+transform = Transform3D(0.462973, -0.7811323, 0.4189133, 0.860253, 0.5098674, 0, -0.21359025, 0.3603714, 0.9080262, -0.15354282, -0.06509051, 0)
+script = ExtResource("2_gftlw")
+metadata/_custom_type_script = "uid://d2kkwux61u3vr"
+
+[node name="XRToolsGrabPointHand2" type="Marker3D" parent="."]
+transform = Transform3D(0.6046091, 0.6581296, -0.4486796, -0.736416, 0.67652905, 0, 0.3035448, 0.33041483, 0.8936927, 0.14744878, -0.06536585, 0)
+script = ExtResource("2_gftlw")
+hand = 1
+metadata/_custom_type_script = "uid://d2kkwux61u3vr"
+
+[connection signal="dammage_taken" from="StatusManager" to="LifeComponent" method="take_damage"]
+[connection signal="status_applied" from="StatusManager" to="." method="_on_status_manager_status_applied"]
+[connection signal="status_removed" from="StatusManager" to="." method="_on_status_manager_status_removed"]
+[connection signal="dead" from="LifeComponent" to="." method="_on_life_component_dead"]
+[connection signal="new_value" from="LifeComponent" to="HealthBar" method="update_value"]

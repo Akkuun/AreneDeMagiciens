@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://3sf17jrqljre"]
+[gd_scene load_steps=9 format=3 uid="uid://3sf17jrqljre"]
 
 [ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://scenes/player/player.tscn" id="1_11dnb"]
-[ext_resource type="PackedScene" uid="uid://b4a5ev65eq263" path="res://scenes/objects/box.tscn" id="2_otqx3"]
+[ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
+[ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
 
@@ -39,5 +40,11 @@ material = SubResource("StandardMaterial3D_11dnb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, 0)
 material = SubResource("StandardMaterial3D_otqx3")
 
-[node name="Box" parent="." instance=ExtResource("2_otqx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+[node name="WoodBox" parent="." instance=ExtResource("2_otqx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10541484, 1.0123209, -2.2643876)
+
+[node name="WoodBox2" parent="." instance=ExtResource("2_otqx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71281457, 1.0123209, -2.0978372)
+
+[node name="FireBall" parent="." instance=ExtResource("3_w33dm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96902835, -1.6511594)
