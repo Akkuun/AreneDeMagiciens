@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxu0o83f1oouw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13taa"]
+albedo_color = Color(0.23212546, 0.16403538, 0.2996923, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_13taa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na8pb"]
+albedo_color = Color(0.5962105, 0.37723807, 0.18742597, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_13taa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfe1j"]
+albedo_color = Color(0.09411765, 1, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_na8pb"]
+
+[node name="TestIa" type="Node3D"]
+
+[node name="Arena" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 0.6157577, 0.78793555, 0, -0.78793555, 0.6157577, 0, 6.560229, 0)
+
+[node name="Ground" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(15, 0, 0, 0, 0.3, 0, 0, 0, 15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_13taa")
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../..")
+
+[node name="Wall_Left" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 15, -7.5, 1.15, 0)
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../..")
+
+[node name="Wall_Right" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 15, 7.5, 1.15, 0)
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../..")
+
+[node name="Wall_Front" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(15, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.15, -7.5)
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../..")
+
+[node name="Wall_Back" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(15, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.15, 7.5)
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../..")
+
+[node name="dummy" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+material_override = SubResource("StandardMaterial3D_na8pb")
+mesh = SubResource("CapsuleMesh_13taa")
+
+[node name="ennemy" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.65, 3.627)
+material_override = SubResource("StandardMaterial3D_qfe1j")
+mesh = SubResource("PrismMesh_na8pb")
+skeleton = NodePath("../dummy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.7742712, 0.45863768, -0.43606842, 0, 0.6890506, 0.72471327, 0.632854, -0.5611246, 0.53351206, -6.7268233, 7.8593245, 9.173854)
