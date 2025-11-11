@@ -6,6 +6,7 @@ extends XRToolsPickable
 @export var on_fire_material: ShaderMaterial
 
 func _ready():
+	super._ready()
 	$Model.material_overlay = fine_material
 
 func _on_status_manager_status_applied(status: int) -> void:
