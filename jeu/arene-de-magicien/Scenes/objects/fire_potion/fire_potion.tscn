@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl3muv5fxgmn8"]
+
+[ext_resource type="Script" uid="uid://bf24sumfv36tf" path="res://scenes/objects/fire_potion/fire_potion.gd" id="1_m0v8l"]
+[ext_resource type="Shader" uid="uid://ga5rxu4nofih" path="res://resources/materials/liquid_contained.gdshader" id="2_grmyv"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_m0v8l"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_bx4u3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i50xa"]
+radius = 0.16796875
+height = 0.5185547
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uforu"]
+render_priority = 0
+shader = ExtResource("2_grmyv")
+shader_parameter/fill_rate = 0.54000002565
+shader_parameter/bot_color = Color(1, 0.75686276, 0, 1)
+shader_parameter/top_color = Color(0.8784314, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_m0v8l"]
+material = SubResource("ShaderMaterial_uforu")
+
+[node name="FirePotion" type="RigidBody3D"]
+script = ExtResource("1_m0v8l")
+enabled = null
+press_to_hold = null
+picked_up_layer = null
+release_mode = null
+ranged_grab_method = null
+second_hand_grab = null
+ranged_grab_speed = null
+picked_by_exclude = null
+picked_by_require = null
+metadata/_custom_type_script = "uid://0p0evtue2h4p"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07788086, 0)
+shape = SubResource("CapsuleShape3D_i50xa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
+mesh = SubResource("SphereMesh_m0v8l")
+skeleton = NodePath("")
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("3_m0v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033096164, 0.1531982, -0.104833186)
+visible = true
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("4_bx4u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019675635, 0.15671818, -0.10412979)
+visible = true
