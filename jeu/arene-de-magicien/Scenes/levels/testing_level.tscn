@@ -41,10 +41,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, 0)
 material = SubResource("StandardMaterial3D_otqx3")
 
 [node name="WoodBox" parent="." instance=ExtResource("2_otqx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10541484, 1.0123209, -2.2643876)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10541484, 1.1239462, -2.2643876)
 
 [node name="WoodBox2" parent="." instance=ExtResource("2_otqx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71281457, 1.0123209, -2.0978372)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8509804, 1.1830263, -2.0978372)
 
 [node name="FireBall" parent="." instance=ExtResource("3_w33dm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96902835, -1.6511594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80805904, 2.5162675, -2.1820934)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23432761, 1.4400105, -0.75387084)
