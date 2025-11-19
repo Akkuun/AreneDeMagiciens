@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://3syf7ebvh11a"]
+
+[ext_resource type="Shader" uid="uid://ga5rxu4nofih" path="res://resources/materials/liquid_contained.gdshader" id="1_qh5dr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qh5dr"]
+frequency = 0.012
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_27ojh"]
+noise = SubResource("FastNoiseLite_qh5dr")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qh5dr")
+shader_parameter/fill_rate = 0.5
+shader_parameter/wobble_x = 0.0
+shader_parameter/wobble_y = 0.0
+shader_parameter/bot_color = Color(0.7490196, 0, 0, 1)
+shader_parameter/top_color = Color(0.8761463, 7.710546e-05, 0.6864947, 1)
+shader_parameter/use_top_color = false
+shader_parameter/refraction_noise = SubResource("NoiseTexture2D_27ojh")

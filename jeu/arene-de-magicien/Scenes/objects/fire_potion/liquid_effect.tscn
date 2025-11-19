@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5p8o46eknrhe"]
+
+[ext_resource type="Shader" uid="uid://ga5rxu4nofih" path="res://resources/materials/liquid_contained.gdshader" id="1_yj4gv"]
+[ext_resource type="Script" uid="uid://c14swoetyh5s5" path="res://scenes/objects/fire_potion/liquid_effect.gd" id="2_pvq8n"]
+
+[sub_resource type="Curve" id="Curve_yj4gv"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.07740586, 0.9285154), 2.649894, 2.649894, 0, 0, Vector2(0.18410042, 0.62215245), -5.8983383, -5.8983383, 0, 0, Vector2(0.251046, -0.40926933), -4.6691475, -4.6691475, 0, 0, Vector2(0.36610878, -0.40926933), 4.576297, 4.576297, 0, 0, Vector2(0.43933052, 0.24430484), 4.8813825, 4.8813825, 0, 0, Vector2(0.5146443, 0.24430484), -3.514593, -3.514593, 0, 0, Vector2(0.583682, -0.21523952), -3.203407, -3.203407, 0, 0, Vector2(0.6799163, -0.1539669), 4.0199604, 4.0199604, 0, 0, Vector2(0.8012552, 0.08091128), 0.0, 0.0, 0, 0, Vector2(0.9979079, -0.05184591), 0.0, 0.0, 0, 0]
+point_count = 11
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pvq8n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvq8n"]
+render_priority = 0
+shader = ExtResource("1_yj4gv")
+shader_parameter/fill_rate = 0.35
+shader_parameter/wobble_x = -0.005184591
+shader_parameter/wobble_y = -0.015553773
+shader_parameter/bot_color = Color(0.14812642, 0.45092732, 0.40514112, 1)
+shader_parameter/top_color = Color(1, 0, 0, 1)
+shader_parameter/use_top_color = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_054di"]
+flip_faces = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v51bo"]
+render_priority = 1
+shader = ExtResource("1_yj4gv")
+shader_parameter/fill_rate = 0.35
+shader_parameter/wobble_x = -0.005184591
+shader_parameter/wobble_y = -0.015553773
+shader_parameter/bot_color = Color(0.11774937, 0.4546067, 0.39991596, 1)
+shader_parameter/top_color = Color(0.78212386, 0.351871, 0.42670077, 1)
+shader_parameter/use_top_color = false
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v51bo"]
+
+[node name="LiquidEffect" type="Node3D"]
+transform = Transform3D(-0.10816762, 0.67360187, 0.7311363, -0.060839925, 0.7295875, -0.6811759, -0.9922694, -0.11816346, -0.037935857, 0, 0, 0)
+script = ExtResource("2_pvq8n")
+animation_curve = SubResource("Curve_yj4gv")
+base_color = Color(0.11774937, 0.4546067, 0.39991596, 1)
+top_color = Color(1, 0, 0, 1)
+fill_rate = 0.35
+mesh = SubResource("CapsuleMesh_pvq8n")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_pvq8n")
+mesh = SubResource("CapsuleMesh_054di")
+skeleton = NodePath("")
+
+[node name="Bot" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_v51bo")
+mesh = SubResource("CapsuleMesh_v51bo")
+skeleton = NodePath("../Top")
