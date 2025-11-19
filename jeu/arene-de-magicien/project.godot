@@ -25,6 +25,13 @@ Global="*res://scripts/global.gd"
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 
+[input]
+
+detect_voice={
+"deadzone": 0.2,
+"events": []
+}
+
 [layer_names]
 
 3d_physics/layer_1="Static World"
