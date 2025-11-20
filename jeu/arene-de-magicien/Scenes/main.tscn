@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bs07tygspqgjv"]
 
 [ext_resource type="Script" uid="uid://tthulq1cqrvx" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://3sf17jrqljre" path="res://Scenes/levels/testing_level.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://3sf17jrqljre" path="res://scenes/levels/testing_level.tscn" id="2_sugp2"]
 
 [node name="Main" type="Node"]
 
