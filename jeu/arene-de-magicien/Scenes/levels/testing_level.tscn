@@ -1,7 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://3sf17jrqljre"]
+[gd_scene load_steps=9 format=3 uid="uid://3sf17jrqljre"]
 
 [ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://scenes/player/player.tscn" id="1_11dnb"]
+[ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
+[ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
+
+[sub_resource type="Sky" id="Sky_otqx3"]
+sky_material = SubResource("ProceduralSkyMaterial_11dnb")
+
+[sub_resource type="Environment" id="Environment_w33dm"]
+background_mode = 2
+sky = SubResource("Sky_otqx3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11dnb"]
+albedo_color = Color(0.47, 0.246985, 0.12689999, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otqx3"]
+albedo_color = Color(0.3888, 0.72, 0.46608, 1)
 
 [node name="TestingLevel" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w33dm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.43301266, 0.59503496, 0.67707735, -0.24999996, -0.642402, 0.7244443, 0.86602545, -0.48296285, -0.12940955, 0, 0, 0)
+
 [node name="Player" parent="." instance=ExtResource("1_11dnb")]
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6965942, -0.31922102, -2.0820313)
+use_collision = true
+collision_mask = 0
+size = Vector3(27.224976, 0.28515625, 18.128906)
+material = SubResource("StandardMaterial3D_11dnb")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, 0)
+material = SubResource("StandardMaterial3D_otqx3")
+
+[node name="WoodBox" parent="." instance=ExtResource("2_otqx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10541484, 1.0123209, -2.2643876)
+
+[node name="WoodBox2" parent="." instance=ExtResource("2_otqx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71281457, 1.0123209, -2.0978372)
+
+[node name="FireBall" parent="." instance=ExtResource("3_w33dm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96902835, -1.6511594)

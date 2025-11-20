@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://djjwuh3t4tgsg"]
+
+[ext_resource type="Shader" uid="uid://bfelja6mnclpr" path="res://resources/materials/fire.gdshader" id="1_iavew"]
+
+[sub_resource type="Gradient" id="Gradient_iavew"]
+offsets = PackedFloat32Array(0, 0.5509259, 0.7152778)
+colors = PackedColorArray(0, 0, 0, 0, 0.18, 0.054000005, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bvs0t"]
+gradient = SubResource("Gradient_iavew")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sa3hr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_21csx"]
+noise = SubResource("FastNoiseLite_sa3hr")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_iavew")
+shader_parameter/noise = SubResource("NoiseTexture2D_21csx")
+shader_parameter/gradient = SubResource("GradientTexture1D_bvs0t")
+shader_parameter/speed = 0.38
