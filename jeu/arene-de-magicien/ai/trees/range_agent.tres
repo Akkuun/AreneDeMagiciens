@@ -1,7 +1,8 @@
-[gd_resource type="BehaviorTree" load_steps=9 format=3 uid="uid://cqdkws254vlu4"]
+[gd_resource type="BehaviorTree" load_steps=13 format=3 uid="uid://cqdkws254vlu4"]
 
 [ext_resource type="Script" uid="uid://bwrcgqnap4yof" path="res://ai/tasks/get_first_in_group.gd" id="1_vaaoe"]
-[ext_resource type="Script" uid="uid://cnnxbnlhe2to1" path="res://ai/tasks/debuger.gd" id="2_r7adr"]
+[ext_resource type="Script" uid="uid://dmx4g6vr6u2c6" path="res://ai/tasks/select_flanking_pos.gd" id="3_rsv4q"]
+[ext_resource type="Script" uid="uid://nrg0phxx4b66" path="res://ai/tasks/arrive_pos.gd" id="4_aeqyo"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ocnie"]
 
@@ -13,12 +14,25 @@ max_duration = 3.0
 script = ExtResource("1_vaaoe")
 group = &"dummy"
 
-[sub_resource type="BTAction" id="BTAction_mh77e"]
-script = ExtResource("2_r7adr")
+[sub_resource type="BTAction" id="BTAction_r7adr"]
+script = ExtResource("3_rsv4q")
+
+[sub_resource type="BTAction" id="BTAction_rsv4q"]
+script = ExtResource("4_aeqyo")
+avoid_var = &"target"
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_07ai8"]
+time_limit = 7.0
+children = [SubResource("BTAction_rsv4q")]
+
+[sub_resource type="BTSequence" id="BTSequence_t88kj"]
+custom_name = "Change flank"
+children = [SubResource("BTAction_r7adr"), SubResource("BTTimeLimit_07ai8")]
+metadata/_weight_ = 0.5001500150015001
 
 [sub_resource type="BTSequence" id="BTSequence_jswlx"]
 custom_name = "Brake"
-children = [SubResource("BTRandomWait_rsv4q"), SubResource("BTAction_aeqyo"), SubResource("BTAction_mh77e")]
+children = [SubResource("BTRandomWait_rsv4q"), SubResource("BTAction_aeqyo"), SubResource("BTSequence_t88kj")]
 
 [sub_resource type="BTSequence" id="BTSequence_mi6ct"]
 custom_name = "MAin"
