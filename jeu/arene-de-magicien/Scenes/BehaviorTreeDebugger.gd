@@ -2,10 +2,15 @@ extends CanvasLayer
 
 ## Composant réutilisable pour afficher le BehaviorTree d'un agent en temps réel
 ## Utilisation : Ajoute ce nœud à ta scène et assigne le BTPlayer dans l'inspecteur
-## Raccourci : F11 pour détacher/rattacher dans une fenêtre popup
+## Raccourcis : 
+##   - F10 : Afficher/Masquer le panneau
+##   - F11 : Détacher/Rattacher dans une fenêtre popup
 
 #le BTPlayer de l'agent à surveiller (à assigner dans l'inspecteur)
 @export var bt_player: BTPlayer
+
+#si vrai, le panneau est visible au démarrage
+@export var visible_at_start: bool = false
 
 @onready var behavior_tree_view: BehaviorTreeView = %BehaviorTreeView
 @onready var behavior_inspector: PanelContainer = %BehaviorInspector
@@ -15,14 +20,16 @@ var popup_window: Window = null
 
 
 func _ready() -> void:
+	#cache le panneau au démarrage si visible_at_start est false
+	behavior_inspector.visible = visible_at_start
+	
 	if not bt_player:
 		push_warning("[BehaviorTreeDebugger] Aucun BTPlayer assigné. Assigne-le dans l'inspecteur.")
 	else:
-		print("[DEBUG] ✓ BehaviorTreeDebugger prêt (F11 pour fenêtre popup)")
+		print("[DEBUG] ✓ BehaviorTreeDebugger prêt (F10: Toggle | F11: Popup)")
 
 
 func _physics_process(_delta: float) -> void:
-	# Met à jour l'affichage de l'arbre comportemental en temps réel
 	if bt_player and behavior_tree_view and bt_player.get_bt_instance():
 		var inst: BTInstance = bt_player.get_bt_instance()
 		var bt_data: BehaviorTreeData = BehaviorTreeData.create_from_bt_instance(inst)
@@ -30,12 +37,24 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	# F11 pour détacher/rattacher le BehaviorTreeView dans une fenêtre
-	if event is InputEventKey and event.pressed and event.keycode == KEY_F11:
-		if popup_window == null or not is_instance_valid(popup_window):
-			_create_popup_window()
-		else:
-			_close_popup_window()
+	if event is InputEventKey and event.pressed:
+		# F10 pour afficher/masquer le panneau
+		if event.keycode == KEY_F10:
+			_toggle_visibility()
+		# F11 pour détacher/rattacher dans une fenêtre (seulement si le panneau est visible)
+		elif event.keycode == KEY_F11 and behavior_inspector.visible:
+			if popup_window == null or not is_instance_valid(popup_window):
+				_create_popup_window()
+			else:
+				_close_popup_window()
+
+
+func _toggle_visibility() -> void:
+	# affiche ou masque le panneau (seulement si pas en popup)
+	if popup_window == null or not is_instance_valid(popup_window):
+		behavior_inspector.visible = not behavior_inspector.visible
+		var status = "visible" if behavior_inspector.visible else "masqué"
+		print("[DEBUG] ✓ BehaviorTreeView %s (F10 pour toggle)" % status)
 
 
 func _create_popup_window() -> void:
