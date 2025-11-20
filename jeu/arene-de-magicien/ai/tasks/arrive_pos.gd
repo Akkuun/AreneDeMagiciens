@@ -33,7 +33,9 @@ func _tick(_delta: float) -> Status:
 		return SUCCESS
 
 	# récupère la vitesse depuis le blackboard ou utilise move_speed de l'agent
-	var speed: float = blackboard.get_var(speed_var, agent.get("move_speed") if agent.get("move_speed") != null else 5.0)
+	var speed: float = agent.move_speed if agent.get("move_speed") != null else 5.0
+	if blackboard.has_var(speed_var):
+		speed = blackboard.get_var(speed_var, speed)
 	
 	var dir_3d: Vector3
 	
