@@ -1,4 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxu0o83f1oouw"]
+[gd_scene load_steps=12 format=3 uid="uid://bxu0o83f1oouw"]
+
+[ext_resource type="BehaviorTree" uid="uid://cqdkws254vlu4" path="res://ai/trees/range_agent.tres" id="1_toj4e"]
+[ext_resource type="Theme" uid="uid://boqtjf88xcpu4" path="res://demo/assets/ui.theme" id="2_qi3ai"]
+[ext_resource type="Script" uid="uid://cgb85cr54ck3e" path="res://Scenes/test_IA.gd" id="3_test_ia_gd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13taa"]
 albedo_color = Color(0.23212546, 0.16403538, 0.2996923, 1)
@@ -15,7 +19,12 @@ albedo_color = Color(0.09411765, 1, 1, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_na8pb"]
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_i2wm6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0flc7"]
+
 [node name="TestIa" type="Node3D"]
+script = ExtResource("3_test_ia_gd")
 
 [node name="Arena" type="Node3D" parent="."]
 
@@ -48,16 +57,59 @@ transform = Transform3D(15, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.15, 7.5)
 mesh = SubResource("BoxMesh_13taa")
 skeleton = NodePath("../..")
 
-[node name="dummy" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+[node name="dummy" type="MeshInstance3D" parent="." groups=["dummy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0.013554573)
 material_override = SubResource("StandardMaterial3D_na8pb")
 mesh = SubResource("CapsuleMesh_13taa")
+skeleton = NodePath("")
 
-[node name="ennemy" type="MeshInstance3D" parent="."]
+[node name="range_agent" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.65, 3.627)
+
+[node name="root" type="Node3D" parent="range_agent"]
+
+[node name="corps" type="MeshInstance3D" parent="range_agent/root"]
 material_override = SubResource("StandardMaterial3D_qfe1j")
 mesh = SubResource("PrismMesh_na8pb")
-skeleton = NodePath("../dummy")
+
+[node name="BTPlayer" type="BTPlayer" parent="range_agent"]
+behavior_tree = ExtResource("1_toj4e")
+blackboard_plan = SubResource("BlackboardPlan_i2wm6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="range_agent"]
+shape = SubResource("BoxShape3D_0flc7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.7742712, 0.45863768, -0.43606842, 0, 0.6890506, 0.72471327, 0.632854, -0.5611246, 0.53351206, -6.7268233, 7.8593245, 9.173854)
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI Layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_qi3ai")
+
+[node name="BehaviorInspector" type="PanelContainer" parent="UI Layer/Control"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -612.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI Layer/Control/BehaviorInspector"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BehaviorTreeView" type="BehaviorTreeView" parent="UI Layer/Control/BehaviorInspector/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_vertical = 3
