@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cq72sqoq51o2h" path="res://Scenes/agents/agent_base_3d.gd" id="1_ncgxt"]
 [ext_resource type="BehaviorTree" uid="uid://cqdkws254vlu4" path="res://ai/trees/range_agent.tres" id="1_toj4e"]
-[ext_resource type="PackedScene" path="res://Scenes/BehaviorTreeDebugger.tscn" id="4_debugger"]
+[ext_resource type="PackedScene" uid="uid://cki3h7y8vxqfb" path="res://Scenes/BehaviorTreeDebugger.tscn" id="4_debugger"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na8pb"]
 albedo_color = Color(0.5962105, 0.37723807, 0.18742597, 1)
