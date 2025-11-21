@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://3sf17jrqljre"]
 
-[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://scenes/player/player.tscn" id="1_11dnb"]
-[ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
-[ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
+[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="1_11dnb"]
+[ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://Scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
+[ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://Scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
 
@@ -28,6 +28,7 @@ environment = SubResource("Environment_w33dm")
 transform = Transform3D(0.43301266, 0.59503496, 0.67707735, -0.24999996, -0.642402, 0.7244443, 0.86602545, -0.48296285, -0.12940955, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_11dnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.573359, 2.4677887, 0)
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6965942, -0.31922102, -2.0820313)
