@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10541484, 1.1239462, -2.264
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8509804, 1.1830263, -2.0978372)
 
 [node name="FireBall" parent="." instance=ExtResource("3_w33dm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80805904, 2.5162675, -2.1820934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.570164, 2.5162675, -2.1820934)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23432761, 1.4400105, -0.75387084)

@@ -1,0 +1,117 @@
+[gd_scene load_steps=22 format=3 uid="uid://ch4xt7oqxcj48"]
+
+[ext_resource type="Material" uid="uid://o82atqn4jxuw" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/materials/rock_spikes.tres" id="1_cg12o"]
+[ext_resource type="Script" uid="uid://cldhagxwxco4p" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/earth_spikes.gd" id="1_fj1ad"]
+[ext_resource type="Shader" uid="uid://bv2bfl33lk0pj" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/materials/earth_attack.gdshader" id="2_4hk2k"]
+[ext_resource type="ArrayMesh" uid="uid://dg22nbxgh0eph" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/rock.obj" id="3_gli5x"]
+[ext_resource type="Texture2D" uid="uid://da7r1g06y8ka1" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/textures/small_rock_diffuse.png" id="4_llira"]
+[ext_resource type="Texture2D" uid="uid://db2ubfcggijr" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/textures/small_rock_normal.png" id="5_t6eab"]
+[ext_resource type="ArrayMesh" uid="uid://c24cf3cve6hoc" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/small_rock.obj" id="6_joee7"]
+[ext_resource type="Shader" uid="uid://c5xevbjyt3gpl" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/materials/dust_particles_mat.gdshader" id="7_mbjfq"]
+[ext_resource type="Shader" uid="uid://daeq7fk77hetp" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/materials/dust.gdshader" id="8_ctw5t"]
+[ext_resource type="Script" uid="uid://qxhrjwf06gor" path="res://Scenes/objects/earth_attack_folder/resources/hit/hit_zone_3d.gd" id="10_6qvlp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svjyx"]
+resource_local_to_scene = true
+shader = ExtResource("2_4hk2k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s2aq"]
+albedo_texture = ExtResource("4_llira")
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("5_t6eab")
+
+[sub_resource type="Curve" id="Curve_so3ia"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2t01b"]
+curve = SubResource("Curve_so3ia")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cj3sg"]
+particle_flag_rotate_y = true
+angle_max = 360.0
+direction = Vector3(0.5, 0.5, 0)
+spread = 25.0
+initial_velocity_min = 2.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, -20, 0)
+scale_min = 0.2
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_2t01b")
+collision_mode = 1
+collision_friction = 0.35
+collision_bounce = 0.15
+collision_use_scale = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5433j"]
+noise_type = 2
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mclex"]
+noise = SubResource("FastNoiseLite_5433j")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uy2dn"]
+render_priority = 0
+shader = ExtResource("7_mbjfq")
+shader_parameter/noise_sampler = SubResource("NoiseTexture2D_mclex")
+shader_parameter/albedo = Color(0.882353, 0.839216, 0.8, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r7vr"]
+resource_local_to_scene = true
+shader = ExtResource("8_ctw5t")
+
+[sub_resource type="QuadMesh" id="QuadMesh_t0we4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kme4v"]
+size = Vector3(1, 1.5, 4)
+
+[node name="EarthSpikes" type="Node3D"]
+script = ExtResource("1_fj1ad")
+
+[node name="RocksParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+material_override = ExtResource("1_cg12o")
+emitting = false
+amount = 12
+sub_emitter = NodePath("../SmallRocks")
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.5
+visibility_aabb = AABB(-2, -4, -4, 14, 8, 8)
+process_material = SubResource("ShaderMaterial_svjyx")
+draw_pass_1 = ExtResource("3_gli5x")
+
+[node name="SmallRocks" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+material_override = SubResource("StandardMaterial3D_4s2aq")
+emitting = false
+amount = 64
+lifetime = 4.0
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_cj3sg")
+draw_pass_1 = ExtResource("6_joee7")
+
+[node name="DustParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+material_override = SubResource("ShaderMaterial_uy2dn")
+emitting = false
+amount = 128
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.75
+process_material = SubResource("ShaderMaterial_6r7vr")
+draw_pass_1 = SubResource("QuadMesh_t0we4")
+
+[node name="HitZone" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+script = ExtResource("10_6qvlp")
+
+[node name="HitZoneCollision" type="CollisionShape3D" parent="HitZone"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_kme4v")

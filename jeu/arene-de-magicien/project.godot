@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="AreneDeMagicien"
-run/main_scene="uid://bs07tygspqgjv"
+run/main_scene="uid://bpo6dhiiee4bt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,10 @@ Global="*res://scripts/global.gd"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [layer_names]
 

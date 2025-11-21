@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://je1p01igsoee"]
+
+[ext_resource type="Shader" uid="uid://b26lokks48vyb" path="res://Scenes/objects/earth_attack_folder/assets/dummy/dummy.gdshader" id="1_n64af"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_n64af")
+shader_parameter/emission_color = Color(0, 0, 0, 1)
+shader_parameter/emission_strength = 1.0
+shader_parameter/emission_blend = 0.0
