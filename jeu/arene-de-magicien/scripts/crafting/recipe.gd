@@ -7,6 +7,7 @@ enum IngredientType {
 }
 
 
-@export var ingredients: Array[IngredientType]
+@export var ingredients: Dictionary[IngredientType, int]
 
 @export var result: PackedScene
+@export var recipe_name : String

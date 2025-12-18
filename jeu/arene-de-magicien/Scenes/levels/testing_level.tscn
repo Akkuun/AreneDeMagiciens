@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://3sf17jrqljre"]
+[gd_scene load_steps=13 format=3 uid="uid://3sf17jrqljre"]
 
-[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://scenes/player/player.tscn" id="1_11dnb"]
-[ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
-[ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
+[ext_resource type="Script" uid="uid://cn2suidvwy8og" path="res://Scenes/levels/testing_level.gd" id="1_6bo2y"]
+[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="1_11dnb"]
+[ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://Scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
+[ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://Scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
+[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/fire_potion/fire_potion.tscn" id="4_sxg75"]
+[ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="5_6bo2y"]
+[ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://Scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="6_s4w6r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
 
@@ -19,7 +23,15 @@ albedo_color = Color(0.47, 0.246985, 0.12689999, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otqx3"]
 albedo_color = Color(0.3888, 0.72, 0.46608, 1)
 
-[node name="TestingLevel" type="Node3D"]
+[node name="TestingLevel" type="Node3D" node_paths=PackedStringArray("debug_cameras")]
+script = ExtResource("1_6bo2y")
+debug_cameras = [NodePath("GreenBlockCam"), NodePath("CauldronCam")]
+
+[node name="GreenBlockCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23432761, 1.4400105, -0.75387084)
+
+[node name="CauldronCam" type="Camera3D" parent="."]
+transform = Transform3D(-0.033843853, 0.23422596, -0.97159296, 0.008153933, 0.9721822, 0.234084, 0.9993939, 0, -0.034812253, 0, 1.2603037, -0.011919379)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w33dm")
@@ -49,5 +61,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8509804, 1.1830263, -2.0978
 [node name="FireBall" parent="." instance=ExtResource("3_w33dm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80805904, 2.5162675, -2.1820934)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23432761, 1.4400105, -0.75387084)
+[node name="FirePotion" parent="." instance=ExtResource("4_sxg75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0556722, 1.2179399, -0.9607017)
+
+[node name="Cauldron" parent="." instance=ExtResource("5_6bo2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2650433, 0.32068974, 0)
+
+[node name="WoodIngredientPickable" parent="." instance=ExtResource("6_s4w6r")]
+transform = Transform3D(0.91812855, 0.3858378, 0.09038379, 0, -0.22807904, 0.97364265, 0.39628276, -0.8939291, -0.20940587, 1.9402795, 1.3859556, 0.09376544)
+
+[node name="WoodIngredientPickable2" parent="." instance=ExtResource("6_s4w6r")]
+transform = Transform3D(0.95346993, -0.29102218, 0.07874725, 0, 0.26119527, 0.96528596, -0.30148804, -0.9203711, 0.24904184, 2.4687262, 1.3859556, 0.09376544)
