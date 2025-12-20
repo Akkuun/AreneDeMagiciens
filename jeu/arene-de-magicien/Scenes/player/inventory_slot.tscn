@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmhkye0omkfgj"]
+
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_ydsvx"]
+[ext_resource type="Texture2D" uid="uid://8s03ra8tp0hr" path="res://addons/godot-xr-tools/images/ring.png" id="2_gvvys"]
+[ext_resource type="Script" uid="uid://dmppwpofcvapa" path="res://Scenes/player/inventory_slot.gd" id="2_y6r1t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y6r1t"]
+resource_local_to_scene = true
+radius = 0.2
+
+[node name="InventorySlot" instance=ExtResource("1_ydsvx")]
+script = ExtResource("2_y6r1t")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_y6r1t")
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="2"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_gvvys")
