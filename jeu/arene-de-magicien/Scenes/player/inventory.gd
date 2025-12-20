@@ -37,6 +37,10 @@ func get_item(index: int) -> XRToolsPickable:
 	inventory_resource.items[index] = null
 	return result
 
+func restore_item_size(index: int) -> void:
+	if instantiated_items[index].has_node("MeshInstance3D"):
+		instantiated_items[index].get_node("MeshInstance3D").scale = Vector3.ONE
+
 func drop_item(index: int) -> void:
 	inventory_resource.clear(index)
 	instantiated_items[index] = null

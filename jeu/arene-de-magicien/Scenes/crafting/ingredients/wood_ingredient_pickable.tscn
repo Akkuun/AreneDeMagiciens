@@ -16,7 +16,7 @@ contained_ingredients = Array[int]([0])
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_oiv22")
 
-[node name="Model" type="MeshInstance3D" parent="." index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("BoxMesh_1hcpe")
 
 [node name="GrabPointHandRight" parent="." index="2" instance=ExtResource("2_oea0a")]

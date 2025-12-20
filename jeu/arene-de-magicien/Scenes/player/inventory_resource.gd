@@ -9,7 +9,10 @@ func _init() -> void:
 		items.append(null)
 
 func is_full() -> bool:
-	return items.size() >= max_size
+	for item in items:
+		if item == null:
+			return false
+	return true
 
 func clear(slot_index):
 	items[slot_index] = null

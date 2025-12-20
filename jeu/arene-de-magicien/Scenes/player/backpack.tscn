@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxcbfrl25gbok"]
+[gd_scene load_steps=14 format=3 uid="uid://dxcbfrl25gbok"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_y3gub"]
 [ext_resource type="Script" uid="uid://dkfoldjrhfigw" path="res://Scenes/player/inventory_visual.gd" id="2_m35o0"]
@@ -28,6 +28,8 @@ size = Vector3(0.1, 0.1, 0.1)
 script = ExtResource("5_h7rrn")
 metadata/_custom_type_script = "uid://ev1c638ra2q6"
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_34pq7"]
+
 [node name="Backpack" instance=ExtResource("1_y3gub")]
 script = ExtResource("2_qh6af")
 
@@ -39,9 +41,8 @@ shape = SubResource("CylinderShape3D_ww54k")
 mesh = SubResource("CylinderMesh_y3gub")
 
 [node name="InventoryVisual" type="Node3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6123122, 0.041000187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35809124, 0)
 script = ExtResource("2_m35o0")
-width = 2
 space_between = 0.2
 visu = SubResource("BoxMesh_yce6d")
 
@@ -55,6 +56,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1259954, 0)
 [node name="GrabPointHandRight" parent="." index="4" instance=ExtResource("7_qh6af")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1259954, 0)
 
+[node name="HarvestArea" type="Area3D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 4
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HarvestArea" index="0"]
+shape = SubResource("SphereShape3D_34pq7")
+
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="grabbed" from="." to="." method="_on_grabbed"]
 [connection signal="inventory_item_instantiated" from="InventoryVisual/Inventory" to="InventoryVisual" method="set_slot_item"]
+[connection signal="body_entered" from="HarvestArea" to="." method="_on_harvest_area_body_entered"]

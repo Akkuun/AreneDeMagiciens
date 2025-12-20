@@ -136,13 +136,14 @@ func state_process(delta: float):
 	#if segment_count_diff > 0:
 	
 	for i in range(vacuum_segment_count):
-		var t = (i+1.0) / (vacuum_segment_count + 2.0)
+		var t = (i) / float(vacuum_segment_count)
 		vacuum_follow.progress_ratio = t
 		
 		var segment_collision_area = vacuum_areas[i]
 		
 		segment_collision_area.global_transform = vacuum_follow.global_transform
 		segment_collision_area.rotate_x(deg_to_rad(90))
+		segment_collision_area.translate(Vector3.UP * vacuum_segment_length * 0.5)
 	
 	const moving_speed = 1.0
 	const suction_force := 17.0
