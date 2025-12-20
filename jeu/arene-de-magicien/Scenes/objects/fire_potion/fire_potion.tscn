@@ -12,6 +12,8 @@ height = 0.5185547
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m0v8l"]
 
 [node name="FirePotion" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 7
 script = ExtResource("1_m0v8l")
 metadata/_custom_type_script = "uid://0p0evtue2h4p"
 

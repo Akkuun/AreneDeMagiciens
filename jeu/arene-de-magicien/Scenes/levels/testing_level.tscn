@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3sf17jrqljre"]
+[gd_scene load_steps=15 format=3 uid="uid://3sf17jrqljre"]
 
 [ext_resource type="Script" uid="uid://cn2suidvwy8og" path="res://Scenes/levels/testing_level.gd" id="1_6bo2y"]
 [ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="1_11dnb"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/fire_potion/fire_potion.tscn" id="4_sxg75"]
 [ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="5_6bo2y"]
 [ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://Scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="6_s4w6r"]
+[ext_resource type="PackedScene" uid="uid://dxcbfrl25gbok" path="res://Scenes/player/backpack.tscn" id="8_s4w6r"]
+[ext_resource type="PackedScene" uid="uid://d0t0fvctdsdhq" path="res://Scenes/objects/wand/wand.tscn" id="9_4mof2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
 
@@ -28,7 +30,7 @@ script = ExtResource("1_6bo2y")
 debug_cameras = [NodePath("GreenBlockCam"), NodePath("CauldronCam")]
 
 [node name="GreenBlockCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23432761, 1.4400105, -0.75387084)
+transform = Transform3D(1, 0, 0, 0, 0.9458647, 0.32456133, 0, -0.32456133, 0.9458647, 0.23432761, 1.8693538, 0.2629686)
 
 [node name="CauldronCam" type="Camera3D" parent="."]
 transform = Transform3D(-0.033843853, 0.23422596, -0.97159296, 0.008153933, 0.9721822, 0.234084, 0.9993939, 0, -0.034812253, 0, 1.2603037, -0.011919379)
@@ -40,6 +42,7 @@ environment = SubResource("Environment_w33dm")
 transform = Transform3D(0.43301266, 0.59503496, 0.67707735, -0.24999996, -0.642402, 0.7244443, 0.86602545, -0.48296285, -0.12940955, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_11dnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6313056)
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6965942, -0.31922102, -2.0820313)
@@ -49,20 +52,21 @@ size = Vector3(27.224976, 0.28515625, 18.128906)
 material = SubResource("StandardMaterial3D_11dnb")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2640991, 0.6, -1.1044922)
+size = Vector3(2.3787842, 1, 3.2089844)
 material = SubResource("StandardMaterial3D_otqx3")
 
 [node name="WoodBox" parent="." instance=ExtResource("2_otqx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10541484, 1.1239462, -2.2643876)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10541484, 1.1239462, -4.136491)
 
 [node name="WoodBox2" parent="." instance=ExtResource("2_otqx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8509804, 1.1830263, -2.0978372)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8509804, 1.1830263, -3.9699404)
 
 [node name="FireBall" parent="." instance=ExtResource("3_w33dm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80805904, 2.5162675, -2.1820934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80805904, 2.5162675, -4.0541964)
 
 [node name="FirePotion" parent="." instance=ExtResource("4_sxg75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0556722, 1.2179399, -0.9607017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0359589, 1.5482049, -1.9112533)
 
 [node name="Cauldron" parent="." instance=ExtResource("5_6bo2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2650433, 0.32068974, 0)
@@ -72,3 +76,12 @@ transform = Transform3D(0.91812855, 0.3858378, 0.09038379, 0, -0.22807904, 0.973
 
 [node name="WoodIngredientPickable2" parent="." instance=ExtResource("6_s4w6r")]
 transform = Transform3D(0.95346993, -0.29102218, 0.07874725, 0, 0.26119527, 0.96528596, -0.30148804, -0.9203711, 0.24904184, 2.4687262, 1.3859556, 0.09376544)
+
+[node name="WoodIngredientPickable2" parent="WoodIngredientPickable2" instance=ExtResource("6_s4w6r")]
+transform = Transform3D(0.9534699, -0.29102218, 0.07874718, -2.9802322e-08, 0.26119524, 0.9652859, -0.3014881, -0.92037106, 0.24904186, 0.5231981, 4.778863, -0.8243166)
+
+[node name="Backpack" parent="." instance=ExtResource("8_s4w6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4482718, -1.717737)
+
+[node name="Wand" parent="." instance=ExtResource("9_4mof2")]
+transform = Transform3D(-0.9999146, 0.013072031, 0, -0.0043635243, -0.33377838, -0.94268185, -0.012322542, -0.9425611, 0.33381733, 1.508127, 1.8302484, -2.1070566)

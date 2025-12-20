@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://d0t0fvctdsdhq"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_3yfio"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_73vin"]
+[ext_resource type="Script" uid="uid://csdqmanobrcjj" path="res://Scenes/objects/wand/wand.gd" id="2_yq5qq"]
+[ext_resource type="Resource" uid="uid://okvpavxxcc41" path="res://resources/hand_poses/wand_holding_left.tres" id="3_yq5qq"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_8hhts"]
+[ext_resource type="Resource" uid="uid://bdr8d0jtbncih" path="res://resources/hand_poses/wand_holding_right.tres" id="5_xtfqo"]
+[ext_resource type="Script" uid="uid://cchm02t2nltlx" path="res://scripts/patterns/state_manager.gd" id="7_fk80e"]
+[ext_resource type="Script" uid="uid://c8hmqfnxov54a" path="res://Scenes/objects/wand/idle_state.gd" id="8_foi4m"]
+[ext_resource type="Script" uid="uid://lj50rsn2caqs" path="res://Scenes/objects/wand/vacuum_state.gd" id="9_wc181"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l64fc"]
+height = 0.2
+radius = 0.01
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kowus"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.2
+
+[node name="Wand" instance=ExtResource("1_3yfio")]
+transform = Transform3D(1, 0, 0, 0, -0.85295576, 0.52279794, 0, -0.52279794, -0.85295576, 0, 0, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource("2_yq5qq")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CylinderShape3D_l64fc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CylinderMesh_kowus")
+
+[node name="GrabPointHandLeft" parent="." index="2" instance=ExtResource("2_73vin")]
+transform = Transform3D(0.8380426, 2.3849141e-08, 0.54560477, 0.54560477, -3.6632006e-08, -0.8380426, 0, 1, -4.371139e-08, -0.05709255, -0.058043346, 0.022788852)
+hand_pose = ExtResource("3_yq5qq")
+
+[node name="GrabPointHandRight" parent="." index="3" instance=ExtResource("4_8hhts")]
+transform = Transform3D(-0.8377187, -8.032924e-08, 0.5461019, -0.5461019, -2.3870873e-08, -0.8377187, 8.032924e-08, -1, -2.3870873e-08, -0.05917458, -0.058, -0.018631885)
+hand_pose = ExtResource("5_xtfqo")
+
+[node name="Muzzle" type="RayCast3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10784507, 0)
+target_position = Vector3(0, 100, 0)
+
+[node name="Spells" type="Node" parent="." index="5"]
+script = ExtResource("7_fk80e")
+
+[node name="IdleState" type="Node" parent="Spells" index="0"]
+script = ExtResource("8_foi4m")
+
+[node name="VacuumState" type="Node" parent="Spells" index="1" node_paths=PackedStringArray("wand_root_node", "wand_muzzle")]
+script = ExtResource("9_wc181")
+wand_root_node = NodePath("../..")
+wand_muzzle = NodePath("../../Muzzle")
+vacuum_width = 0.5
+vacuum_segment_length = 3.0
+collision_mask = 22
+
+[node name="CurrentState" type="Label3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1469844, 0)
+billboard = 1
+text = "Current state"
+font_size = 24
+outline_size = 8
+
+[connection signal="state_changed" from="Spells" to="." method="_on_spells_state_changed"]
