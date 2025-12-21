@@ -1,13 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmeufrswafh4b"]
+[gd_scene load_steps=11 format=3 uid="uid://bmeufrswafh4b"]
 
 [ext_resource type="PackedScene" uid="uid://b4hlbgkjrux2i" path="res://Scenes/crafting/ingredients/pickable_ingredient.tscn" id="1_ny6yf"]
+[ext_resource type="Texture2D" uid="uid://d32lqm7i0uqqt" path="res://resources/materials/planks/planks_mat_albedo.png" id="2_craod"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="2_oea0a"]
+[ext_resource type="Texture2D" uid="uid://xaqsw4yb72nv" path="res://resources/materials/planks/planks_mat_heightmap.png" id="3_oiv22"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_v7rib"]
+[ext_resource type="Texture2D" uid="uid://buejy4vxyyjpq" path="res://resources/materials/planks/planks_mat_normal.png" id="4_1hcpe"]
+[ext_resource type="Texture2D" uid="uid://c31u5qsu8jvmj" path="res://resources/materials/planks/planks_mat_orm.png" id="5_ryfwc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oiv22"]
 size = Vector3(0.2, 0.6, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejxw8"]
+albedo_texture = ExtResource("2_craod")
+roughness_texture = ExtResource("5_ryfwc")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("4_1hcpe")
+heightmap_enabled = true
+heightmap_scale = 12.5
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("3_oiv22")
+
 [sub_resource type="BoxMesh" id="BoxMesh_1hcpe"]
+material = SubResource("StandardMaterial3D_ejxw8")
 size = Vector3(0.2, 0.6, 0.1)
 
 [node name="WoodIngredientPickable" instance=ExtResource("1_ny6yf")]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://eqpudws0tesx"]
+[gd_scene load_steps=18 format=3 uid="uid://eqpudws0tesx"]
 
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_gmlin"]
 [ext_resource type="Script" uid="uid://b1p7oa1fa7ix4" path="res://Scenes/player/player.gd" id="1_lvxji"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="2_p47bc"]
+[ext_resource type="PackedScene" uid="uid://dlo2r57eupyx3" path="res://assets/meshes/player.glb" id="3_h0khc"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_p47bc"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="5_0owmy"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_qek5x"]
@@ -17,7 +18,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_spm8d"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.405, 0.39, -0.14746045, 0, 0, 0, 0, 0, 0, -0.0025087446, 0.008937001, -0.39336678, 0, 0, 0, 0, 0, 0, -0.36104673, -0.15036586, -0.14299226),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.3429139, 0.40034747, -0.183677, 0, 0, 0, 0, 0, 0, -0.0025087446, 0.008937001, -0.39336678, 0, 0, 0, 0, 0, 0, -0.51108736, -0.17106113, -0.18438268),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -32,6 +33,9 @@ metadata/_custom_type_script = "uid://ev1c638ra2q6"
 script = ExtResource("1_lvxji")
 
 [node name="PlayerBody" parent="." instance=ExtResource("2_p47bc")]
+
+[node name="player" parent="PlayerBody" instance=ExtResource("3_h0khc")]
+transform = Transform3D(0.464956, -0.004044635, 0.0049594427, 0.003995696, 0.4649602, 0.0045915893, -0.004998956, -0.004548539, 0.4649509, 0, 1.1981537, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -66,14 +70,14 @@ tracker = &"right_hand"
 jump_button_action = "A/X button"
 
 [node name="Belt" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5081796, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029629707, 0.8637343, -0.03950596)
 script = ExtResource("11_h0khc")
 
 [node name="SlotPath" type="Path3D" parent="Belt"]
 curve = SubResource("Curve3D_spm8d")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Belt/SlotPath"]
-transform = Transform3D(0.51665866, -0.53511447, 0.66836834, 0, 0.78062963, 0.62499386, -0.85619146, -0.32290852, 0.403319, 0.405, 0.39, -0.14746045)
+transform = Transform3D(0.5189211, -0.5947415, 0.61400366, 2.980227e-08, 0.7182828, 0.6957492, -0.85482025, -0.36103952, 0.37273264, 0.3429139, 0.40034747, -0.183677)
 
 [node name="Inventory" type="Node" parent="Belt"]
 script = ExtResource("14_nyrd7")

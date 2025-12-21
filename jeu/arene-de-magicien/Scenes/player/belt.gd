@@ -14,7 +14,7 @@ func _ready() -> void:
 	path_follow = $SlotPath/PathFollow3D
 	for i in range(slot_count):
 		var slot = inventory_slot_scene.instantiate() as InventorySlot
-		path_follow.progress_ratio = i / float(slot_count)
+		path_follow.progress_ratio = i / float(slot_count-1)
 		slot.position = path_follow.position
 		add_child(slot)
 		
