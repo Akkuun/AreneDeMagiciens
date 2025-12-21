@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://os5ysj4hhn2u"]
+
+[ext_resource type="PackedScene" uid="uid://btlxnvawfkcf4" path="res://Scenes/objects/potions/heal_potion/heal_potion.tscn" id="1_kfdgx"]
+[ext_resource type="Script" uid="uid://cteqevfoqjlj" path="res://scripts/crafting/recipe.gd" id="1_yioau"]
+
+[resource]
+script = ExtResource("1_yioau")
+ingredients = Dictionary[int, int]({
+2: 2
+})
+result = ExtResource("1_kfdgx")
+recipe_name = "Heal Potion"
+metadata/_custom_type_script = "uid://cteqevfoqjlj"

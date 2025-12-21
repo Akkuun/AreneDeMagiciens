@@ -1,14 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://3sf17jrqljre"]
+[gd_scene load_steps=16 format=3 uid="uid://3sf17jrqljre"]
 
 [ext_resource type="Script" uid="uid://cn2suidvwy8og" path="res://Scenes/levels/testing_level.gd" id="1_6bo2y"]
 [ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="1_11dnb"]
 [ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://Scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
 [ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://Scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
-[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/fire_potion/fire_potion.tscn" id="4_sxg75"]
+[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/potions/fire_potion/fire_potion.tscn" id="4_sxg75"]
 [ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="5_6bo2y"]
 [ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://Scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="6_s4w6r"]
 [ext_resource type="PackedScene" uid="uid://dxcbfrl25gbok" path="res://Scenes/player/backpack.tscn" id="8_s4w6r"]
 [ext_resource type="PackedScene" uid="uid://d0t0fvctdsdhq" path="res://Scenes/objects/wand/wand.tscn" id="9_4mof2"]
+[ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://Scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="10_24467"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
 
@@ -84,4 +85,10 @@ transform = Transform3D(0.8853635, -0.42597133, -0.18622506, -0.2910223, -0.8201
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5611058, 1.4482718, -3.2103736)
 
 [node name="Wand" parent="." instance=ExtResource("9_4mof2")]
-transform = Transform3D(-0.9999146, 0.013072031, 0, 0.012536497, 0.95873785, 0.2841951, 0.003713894, 0.28399116, -0.9591574, 1.508127, 1.8302484, -2.1070566)
+transform = Transform3D(-0.9999146, 0.013072031, 0, 0.0037131323, 0.2839911, 0.9592219, 0.012536721, 0.95873797, -0.2840509, 1.508127, 1.8302484, -2.1070566)
+
+[node name="YellowPlantIngredientPickable" parent="." instance=ExtResource("10_24467")]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 2, 2, 0)
+
+[node name="YellowPlantIngredientPickable2" parent="." instance=ExtResource("10_24467")]
+transform = Transform3D(0.27649283, 0.480508, -0.83226424, 0, 0.8660254, 0.5, 0.961016, -0.13824642, 0.23944981, 2, 1.584137, -0.2495262)

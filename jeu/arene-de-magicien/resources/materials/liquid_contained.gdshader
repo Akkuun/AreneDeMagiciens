@@ -47,7 +47,8 @@ void fragment() {
 
 	vec3 blend_a = texture(screen_texture, SCREEN_UV + vec2(x_offset, y_offset) * 1.f).rgb;
 	vec3 blend_b = color.rgb;
-	ALBEDO = vec3(1) - (vec3(1) - blend_a) * (vec3(1) - blend_b);
+	//ALBEDO = vec3(1) - (vec3(1) - blend_a) * (vec3(1) - blend_b);
+	ALBEDO = color.rgb;
 }
 
 //void light() {

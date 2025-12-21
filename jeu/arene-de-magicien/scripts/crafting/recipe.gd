@@ -3,7 +3,8 @@ class_name Recipe extends Resource
 
 enum IngredientType {
 	WOOD,
-	LAVA
+	LAVA,
+	YELLOW_PLANT
 }
 
 

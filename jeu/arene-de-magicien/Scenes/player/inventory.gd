@@ -19,7 +19,7 @@ func add_item(pickable: XRToolsPickable, position: int = -1) -> bool:
 	
 	if position < 0:
 		for i in range(inventory_resource.items.size()):
-			if(inventory_resource.is_slot_free(i) && !inventory_resource.items.has(pickable)):
+			if(inventory_resource.is_slot_free(i)):
 				inventory_resource.items[i] = load(pickable.scene_file_path)
 				instantiated_items[i] = pickable
 				call_deferred("emit_signal", "inventory_item_instantiated", pickable, i)

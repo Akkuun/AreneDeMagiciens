@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://y7uc85blxkem"]
 
-[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/fire_potion/fire_potion.tscn" id="1_ag0y3"]
+[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/potions/fire_potion/fire_potion.tscn" id="1_ag0y3"]
 [ext_resource type="Script" uid="uid://cteqevfoqjlj" path="res://scripts/crafting/recipe.gd" id="1_w72nb"]
 
 [resource]
