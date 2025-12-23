@@ -10,3 +10,5 @@ script = ExtResource("1_0wfyh")
 metadata/_custom_type_script = "uid://tthulq1cqrvx"
 
 [node name="TestingLevel" parent="." instance=ExtResource("2_sugp2")]
+
+[node name="DefaultRoot3D" type="Node3D" parent="." groups=["root_3d"]]

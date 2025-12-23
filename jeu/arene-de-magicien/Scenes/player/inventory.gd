@@ -1,4 +1,4 @@
-extends Node
+class_name InventoryComponent extends Node
 
 var instantiated_items : Array[XRToolsPickable]
 @export var inventory_resource : InventoryResource
@@ -6,6 +6,7 @@ var instantiated_items : Array[XRToolsPickable]
 signal inventory_item_instantiated(node: XRToolsPickable, position: int)
 
 func _ready() -> void:
+	inventory_resource.init()
 	for i in range(inventory_resource.items.size()):
 		instantiated_items.append(null)
 		if(!inventory_resource.is_slot_free(i)):
@@ -33,14 +34,8 @@ func add_item(pickable: XRToolsPickable, position: int = -1) -> bool:
 
 func get_item(index: int) -> XRToolsPickable:
 	var result = instantiated_items[index]
-	instantiated_items[index] = null
-	inventory_resource.items[index] = null
 	return result
 
-func restore_item_size(index: int) -> void:
-	if instantiated_items[index].has_node("MeshInstance3D"):
-		instantiated_items[index].get_node("MeshInstance3D").scale = Vector3.ONE
-
 func drop_item(index: int) -> void:
-	inventory_resource.clear(index)
+	inventory_resource.items[index] = null
 	instantiated_items[index] = null

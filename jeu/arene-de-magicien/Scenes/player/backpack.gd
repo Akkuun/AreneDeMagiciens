@@ -2,15 +2,16 @@
 extends XRToolsPickable
 
 
-
-
 func _on_grabbed(pickable: Variant, by: Variant) -> void:
-	$InventoryVisual.visible = false
+	$InventoryVisual.hide_content()
 
 
 func _on_dropped(pickable: Variant) -> void:
-	$InventoryVisual.visible = true
+	$InventoryVisual.show_content()
 
+func hide_content():
+	$InventoryVisual.visible = false
+	
 
 
 func _on_harvest_area_body_entered(body: Node3D) -> void:

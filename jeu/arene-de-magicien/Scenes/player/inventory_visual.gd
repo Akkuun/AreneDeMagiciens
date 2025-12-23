@@ -27,3 +27,11 @@ func _ready() -> void:
 func set_slot_item(item: XRToolsPickable, index: int):
 	drop_slots[index].set_item(item)
 	
+
+func hide_content():
+	for slot in drop_slots:
+		slot.hide_slot()
+
+func show_content():
+	for slot in drop_slots:
+		slot.show_slot()

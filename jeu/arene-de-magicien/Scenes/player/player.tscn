@@ -18,7 +18,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_spm8d"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.3429139, 0.40034747, -0.183677, 0, 0, 0, 0, 0, 0, -0.0025087446, 0.008937001, -0.39336678, 0, 0, 0, 0, 0, 0, -0.51108736, -0.17106113, -0.18438268),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.458, -0.05, -0.057, 0, 0, 0, 0, 0, 0, 0.175, -0.05, -0.364, 0, 0, 0, 0, 0, 0, -0.381, -0.05, -0.168),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -36,6 +36,21 @@ script = ExtResource("1_lvxji")
 
 [node name="player" parent="PlayerBody" instance=ExtResource("3_h0khc")]
 transform = Transform3D(0.464956, -0.004044635, 0.0049594427, 0.003995696, 0.4649602, 0.0045915893, -0.004998956, -0.004548539, 0.4649509, 0, 1.1981537, 0)
+
+[node name="Belt" type="Node3D" parent="PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029629707, 1.2319984, -0.03950596)
+script = ExtResource("11_h0khc")
+slot_count = null
+
+[node name="SlotPath" type="Path3D" parent="PlayerBody/Belt"]
+curve = SubResource("Curve3D_spm8d")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PlayerBody/Belt/SlotPath"]
+transform = Transform3D(0.7352605, 0, 0.67778045, 0, 0.99999654, 0, -0.6777808, 0, 0.73526007, 0.458, -0.05, -0.057)
+
+[node name="Inventory" type="Node" parent="PlayerBody/Belt"]
+script = ExtResource("14_nyrd7")
+inventory_resource = SubResource("Resource_dpkfr")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -69,18 +84,4 @@ tracker = &"right_hand"
 [node name="MovementJump" parent="RightHand" instance=ExtResource("10_gx1jg")]
 jump_button_action = "A/X button"
 
-[node name="Belt" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029629707, 0.8637343, -0.03950596)
-script = ExtResource("11_h0khc")
-
-[node name="SlotPath" type="Path3D" parent="Belt"]
-curve = SubResource("Curve3D_spm8d")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Belt/SlotPath"]
-transform = Transform3D(0.5189211, -0.5947415, 0.61400366, 2.980227e-08, 0.7182828, 0.6957492, -0.85482025, -0.36103952, 0.37273264, 0.3429139, 0.40034747, -0.183677)
-
-[node name="Inventory" type="Node" parent="Belt"]
-script = ExtResource("14_nyrd7")
-inventory_resource = SubResource("Resource_dpkfr")
-
-[connection signal="inventory_item_instantiated" from="Belt/Inventory" to="Belt" method="set_slot_item"]
+[connection signal="inventory_item_instantiated" from="PlayerBody/Belt/Inventory" to="PlayerBody/Belt" method="set_slot_item"]

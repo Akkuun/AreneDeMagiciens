@@ -4,6 +4,9 @@ class_name InventoryResource extends Resource
 @export var max_size : int = 8
 
 func _init() -> void:
+	init()
+
+func init() -> void:
 	var missing_slots = max_size - items.size()
 	for i in range(missing_slots):
 		items.append(null)

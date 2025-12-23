@@ -110,11 +110,14 @@ transform = Transform3D(0.95346993, -0.29102218, 0.07874725, 0, 0.26119527, 0.96
 [node name="WoodIngredientPickable3" parent="." instance=ExtResource("6_s4w6r")]
 transform = Transform3D(0.8853635, -0.42597133, -0.18622506, -0.2910223, -0.8201983, 0.49252456, -0.36254296, -0.3818677, -0.8501407, 1.5803809, 2.5610976, -3.1882815)
 
+[node name="WoodIngredientPickable4" parent="." instance=ExtResource("6_s4w6r")]
+transform = Transform3D(0.8853635, -0.42597133, -0.18622506, -0.2910223, -0.8201983, 0.49252456, -0.36254296, -0.3818677, -0.8501407, 1.7695103, 3.1663802, -3.1882815)
+
 [node name="Backpack" parent="." instance=ExtResource("8_s4w6r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5611058, 1.4482718, -3.2103736)
 
 [node name="Wand" parent="." instance=ExtResource("9_4mof2")]
-transform = Transform3D(-0.9999146, 0.013072031, 0, -0.00034266143, -0.026174733, 1.0000802, 0.013070552, 0.999572, 0.026278434, 1.508127, 1.8302484, -2.1070566)
+transform = Transform3D(-0.9999146, 0.013072031, 0, 0.010160966, 0.7770797, 0.62965834, 0.008228701, 0.62926674, -0.77741975, 1.508127, 1.8302484, -2.1070566)
 
 [node name="YellowPlantIngredientPickable" parent="." instance=ExtResource("10_24467")]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 2, 2.9140966, 0)
