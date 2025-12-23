@@ -1,7 +1,7 @@
 @tool
 class_name InventorySlot extends XRToolsSnapZone
 
-func connect_to_inventory_resource(inventory: InventoryResource, index: int) -> void:
+func connect_to_inventory_resource(inventory, index: int) -> void:
 	connect("has_dropped", func ():
 		inventory.restore_item_size(index)
 		inventory.drop_item(index)

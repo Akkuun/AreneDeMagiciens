@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8vkdymd77j37"
 path.s3tc="res://.godot/imported/PathRocks_Diffuse.png-bf6cd2d29dc3943689e741d957e06488.s3tc.ctex"
+path.etc2="res://.godot/imported/PathRocks_Diffuse.png-bf6cd2d29dc3943689e741d957e06488.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Quaternius_natural_pack/glTF/PathRocks_Diffuse.png"
-dest_files=["res://.godot/imported/PathRocks_Diffuse.png-bf6cd2d29dc3943689e741d957e06488.s3tc.ctex"]
+dest_files=["res://.godot/imported/PathRocks_Diffuse.png-bf6cd2d29dc3943689e741d957e06488.s3tc.ctex", "res://.godot/imported/PathRocks_Diffuse.png-bf6cd2d29dc3943689e741d957e06488.etc2.ctex"]
 
 [params]
 

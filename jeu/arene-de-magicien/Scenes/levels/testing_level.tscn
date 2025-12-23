@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cdxb14j2lypqe" path="res://assets/Quaternius_natural_pack/glTF/CommonTree_3.gltf" id="14_j5yly"]
 [ext_resource type="PackedScene" uid="uid://c6cnppu22yx17" path="res://assets/Quaternius_natural_pack/glTF/CommonTree_4.gltf" id="15_dpmn2"]
 [ext_resource type="PackedScene" uid="uid://b2sf1hhiim1pi" path="res://assets/Quaternius_natural_pack/glTF/CommonTree_5.gltf" id="16_egiun"]
-[ext_resource type="ArrayMesh" uid="uid://dli1ksufmje7l" path="res://resources/meshes/bush_flowers.res" id="17_fqr2o"]
+[ext_resource type="ArrayMesh" uid="uid://bcxcdg5d0yh1x" path="res://resources/meshes/bush_flowers.res" id="17_fqr2o"]
 [ext_resource type="ArrayMesh" uid="uid://bwt3w2fu53uyg" path="res://resources/meshes/grass_short.res" id="18_xppsf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
@@ -114,7 +114,7 @@ transform = Transform3D(0.8853635, -0.42597133, -0.18622506, -0.2910223, -0.8201
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5611058, 1.4482718, -3.2103736)
 
 [node name="Wand" parent="." instance=ExtResource("9_4mof2")]
-transform = Transform3D(-0.9999146, 0.013072031, 0, -0.012434983, -0.9509753, -0.30923444, -0.0040407884, -0.3089907, 0.9514332, 1.508127, 1.8302484, -2.1070566)
+transform = Transform3D(-0.9999146, 0.013072031, 0, -0.00034266143, -0.026174733, 1.0000802, 0.013070552, 0.999572, 0.026278434, 1.508127, 1.8302484, -2.1070566)
 
 [node name="YellowPlantIngredientPickable" parent="." instance=ExtResource("10_24467")]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 2, 2.9140966, 0)

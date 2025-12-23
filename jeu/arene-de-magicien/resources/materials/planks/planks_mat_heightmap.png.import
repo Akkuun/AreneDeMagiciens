@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://xaqsw4yb72nv"
 path.s3tc="res://.godot/imported/planks_mat_heightmap.png-154e1c641095d436c807dddf88f06219.s3tc.ctex"
+path.etc2="res://.godot/imported/planks_mat_heightmap.png-154e1c641095d436c807dddf88f06219.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/materials/planks/planks_mat_heightmap.png"
-dest_files=["res://.godot/imported/planks_mat_heightmap.png-154e1c641095d436c807dddf88f06219.s3tc.ctex"]
+dest_files=["res://.godot/imported/planks_mat_heightmap.png-154e1c641095d436c807dddf88f06219.s3tc.ctex", "res://.godot/imported/planks_mat_heightmap.png-154e1c641095d436c807dddf88f06219.etc2.ctex"]
 
 [params]
 

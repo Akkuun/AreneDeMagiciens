@@ -36,6 +36,8 @@ mesh = SubResource("CylinderMesh_y3gub")
 [node name="InventoryVisual" type="Node3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35809124, 0)
 script = ExtResource("2_m35o0")
+width = null
+slot_count = null
 space_between = 0.6
 
 [node name="Inventory" type="Node" parent="InventoryVisual" index="0"]

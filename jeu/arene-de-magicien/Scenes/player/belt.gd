@@ -18,7 +18,7 @@ func _ready() -> void:
 		slot.position = path_follow.position
 		add_child(slot)
 		
-		slot.connect_to_inventory_resource($Inventory.inventory_resource, i)
+		slot.connect_to_inventory_resource($Inventory, i)
 		slots.append(slot)
 
 func set_slot_item(item: XRToolsPickable, index: int):

@@ -20,7 +20,7 @@ func _ready() -> void:
 		drop_slot.position.y = -y * space_between
 		drop_slot.position += offset
 		add_child(drop_slot)
-		drop_slot.connect_to_inventory_resource($Inventory.inventory_resource, i)
+		drop_slot.connect_to_inventory_resource($Inventory, i)
 		drop_slots.append(drop_slot)
 		
 

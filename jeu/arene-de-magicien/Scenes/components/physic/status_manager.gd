@@ -6,7 +6,7 @@ signal status_applied(status: StatusEnum)
 signal status_removed(status: StatusEnum)
 signal dammage_taken(quantity: int)
 
-@onready var status_giver_scene: PackedScene = load("res://scenes/components/physic/status_giver.tscn")
+var status_giver_scene: PackedScene
 
 @export var emit_shape : CollisionShape3D
 
@@ -29,6 +29,7 @@ var active_status: Dictionary[StatusEnum, bool] = {
 var active_givers: Dictionary[StatusEnum, StatusGiver]
 
 func _ready() -> void:
+	status_giver_scene = load("res://Scenes/components/physic/status_giver.tscn")
 	for child in get_children():
 		if(child is StatusReceiver):
 			child.status_entered.connect(received)
