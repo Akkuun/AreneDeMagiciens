@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://eqpudws0tesx"]
+[gd_scene load_steps=19 format=3 uid="uid://eqpudws0tesx"]
 
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_gmlin"]
 [ext_resource type="Script" uid="uid://b1p7oa1fa7ix4" path="res://Scenes/player/player.gd" id="1_lvxji"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_p47bc"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="5_0owmy"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_qek5x"]
+[ext_resource type="PackedScene" uid="uid://d0t0fvctdsdhq" path="res://Scenes/objects/wand/wand.tscn" id="7_6vj4j"]
 [ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="7_je7p5"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="9_fm80t"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="10_gx1jg"]
@@ -25,7 +26,7 @@ point_count = 3
 
 [sub_resource type="Resource" id="Resource_dpkfr"]
 script = ExtResource("15_ic3d6")
-items = Array[PackedScene]([ExtResource("13_g7b1g")])
+items = Array[PackedScene]([ExtResource("13_g7b1g"), ExtResource("7_6vj4j")])
 max_size = 4
 metadata/_custom_type_script = "uid://ev1c638ra2q6"
 

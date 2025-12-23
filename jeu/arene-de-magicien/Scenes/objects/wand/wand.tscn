@@ -20,10 +20,6 @@ bottom_radius = 0.01
 height = 0.2
 
 [node name="Wand" instance=ExtResource("1_3yfio")]
-transform = Transform3D(1, 0, 0, 0, -0.85295576, 0.52279794, 0, -0.52279794, -0.85295576, 0, 0, 0)
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
 script = ExtResource("2_yq5qq")
 
 [node name="CollisionShape3D" parent="." index="0"]

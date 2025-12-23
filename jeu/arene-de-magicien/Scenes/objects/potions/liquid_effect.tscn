@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c5p8o46eknrhe"]
 
-[ext_resource type="Shader" path="res://resources/materials/liquid_contained.gdshader" id="1_yj4gv"]
+[ext_resource type="Shader" uid="uid://ga5rxu4nofih" path="res://resources/materials/liquid_contained.gdshader" id="1_yj4gv"]
 [ext_resource type="Script" uid="uid://c14swoetyh5s5" path="res://Scenes/objects/potions/liquid_effect.gd" id="2_pvq8n"]
 
 [sub_resource type="Curve" id="Curve_yj4gv"]

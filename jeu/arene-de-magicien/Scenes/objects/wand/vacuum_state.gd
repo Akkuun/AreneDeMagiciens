@@ -43,7 +43,7 @@ func _enter_tree() -> void:
 	
 	vacuum_path.curve.add_point(wand_muzzle.global_position)
 	vacuum_path.curve.add_point(wand_muzzle.global_position + Vector3.UP)
-	vacuum_path.curve.add_point(wand_muzzle.global_position + Vector3.UP * 2.0)
+	#vacuum_path.curve.add_point(wand_muzzle.global_position + Vector3.UP * 2.0)
 	
 	add_child(vacuum_end_marker)
 	
@@ -73,7 +73,7 @@ func get_closest_t(position: Vector3):
 	return closest_t
 
 func on_body_entered(body: Node3D):
-	if(!body is RigidBody3D):
+	if(!body is RigidBody3D || body == wand_root_node):
 		return
 	add_body_count(body as RigidBody3D)
 
@@ -86,7 +86,7 @@ func add_body_count(rigid_body: RigidBody3D):
 		overlapped_bodies_refs[rigid_body].count += 1
 
 func on_body_left(body: Node3D):
-	if(!body is RigidBody3D):
+	if(!body is RigidBody3D || body == wand_root_node):
 		return
 	
 	var rigid_body = body as RigidBody3D
@@ -96,6 +96,9 @@ func on_body_left(body: Node3D):
 		overlapped_bodies_refs[rigid_body].count -= 1
 
 func state_leave() -> void:
+	vacuum_path.curve.set_point_position(0, Vector3.ZERO)
+	vacuum_path.curve.set_point_position(1, Vector3.ZERO)
+	
 	for area in vacuum_areas:
 		area.set_process(false)
 
@@ -105,7 +108,7 @@ func state_enter() -> bool:
 	
 	vacuum_end_marker.reparent(wand_muzzle.get_collider())
 	vacuum_end_marker.global_position = wand_muzzle.get_collision_point()
-	vacuum_path.curve.set_point_position(2, vacuum_end_marker.global_position)
+	vacuum_path.curve.set_point_position(1, vacuum_end_marker.global_position)
 	
 	overlapped_bodies_refs.clear()
 	
@@ -124,10 +127,10 @@ func state_process(delta: float):
 		vacuum_path.curve.set_point_position(0, vacuum_start_position)
 		vacuum_path.curve.set_point_out(0, vacuum_start_direction)
 	
-	vacuum_path.curve.set_point_in(1, wand_muzzle.global_basis.y)
-	vacuum_path.curve.set_point_position(1, wand_muzzle.global_position)
-	vacuum_path.curve.set_point_out(1, -wand_muzzle.global_basis.y)
-	vacuum_path.curve.set_point_position(2, vacuum_end_marker.global_position)
+	vacuum_path.curve.set_point_in(1, vacuum_end_marker.global_basis.y)
+	#vacuum_path.curve.set_point_position(1, wand_muzzle.global_position)
+	#vacuum_path.curve.set_point_out(1, -wand_muzzle.global_basis.y)
+	vacuum_path.curve.set_point_position(1, vacuum_end_marker.global_position)
 	
 	DebugDraw3D.draw_line_path(vacuum_path.curve.get_baked_points())
 	
