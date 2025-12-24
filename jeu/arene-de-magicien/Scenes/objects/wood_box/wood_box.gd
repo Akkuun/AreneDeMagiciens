@@ -2,12 +2,7 @@
 extends XRToolsPickable
 
 
-@export var fine_material: BaseMaterial3D
 @export var on_fire_material: ShaderMaterial
-
-func _ready():
-	super._ready()
-	$Model.material_overlay = fine_material
 
 func _on_status_manager_status_applied(status: int) -> void:
 	if(status == Global.StatusEnum.FIRE):
@@ -15,7 +10,6 @@ func _on_status_manager_status_applied(status: int) -> void:
 
 
 func _on_status_manager_status_removed(status: int) -> void:
-	$Model.material_overlay = fine_material
 	$Model.material_overlay = null
 
 

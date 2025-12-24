@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxcbfrl25gbok"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_y3gub"]
+[ext_resource type="Script" uid="uid://dkfoldjrhfigw" path="res://Scenes/player/inventory_visual.gd" id="2_m35o0"]
+[ext_resource type="Script" uid="uid://b2chpdrq10fc5" path="res://Scenes/player/backpack.gd" id="2_qh6af"]
+[ext_resource type="Script" uid="uid://b0085kxt4ol8i" path="res://Scenes/player/inventory.gd" id="3_34pq7"]
+[ext_resource type="Script" uid="uid://ev1c638ra2q6" path="res://Scenes/player/inventory_resource.gd" id="5_h7rrn"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="6_34pq7"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="7_qh6af"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ww54k"]
+height = 0.34436035
+radius = 0.18896484
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y3gub"]
+top_radius = 0.01
+bottom_radius = 0.2
+height = 0.4
+
+[sub_resource type="Resource" id="Resource_h3tu7"]
+script = ExtResource("5_h7rrn")
+metadata/_custom_type_script = "uid://ev1c638ra2q6"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_34pq7"]
+
+[node name="Backpack" instance=ExtResource("1_y3gub")]
+script = ExtResource("2_qh6af")
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027770996, 0)
+shape = SubResource("CylinderShape3D_ww54k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CylinderMesh_y3gub")
+
+[node name="InventoryVisual" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35809124, 0)
+script = ExtResource("2_m35o0")
+space_between = 0.6
+
+[node name="Inventory" type="Node" parent="InventoryVisual" index="0"]
+script = ExtResource("3_34pq7")
+inventory_resource = SubResource("Resource_h3tu7")
+
+[node name="GrabPointHandLeft" parent="." index="3" instance=ExtResource("6_34pq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1259954, 0)
+
+[node name="GrabPointHandRight" parent="." index="4" instance=ExtResource("7_qh6af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1259954, 0)
+
+[node name="HarvestArea" type="Area3D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 4
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HarvestArea" index="0"]
+shape = SubResource("SphereShape3D_34pq7")
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]
+[connection signal="grabbed" from="." to="." method="_on_grabbed"]
+[connection signal="inventory_item_instantiated" from="InventoryVisual/Inventory" to="InventoryVisual" method="set_slot_item"]
+[connection signal="body_entered" from="HarvestArea" to="." method="_on_harvest_area_body_entered"]

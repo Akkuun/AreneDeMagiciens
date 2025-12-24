@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl3muv5fxgmn8"]
+
+[ext_resource type="Script" uid="uid://bf24sumfv36tf" path="res://Scenes/objects/potions/fire_potion/fire_potion.gd" id="1_m0v8l"]
+[ext_resource type="PackedScene" uid="uid://b5csvx1ildoql" path="res://assets/meshes/blender/cube_bottle.blend" id="2_js5mk"]
+[ext_resource type="PackedScene" uid="uid://c5p8o46eknrhe" path="res://Scenes/objects/potions/liquid_effect.tscn" id="2_m0v8l"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_m0v8l"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_bx4u3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnp64"]
+size = Vector3(0.25757325, 0.5196692, 0.23)
+
+[sub_resource type="BoxMesh" id="BoxMesh_js5mk"]
+
+[node name="FirePotion" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("1_m0v8l")
+metadata/_custom_type_script = "uid://0p0evtue2h4p"
+
+[node name="cube_bottle" parent="." instance=ExtResource("2_js5mk")]
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002321776, 0.12675598, 0)
+shape = SubResource("BoxShape3D_rnp64")
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("2_m0v8l")]
+transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0, 0, 0)
+base_color = Color(0.96862745, 0.11764706, 0.3019608, 1)
+top_color = Color(0.23529412, 0.79607844, 0.7882353, 1)
+fill_rate = 0.55
+mesh = SubResource("BoxMesh_js5mk")
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("3_m0v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033096164, 0.1531982, -0.104833186)
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("4_bx4u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019675635, 0.15671818, -0.10412979)

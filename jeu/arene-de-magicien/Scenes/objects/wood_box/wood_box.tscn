@@ -5,33 +5,28 @@
 [ext_resource type="PackedScene" uid="uid://cadnxif7rc8x6" path="res://scenes/components/physic/status_manager.tscn" id="3_vcypb"]
 [ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://scenes/components/physic/status_receiver.tscn" id="4_1bmi6"]
 [ext_resource type="PackedScene" uid="uid://6kwajc2m7wut" path="res://scenes/components/entities/life_component.tscn" id="6_gftlw"]
+[ext_resource type="Material" uid="uid://kct761rk1ght" path="res://resources/materials/planks/planks_mat.tres" id="7_6adf6"]
 [ext_resource type="PackedScene" uid="uid://cahg2cogmbwae" path="res://scenes/components/entities/health_bar.tscn" id="7_vcypb"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="7_vquhi"]
+[ext_resource type="ArrayMesh" uid="uid://dnj7i0e6pjer8" path="res://resources/meshes/crate.res" id="7_vrsi6"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="8_6adf6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bmi6"]
-albedo_color = Color(0.83333325, 1, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bmi6"]
 size = Vector3(0.21, 0.21, 0.21)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v73se"]
-size = Vector3(0.3, 0.3, 0.3)
+size = Vector3(0.6617676, 0.6688965, 0.6588165)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vquhi"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fjwrh"]
-size = Vector3(0.2, 0.2, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_e81tp"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.6437546, 0.6411499, 0.6461426)
 
 [node name="WoodBox" type="RigidBody3D"]
-collision_layer = 4
+collision_layer = 6
 collision_mask = 196615
 script = ExtResource("1_v73se")
-fine_material = SubResource("StandardMaterial3D_1bmi6")
 on_fire_material = ExtResource("2_v73se")
 metadata/_custom_type_script = "uid://0p0evtue2h4p"
 
@@ -44,6 +39,7 @@ shape = SubResource("BoxShape3D_1bmi6")
 [node name="StatusReceiver2" parent="StatusManager" instance=ExtResource("4_1bmi6")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StatusManager/StatusReceiver2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00051268935, -0.00036621094, -0.003080748)
 shape = SubResource("BoxShape3D_v73se")
 
 [node name="LifeComponent" parent="." instance=ExtResource("6_gftlw")]
@@ -51,18 +47,24 @@ current_life = 100
 
 [node name="HealthBar" parent="." instance=ExtResource("7_vcypb")]
 texture = SubResource("ViewportTexture_vquhi")
+y_offset = 50
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011542961, 0.0017272756, -0.0004638359)
 shape = SubResource("BoxShape3D_fjwrh")
 
 [node name="Model" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_1bmi6")
-material_overlay = SubResource("StandardMaterial3D_1bmi6")
-mesh = SubResource("BoxMesh_e81tp")
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
+mesh = ExtResource("7_vrsi6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_6adf6")
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("7_vquhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.070856586, 0.03947571, -0.007358581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29651597, 0.07866022, 0.21893105)
 visible = true
+snap_hand = false
+drive_angle = 0.76
+drive_aim = 0.895
 
 [node name="GrabPointHandRight" parent="." instance=ExtResource("8_6adf6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07456753, 0.04285647, 0)

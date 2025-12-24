@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4hlbgkjrux2i"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_7e6cs"]
+[ext_resource type="Script" uid="uid://fw3avoglwek8" path="res://scripts/crafting/ingredient_body.gd" id="2_7hslm"]
+
+[node name="PickableIngredient" instance=ExtResource("1_7e6cs")]
+collision_layer = 20
+script = ExtResource("2_7hslm")
+contained_ingredients = Array[int]([])

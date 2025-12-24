@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://6h03v3j46w6y"]
+
+[ext_resource type="PackedScene" uid="uid://b4hlbgkjrux2i" path="res://Scenes/crafting/ingredients/pickable_ingredient.tscn" id="1_krfii"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_nbpeo"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_v5f2e"]
+[ext_resource type="PackedScene" uid="uid://1w32s52kocog" path="res://assets/Quaternius_natural_pack/glTF/Flower_4_Single.gltf" id="4_2k20m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nbpeo"]
+radius = 0.12109375
+height = 0.6960907
+
+[node name="YellowPlantIngredientPickable" instance=ExtResource("1_krfii")]
+contained_ingredients = Array[int]([2])
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33405733, 0)
+shape = SubResource("CapsuleShape3D_nbpeo")
+
+[node name="GrabPointHandLeft" parent="." index="1" instance=ExtResource("2_nbpeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28915668, -0.097169355)
+visible = true
+
+[node name="GrabPointHandRight" parent="." index="2" instance=ExtResource("3_v5f2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28915668, -0.097169355)
+visible = true
+
+[node name="Flowers" type="Node3D" parent="." index="3"]
+
+[node name="Flower_4_Single2" parent="Flowers" index="0" instance=ExtResource("4_2k20m")]
+transform = Transform3D(0.2417306, 0.03132614, -0.14768204, 0, 0.27879685, 0.05913806, 0.15096793, -0.050159574, 0.23646922, -0.033892214, 0, 0.04924792)
+
+[node name="Flower_4_Single3" parent="Flowers" index="1" instance=ExtResource("4_2k20m")]
+transform = Transform3D(0.12730423, 0.014668363, 0.20292479, 0.016408272, 0.2378554, -0.027486993, -0.20279147, 0.028453562, 0.12516381, -0.04141879, 0.043501437, 0.007649541)

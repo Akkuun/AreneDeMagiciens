@@ -1,28 +1,57 @@
-[gd_scene load_steps=14 format=3 uid="uid://eqpudws0tesx"]
+[gd_scene load_steps=19 format=3 uid="uid://eqpudws0tesx"]
 
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_gmlin"]
-[ext_resource type="Script" uid="uid://b1p7oa1fa7ix4" path="res://scenes/player/player.gd" id="1_lvxji"]
+[ext_resource type="Script" uid="uid://b1p7oa1fa7ix4" path="res://Scenes/player/player.gd" id="1_lvxji"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="2_p47bc"]
+[ext_resource type="PackedScene" uid="uid://dlo2r57eupyx3" path="res://assets/meshes/blender/player.glb" id="3_h0khc"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_p47bc"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="5_0owmy"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_qek5x"]
+[ext_resource type="PackedScene" uid="uid://d0t0fvctdsdhq" path="res://Scenes/objects/wand/wand.tscn" id="7_6vj4j"]
 [ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="7_je7p5"]
-[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="8_qek5x"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="9_fm80t"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="10_gx1jg"]
+[ext_resource type="Script" uid="uid://iy0nutidc3cv" path="res://Scenes/player/belt.gd" id="11_h0khc"]
+[ext_resource type="PackedScene" uid="uid://dxcbfrl25gbok" path="res://Scenes/player/backpack.tscn" id="13_g7b1g"]
+[ext_resource type="Script" uid="uid://b0085kxt4ol8i" path="res://Scenes/player/inventory.gd" id="14_nyrd7"]
+[ext_resource type="Script" uid="uid://ev1c638ra2q6" path="res://Scenes/player/inventory_resource.gd" id="15_ic3d6"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_5gtgg"]
-radius = 0.1
+[sub_resource type="Curve3D" id="Curve3D_spm8d"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.458, -0.05, -0.057, 0, 0, 0, 0, 0, 0, 0.175, -0.05, -0.364, 0, 0, 0, 0, 0, 0, -0.381, -0.05, -0.168),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
-[sub_resource type="SphereMesh" id="SphereMesh_h17s1"]
-radius = 0.1
-height = 0.2
+[sub_resource type="Resource" id="Resource_dpkfr"]
+script = ExtResource("15_ic3d6")
+items = Array[PackedScene]([ExtResource("13_g7b1g"), ExtResource("7_6vj4j")])
+max_size = 4
+metadata/_custom_type_script = "uid://ev1c638ra2q6"
 
 [node name="Player" type="XROrigin3D"]
 script = ExtResource("1_lvxji")
 
 [node name="PlayerBody" parent="." instance=ExtResource("2_p47bc")]
+
+[node name="player" parent="PlayerBody" instance=ExtResource("3_h0khc")]
+transform = Transform3D(0.464956, -0.004044635, 0.0049594427, 0.003995696, 0.4649602, 0.0045915893, -0.004998956, -0.004548539, 0.4649509, 0, 1.1981537, 0)
+
+[node name="Belt" type="Node3D" parent="PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029629707, 1.2319984, -0.03950596)
+script = ExtResource("11_h0khc")
+slot_count = null
+
+[node name="SlotPath" type="Path3D" parent="PlayerBody/Belt"]
+curve = SubResource("Curve3D_spm8d")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PlayerBody/Belt/SlotPath"]
+transform = Transform3D(0.7352605, 0, 0.67778045, 0, 0.99999654, 0, -0.6777808, 0, 0.73526007, 0.458, -0.05, -0.057)
+
+[node name="Inventory" type="Node" parent="PlayerBody/Belt"]
+script = ExtResource("14_nyrd7")
+inventory_resource = SubResource("Resource_dpkfr")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -56,27 +85,4 @@ tracker = &"right_hand"
 [node name="MovementJump" parent="RightHand" instance=ExtResource("10_gx1jg")]
 jump_button_action = "A/X button"
 
-[node name="Belt" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5081796, 0)
-
-[node name="SnapZone" parent="Belt" instance=ExtResource("8_qek5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
-grab_distance = 0.05
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Belt/SnapZone"]
-shape = SubResource("SphereShape3D_5gtgg")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Belt/SnapZone"]
-mesh = SubResource("SphereMesh_h17s1")
-skeleton = NodePath("")
-
-[node name="SnapZone2" parent="Belt" instance=ExtResource("8_qek5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
-grab_distance = 0.05
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Belt/SnapZone2"]
-shape = SubResource("SphereShape3D_5gtgg")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Belt/SnapZone2"]
-mesh = SubResource("SphereMesh_h17s1")
-skeleton = NodePath("")
+[connection signal="inventory_item_instantiated" from="PlayerBody/Belt/Inventory" to="PlayerBody/Belt" method="set_slot_item"]
