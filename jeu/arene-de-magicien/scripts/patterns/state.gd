@@ -7,7 +7,7 @@ func get_state_name() -> String
 func state_process(delta: float) -> void:
 	pass
 
-func state_enter() -> bool:
+func state_enter(state_manager: StateManager) -> bool:
 	return true
 
 func state_leave() -> void:

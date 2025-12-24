@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhgq0wadoe7tw"]
+
+[ext_resource type="Script" uid="uid://dmbildkg1bs2s" path="res://Scenes/objects/fire_ball/fire_ball_projectile.gd" id="1_nk6do"]
+[ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="2_eahag"]
+[ext_resource type="Material" uid="uid://djjwuh3t4tgsg" path="res://resources/materials/fire_material.tres" id="3_c5wcs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iad4n"]
+radius = 0.10985939
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cu3jx"]
+radius = 0.109429836
+
+[sub_resource type="SphereMesh" id="SphereMesh_noy40"]
+material = ExtResource("3_c5wcs")
+radius = 0.1
+height = 0.2
+
+[node name="FireBallProjectile" type="Area3D"]
+script = ExtResource("1_nk6do")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_iad4n")
+
+[node name="StatusGiver" parent="." instance=ExtResource("2_eahag")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusGiver"]
+shape = SubResource("SphereShape3D_cu3jx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_noy40")
+skeleton = NodePath("")

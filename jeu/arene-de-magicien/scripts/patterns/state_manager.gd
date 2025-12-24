@@ -21,6 +21,6 @@ func change_state(new_state: String) -> void:
 	if current_state != null:
 		current_state.state_leave()
 	current_state = available_states[new_state]
-	current_state.state_enter()
+	current_state.state_enter(self)
 	
 	emit_signal("state_changed", current_state.get_state_name())

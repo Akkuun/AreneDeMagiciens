@@ -1,7 +1,7 @@
 @tool
 extends XRToolsPickable
 
-enum WandState {IDLE, VACUUM}
+enum WandState {IDLE, VACUUM, FIRE_BALL}
 
 var lock_position : bool = false
 var can_rotate : bool = false
@@ -9,6 +9,8 @@ var can_rotate : bool = false
 func change_state(new_state: WandState) -> void:
 	if new_state == WandState.VACUUM:
 		$Spells.change_state("Vacuum")
+	elif new_state == WandState.FIRE_BALL:
+		$Spells.change_state("FireBall")
 	else:
 		$Spells.change_state("Idle")
 
@@ -17,7 +19,7 @@ func controller_action(controller : XRController3D):
 	if is_picked_up():
 		if controller.is_button_pressed("trigger_click"):
 			if activate:
-				change_state(WandState.VACUUM)
+				change_state(WandState.FIRE_BALL)
 			else:
 				change_state(WandState.IDLE)
 			
