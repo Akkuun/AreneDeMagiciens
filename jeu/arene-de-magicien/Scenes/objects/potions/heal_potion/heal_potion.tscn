@@ -1,16 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://btlxnvawfkcf4"]
+[gd_scene load_steps=9 format=3 uid="uid://btlxnvawfkcf4"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_eogkg"]
+[ext_resource type="Script" uid="uid://dg7og71dqhfop" path="res://Scenes/objects/potions/heal_potion/heal_potion.gd" id="2_hgk3m"]
 [ext_resource type="PackedScene" uid="uid://c5p8o46eknrhe" path="res://Scenes/objects/potions/liquid_effect.tscn" id="2_lctku"]
 [ext_resource type="PackedScene" uid="uid://dgew8grqcy6yf" path="res://assets/meshes/blender/cylinder_bottle.blend" id="2_sfyuk"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_sfyuk"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_hgk3m"]
+[ext_resource type="PackedScene" uid="uid://c52261dfbgtfq" path="res://Scenes/components/physic/breaking_component.tscn" id="7_gl30b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lctku"]
 height = 0.60528564
 radius = 0.16210938
 
 [node name="HealPotion" instance=ExtResource("1_eogkg")]
+contact_monitor = true
+max_contacts_reported = 8
+script = ExtResource("2_hgk3m")
 
 [node name="cylinder_bottle" parent="." index="0" instance=ExtResource("2_sfyuk")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, -0.07286301, 0)
@@ -30,3 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35485125, 0)
 
 [node name="GrabPointHandRight" parent="." index="4" instance=ExtResource("4_hgk3m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35485125, 0)
+
+[node name="BreakingComponent" parent="." index="5" instance=ExtResource("7_gl30b")]
+
+[connection signal="breaking" from="BreakingComponent" to="." method="_on_breaking_component_breaking"]

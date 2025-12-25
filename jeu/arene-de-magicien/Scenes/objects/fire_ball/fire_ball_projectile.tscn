@@ -22,6 +22,7 @@ script = ExtResource("1_nk6do")
 shape = SubResource("SphereShape3D_iad4n")
 
 [node name="StatusGiver" parent="." instance=ExtResource("2_eahag")]
+status = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StatusGiver"]
 shape = SubResource("SphereShape3D_cu3jx")

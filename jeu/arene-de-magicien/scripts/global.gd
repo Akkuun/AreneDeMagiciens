@@ -1,6 +1,8 @@
 extends Node
 
 enum StatusEnum {
+	NONE,
 	FIRE,
-	WATER
+	WATER,
+	HEAL
 }

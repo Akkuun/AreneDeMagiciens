@@ -10,7 +10,8 @@ func _on_status_manager_status_applied(status: int) -> void:
 
 
 func _on_status_manager_status_removed(status: int) -> void:
-	$Model.material_overlay = null
+	if(status == Global.StatusEnum.FIRE):
+		$Model.material_overlay = null
 
 
 func _on_life_component_dead() -> void:

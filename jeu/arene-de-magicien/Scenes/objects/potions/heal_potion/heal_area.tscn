@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dypqc7lq213wf"]
+
+[ext_resource type="Script" uid="uid://dh7qsctypns4" path="res://Scenes/objects/potions/heal_potion/heal_area.gd" id="1_iw03i"]
+[ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_wbdwm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_287cx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8si8n"]
+transparency = 1
+albedo_color = Color(0.14901961, 0.94509804, 0.3882353, 0.44705883)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c7goo"]
+material = SubResource("StandardMaterial3D_8si8n")
+
+[node name="HealArea" type="Node3D"]
+script = ExtResource("1_iw03i")
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="StatusGiver" parent="." instance=ExtResource("1_wbdwm")]
+status = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusGiver"]
+shape = SubResource("SphereShape3D_287cx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_c7goo")
+
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]

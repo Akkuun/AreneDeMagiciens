@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cadnxif7rc8x6"]
 
-[ext_resource type="Script" uid="uid://cn8ps7l038omn" path="res://scenes/components/physic/status_manager.gd" id="1_vanwc"]
+[ext_resource type="Script" uid="uid://cn8ps7l038omn" path="res://Scenes/components/physic/status_manager.gd" id="1_vanwc"]
 
 [node name="StatusManager" type="Node3D"]
 script = ExtResource("1_vanwc")

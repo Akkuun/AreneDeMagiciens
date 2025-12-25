@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://365incy5omk3"]
 
-[ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://scenes/components/physic/status_giver.tscn" id="1_8jl72"]
+[ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_8jl72"]
 [ext_resource type="Script" uid="uid://0p0evtue2h4p" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_vhx4u"]
 [ext_resource type="Material" uid="uid://djjwuh3t4tgsg" path="res://resources/materials/fire_material.tres" id="2_t5jws"]
 
@@ -30,6 +30,7 @@ mesh = SubResource("SphereMesh_8jl72")
 skeleton = NodePath("")
 
 [node name="StatusGiver" parent="." instance=ExtResource("1_8jl72")]
+status = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StatusGiver"]
 shape = SubResource("SphereShape3D_06g50")

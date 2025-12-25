@@ -1,10 +1,9 @@
 @tool
 extends XRToolsPickable
 
-@onready var fire_explosion : PackedScene = load("res://Scenes/objects/potions/fire_potion/fire_explosion.tscn")
-
+@onready var healing_area : PackedScene = load("res://Scenes/objects/potions/heal_potion/heal_area.tscn")
 func _on_breaking_component_breaking(at: Vector3, speed: float) -> void:
-	var instance = fire_explosion.instantiate() as Node3D
+	var instance := healing_area.instantiate() as Node3D
 	instance.position = at
 	get_tree().get_nodes_in_group("root_3d").front().add_child(instance)
 	queue_free()
