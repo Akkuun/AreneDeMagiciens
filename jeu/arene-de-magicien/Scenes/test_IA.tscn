@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxu0o83f1oouw"]
+
+[ext_resource type="Script" uid="uid://cq72sqoq51o2h" path="res://Scenes/agents/agent_base_3d.gd" id="1_ncgxt"]
+[ext_resource type="BehaviorTree" uid="uid://cqdkws254vlu4" path="res://ai/trees/range_agent.tres" id="1_toj4e"]
+[ext_resource type="PackedScene" uid="uid://cki3h7y8vxqfb" path="res://Scenes/BehaviorTreeDebugger.tscn" id="4_debugger"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na8pb"]
+albedo_color = Color(0.5962105, 0.37723807, 0.18742597, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_13taa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ncgxt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfe1j"]
+albedo_color = Color(0.09411765, 1, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_na8pb"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_i2wm6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_leouf"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ncgxt"]
+vertices = PackedVector3Array(-7.25, 2.6, -7.75, -7.75, 2.6, -7.25, -7.25, 2.6, -7, 7, 2.6, -7.25, 7.25, 2.6, -7.75, 7.25, 2.6, 7, -7, 2.6, 7.25, -7.25, 2.6, 7.75, 7.25, 2.6, 7.75, 7.75, 2.6, 7.25, -7.75, 2.6, 7.25, 7.75, 2.6, -7.25, -6.5, 0.6, -6.5, -6.5, 0.6, 6.75, 6.75, 0.6, 6.75, 6.75, 0.6, -6.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(9, 8, 5), PackedInt32Array(5, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(7, 10, 6), PackedInt32Array(6, 10, 2), PackedInt32Array(2, 10, 1), PackedInt32Array(4, 11, 3), PackedInt32Array(3, 11, 5), PackedInt32Array(5, 11, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13)]
+agent_radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13taa"]
+albedo_color = Color(0.23212546, 0.16403538, 0.2996923, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_13taa"]
+
+[node name="TestIa" type="Node3D"]
+
+[node name="dummy" type="CharacterBody3D" parent="." groups=["dummy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+
+[node name="root" type="Node3D" parent="dummy"]
+
+[node name="corps" type="MeshInstance3D" parent="dummy/root"]
+material_override = SubResource("StandardMaterial3D_na8pb")
+mesh = SubResource("CapsuleMesh_13taa")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dummy"]
+shape = SubResource("CapsuleShape3D_ncgxt")
+
+[node name="range_agent" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 3.627)
+script = ExtResource("1_ncgxt")
+
+[node name="root" type="Node3D" parent="range_agent"]
+
+[node name="corps" type="MeshInstance3D" parent="range_agent/root"]
+material_override = SubResource("StandardMaterial3D_qfe1j")
+mesh = SubResource("PrismMesh_na8pb")
+
+[node name="BTPlayer" type="BTPlayer" parent="range_agent"]
+behavior_tree = ExtResource("1_toj4e")
+blackboard_plan = SubResource("BlackboardPlan_i2wm6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="range_agent"]
+shape = SubResource("BoxShape3D_leouf")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ncgxt")
+
+[node name="Arena" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D/Arena"]
+transform = Transform3D(15, 0, 0, 0, 0.3, 0, 0, 0, 15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_13taa")
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../../../..")
+
+[node name="Wall_Back" type="MeshInstance3D" parent="NavigationRegion3D/Arena"]
+transform = Transform3D(15, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.15, 7.5)
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../../../..")
+
+[node name="Wall_Front" type="MeshInstance3D" parent="NavigationRegion3D/Arena"]
+transform = Transform3D(15, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.15, -7.5)
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../../../..")
+
+[node name="Wall_Right" type="MeshInstance3D" parent="NavigationRegion3D/Arena"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 15, 7.5, 1.15, 0)
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../../../..")
+
+[node name="Wall_Left" type="MeshInstance3D" parent="NavigationRegion3D/Arena"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 15, -7.5, 1.15, 0)
+mesh = SubResource("BoxMesh_13taa")
+skeleton = NodePath("../../../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6157577, 0.78793555, 0, -0.78793555, 0.6157577, 0, 6.560229, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.7742712, 0.45863768, -0.43606842, 0, 0.6890506, 0.72471327, 0.632854, -0.5611246, 0.53351206, -6.7268233, 7.8593245, 9.173854)
+
+[node name="BehaviorTreeDebugger" parent="." node_paths=PackedStringArray("bt_player") instance=ExtResource("4_debugger")]
+bt_player = NodePath("../range_agent/BTPlayer")
