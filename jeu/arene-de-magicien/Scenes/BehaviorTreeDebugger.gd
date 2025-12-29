@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-## Composant réutilisable pour afficher le BehaviorTree d'un agent en temps réel
 ## Utilisation : Ajoute ce nœud à ta scène et assigne le BTPlayer dans l'inspecteur
 ## Raccourcis : 
 ##   - F10 : Afficher/Masquer le panneau
@@ -8,10 +7,7 @@ extends CanvasLayer
 
 #le BTPlayer de l'agent à surveiller (à assigner dans l'inspecteur)
 @export var bt_player: BTPlayer
-
-#si vrai, le panneau est visible au démarrage
 @export var visible_at_start: bool = false
-
 @onready var behavior_tree_view: BehaviorTreeView = %BehaviorTreeView
 @onready var behavior_inspector: PanelContainer = %BehaviorInspector
 @onready var control: Control = %Control
@@ -26,7 +22,7 @@ func _ready() -> void:
 	if not bt_player:
 		push_warning("[BehaviorTreeDebugger] Aucun BTPlayer assigné. Assigne-le dans l'inspecteur.")
 	else:
-		print("[DEBUG] ✓ BehaviorTreeDebugger prêt (F10: Toggle | F11: Popup)")
+		print("[DEBUG] BehaviorTreeDebugger prêt (F10: Toggle | F11: Popup)")
 
 
 func _physics_process(_delta: float) -> void:
@@ -54,7 +50,7 @@ func _toggle_visibility() -> void:
 	if popup_window == null or not is_instance_valid(popup_window):
 		behavior_inspector.visible = not behavior_inspector.visible
 		var status = "visible" if behavior_inspector.visible else "masqué"
-		print("[DEBUG] ✓ BehaviorTreeView %s (F10 pour toggle)" % status)
+		print("[DEBUG] BehaviorTreeView %s (F10 pour toggle)" % status)
 
 
 func _create_popup_window() -> void:
@@ -74,7 +70,7 @@ func _create_popup_window() -> void:
 	add_child(popup_window)
 	popup_window.show()
 	
-	print("[DEBUG] ✓ BehaviorTreeView détaché dans une fenêtre séparée (F11 pour fermer)")
+	print("[DEBUG] BehaviorTreeView détaché dans une fenêtre séparé (F11 pour fermer)")
 
 
 func _close_popup_window() -> void:
@@ -86,11 +82,11 @@ func _close_popup_window() -> void:
 		popup_window.queue_free()
 		popup_window = null
 		
-		print("[DEBUG] ✓ BehaviorTreeView rattaché à la fenêtre principale (F11 pour détacher)")
+		print("[DEBUG] BehaviorTreeView rattaché à la fenêtre principale (F11 pour détacher)")
 
 
 # fonction pour assigner le BTPlayer par code
 func set_bt_player(player: BTPlayer) -> void:
 	bt_player = player
 	if bt_player:
-		print("[DEBUG] ✓ BTPlayer assigné à BehaviorTreeDebugger")
+		print("[DEBUG] BTPlayer assigné à BehaviorTreeDebugger")

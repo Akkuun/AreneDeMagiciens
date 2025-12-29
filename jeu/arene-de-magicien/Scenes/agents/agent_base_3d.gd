@@ -1,6 +1,6 @@
 extends CharacterBody3D
-## Script de base pour les agents 3D.
-## Fournit les fonctionnalités communes : déplacement, rotation, santé, attaque, etc.
+# Script de base pour les agents 3D.
+# Fournit les fonctionnalités communes, ex : déplacement, rotation, santé, attaque, etc.
 
 signal death
 
@@ -18,8 +18,8 @@ var _moved_this_frame: bool = false
 var _navigation_agent: NavigationAgent3D = null
 
 @onready var root: Node3D = $root
-# @onready var health: Health = $Health  # a décommenter pour rajouter un nœud Health
-# @onready var animation_player: AnimationPlayer = $AnimationPlayer  # a décommenter si on rajoute de l'animation
+# @onready var health: Health = $Health  # pour rajouter un nœud Health
+# @onready var animation_player: AnimationPlayer = $AnimationPlayer  # si on rajoute de l'animation
 
 
 func _ready() -> void:
