@@ -15,17 +15,17 @@
 [sub_resource type="Resource" id="Resource_co25n"]
 resource_local_to_scene = true
 script = ExtResource("4_co25n")
-tick_rate = 0.1
-damage_by_tick = -1.0
+propagate = true
+tick_rate = 0.5
+damage_by_tick = 10.0
+stoped_by = 2
 metadata/_custom_type_script = "uid://cfhgp433xp1ra"
 
 [sub_resource type="Resource" id="Resource_skd42"]
 resource_local_to_scene = true
 script = ExtResource("4_co25n")
-propagate = true
-tick_rate = 0.5
-damage_by_tick = 10.0
-stoped_by = 2
+tick_rate = 0.1
+damage_by_tick = -1.0
 metadata/_custom_type_script = "uid://cfhgp433xp1ra"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bmi6"]
@@ -50,8 +50,8 @@ metadata/_custom_type_script = "uid://0p0evtue2h4p"
 [node name="StatusManager" parent="." node_paths=PackedStringArray("emit_shape") instance=ExtResource("3_vcypb")]
 emit_shape = NodePath("StatusReceiver2/CollisionShape3D")
 status_managed = Dictionary[int, ExtResource("4_co25n")]({
-1: SubResource("Resource_skd42"),
-3: SubResource("Resource_co25n")
+1: SubResource("Resource_co25n"),
+3: SubResource("Resource_skd42")
 })
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StatusManager"]
