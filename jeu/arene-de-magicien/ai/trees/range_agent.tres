@@ -16,6 +16,8 @@ group = &"dummy"
 
 [sub_resource type="BTAction" id="BTAction_r7adr"]
 script = ExtResource("3_rsv4q")
+range_min = 5.0
+range_max = 8.0
 
 [sub_resource type="BTAction" id="BTAction_rsv4q"]
 script = ExtResource("4_aeqyo")
