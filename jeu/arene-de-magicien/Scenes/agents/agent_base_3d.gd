@@ -17,9 +17,9 @@ var _is_dead: bool = false
 var _moved_this_frame: bool = false
 var _navigation_agent: NavigationAgent3D = null
 
-@onready var root: Node3D = $root
+@onready var root: Node3D = $CharacterArmature
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 # @onready var health: Health = $Health  # pour rajouter un nœud Health
-# @onready var animation_player: AnimationPlayer = $AnimationPlayer  # si on rajoute de l'animation
 
 
 func _ready() -> void:
@@ -104,16 +104,13 @@ func apply_knockback(knockback: Vector3, frames: int = 10) -> void:
 # callback quand l'agent prend des dégâts
 func _damaged(_amount: float, knockback: Vector3) -> void:
 	apply_knockback(knockback)
-	# if animation_player:
-	# 	animation_player.play(&"hurt")
+	if animation_player:
+		pass
 	
 	var btplayer := get_node_or_null(^"BTPlayer") as BTPlayer
 	if btplayer:
 		btplayer.set_active(false)
-	
 
-	# if animation_player:
-	# 	await animation_player.animation_finished
 	await get_tree().create_timer(0.3).timeout
 	
 	if btplayer and not _is_dead:
@@ -125,12 +122,13 @@ func die() -> void:
 	death.emit()
 	_is_dead = true
 	
+	root.process_mode = Node.PROCESS_MODE_DISABLED
 	set_physics_process(false)
 	collision_layer = 0
 	collision_mask = 0
 	
-	# if animation_player:
-	# 	animation_player.play(&"death")
+	if animation_player:
+		animation_player.play(&"Death")
 	
 	# désactive le BehaviorTree
 	var btplayer := get_node_or_null(^"BTPlayer") as BTPlayer
