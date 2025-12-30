@@ -7,7 +7,7 @@ extends State
 func get_state_name() -> String:
 	return "FireBall"
 
-func state_enter(state_manager: StateManager) -> bool:
+func state_enter(args : Dictionary) -> bool:
 	var ball_instance = fireball_scene.instantiate()
 	ball_instance.initial_direction = wand_muzzle.global_basis.y
 	ball_instance.position = wand_muzzle.global_position

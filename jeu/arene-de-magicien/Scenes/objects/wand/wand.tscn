@@ -1,15 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0t0fvctdsdhq"]
+[gd_scene load_steps=16 format=3 uid="uid://d0t0fvctdsdhq"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_3yfio"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_73vin"]
-[ext_resource type="Script" uid="uid://csdqmanobrcjj" path="res://Scenes/objects/wand/wand.gd" id="2_yq5qq"]
+[ext_resource type="Script" uid="uid://csdqmanobrcjj" path="res://scenes/objects/wand/wand.gd" id="2_yq5qq"]
 [ext_resource type="Resource" uid="uid://okvpavxxcc41" path="res://resources/hand_poses/wand_holding_left.tres" id="3_yq5qq"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_8hhts"]
 [ext_resource type="Resource" uid="uid://bdr8d0jtbncih" path="res://resources/hand_poses/wand_holding_right.tres" id="5_xtfqo"]
 [ext_resource type="Script" uid="uid://cchm02t2nltlx" path="res://scripts/patterns/state_manager.gd" id="7_fk80e"]
-[ext_resource type="Script" uid="uid://c8hmqfnxov54a" path="res://Scenes/objects/wand/idle_state.gd" id="8_foi4m"]
-[ext_resource type="Script" uid="uid://lj50rsn2caqs" path="res://Scenes/objects/wand/vacuum_state.gd" id="9_wc181"]
-[ext_resource type="Script" uid="uid://bwqgdw02d1hw3" path="res://Scenes/objects/wand/fire_ball_state.gd" id="10_foi4m"]
+[ext_resource type="Script" uid="uid://c8hmqfnxov54a" path="res://scenes/objects/wand/idle_state.gd" id="8_foi4m"]
+[ext_resource type="Script" uid="uid://lj50rsn2caqs" path="res://scenes/objects/wand/vacuum_state.gd" id="9_wc181"]
+[ext_resource type="Script" uid="uid://bwqgdw02d1hw3" path="res://scenes/objects/wand/fire_ball_state.gd" id="10_foi4m"]
+[ext_resource type="Script" uid="uid://bynyse6gajyha" path="res://scenes/objects/wand/movements/armed_move_state.gd" id="12_3jn2n"]
+[ext_resource type="Script" uid="uid://cr8xly1rucjke" path="res://scenes/objects/wand/movements/idle_move_state.gd" id="12_h2r10"]
+[ext_resource type="Script" uid="uid://xosfw0gdsy58" path="res://scenes/objects/wand/movements/tilting_move_state.gd" id="13_h2r10"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l64fc"]
 height = 0.2
@@ -21,7 +24,10 @@ bottom_radius = 0.01
 height = 0.2
 
 [node name="Wand" instance=ExtResource("1_3yfio")]
+transform = Transform3D(1, 0, 0, 0, 0.500291, 0.86634874, 0, -0.86634874, 0.500291, 0, 0, 0)
 script = ExtResource("2_yq5qq")
+lock_position = false
+can_rotate = false
 press_to_hold = false
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -67,5 +73,26 @@ text = "Current state"
 font_size = 24
 outline_size = 8
 
+[node name="SpellRecognition" type="Node" parent="." index="7"]
+script = ExtResource("7_fk80e")
+
+[node name="IdleMoveState" type="Node" parent="SpellRecognition" index="0" node_paths=PackedStringArray("wand_root")]
+script = ExtResource("12_h2r10")
+wand_root = NodePath("../..")
+sensibility = 0.9
+
+[node name="Duration" type="Timer" parent="SpellRecognition/IdleMoveState" index="0"]
+
+[node name="ArmedMoveState" type="Node" parent="SpellRecognition" index="1" node_paths=PackedStringArray("wand_root")]
+script = ExtResource("12_3jn2n")
+wand_root = NodePath("../..")
+
+[node name="TiltingMoveState" type="Node" parent="SpellRecognition" index="2" node_paths=PackedStringArray("wand_root")]
+script = ExtResource("13_h2r10")
+wand_root = NodePath("../..")
+
 [connection signal="action_pressed" from="." to="." method="_on_action_pressed"]
+[connection signal="grabbed" from="." to="SpellRecognition/IdleMoveState" method="_on_wand_grabbed"]
 [connection signal="state_changed" from="Spells" to="." method="_on_spells_state_changed"]
+[connection signal="state_changed" from="SpellRecognition" to="." method="_on_spell_recognition_state_changed"]
+[connection signal="timeout" from="SpellRecognition/IdleMoveState/Duration" to="SpellRecognition/IdleMoveState" method="_on_duration_timeout"]

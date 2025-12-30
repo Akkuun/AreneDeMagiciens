@@ -6,21 +6,27 @@ var current_state : State
 var available_states : Dictionary[String, State]
 
 func _ready() -> void:
+	var first_state : String = ""
 	for child in get_children():
 		if child is State:
 			available_states[child.get_state_name()] = child
+			child.state_manager = self
+			
+			if(first_state == ""):
+				first_state = child.get_state_name()
+	change_state(first_state)
 
 func _physics_process(delta: float) -> void:
 	if current_state != null:
 		current_state.state_process(delta)
 
-func change_state(new_state: String) -> void:
+func change_state(new_state: String, args : Dictionary = {}) -> void:
 	if(!available_states.has(new_state)):
 		return
 	
 	if current_state != null:
 		current_state.state_leave()
 	current_state = available_states[new_state]
-	current_state.state_enter(self)
+	current_state.state_enter(args)
 	
 	emit_signal("state_changed", current_state.get_state_name())

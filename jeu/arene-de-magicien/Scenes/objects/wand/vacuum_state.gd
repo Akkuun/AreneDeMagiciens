@@ -102,7 +102,7 @@ func state_leave() -> void:
 	for area in vacuum_areas:
 		area.set_process(false)
 
-func state_enter(state_manager: StateManager) -> bool:
+func state_enter(args : Dictionary) -> bool:
 	if !wand_muzzle.is_colliding():
 		return false
 	

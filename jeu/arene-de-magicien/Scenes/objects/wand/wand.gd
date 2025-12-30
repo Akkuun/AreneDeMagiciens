@@ -3,8 +3,8 @@ extends XRToolsPickable
 
 enum WandState {IDLE, VACUUM, FIRE_BALL}
 
-var lock_position : bool = false
-var can_rotate : bool = false
+@export var lock_position : bool = false
+@export var can_rotate : bool = false
 
 func change_state(new_state: WandState) -> void:
 	if new_state == WandState.VACUUM:
@@ -40,4 +40,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_spells_state_changed(new_state: String) -> void:
-	$CurrentState.text = new_state
+	pass
+	#$CurrentState.text = new_state
+
+
+var move_list : PackedStringArray
+func _on_spell_recognition_state_changed(new_state: String) -> void:
+	move_list.append(new_state)
+	
+	$CurrentState.text = ", ".join(move_list)
