@@ -54,7 +54,6 @@ unshaded = true
 scene_properties_keys = PackedStringArray()
 
 [node name="CenteringTimer" type="Timer" parent="Viewport2Din3D"]
-wait_time = 0.5
 
 [node name="PlayerBody" parent="." instance=ExtResource("2_p47bc")]
 
