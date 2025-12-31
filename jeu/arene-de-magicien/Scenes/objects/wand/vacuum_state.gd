@@ -127,7 +127,8 @@ func state_process(delta: float):
 		vacuum_path.curve.set_point_position(0, vacuum_start_position)
 		vacuum_path.curve.set_point_out(0, vacuum_start_direction)
 	
-	vacuum_path.curve.set_point_in(1, vacuum_end_marker.global_basis.y)
+	var dir_to_wand := (wand_muzzle.global_position - vacuum_end_marker.global_position).normalized()
+	vacuum_path.curve.set_point_in(1, (vacuum_end_marker.global_basis.y + dir_to_wand * 0.1).normalized())
 	#vacuum_path.curve.set_point_position(1, wand_muzzle.global_position)
 	#vacuum_path.curve.set_point_out(1, -wand_muzzle.global_basis.y)
 	vacuum_path.curve.set_point_position(1, vacuum_end_marker.global_position)

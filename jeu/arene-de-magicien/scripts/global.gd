@@ -6,3 +6,6 @@ enum StatusEnum {
 	WATER,
 	HEAL
 }
+
+
+enum MoveTypeEnum {SEND, TORNADO, WAVE}
