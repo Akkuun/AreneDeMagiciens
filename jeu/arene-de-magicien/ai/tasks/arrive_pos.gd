@@ -40,12 +40,12 @@ func _tick(_delta: float) -> Status:
 	var dir_3d: Vector3
 	
 	# utilise NavigationAgent3D si disponible
-	if agent.has_method("set_navigation_target") and agent.has_method("get_next_navigation_position"):
-		#configure la destination du NavigationAgent
-		agent.set_navigation_target(target_pos)
+	if agent._navigation_agent and is_instance_valid(agent._navigation_agent):
+		# configure la destination du NavigationAgent
+		agent._navigation_agent.target_position = target_pos
 		
-		# obtient la prochaine position sur le chemin calculé
-		var next_pos: Vector3 = agent.get_next_navigation_position()
+		# obtien la prochaine position sur le chemin calculé
+		var next_pos: Vector3 = agent._navigation_agent.get_next_path_position()
 		
 		# direction vers le prochain waypoint
 		dir_3d = (next_pos - agent.global_position)
