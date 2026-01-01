@@ -1,16 +1,16 @@
 [gd_scene load_steps=36 format=3 uid="uid://3sf17jrqljre"]
 
 [ext_resource type="Script" path="res://Scenes/levels/testing_level.gd" id="1_6bo2y"]
-[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="1_11dnb"]
-[ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://Scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
-[ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://Scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
-[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/potions/fire_potion/fire_potion.tscn" id="4_sxg75"]
-[ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="5_6bo2y"]
-[ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://Scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="6_s4w6r"]
-[ext_resource type="PackedScene" path="res://Scenes/player/backpack.tscn" id="8_s4w6r"]
-[ext_resource type="PackedScene" uid="uid://d0t0fvctdsdhq" path="res://Scenes/objects/wand/wand.tscn" id="9_4mof2"]
-[ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://Scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="10_24467"]
-[ext_resource type="Script" uid="uid://cq72sqoq51o2h" path="res://Scenes/agents/agent_base_3d.gd" id="11_5e1nm"]
+[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://scenes/player/player.tscn" id="1_11dnb"]
+[ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
+[ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
+[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://scenes/objects/potions/fire_potion/fire_potion.tscn" id="4_sxg75"]
+[ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://scenes/crafting/cauldron.tscn" id="5_6bo2y"]
+[ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="6_s4w6r"]
+[ext_resource type="PackedScene" uid="uid://dxcbfrl25gbok" path="res://Scenes/player/backpack.tscn" id="8_s4w6r"]
+[ext_resource type="PackedScene" uid="uid://d0t0fvctdsdhq" path="res://scenes/objects/wand/wand.tscn" id="9_4mof2"]
+[ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="10_24467"]
+[ext_resource type="Script" uid="uid://cq72sqoq51o2h" path="res://scenes/agents/agent_base_3d.gd" id="11_5e1nm"]
 [ext_resource type="PackedScene" uid="uid://buolbg5xsbgqc" path="res://assets/Quaternius_natural_pack/glTF/Bush_Common_Flowers.gltf" id="11_g7xxo"]
 [ext_resource type="BehaviorTree" uid="uid://cqdkws254vlu4" path="res://ai/trees/range_agent.tres" id="12_j5yly"]
 [ext_resource type="PackedScene" uid="uid://cm3f6nxv3f2ar" path="res://assets/Quaternius_natural_pack/glTF/CommonTree_1.gltf" id="12_yxjl5"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b2sf1hhiim1pi" path="res://assets/Quaternius_natural_pack/glTF/CommonTree_5.gltf" id="16_egiun"]
 [ext_resource type="ArrayMesh" uid="uid://bcxcdg5d0yh1x" path="res://resources/meshes/bush_flowers.res" id="17_fqr2o"]
 [ext_resource type="ArrayMesh" uid="uid://dcpekeuar6ahu" path="res://resources/meshes/grass_short.res" id="18_xppsf"]
-[ext_resource type="PackedScene" uid="uid://btlxnvawfkcf4" path="res://Scenes/objects/potions/heal_potion/heal_potion.tscn" id="19_yxjl5"]
+[ext_resource type="PackedScene" uid="uid://btlxnvawfkcf4" path="res://scenes/objects/potions/heal_potion/heal_potion.tscn" id="19_yxjl5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
 
@@ -109,8 +109,11 @@ material = SubResource("StandardMaterial3D_otqx3")
 [node name="FireBall" parent="." instance=ExtResource("3_w33dm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5813742, 2.576, -4.916835)
 
+[node name="FireBall2" parent="." instance=ExtResource("3_w33dm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7534896, 0.08136177, 0.025135756)
+
 [node name="Cauldron" parent="." instance=ExtResource("5_6bo2y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2650433, 1.2347863, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2650433, 0.022838473, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_j5yly")

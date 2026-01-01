@@ -1,42 +1,58 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf5jd3t1yggbh"]
+[gd_scene load_steps=15 format=3 uid="uid://cf5jd3t1yggbh"]
 
-[ext_resource type="Script" uid="uid://d3gu1lcda0vdn" path="res://Scenes/crafting/cauldron.gd" id="1_b6rmn"]
+[ext_resource type="Script" uid="uid://d3gu1lcda0vdn" path="res://scenes/crafting/cauldron.gd" id="1_b6rmn"]
 [ext_resource type="Script" uid="uid://cteqevfoqjlj" path="res://scripts/crafting/recipe.gd" id="2_d2nry"]
 [ext_resource type="Resource" uid="uid://y7uc85blxkem" path="res://resources/crafts/fire_potion_recipe.tres" id="3_m2tam"]
 [ext_resource type="Resource" uid="uid://os5ysj4hhn2u" path="res://resources/crafts/heal_potion_recipe.tres" id="4_m2tam"]
+[ext_resource type="PackedScene" uid="uid://b1hvquybv7inc" path="res://assets/meshes/blender/cauldron.blend" id="5_5m2py"]
+[ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://scenes/components/physic/status_receiver.tscn" id="8_3coew"]
+[ext_resource type="Shader" uid="uid://c24bbjic8ni37" path="res://resources/materials/surface.gdshader" id="9_mohil"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4vu58"]
-size = Vector3(0.9, 0.9, 0.9)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3khmk"]
+height = 0.83691406
+radius = 0.9399414
 
-[sub_resource type="BoxMesh" id="BoxMesh_b6rmn"]
-size = Vector3(1, 0.2, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mohil"]
+height = 1.3066406
+radius = 1.125
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6mgi8"]
-size = Vector3(1, 0.2, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3khmk"]
+shading_mode = 0
+albedo_color = Color(0.97762626, 0.79351157, 0.51274735, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3mqr2"]
+material = SubResource("StandardMaterial3D_3khmk")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Curve" id="Curve_34mp3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.05243416, 0.05243416, 0, 0, Vector2(1, 0), -3.5393267, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3khmk"]
+render_priority = 0
+shader = ExtResource("9_mohil")
+shader_parameter/radius = 0.46
+shader_parameter/color = Color(0.98039216, 0.44313726, 0.12941177, 0.6)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3mqr2"]
+material = SubResource("ShaderMaterial_3khmk")
 
 [node name="Cauldron" type="Node3D"]
 script = ExtResource("1_b6rmn")
 recipes = Array[ExtResource("2_d2nry")]([ExtResource("3_m2tam"), ExtResource("4_m2tam")])
 
 [node name="IngredientEntry" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1526007, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9890819, 0)
 collision_layer = 0
-collision_mask = 16
+collision_mask = 20
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IngredientEntry"]
-shape = SubResource("BoxShape3D_4vu58")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39250517, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_b6rmn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_6mgi8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.076660156, 0)
+shape = SubResource("CylinderShape3D_3khmk")
 
 [node name="ExpectedResult" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8223142, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9357855, 0)
 billboard = 2
 text = "Une potion"
 
@@ -44,6 +60,45 @@ text = "Une potion"
 wait_time = 3.0
 one_shot = true
 
+[node name="cauldron" parent="." instance=ExtResource("5_5m2py")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2743857, 0)
+
+[node name="StatusReceiver" parent="." instance=ExtResource("8_3coew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72962546, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusReceiver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04296875, 0)
+shape = SubResource("CylinderShape3D_mohil")
+
+[node name="Bubbles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0002013, 0)
+visible = false
+randomness = 0.2
+mesh = SubResource("SphereMesh_3mqr2")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.2
+emission_ring_radius = 0.7
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 1, 0)
+scale_amount_min = 0.5
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_34mp3")
+
+[node name="FireLight" type="OmniLight3D" parent="."]
+visible = false
+layers = 2
+light_color = Color(0.99607843, 0.58431375, 0.38039216, 1)
+
+[node name="Surface" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1743747, 0)
+
+[node name="SurfaceMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0782852, 0)
+mesh = SubResource("PlaneMesh_3mqr2")
+
 [connection signal="body_entered" from="IngredientEntry" to="." method="_on_ingredient_entry_body_entered"]
 [connection signal="body_exited" from="IngredientEntry" to="." method="_on_ingredient_entry_body_exited"]
 [connection signal="timeout" from="CraftTimer" to="." method="_on_craft_timer_timeout"]
+[connection signal="status_entered" from="StatusReceiver" to="." method="_on_status_receiver_status_entered"]
