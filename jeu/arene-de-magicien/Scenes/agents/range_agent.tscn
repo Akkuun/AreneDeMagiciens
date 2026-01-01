@@ -2934,6 +2934,7 @@ tracks/40/keys = PackedFloat32Array(0, 1, -3.552734e-15, -5.9604645e-07, 3.38812
 [sub_resource type="Animation" id="Animation_7mjsp"]
 resource_name = "Run"
 length = 0.875
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
