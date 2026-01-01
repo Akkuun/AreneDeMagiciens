@@ -1,8 +1,8 @@
 @tool
 extends BTAction
 
-## Tâche BehaviorTree : Affiche des informations de debug dans la console
-## pour vérifier le contenu d'une variable du blackboard.
+# Tâche BehaviorTree : Affiche des informations de debug dans la console
+# pour vérifier le contenu d'une variable du blackboard.
 
 #nom de la variable du blackboard à débugger
 @export var var_to_debug: StringName = &"target"

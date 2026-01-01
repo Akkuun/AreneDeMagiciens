@@ -1,8 +1,8 @@
 @tool
 extends BTAction
 
-## Tâche BehaviorTree : Récupère le premier noeud d'un groupe spécifié
-## et le stocke dans une variable du blackboard.
+#Tache BehaviorTree : Récupère le premier noeud d'un groupe spécifié
+#et le stocke dans une variable du blackboard.
 
 # nom du groupe dans lequel chercher les noeuds
 @export var group: StringName

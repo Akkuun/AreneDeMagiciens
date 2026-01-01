@@ -37,8 +37,8 @@ albedo_color = Color(0.30588236, 0.4627451, 0.1764706, 1)
 albedo_color = Color(0.84705883, 0.20784314, 0.2627451, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_j5yly"]
-vertices = PackedVector3Array(-29.75, 0.5, -29.75, -29.75, 0.5, 29.75, 29.75, 0.5, 29.75, 29.75, 0.5, -29.75)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(4.75, 0.5, -8, 5, 0.5, -9, 4, 0.5, -9.75, 3.5, 0.5, -7.25, 4, 0.5, -10.5, 4.75, 0.5, -11.25, 4.5, 0.5, -29.75, 1.75, 0.5, -5.25, 3.5, 0.5, -6.75, -0.5, 0.5, -5.25, -29.75, 0.5, -3.5, -0.5, 0.5, -3.5, -29.75, 0.5, -29.75, 5.5, 0.5, -9, 5.5, 0.5, -7, 6, 0.5, -10.5, 8.75, 0.5, -6, 9.75, 0.5, -6, 10.25, 0.5, -5, 29.75, 0.5, -5, 29.75, 0.5, -29.75, 4, 0.5, -6, 1.75, 0.5, -1.75, 4.25, 0.5, -1, 4.75, 0.5, -2, 4.75, 0.5, -6, 5.5, 0.5, -2, 6.25, 0.5, -1.25, 9, 0.5, -3.75, 8.25, 0.5, -5, 5.5, 0.5, 0, 7.75, 0.5, 2, 9, 0.5, 0.75, 9.75, 0.5, -3.75, 29.75, 0.5, 0.5, 8, 0.5, 4, 8.5, 0.5, 2.5, 4.5, 0.5, -0.25, -0.5, 0.5, -1.75, 6.75, 0.5, 5.25, 8.25, 0.5, 29.75, 8.25, 0.5, 6, -29.75, 0.5, 29.75, 8.75, 0.5, 4.25, 9.5, 0.5, 2.5, 9.5, 0.5, 1, 9.25, 0.5, 5.25, 29.75, 0.5, 5.25, 9, 0.5, 6, 29.75, 0.5, 29.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 6, 5), PackedInt32Array(8, 7, 3), PackedInt32Array(3, 7, 9), PackedInt32Array(4, 2, 3), PackedInt32Array(9, 11, 10), PackedInt32Array(3, 9, 4), PackedInt32Array(4, 9, 6), PackedInt32Array(6, 9, 12), PackedInt32Array(12, 9, 10), PackedInt32Array(1, 13, 0), PackedInt32Array(0, 13, 14), PackedInt32Array(15, 5, 6), PackedInt32Array(13, 15, 14), PackedInt32Array(14, 15, 16), PackedInt32Array(16, 15, 17), PackedInt32Array(19, 18, 17), PackedInt32Array(15, 6, 17), PackedInt32Array(17, 6, 19), PackedInt32Array(19, 6, 20), PackedInt32Array(7, 8, 21), PackedInt32Array(21, 25, 7), PackedInt32Array(7, 25, 24), PackedInt32Array(7, 24, 23), PackedInt32Array(7, 23, 22), PackedInt32Array(28, 27, 26), PackedInt32Array(14, 16, 29), PackedInt32Array(14, 29, 25), PackedInt32Array(25, 29, 28), PackedInt32Array(25, 28, 26), PackedInt32Array(25, 26, 24), PackedInt32Array(30, 27, 31), PackedInt32Array(31, 27, 32), PackedInt32Array(32, 27, 28), PackedInt32Array(32, 28, 33), PackedInt32Array(33, 18, 32), PackedInt32Array(32, 18, 34), PackedInt32Array(34, 18, 19), PackedInt32Array(31, 36, 35), PackedInt32Array(23, 37, 22), PackedInt32Array(22, 37, 38), PackedInt32Array(35, 39, 31), PackedInt32Array(31, 39, 30), PackedInt32Array(30, 39, 37), PackedInt32Array(39, 41, 40), PackedInt32Array(37, 39, 38), PackedInt32Array(38, 39, 40), PackedInt32Array(38, 40, 10), PackedInt32Array(10, 40, 42), PackedInt32Array(10, 11, 38), PackedInt32Array(35, 36, 43), PackedInt32Array(43, 36, 44), PackedInt32Array(44, 45, 34), PackedInt32Array(43, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(47, 44, 34), PackedInt32Array(45, 32, 34), PackedInt32Array(46, 47, 48), PackedInt32Array(48, 47, 49), PackedInt32Array(48, 49, 40), PackedInt32Array(40, 41, 48)]
 agent_radius = 0.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13cwf"]
@@ -105,14 +105,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2650433, 1.2347863, 0)
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_j5yly")
 
+[node name="Exclusion" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Table_NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Exclusion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+height = 2.8
+vertices = PackedVector3Array(-0.6249639, 0, -5.21752, -0.6018063, 0, -1.7518718, 1.9923325, 0, -1.7799836, 1.968938, 0, -5.1850543)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[node name="Tree_42_NavigationObstacle3D2" type="NavigationObstacle3D" parent="NavigationRegion3D/Exclusion"]
+height = 17.0
+vertices = PackedVector3Array(8.247497, 0, 4.0358644, 6.572277, 0, 5.1926003, 8.196173, 0, 6.101251, 8.761734, 0, 6.1156816, 9.447874, 0, 4.9761586)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[node name="Tree_52_NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Exclusion"]
+vertices = PackedVector3Array(9.042507, 0, 0.7329445, 7.721888, 0, 1.7751311, 8.429563, 0, 2.6494093, 9.620117, 0, 2.3188152, 9.624006, 0, 1.1824982)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[node name="Tree_22_NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Exclusion"]
+vertices = PackedVector3Array(4.9225287, 0, -2.197453, 4.2436614, 0, -1.0017251, 4.348882, 0, -0.40526265, 5.5072737, 0, 0.16398108, 6.386706, 0, -1.2812823)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[node name="Tree_32_NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Exclusion"]
+vertices = PackedVector3Array(9.807347, 0, -5.891506, 8.831837, 0, -5.88684, 8.319662, 0, -5.245875, 8.867611, 0, -3.8369546, 9.781404, 0, -3.8578649, 10.393043, 0, -4.9725347)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[node name="Tree_12_NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Exclusion"]
+vertices = PackedVector3Array(4.770221, 0, -8.154243, 3.3341162, 0, -7.012247, 3.9707727, 0, -6.0766006, 4.839944, 0, -6.1320257, 5.4478045, 0, -6.8068047)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[node name="Tree_43_NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Exclusion"]
+vertices = PackedVector3Array(4.384193, 0, -11.110031, 3.8502927, 0, -9.988978, 5.2513475, 0, -8.871118, 6.1332, 0, -10.266306, 4.737466, 0, -11.162983)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
 [node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D"]
 mesh = SubResource("QuadMesh_h5qhs")
 skeleton = NodePath("../../Decoration")
 
 [node name="Decoration" type="Node3D" parent="."]
-
-[node name="Bush_Common_Flowers2" parent="Decoration" instance=ExtResource("11_g7xxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.776366, 0, -6.2585073)
 
 [node name="CommonTree_12" parent="Decoration" instance=ExtResource("12_yxjl5")]
 transform = Transform3D(0.49078214, 0, -0.87128234, 0, 1, 0, 0.87128234, 0, 0.49078214, 4.50326, 0.06612864, -7.05575)
@@ -131,6 +168,9 @@ transform = Transform3D(0.022757083, 0, -0.999741, 0, 1, 0, 0.999741, 0, 0.02275
 
 [node name="CommonTree_52" parent="Decoration" instance=ExtResource("16_egiun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.747486, 0.06613007, 1.7542801)
+
+[node name="Bush_Common_Flowers2" parent="Decoration" instance=ExtResource("11_g7xxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.776366, 0, -6.2585073)
 
 [node name="BushInstances" type="MultiMeshInstance3D" parent="Decoration"]
 multimesh = SubResource("MultiMesh_g7xxo")

@@ -1,9 +1,9 @@
 @tool
 extends BTAction
-## Déplace l'agent vers la position spécifiée dans le plan horizontal (XZ).
-## Utilise NavigationAgent3D pour suivre un chemin calculé sur le NavigationMesh.
-## Retourne SUCCESS quand proche de la position cible ;
-## sinon retourne RUNNING.
+# Déplace l'agent vers la position spécifiée dans le plan horizontal (XZ).
+# Utilise NavigationAgent3D pour suivre un chemin calculé sur le NavigationMesh.
+# Retourne SUCCESS quand proche de la position cible ;
+# sinon retourne RUNNING.
 
 @export var target_position_var := &"pos"
 

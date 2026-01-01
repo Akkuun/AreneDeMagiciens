@@ -10,7 +10,7 @@ signal death
 #vitesse de rotation de l'agent
 @export var rotation_speed: float = 10.0
 
-# Utilise le système de navigation de Godot pour éviter les obstacles
+#utilise le système de navigation de Godot pour éviter les obstacles
 @export var use_navigation: bool = true
 
 var _is_dead: bool = false

@@ -1,8 +1,8 @@
 @tool
 extends BTAction
-## Sélectionne une position sur le côté de la cible et la stocke dans le
-## blackboard, retournant SUCCES.
-## Retourne FAILURE si la cible n'est pas valide.
+# Sélectionne une position sur le côté de la cible et la stocke dans le
+# blackboard, retournant SUCCES.
+# Retourne FAILURE si la cible n'est pas valide.
 
 enum AgentSide {
 	CLOSEST,   # Côté le plus proche
