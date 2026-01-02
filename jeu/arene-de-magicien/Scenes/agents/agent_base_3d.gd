@@ -4,19 +4,16 @@ extends CharacterBody3D
 
 signal death
 
-#vitesse de déplacement de l'agent
-@export var move_speed: float = 5.0
+@export_group("Movement")
+@export var move_speed: float = 5.0 #vitesse de déplacement de l'agent
+@export var walk_speed: float = 2.0 #vitesse de marche
+@export var run_speed: float = 5.0 #vitesse de course
+@export var rotation_speed: float = 10.0 #vitesse de rotation de l'agent
 
-#vitesse de rotation de l'agent
-@export var rotation_speed: float = 10.0
-
-#utilise le système de navigation de Godot pour éviter les obstacles
-@export var use_navigation: bool = true
-
-# Paramètres de navigation
 @export_group("Navigation")
-@export var navigation_radius: float = 0.5  # Rayon de l'agent (distance depuis le centre)
-@export var navigation_height: float = 2.0  # Hauteur de l'agent
+@export var use_navigation: bool = true #utilise le système de navigation de Godot pour éviter les obstacles
+@export var navigation_radius: float = 0.5  # rayon de l'agent
+@export var navigation_height: float = 2.0  # hauteur de l'agent
 
 var _is_dead: bool = false
 var _moved_this_frame: bool = false
@@ -31,7 +28,7 @@ func _ready() -> void:
 	# health.damaged.connect(_damaged)
 	# health.death.connect(die)
 	
-	# Crée et configure le NavigationAgent3D si nécessaire
+	# crée et configure le NavigationAgent3D si nécessaire
 	if use_navigation:
 		_setup_navigation_agent()
 

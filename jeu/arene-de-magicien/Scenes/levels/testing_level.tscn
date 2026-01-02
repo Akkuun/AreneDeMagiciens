@@ -236,4 +236,4 @@ transform = Transform3D(-0.9999146, 0.013072031, 0, 0.010160966, 0.7770797, 0.62
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24303055, 6.2131286, -3.983619)
 
 [node name="RangeAgent" parent="." instance=ExtResource("20_5e1nm")]
-transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, 0, 0, 1.724)
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -7.341382, 0, 4.5436106)

@@ -7,8 +7,11 @@ extends BTAction
 
 @export var target_position_var := &"pos"
 
-# vitesse désirée (float)
-@export var speed_var := &"speed"
+# Mode de vitesse : walk (marche) ou run (course)
+@export_enum("run", "walk", "custom") var speed_mode: String = "run"
+
+# Vitesse personnalisée (utilisée si speed_mode == "custom")
+@export var custom_speed: float = 5.0
 
 # distance minimale à la position cible pour retourner SUCCESS.
 @export var tolerance := 0.5
@@ -32,10 +35,20 @@ func _tick(_delta: float) -> Status:
 	if distance < tolerance:
 		return SUCCESS
 
-	# récupère la vitesse depuis le blackboard ou utilise move_speed de l'agent
-	var speed: float = agent.move_speed if agent.get("move_speed") != null else 5.0
-	if blackboard.has_var(speed_var):
-		speed = blackboard.get_var(speed_var, speed)
+	# Détermine la vitesse selon le mode
+	var speed: float
+	match speed_mode:
+		"walk":
+			speed = agent.walk_speed if agent.get("walk_speed") != null else 2.0
+		"run":
+			speed = agent.run_speed if agent.get("run_speed") != null else 5.0
+		"custom":
+			speed = custom_speed
+		_:
+			speed = agent.move_speed if agent.get("move_speed") != null else 5.0
+	
+	print("speed mode: %s -> %s" % [speed_mode, speed])
+	
 	
 	var dir_3d: Vector3
 	

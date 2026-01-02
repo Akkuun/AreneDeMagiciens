@@ -13,7 +13,7 @@ extends BTAction
 
 # généréation du nom custom dans le l'éditeur de BehaviorTree
 func _generate_name() -> String:
-	return "GetFirstNodeInGroup \"%s\"  ➜%s" % [
+	return "GetFirstNodeInGroup \"%s\" ->%s" % [
 		group,
 		LimboUtility.decorate_var(output_var)
 		]
