@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsb0kkp561qn5"]
+[gd_scene load_steps=13 format=3 uid="uid://bsb0kkp561qn5"]
 
 [ext_resource type="Material" uid="uid://kct761rk1ght" path="res://resources/materials/planks/planks_mat.tres" id="1_5keee"]
 [ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://scenes/player/player.tscn" id="2_8e3xq"]
+[ext_resource type="Material" uid="uid://cqx2uv8nxppb8" path="res://resources/materials/world/base_ground_material.tres" id="2_bt4kb"]
 [ext_resource type="PackedScene" uid="uid://drael26wgkdw0" path="res://scenes/levels/object_spawner.tscn" id="3_8e3xq"]
 [ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="4_1spgc"]
+[ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="5_pcej5"]
+[ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://scenes/crafting/cauldron.tscn" id="6_bt4kb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5keee"]
 albedo_color = Color(0.38431373, 0.30588236, 0.22745098, 1)
@@ -27,6 +30,7 @@ ambient_light_sky_contribution = 0.7
 [node name="Arena1" type="Node3D"]
 
 [node name="Prototype" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("2_bt4kb")
 use_collision = true
 
 [node name="Arena" type="CSGCylinder3D" parent="Prototype"]
@@ -41,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4076538, 0)
 operation = 2
 radius = 38.33008
 height = 7.553589
-sides = 21
+sides = 32
 
 [node name="Sector1" type="CSGBox3D" parent="Prototype"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.546562, 2.902771, -14.99827)
@@ -95,8 +99,15 @@ material = SubResource("StandardMaterial3D_8e3xq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.065733, -4.7683716e-07, -13.590941)
 
 [node name="ObjectSpawner" parent="Props/SectorCraft" instance=ExtResource("3_8e3xq")]
-transform = Transform3D(0.048117604, 0, 0.9988417, 0, 1, 0, -0.9988417, 0, 0.048117604, 12.445352, 1.0297241, 13.541143)
+transform = Transform3D(-0.71513176, 0, 0.69898957, 0, 1, 0, -0.69898957, 0, -0.71513176, -0.043060303, 1.0297244, 3.9299335)
 scene_to_spawn = ExtResource("4_1spgc")
+
+[node name="ObjectSpawner2" parent="Props/SectorCraft" instance=ExtResource("3_8e3xq")]
+transform = Transform3D(-0.71513176, 0, 0.69898957, 0, 1, 0, -0.69898957, 0, -0.71513176, 1.0476761, 1.0297245, 5.034564)
+scene_to_spawn = ExtResource("5_pcej5")
+
+[node name="Cauldron" parent="Props/SectorCraft" instance=ExtResource("6_bt4kb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08371055, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1spgc")

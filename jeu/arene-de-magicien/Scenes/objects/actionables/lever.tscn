@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_emci5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5vpai"]
+radius = 0.11476315
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2hvso"]
 top_radius = 0.05

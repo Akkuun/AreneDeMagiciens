@@ -14,16 +14,18 @@ viewport_path = NodePath("View/SubViewport")
 script = ExtResource("1_m7nwl")
 
 [node name="View" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(0.71, 0, 0, 0, 0.71, 0, 0, 0, 0.71, 0, -0.045271516, 0.5639093)
 texture = SubResource("ViewportTexture_t2h24")
 
 [node name="SubViewport" type="SubViewport" parent="View"]
 own_world_3d = true
 transparent_bg = true
-size = Vector2i(256, 256)
+size = Vector2i(128, 128)
 
 [node name="Camera3D" type="Camera3D" parent="View/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0925713)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.008641601, 1.0165488)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="View/SubViewport"]
 
 [node name="SpawnLocation" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2649586, 0)

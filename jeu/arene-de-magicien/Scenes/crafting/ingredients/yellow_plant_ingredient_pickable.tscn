@@ -13,16 +13,16 @@ height = 0.6960907
 contained_ingredients = Array[int]([2])
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33405733, 0)
 shape = SubResource("CapsuleShape3D_nbpeo")
 
 [node name="GrabPointHandLeft" parent="." index="1" instance=ExtResource("2_nbpeo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28915668, -0.097169355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03820522, -0.097169355)
 
 [node name="GrabPointHandRight" parent="." index="2" instance=ExtResource("3_v5f2e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28915668, -0.097169355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03820522, -0.097169355)
 
 [node name="Flowers" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32736188, 0)
 
 [node name="Flower_4_Single2" parent="Flowers" index="0" instance=ExtResource("4_2k20m")]
 transform = Transform3D(0.2417306, 0.03132614, -0.14768204, 0, 0.27879685, 0.05913806, 0.15096793, -0.050159574, 0.23646922, -0.033892214, 0, 0.04924792)
