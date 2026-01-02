@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsb0kkp561qn5"]
+
+[ext_resource type="Material" uid="uid://kct761rk1ght" path="res://resources/materials/planks/planks_mat.tres" id="1_5keee"]
+[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://scenes/player/player.tscn" id="2_8e3xq"]
+[ext_resource type="PackedScene" uid="uid://drael26wgkdw0" path="res://scenes/levels/object_spawner.tscn" id="3_8e3xq"]
+[ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="4_1spgc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5keee"]
+albedo_color = Color(0.38431373, 0.30588236, 0.22745098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e3xq"]
+albedo_color = Color(0.24313726, 0.28235295, 0.4, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1spgc"]
+sky_top_color = Color(0.38431373, 0.45490196, 0.76862746, 1)
+
+[sub_resource type="Sky" id="Sky_rhfaj"]
+sky_material = SubResource("ProceduralSkyMaterial_1spgc")
+
+[sub_resource type="Environment" id="Environment_1spgc"]
+background_mode = 2
+sky = SubResource("Sky_rhfaj")
+ambient_light_source = 3
+ambient_light_color = Color(0.7084869, 0.77969486, 0.7348123, 1)
+ambient_light_sky_contribution = 0.7
+
+[node name="Arena1" type="Node3D"]
+
+[node name="Prototype" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Arena" type="CSGCylinder3D" parent="Prototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1844482, 0)
+radius = 40.02246
+height = 8.3688965
+sides = 21
+material = ExtResource("1_5keee")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Prototype/Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4076538, 0)
+operation = 2
+radius = 38.33008
+height = 7.553589
+sides = 21
+
+[node name="Sector1" type="CSGBox3D" parent="Prototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.546562, 2.902771, -14.99827)
+size = Vector3(19.52124, 6.805542, 30.357239)
+
+[node name="Gap" type="CSGCombiner3D" parent="Prototype/Sector1"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Prototype/Sector1/Gap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16967773, 0.26009607, 0.5799866)
+size = Vector3(20.660645, 6.960083, 3.946106)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Prototype/Sector1/Gap"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7294006, 0.26009607, 1.2520447)
+size = Vector3(28.738098, 6.960083, 6.6393433)
+
+[node name="Bridges" type="CSGCombiner3D" parent="Prototype/Sector1"]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Prototype/Sector1/Bridges"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8115845, 3.1782427, 7.2995577)
+size = Vector3(6.9696045, 0.55908203, 1.8114014)
+material = SubResource("StandardMaterial3D_5keee")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Prototype/Sector1/Bridges"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.677391, 3.1782432, 0.37893295)
+size = Vector3(5.6784363, 0.55908203, 1.8114014)
+material = SubResource("StandardMaterial3D_5keee")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Prototype/Sector1"]
+transform = Transform3D(1, 0, 0, 0, 0.8453737, -0.53417534, 0, 0.53417534, 0.8453737, -10.523359, -0.13092732, 9.325245)
+size = Vector3(1.5004883, 0.34521484, 12.75499)
+material = SubResource("StandardMaterial3D_5keee")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Prototype/Sector1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.523359, 3.2279835, 3.3008976)
+size = Vector3(1.5004883, 0.34521484, 1.4868841)
+material = SubResource("StandardMaterial3D_5keee")
+
+[node name="SectorCraft" type="CSGCylinder3D" parent="Prototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.452135, -0.44360352, -14.516029)
+radius = 13.634766
+height = 1.112793
+sides = 16
+material = SubResource("StandardMaterial3D_8e3xq")
+
+[node name="Player" parent="." instance=ExtResource("2_8e3xq")]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="SectorCraft" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.065733, -4.7683716e-07, -13.590941)
+
+[node name="ObjectSpawner" parent="Props/SectorCraft" instance=ExtResource("3_8e3xq")]
+transform = Transform3D(0.048117604, 0, 0.9988417, 0, 1, 0, -0.9988417, 0, 0.048117604, 12.445352, 1.0297241, 13.541143)
+scene_to_spawn = ExtResource("4_1spgc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1spgc")

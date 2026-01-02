@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="XRToolsGroundPhysicsSettings" load_steps=2 format=3 uid="uid://cfw8so6i8ql03"]
+
+[ext_resource type="Script" uid="uid://dbwk5u0l5ugfq" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="1_3qujq"]
+
+[resource]
+script = ExtResource("1_3qujq")
+metadata/_custom_type_script = "uid://dbwk5u0l5ugfq"

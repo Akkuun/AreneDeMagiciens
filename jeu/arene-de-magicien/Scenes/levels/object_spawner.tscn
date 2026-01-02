@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://drael26wgkdw0"]
+
+[ext_resource type="Script" uid="uid://bmy45i03cljj1" path="res://scenes/levels/object_spawner.gd" id="1_m7nwl"]
+[ext_resource type="PackedScene" uid="uid://fafe387i2dki" path="res://scenes/objects/actionables/lever.tscn" id="2_taeo5"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t2h24"]
+viewport_path = NodePath("View/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m7nwl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_taeo5"]
+
+[node name="ObjectSpawner" type="Node3D"]
+script = ExtResource("1_m7nwl")
+
+[node name="View" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+texture = SubResource("ViewportTexture_t2h24")
+
+[node name="SubViewport" type="SubViewport" parent="View"]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="Camera3D" type="Camera3D" parent="View/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0925713)
+
+[node name="SpawnLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2649586, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_m7nwl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_taeo5")
+
+[node name="Lever" parent="." instance=ExtResource("2_taeo5")]
+transform = Transform3D(-1, 0, 8.742278e-08, 6.181724e-08, 0.70710677, 0.70710677, -6.181724e-08, 0.70710677, -0.70710677, 0.7702446, 0.35739762, 0)
+
+[connection signal="triggered" from="Lever" to="." method="_on_lever_triggered"]

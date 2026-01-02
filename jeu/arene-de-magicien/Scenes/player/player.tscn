@@ -77,18 +77,19 @@ script = ExtResource("14_nyrd7")
 inventory_resource = SubResource("Resource_dpkfr")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8493447, -0.18272701)
 current = true
 
 [node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_gmlin")]
 
 [node name="LeftHand" type="XRController3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.3, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.82960695, 0.7, 0)
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("2_lvxji")]
 
 [node name="FunctionPickup" parent="LeftHand" instance=ExtResource("6_qek5x")]
+grab_collision_mask = 328708
 
 [node name="MovementDirect" parent="LeftHand" instance=ExtResource("5_0owmy")]
 strafe = true
@@ -96,12 +97,13 @@ strafe = true
 [node name="MovementCrouch" parent="LeftHand" instance=ExtResource("7_je7p5")]
 
 [node name="RightHand" type="XRController3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.3, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.772748, 0.7, 0)
 tracker = &"right_hand"
 
 [node name="RightHand" parent="RightHand" instance=ExtResource("3_p47bc")]
 
 [node name="FunctionPickup" parent="RightHand" instance=ExtResource("6_qek5x")]
+grab_collision_mask = 328708
 
 [node name="MovementTurn" parent="RightHand" instance=ExtResource("9_fm80t")]
 
@@ -109,6 +111,9 @@ tracker = &"right_hand"
 jump_button_action = "A/X button"
 
 [node name="FunctionPointer" parent="RightHand" instance=ExtResource("17_kvlxm")]
+
+[node name="MovementJump2" parent="RightHand" instance=ExtResource("10_gx1jg")]
+jump_button_action = "ax_button"
 
 [connection signal="timeout" from="Viewport2Din3D/CenteringTimer" to="." method="_on_centering_timer_timeout"]
 [connection signal="inventory_item_instantiated" from="PlayerBody/Belt/Inventory" to="PlayerBody/Belt" method="set_slot_item"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://6h03v3j46w6y"]
 
-[ext_resource type="PackedScene" uid="uid://b4hlbgkjrux2i" path="res://Scenes/crafting/ingredients/pickable_ingredient.tscn" id="1_krfii"]
+[ext_resource type="PackedScene" uid="uid://b4hlbgkjrux2i" path="res://scenes/crafting/ingredients/pickable_ingredient.tscn" id="1_krfii"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_nbpeo"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_v5f2e"]
 [ext_resource type="PackedScene" uid="uid://1w32s52kocog" path="res://assets/Quaternius_natural_pack/glTF/Flower_4_Single.gltf" id="4_2k20m"]
@@ -18,11 +18,9 @@ shape = SubResource("CapsuleShape3D_nbpeo")
 
 [node name="GrabPointHandLeft" parent="." index="1" instance=ExtResource("2_nbpeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28915668, -0.097169355)
-visible = true
 
 [node name="GrabPointHandRight" parent="." index="2" instance=ExtResource("3_v5f2e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28915668, -0.097169355)
-visible = true
 
 [node name="Flowers" type="Node3D" parent="." index="3"]
 

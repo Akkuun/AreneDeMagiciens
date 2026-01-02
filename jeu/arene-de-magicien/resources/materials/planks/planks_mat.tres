@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xaqsw4yb72nv" path="res://resources/materials/planks/planks_mat_heightmap.png" id="4"]
 
 [resource]
+resource_local_to_scene = true
 albedo_texture = ExtResource("1")
 roughness_texture = ExtResource("2")
 roughness_texture_channel = 1
