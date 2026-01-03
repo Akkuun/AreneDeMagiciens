@@ -114,6 +114,7 @@ blend = 0.2
 [sub_resource type="BTAction" id="BTAction_05aup"]
 script = ExtResource("4_aeqyo")
 target_position_var = &"patrol_pos"
+speed_mode = "walk"
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_aeqyo"]
 children = [SubResource("BTAction_05aup")]
