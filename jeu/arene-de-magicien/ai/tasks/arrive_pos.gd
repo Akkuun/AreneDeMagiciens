@@ -47,7 +47,7 @@ func _tick(_delta: float) -> Status:
 		_:
 			speed = agent.move_speed if agent.get("move_speed") != null else 5.0
 	
-	print("speed mode: %s -> %s" % [speed_mode, speed])
+	# print("speed mode: %s -> %s" % [speed_mode, speed])
 	
 	
 	var dir_3d: Vector3

@@ -6,7 +6,8 @@ extends BTAction
 @export var target_var: StringName = &"detected_player"
 @export var projectile_scene: PackedScene
 @export var spawn_offset: Vector3 = Vector3(0, 0.4, 0)
-@export var max_range: float = 11.0
+@export var max_range: float = 11.0 # utilisé comme fallback si range_var n'existe pas
+@export var range_var: StringName = &"attack_range" # lit la portée depuis le blackboard
 @export var cooldown: float = 2.0
 
 var _last_shot_time: float = -999.0
@@ -39,7 +40,10 @@ func _tick(_delta: float) -> Status:
 	var dir_to_target = (target.global_position - agent.global_position).normalized()
 	var start_pos = agent.global_position + Vector3(0, spawn_offset.y, 0) + (dir_to_target * 1.0)
 	var distance_to_target = start_pos.distance_to(target.global_position)
-	var travel_distance = min(distance_to_target, max_range)
+	
+	# utilise la porté depuis le blackboard (définie par IsInRange) ou le fallback
+	var effective_range = blackboard.get_var(range_var, max_range)
+	var travel_distance = min(distance_to_target, effective_range)
 	
 
 	if projectile.has_method("launch"):
