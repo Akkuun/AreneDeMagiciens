@@ -82,7 +82,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.074074075, 0.03398693, 0.03398693, 1, 1,
 noise = SubResource("FastNoiseLite_k0txb")
 color_ramp = SubResource("Gradient_w780g")
 
-[node name="TestingLevel" type="Node3D" node_paths=PackedStringArray("debug_cameras")]
+[node name="TestingLevel" type="Node3D" node_paths=PackedStringArray("debug_cameras") groups=["root_3d"]]
 script = ExtResource("1_6bo2y")
 debug_cameras = [NodePath("MobCam"), NodePath("GreenBlockCam"), NodePath("CauldronCam")]
 

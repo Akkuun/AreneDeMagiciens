@@ -3,7 +3,7 @@ extends Node
 
 @export var breaking_speed : float = 0.1
 
-signal breaking(at: Vector3, speed: float)
+signal breaking(at: Vector3, speed: Vector3)
 
 var parent : RigidBody3D
 
@@ -27,11 +27,13 @@ func _ready() -> void:
 
 func collision_with(node: Node):
 	var current_speed : float = 0.0
-	if node is StaticBody3D or node is CSGShape3D:
+	if node is StaticBody3D:
 		current_speed = parent.linear_velocity.length()
+	elif node is CSGShape3D:
+		current_speed = parent.linear_velocity.length() * 2.0
 	elif node is RigidBody3D:
 		var relative_velocity : Vector3 = parent.linear_velocity - node.linear_velocity
 		current_speed = relative_velocity.length()
 	
 	if current_speed >= breaking_speed:
-		emit_signal("breaking", parent.global_position, current_speed)
+		emit_signal("breaking", parent.global_position, parent.linear_velocity)

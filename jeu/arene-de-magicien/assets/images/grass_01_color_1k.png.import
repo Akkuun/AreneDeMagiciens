@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmny2gmkk2d31"
-path.s3tc="res://.godot/imported/cliff_rocks_05_basecolor_1k.png-62741a90427edca87cc34529974edc07.s3tc.ctex"
-path.etc2="res://.godot/imported/cliff_rocks_05_basecolor_1k.png-62741a90427edca87cc34529974edc07.etc2.ctex"
+uid="uid://boqeafmo1x1l7"
+path.s3tc="res://.godot/imported/grass_01_color_1k.png-4c16ea6ab145ae6a24869c4ceab6a592.s3tc.ctex"
+path.etc2="res://.godot/imported/grass_01_color_1k.png-4c16ea6ab145ae6a24869c4ceab6a592.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/materials/world/cliff_rocks_05_basecolor_1k.png"
-dest_files=["res://.godot/imported/cliff_rocks_05_basecolor_1k.png-62741a90427edca87cc34529974edc07.s3tc.ctex", "res://.godot/imported/cliff_rocks_05_basecolor_1k.png-62741a90427edca87cc34529974edc07.etc2.ctex"]
+source_file="res://assets/images/grass_01_color_1k.png"
+dest_files=["res://.godot/imported/grass_01_color_1k.png-4c16ea6ab145ae6a24869c4ceab6a592.s3tc.ctex", "res://.godot/imported/grass_01_color_1k.png-4c16ea6ab145ae6a24869c4ceab6a592.etc2.ctex"]
 
 [params]
 

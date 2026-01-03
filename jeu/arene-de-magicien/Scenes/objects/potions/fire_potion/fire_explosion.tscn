@@ -1,32 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3pq2wrxw2ldl"]
+[gd_scene load_steps=3 format=3 uid="uid://b3pq2wrxw2ldl"]
 
-[ext_resource type="Script" uid="uid://rv6mifuwlolj" path="res://Scenes/objects/potions/fire_potion/fire_explosion.gd" id="1_287cx"]
-[ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_7505o"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_287cx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8si8n"]
-transparency = 1
-albedo_color = Color(1, 0.21176471, 0.3764706, 0.44705883)
-
-[sub_resource type="SphereMesh" id="SphereMesh_c7goo"]
-material = SubResource("StandardMaterial3D_8si8n")
+[ext_resource type="Script" uid="uid://rv6mifuwlolj" path="res://scenes/objects/potions/fire_potion/fire_explosion.gd" id="1_287cx"]
+[ext_resource type="PackedScene" uid="uid://bjafswckbbpeo" path="res://scenes/objects/potions/fire_potion/fire.tscn" id="2_bvp7s"]
 
 [node name="FireExplosion" type="Node3D"]
 script = ExtResource("1_287cx")
+radius = 2.0
+fire_effect = ExtResource("2_bvp7s")
 
 [node name="Duration" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 autostart = true
-
-[node name="StatusGiver" parent="." instance=ExtResource("1_7505o")]
-status = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusGiver"]
-shape = SubResource("SphereShape3D_287cx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_c7goo")
 
 [connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]
