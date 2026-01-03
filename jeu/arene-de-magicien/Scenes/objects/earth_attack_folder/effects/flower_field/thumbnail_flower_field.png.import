@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6qu5qoc8yb6s"
-path="res://.godot/imported/thumbnail_flower_field.png-5af888f8145a288bafd63e1e89f7dbe6.ctex"
+path="res://.godot/imported/thumbnail_flower_field.png-b78d587cbc0b754e25f9d7a23a6e2761.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/flower_field/thumbnail_flower_field.png"
-dest_files=["res://.godot/imported/thumbnail_flower_field.png-5af888f8145a288bafd63e1e89f7dbe6.ctex"]
+source_file="res://scenes/objects/earth_attack_folder/effects/flower_field/thumbnail_flower_field.png"
+dest_files=["res://.godot/imported/thumbnail_flower_field.png-b78d587cbc0b754e25f9d7a23a6e2761.ctex"]
 
 [params]
 

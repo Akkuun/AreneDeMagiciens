@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dml7yujior6rp"
-path="res://.godot/imported/Noise_18.tga-c67241e4e416576534a2b4bbc32df44b.ctex"
+uid="uid://s1o5pe76hj62"
+path="res://.godot/imported/T_Random_45.png-537f46620668d541623e1e4858990fa5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/objects/tornado/Noise_18.tga"
-dest_files=["res://.godot/imported/Noise_18.tga-c67241e4e416576534a2b4bbc32df44b.ctex"]
+source_file="res://resources/materials/tornado/T_Random_45.png"
+dest_files=["res://.godot/imported/T_Random_45.png-537f46620668d541623e1e4858990fa5.ctex"]
 
 [params]
 

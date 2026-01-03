@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnb2mif4smmuu"
-path="res://.godot/imported/icon.svg-653c42fc8729015d003fe61cbc382208.ctex"
+uid="uid://b4813o4tipvjb"
+path="res://.godot/imported/Turbulence_08-512x512.png-30e5f6cfa89bc63c967c1b40aaf5806e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/objects/tornado/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-653c42fc8729015d003fe61cbc382208.ctex"]
+source_file="res://resources/materials/tornado/Turbulence_08-512x512.png"
+dest_files=["res://.godot/imported/Turbulence_08-512x512.png-30e5f6cfa89bc63c967c1b40aaf5806e.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

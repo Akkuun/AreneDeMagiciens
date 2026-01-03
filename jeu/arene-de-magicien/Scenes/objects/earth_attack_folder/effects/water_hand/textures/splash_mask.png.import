@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://psoh86gnshe7"
-path="res://.godot/imported/splash_mask.png-0f6671f3cab40c8ca3599f8aa247bed1.ctex"
+path="res://.godot/imported/splash_mask.png-df478c3f24c5875d41b136c0ff133590.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/water_hand/textures/splash_mask.png"
-dest_files=["res://.godot/imported/splash_mask.png-0f6671f3cab40c8ca3599f8aa247bed1.ctex"]
+source_file="res://scenes/objects/earth_attack_folder/effects/water_hand/textures/splash_mask.png"
+dest_files=["res://.godot/imported/splash_mask.png-df478c3f24c5875d41b136c0ff133590.ctex"]
 
 [params]
 

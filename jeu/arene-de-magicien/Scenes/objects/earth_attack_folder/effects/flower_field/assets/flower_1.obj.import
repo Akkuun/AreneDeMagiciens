@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://brlmuy4vxt3ko"
-path="res://.godot/imported/flower_1.obj-5c2d4af9e3817015813dc1cf81c9c9c5.mesh"
+path="res://.godot/imported/flower_1.obj-a731874a7f72a66e887b62f24b81aea6.mesh"
 
 [deps]
 
-files=["res://.godot/imported/flower_1.obj-5c2d4af9e3817015813dc1cf81c9c9c5.mesh"]
+files=["res://.godot/imported/flower_1.obj-a731874a7f72a66e887b62f24b81aea6.mesh"]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/flower_field/assets/flower_1.obj"
-dest_files=["res://.godot/imported/flower_1.obj-5c2d4af9e3817015813dc1cf81c9c9c5.mesh", "res://.godot/imported/flower_1.obj-5c2d4af9e3817015813dc1cf81c9c9c5.mesh"]
+source_file="res://scenes/objects/earth_attack_folder/effects/flower_field/assets/flower_1.obj"
+dest_files=["res://.godot/imported/flower_1.obj-a731874a7f72a66e887b62f24b81aea6.mesh", "res://.godot/imported/flower_1.obj-a731874a7f72a66e887b62f24b81aea6.mesh"]
 
 [params]
 

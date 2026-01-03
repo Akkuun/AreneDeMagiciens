@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvkioh7ux48w1"
-path="res://.godot/imported/butterflies_thumbnail.png-b2145e06500fefbde30314983505452e.ctex"
+path="res://.godot/imported/butterflies_thumbnail.png-177e71d02ca7b3defe4a5fb01a22a895.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/butterflies_particles/butterflies_thumbnail.png"
-dest_files=["res://.godot/imported/butterflies_thumbnail.png-b2145e06500fefbde30314983505452e.ctex"]
+source_file="res://scenes/objects/earth_attack_folder/effects/butterflies_particles/butterflies_thumbnail.png"
+dest_files=["res://.godot/imported/butterflies_thumbnail.png-177e71d02ca7b3defe4a5fb01a22a895.ctex"]
 
 [params]
 

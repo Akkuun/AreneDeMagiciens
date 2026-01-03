@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://dg22nbxgh0eph"
-path="res://.godot/imported/rock.obj-ea7c134428ff9a9298a56c2b3a19c9e2.mesh"
+path="res://.godot/imported/rock.obj-0fbeaddb31d159448e609249345aade2.mesh"
 
 [deps]
 
-files=["res://.godot/imported/rock.obj-ea7c134428ff9a9298a56c2b3a19c9e2.mesh"]
+files=["res://.godot/imported/rock.obj-0fbeaddb31d159448e609249345aade2.mesh"]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/earth_attack/rock.obj"
-dest_files=["res://.godot/imported/rock.obj-ea7c134428ff9a9298a56c2b3a19c9e2.mesh", "res://.godot/imported/rock.obj-ea7c134428ff9a9298a56c2b3a19c9e2.mesh"]
+source_file="res://scenes/objects/earth_attack_folder/effects/earth_attack/rock.obj"
+dest_files=["res://.godot/imported/rock.obj-0fbeaddb31d159448e609249345aade2.mesh", "res://.godot/imported/rock.obj-0fbeaddb31d159448e609249345aade2.mesh"]
 
 [params]
 

@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://ckl81j1dcsvc3"
-path="res://.godot/imported/butterfly.obj-93ac89a119e997f8665ce0516539bd5d.mesh"
+path="res://.godot/imported/butterfly.obj-0e3610d3f03f1a61e7445e6ddbd2d408.mesh"
 
 [deps]
 
-files=["res://.godot/imported/butterfly.obj-93ac89a119e997f8665ce0516539bd5d.mesh"]
+files=["res://.godot/imported/butterfly.obj-0e3610d3f03f1a61e7445e6ddbd2d408.mesh"]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/flower_field/butterfly.obj"
-dest_files=["res://.godot/imported/butterfly.obj-93ac89a119e997f8665ce0516539bd5d.mesh", "res://.godot/imported/butterfly.obj-93ac89a119e997f8665ce0516539bd5d.mesh"]
+source_file="res://scenes/objects/earth_attack_folder/effects/flower_field/butterfly.obj"
+dest_files=["res://.godot/imported/butterfly.obj-0e3610d3f03f1a61e7445e6ddbd2d408.mesh", "res://.godot/imported/butterfly.obj-0e3610d3f03f1a61e7445e6ddbd2d408.mesh"]
 
 [params]
 

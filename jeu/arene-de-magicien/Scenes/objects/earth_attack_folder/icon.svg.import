@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clo4gypdeufon"
-path.s3tc="res://.godot/imported/icon.svg-1789048ffbcca88d44167ef349902755.s3tc.ctex"
+path.s3tc="res://.godot/imported/icon.svg-a43194a47f2a09b1d299160833c2f7e4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-1789048ffbcca88d44167ef349902755.s3tc.ctex"]
+source_file="res://scenes/objects/earth_attack_folder/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-a43194a47f2a09b1d299160833c2f7e4.s3tc.ctex"]
 
 [params]
 

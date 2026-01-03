@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdg243hesww65"
-path="res://.godot/imported/gato.glb-ffb442b69f1aa8fa91094abb5696b0c6.scn"
+path="res://.godot/imported/gato.glb-3c948b025eaac8c358b6355ed22b2e38.scn"
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/fur/mesh/gato.glb"
-dest_files=["res://.godot/imported/gato.glb-ffb442b69f1aa8fa91094abb5696b0c6.scn"]
+source_file="res://scenes/objects/earth_attack_folder/effects/fur/mesh/gato.glb"
+dest_files=["res://.godot/imported/gato.glb-3c948b025eaac8c358b6355ed22b2e38.scn"]
 
 [params]
 

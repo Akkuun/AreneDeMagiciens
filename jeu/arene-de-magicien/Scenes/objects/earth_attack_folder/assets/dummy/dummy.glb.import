@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://1e45y3wup8c4"
-path="res://.godot/imported/dummy.glb-d1e7ebe4dfe92bf9f7b79899a6df7584.scn"
+path="res://.godot/imported/dummy.glb-dee9d987695b6449b24981ac4befafde.scn"
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/assets/dummy/dummy.glb"
-dest_files=["res://.godot/imported/dummy.glb-d1e7ebe4dfe92bf9f7b79899a6df7584.scn"]
+source_file="res://scenes/objects/earth_attack_folder/assets/dummy/dummy.glb"
+dest_files=["res://.godot/imported/dummy.glb-dee9d987695b6449b24981ac4befafde.scn"]
 
 [params]
 

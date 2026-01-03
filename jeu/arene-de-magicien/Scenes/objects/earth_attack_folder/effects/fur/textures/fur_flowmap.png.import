@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhlggnd0j3tg4"
-path="res://.godot/imported/fur_flowmap.png-38610914a51e411d2ad2a0cb1b8a9ea3.ctex"
+path="res://.godot/imported/fur_flowmap.png-8740da5045f050bfa803295cea8caed8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/fur/textures/fur_flowmap.png"
-dest_files=["res://.godot/imported/fur_flowmap.png-38610914a51e411d2ad2a0cb1b8a9ea3.ctex"]
+source_file="res://scenes/objects/earth_attack_folder/effects/fur/textures/fur_flowmap.png"
+dest_files=["res://.godot/imported/fur_flowmap.png-8740da5045f050bfa803295cea8caed8.ctex"]
 
 [params]
 

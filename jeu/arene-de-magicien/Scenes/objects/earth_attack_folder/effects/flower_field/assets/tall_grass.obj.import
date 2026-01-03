@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://b8gdvtxwmlmhm"
-path="res://.godot/imported/tall_grass.obj-6a4bc557844ae60fb1f6e681cb8c8afd.mesh"
+path="res://.godot/imported/tall_grass.obj-a5360ccc2111ec33df4eb14cf67c1f53.mesh"
 
 [deps]
 
-files=["res://.godot/imported/tall_grass.obj-6a4bc557844ae60fb1f6e681cb8c8afd.mesh"]
+files=["res://.godot/imported/tall_grass.obj-a5360ccc2111ec33df4eb14cf67c1f53.mesh"]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/flower_field/assets/tall_grass.obj"
-dest_files=["res://.godot/imported/tall_grass.obj-6a4bc557844ae60fb1f6e681cb8c8afd.mesh", "res://.godot/imported/tall_grass.obj-6a4bc557844ae60fb1f6e681cb8c8afd.mesh"]
+source_file="res://scenes/objects/earth_attack_folder/effects/flower_field/assets/tall_grass.obj"
+dest_files=["res://.godot/imported/tall_grass.obj-a5360ccc2111ec33df4eb14cf67c1f53.mesh", "res://.godot/imported/tall_grass.obj-a5360ccc2111ec33df4eb14cf67c1f53.mesh"]
 
 [params]
 

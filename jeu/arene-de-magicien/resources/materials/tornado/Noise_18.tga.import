@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bltxqplolevq4"
-path="res://.godot/imported/Vein_08-512x512.png-65ace1117635911b05c24d4ba4cecc18.ctex"
+uid="uid://dml7yujior6rp"
+path.s3tc="res://.godot/imported/Noise_18.tga-5eeaa2c77a2ec926c115fef3b05c85a5.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Scenes/objects/tornado/Vein_08-512x512.png"
-dest_files=["res://.godot/imported/Vein_08-512x512.png-65ace1117635911b05c24d4ba4cecc18.ctex"]
+source_file="res://resources/materials/tornado/Noise_18.tga"
+dest_files=["res://.godot/imported/Noise_18.tga-5eeaa2c77a2ec926c115fef3b05c85a5.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -1,10 +1,10 @@
 [gd_scene load_steps=129 format=3 uid="uid://b5ve3mq1ebuso"]
 
-[ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_ab3cf"]
+[ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://scenes/components/physic/status_giver.tscn" id="1_ab3cf"]
 [ext_resource type="Script" uid="uid://ohuqr20qwm5h" path="res://scripts/tornado_proj.gd" id="1_ahg26"]
 [ext_resource type="Shader" uid="uid://cp4e6hjsb1l2h" path="res://resources/materials/tornado/whiteT.tres" id="2_g752n"]
-[ext_resource type="ArrayMesh" uid="uid://ese25feawlbp" path="res://Scenes/objects/tornado/tornado2.obj" id="2_ivdro"]
-[ext_resource type="ArrayMesh" uid="uid://dbajlbiic2dd0" path="res://Scenes/objects/tornado/tornado.obj" id="4_g752n"]
+[ext_resource type="ArrayMesh" uid="uid://ese25feawlbp" path="res://assets/meshes/tornado2.obj" id="2_ivdro"]
+[ext_resource type="ArrayMesh" uid="uid://dbajlbiic2dd0" path="res://assets/meshes/tornado.obj" id="4_g752n"]
 [ext_resource type="Material" uid="uid://ks1kly3dfqvc" path="res://resources/materials/smoke_billboard.material" id="4_nhgnl"]
 [ext_resource type="Material" uid="uid://cjgoj12p3pb0g" path="res://resources/materials/fire_billboard.material" id="4_toowk"]
 

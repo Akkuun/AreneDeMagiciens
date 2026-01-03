@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4813o4tipvjb"
-path="res://.godot/imported/Turbulence_08-512x512.png-bed52da7edee877a2feb9f79fb50949f.ctex"
+uid="uid://bltxqplolevq4"
+path="res://.godot/imported/Vein_08-512x512.png-b22bc91b4abbb104c8a46c031a1691bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/objects/tornado/Turbulence_08-512x512.png"
-dest_files=["res://.godot/imported/Turbulence_08-512x512.png-bed52da7edee877a2feb9f79fb50949f.ctex"]
+source_file="res://resources/materials/tornado/Vein_08-512x512.png"
+dest_files=["res://.godot/imported/Vein_08-512x512.png-b22bc91b4abbb104c8a46c031a1691bb.ctex"]
 
 [params]
 

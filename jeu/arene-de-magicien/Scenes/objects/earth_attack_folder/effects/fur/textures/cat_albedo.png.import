@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c60751yjm8mjb"
-path.s3tc="res://.godot/imported/cat_albedo.png-13fbfead4a7ed4437d243e0f16253643.s3tc.ctex"
+path.s3tc="res://.godot/imported/cat_albedo.png-5c475778af38209687363e104f177dfe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/fur/textures/cat_albedo.png"
-dest_files=["res://.godot/imported/cat_albedo.png-13fbfead4a7ed4437d243e0f16253643.s3tc.ctex"]
+source_file="res://scenes/objects/earth_attack_folder/effects/fur/textures/cat_albedo.png"
+dest_files=["res://.godot/imported/cat_albedo.png-5c475778af38209687363e104f177dfe.s3tc.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://p3tno1p0fk7q"
-path="res://.godot/imported/halloween_explosion_thumbnail.png-d4f37939b568d72ea7e3764b97c60d6c.ctex"
+path="res://.godot/imported/halloween_explosion_thumbnail.png-3bdf8057f9125cd8eb4ff03ad79ad748.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/halloween_explosion_thumbnail.png"
-dest_files=["res://.godot/imported/halloween_explosion_thumbnail.png-d4f37939b568d72ea7e3764b97c60d6c.ctex"]
+source_file="res://scenes/objects/earth_attack_folder/effects/halloween_explosion/halloween_explosion_thumbnail.png"
+dest_files=["res://.godot/imported/halloween_explosion_thumbnail.png-3bdf8057f9125cd8eb4ff03ad79ad748.ctex"]
 
 [params]
 
