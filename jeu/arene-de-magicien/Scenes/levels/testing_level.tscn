@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://3sf17jrqljre"]
+[gd_scene load_steps=10 format=3 uid="uid://3sf17jrqljre"]
 
 [ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="1_11dnb"]
 [ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://Scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
 [ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://Scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
+[ext_resource type="PackedScene" uid="uid://b5ve3mq1ebuso" path="res://Scenes/objects/tornado/tornado.tscn" id="4_x3x30"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_11dnb"]
 
@@ -52,3 +53,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.570164, 2.5162675, -2.1820
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23432761, 1.4400105, -0.75387084)
+
+[node name="Tornado" parent="." instance=ExtResource("4_x3x30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6226602, 2.3841858e-07, -1.6464753)

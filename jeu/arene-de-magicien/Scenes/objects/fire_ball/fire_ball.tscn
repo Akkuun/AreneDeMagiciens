@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_8jl72"]
 [ext_resource type="Material" uid="uid://djjwuh3t4tgsg" path="res://resources/materials/fire_material.tres" id="2_t5jws"]
 [ext_resource type="Script" uid="uid://bixx121w4ms23" path="res://scripts/light_flicker.gd" id="4_5u8wk"]
-[ext_resource type="Material" path="res://resources/materials/smoke_billboard.material" id="4_nhgnl"]
-[ext_resource type="Material" path="res://resources/materials/fire_billboard.material" id="4_toowk"]
+[ext_resource type="Material" uid="uid://ks1kly3dfqvc" path="res://resources/materials/smoke_billboard.material" id="4_nhgnl"]
+[ext_resource type="Material" uid="uid://cjgoj12p3pb0g" path="res://resources/materials/fire_billboard.material" id="4_toowk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dpp8x"]
 radius = 0.1

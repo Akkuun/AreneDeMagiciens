@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c7nf2xj7hg80d"]
+[gd_scene load_steps=0 format=3 uid="uid://c7nf2xj7hg80d"]
 
 [node name="Vfx" type="Node3D"]
 
