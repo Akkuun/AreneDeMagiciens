@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfher8otowoge"]
 
-[ext_resource type="Script" uid="uid://enq82v1do81s" path="res://scenes/components/physic/status_giver.gd" id="1_r5nho"]
+[ext_resource type="Script" uid="uid://enq82v1do81s" path="res://Scenes/components/physic/status_giver.gd" id="1_r5nho"]
 
 [node name="StatusGiver" type="Area3D"]
 collision_layer = 32768

@@ -12,7 +12,6 @@ func _ready():
 		# turn the main viewport into an ARVR viewport:
 		get_viewport().arvr = true
 
-
 var update_needed : bool = false
 var interpolation_progress: float = 0.0  
 func _physics_process(delta: float) -> void:

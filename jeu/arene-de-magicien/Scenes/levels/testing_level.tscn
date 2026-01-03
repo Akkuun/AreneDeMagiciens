@@ -101,8 +101,8 @@ environment = SubResource("Environment_w33dm")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.43301266, 0.59503496, 0.67707735, -0.24999996, -0.642402, 0.7244443, 0.86602545, -0.48296285, -0.12940955, 0, 0, 0)
 
-[node name="Player" parent="." groups=["dummy"] instance=ExtResource("1_11dnb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003606081, -0.004760027, -0.6366209)
+[node name="Player" parent="." instance=ExtResource("1_11dnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.573359, 2.4677887, 0)
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.319, 0)
@@ -117,6 +117,7 @@ size = Vector3(2.3787842, 1, 3.2089844)
 material = SubResource("StandardMaterial3D_otqx3")
 
 [node name="FireBall" parent="." instance=ExtResource("3_w33dm")]
+<<<<<<< HEAD
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5813742, 2.576, -4.916835)
 
 [node name="FireBall2" parent="." instance=ExtResource("3_w33dm")]
@@ -229,9 +230,3 @@ blackboard_plan = SubResource("BlackboardPlan_fqr2o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="range_agent"]
 shape = SubResource("BoxShape3D_xppsf")
-
-[node name="Decal" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.98144025, -0.19176833, 0, 0.19176833, 0.98144025, 0.5207075, 0.6111146, 2.8624835)
-texture_albedo = SubResource("NoiseTexture2D_vrvue")
-upper_fade = 0.42426494
-distance_fade_enabled = true
