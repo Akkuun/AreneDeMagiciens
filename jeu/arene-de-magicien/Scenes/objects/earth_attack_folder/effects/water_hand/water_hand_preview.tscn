@@ -1,21 +1,17 @@
-[gd_scene load_steps=56 format=3 uid="uid://dsv6r37ingeaf"]
+[gd_scene load_steps=52 format=3 uid="uid://dsv6r37ingeaf"]
 
-[ext_resource type="Script" path="res://effects/water_hand/water_hand_preview.gd" id="1_ocyw3"]
-[ext_resource type="PackedScene" uid="uid://dfha3vt2clmfq" path="res://effects/water_hand/mesh/water_hand.glb" id="1_ul5tc"]
-[ext_resource type="Shader" path="res://assets/ground_checkerboard.gdshader" id="2_8srkr"]
-[ext_resource type="Material" uid="uid://btc57c1fm5im1" path="res://effects/water_hand/materials/water_hand_mat.tres" id="2_nopph"]
-[ext_resource type="Script" path="res://effects/water_hand/mesh/water_hand.gd" id="3_f3c4c"]
-[ext_resource type="Texture2D" uid="uid://3ro0yvv3roj3" path="res://assets/checkerboard.svg" id="3_ky0hy"]
-[ext_resource type="PackedScene" uid="uid://cmj5l6xu36itg" path="res://turner/turner.tscn" id="4_rvotv"]
-[ext_resource type="Script" path="res://effects/water_hand/scripts/target.gd" id="8_o6qfi"]
-[ext_resource type="PackedScene" uid="uid://obrsol71nwet" path="res://effects/water_hand/scripts/water_splash.tscn" id="8_qiyem"]
-[ext_resource type="Shader" path="res://effects/water_hand/materials/wet_spot.gdshader" id="9_428na"]
-[ext_resource type="PackedScene" uid="uid://ddjouhm76gjbx" path="res://assets/dummy/dummy_skin.tscn" id="9_hx6do"]
-[ext_resource type="Shader" path="res://effects/water_hand/materials/water_droplet_particles.gdshader" id="11_tcead"]
-[ext_resource type="Texture2D" uid="uid://dgetus6yvt1hi" path="res://effects/water_hand/textures/water_particles_shape.png" id="12_6715a"]
-[ext_resource type="Shader" path="res://effects/water_hand/materials/whirlpool.gdshader" id="13_bmyef"]
-[ext_resource type="Script" path="res://effects/water_hand/scripts/arm_spawn_effect.gd" id="13_g52ik"]
-[ext_resource type="Texture2D" uid="uid://bax1k2etu2b3" path="res://effects/water_hand/textures/caustic_texture.png" id="14_5kr1b"]
+[ext_resource type="Script" uid="uid://70ubgm65up6r" path="res://scenes/objects/earth_attack_folder/effects/water_hand/water_hand_preview.gd" id="1_ocyw3"]
+[ext_resource type="PackedScene" uid="uid://dfha3vt2clmfq" path="res://scenes/objects/earth_attack_folder/effects/water_hand/mesh/water_hand.glb" id="1_ul5tc"]
+[ext_resource type="Material" uid="uid://btc57c1fm5im1" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/water_hand_mat.tres" id="2_nopph"]
+[ext_resource type="Script" uid="uid://bb5e4f4o0ayfy" path="res://scenes/objects/earth_attack_folder/effects/water_hand/mesh/water_hand.gd" id="3_f3c4c"]
+[ext_resource type="PackedScene" path="res://scenes/objects/earth_attack_folder/turner/turner.tscn" id="4_rvotv"]
+[ext_resource type="PackedScene" uid="uid://obrsol71nwet" path="res://scenes/objects/earth_attack_folder/effects/water_hand/scripts/water_splash.tscn" id="8_qiyem"]
+[ext_resource type="Shader" uid="uid://b6y6yaiv4ppev" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/wet_spot.gdshader" id="9_428na"]
+[ext_resource type="Shader" uid="uid://clr84bgcq7p8a" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/water_droplet_particles.gdshader" id="11_tcead"]
+[ext_resource type="Texture2D" uid="uid://dgetus6yvt1hi" path="res://scenes/objects/earth_attack_folder/effects/water_hand/textures/water_particles_shape.png" id="12_6715a"]
+[ext_resource type="Shader" uid="uid://npd1y683i0wf" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/whirlpool.gdshader" id="13_bmyef"]
+[ext_resource type="Script" uid="uid://dstrd4chaj8m4" path="res://scenes/objects/earth_attack_folder/effects/water_hand/scripts/arm_spawn_effect.gd" id="13_g52ik"]
+[ext_resource type="Texture2D" uid="uid://bax1k2etu2b3" path="res://scenes/objects/earth_attack_folder/effects/water_hand/textures/caustic_texture.png" id="14_5kr1b"]
 
 [sub_resource type="Environment" id="Environment_63fgl"]
 background_mode = 1
@@ -60,11 +56,6 @@ radius = 1.0
 is_hemisphere = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hjcv1"]
-render_priority = 0
-shader = ExtResource("2_8srkr")
-shader_parameter/albedo_color = Color(0.2, 0.2, 0.2, 1)
-shader_parameter/uv_scale = 20.0
-shader_parameter/checkerboard_sampler = ExtResource("3_ky0hy")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k8hd6"]
 size = Vector2(40, 40)
@@ -516,7 +507,7 @@ tracks/62/keys = PackedFloat32Array(0, 1, 1, 1, 1, 1.5, 1, 1, 1, 1, 1.53333, 1, 
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vclnt"]
 _data = {
-"Slap": SubResource("Animation_3pake")
+&"Slap": SubResource("Animation_3pake")
 }
 
 [sub_resource type="Animation" id="Animation_evydo"]
@@ -541,7 +532,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjkoj"]
 _data = {
-"events": SubResource("Animation_evydo")
+&"events": SubResource("Animation_evydo")
 }
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_l3mgg"]
@@ -556,12 +547,15 @@ animation = &"Slap"
 allow_transition_to_self = true
 input_0/name = "none"
 input_0/auto_advance = false
+input_0/break_loop_at_end = false
 input_0/reset = true
 input_1/name = "default"
 input_1/auto_advance = false
+input_1/break_loop_at_end = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wejts"]
+nodes/output/position = Vector2(200, 200)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_l3mgg")
 nodes/Add2/position = Vector2(-220, 280)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_1vtnd")
@@ -570,8 +564,7 @@ nodes/Animation/position = Vector2(-420, 280)
 "nodes/Animation 2/position" = Vector2(-420, 400)
 nodes/Transition/node = SubResource("AnimationNodeTransition_4f8kt")
 nodes/Transition/position = Vector2(0, 200)
-nodes/output/position = Vector2(200, 200)
-node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Transition", 1, &"Add2", &"output", 0, &"Transition"]
+node_connections = [&"output", 0, &"Transition", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Transition", 1, &"Add2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_04cln"]
 noise_type = 2
@@ -579,16 +572,16 @@ seed = -10
 fractal_octaves = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_asuuj"]
-seamless = true
 noise = SubResource("FastNoiseLite_04cln")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evqnw"]
 render_priority = 0
 shader = ExtResource("9_428na")
+shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_asuuj")
 shader_parameter/mix_blend = 0.0
 shader_parameter/mix_voronoi = 0.0
 shader_parameter/progress = 0.0
-shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_asuuj")
 
 [sub_resource type="QuadMesh" id="QuadMesh_e87sj"]
 size = Vector2(12, 4)
@@ -674,8 +667,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5yt47"]
 _data = {
-"RESET": SubResource("Animation_tl23c"),
-"default": SubResource("Animation_gaafr")
+&"RESET": SubResource("Animation_tl23c"),
+&"default": SubResource("Animation_gaafr")
 }
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i2yyy"]
@@ -683,8 +676,8 @@ noise_type = 2
 fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tet50"]
-seamless = true
 noise = SubResource("FastNoiseLite_i2yyy")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ci4wu"]
 render_priority = 0
@@ -734,18 +727,18 @@ seed = 5
 fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aq38x"]
-color_ramp = SubResource("Gradient_y4tp5")
 noise = SubResource("FastNoiseLite_gte7f")
+color_ramp = SubResource("Gradient_y4tp5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_83lu1"]
 render_priority = 0
 shader = ExtResource("13_bmyef")
+shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_aq38x")
+shader_parameter/caustic_sampler = ExtResource("14_5kr1b")
 shader_parameter/base_color = Color(0, 0.415686, 1, 1)
 shader_parameter/dark_color = Color(0.0117647, 0.184314, 0.560784, 1)
 shader_parameter/opening = 0.0
 shader_parameter/offset = 0.0
-shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_aq38x")
-shader_parameter/caustic_sampler = ExtResource("14_5kr1b")
 
 [sub_resource type="QuadMesh" id="QuadMesh_j64g1"]
 size = Vector2(6, 6)
@@ -807,8 +800,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ijxxh"]
 _data = {
-"RESET": SubResource("Animation_wn4iv"),
-"default": SubResource("Animation_3gawx")
+&"RESET": SubResource("Animation_wn4iv"),
+&"default": SubResource("Animation_3gawx")
 }
 
 [node name="WaterHandPreview" type="Node3D"]
@@ -831,8 +824,8 @@ metadata/_edit_lock_ = true
 
 [node name="Turner" parent="." instance=ExtResource("4_rvotv")]
 transform = Transform3D(0.906308, -0.109382, 0.408218, 0, 0.965926, 0.258819, -0.422618, -0.23457, 0.875426, -2, 2, 0)
-_zoom = 8.5
 min_zoom = 6.0
+_zoom = 8.5
 
 [node name="WaterHand" parent="." instance=ExtResource("1_ul5tc")]
 unique_name_in_owner = true
@@ -897,17 +890,13 @@ material_override = ExtResource("2_nopph")
 
 [node name="AnimationPlayer" parent="WaterHand" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_vclnt"),
-"custom": SubResource("AnimationLibrary_kjkoj")
+&"": SubResource("AnimationLibrary_vclnt"),
+&"custom": SubResource("AnimationLibrary_kjkoj")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="WaterHand"]
 unique_name_in_owner = true
 root_node = NodePath("%AnimationTree/..")
-libraries = {
-"": SubResource("AnimationLibrary_vclnt"),
-"custom": SubResource("AnimationLibrary_kjkoj")
-}
 tree_root = SubResource("AnimationNodeBlendTree_wejts")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Add2/add_amount = 1.0
@@ -919,24 +908,15 @@ parameters/Transition/current_index = 0
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Target" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-script = ExtResource("8_o6qfi")
-
-[node name="DummySkin" parent="Target" instance=ExtResource("9_hx6do")]
-transform = Transform3D(-5.46392e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.46392e-08, 0, 0, 0)
-
-[node name="DummySkin2" parent="." instance=ExtResource("9_hx6do")]
-transform = Transform3D(0, 0, 1.25, 0, 1.25, 0, -1.25, 0, 0, -7, 0, 0)
-
 [node name="ImpactSplash" parent="." instance=ExtResource("8_qiyem")]
 unique_name_in_owner = true
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 3, 0, 0)
+script = null
 
 [node name="HandSplash" parent="." instance=ExtResource("8_qiyem")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0, 0)
+script = null
 
 [node name="WetSpot" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, 0.002, 0)
@@ -947,7 +927,7 @@ mesh = SubResource("QuadMesh_e87sj")
 [node name="WetPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_5yt47")
+&"": SubResource("AnimationLibrary_5yt47")
 }
 
 [node name="CooldownTimer" type="Timer" parent="."]
@@ -980,7 +960,7 @@ skeleton = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ArmSpawnEffect"]
 libraries = {
-"": SubResource("AnimationLibrary_ijxxh")
+&"": SubResource("AnimationLibrary_ijxxh")
 }
 
 [editable path="WaterHand"]

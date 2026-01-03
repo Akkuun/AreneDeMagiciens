@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://o82atqn4jxuw"]
-
-[ext_resource type="Shader" uid="uid://bgrvm0maia0cf" path="res://Scenes/objects/earth_attack_folder/effects/earth_attack/materials/rock_spikes.gdshader" id="1_gr7m8"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_gr7m8")
-shader_parameter/fresnel_color = Color(0, 0, 0, 1)

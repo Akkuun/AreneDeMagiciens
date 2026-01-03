@@ -1,19 +1,19 @@
 [gd_scene load_steps=28 format=3 uid="uid://obrsol71nwet"]
 
-[ext_resource type="Script" path="res://effects/water_hand/scripts/water_splash.gd" id="1_ctbb0"]
-[ext_resource type="Shader" path="res://effects/water_hand/materials/water_droplet_particles.gdshader" id="2_7yqw3"]
-[ext_resource type="Material" uid="uid://btir5gntqbdb4" path="res://effects/water_hand/materials/water_splash_mat.tres" id="2_tbwf0"]
-[ext_resource type="ArrayMesh" uid="uid://b48famqpe5dwl" path="res://effects/water_hand/mesh/splash_shell.obj" id="3_hivpj"]
-[ext_resource type="Texture2D" uid="uid://dgetus6yvt1hi" path="res://effects/water_hand/textures/water_particles_shape.png" id="5_e26qh"]
-[ext_resource type="Shader" path="res://effects/water_hand/materials/small_drop_particles.gdshader" id="5_fbb7n"]
+[ext_resource type="Script" uid="uid://c1c6wup3w0r58" path="res://scenes/objects/earth_attack_folder/effects/water_hand/scripts/water_splash.gd" id="1_ctbb0"]
+[ext_resource type="Shader" uid="uid://clr84bgcq7p8a" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/water_droplet_particles.gdshader" id="2_7yqw3"]
+[ext_resource type="Material" uid="uid://btir5gntqbdb4" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/water_splash_mat.tres" id="2_tbwf0"]
+[ext_resource type="ArrayMesh" uid="uid://b48famqpe5dwl" path="res://scenes/objects/earth_attack_folder/effects/water_hand/mesh/splash_shell.obj" id="3_hivpj"]
+[ext_resource type="Texture2D" uid="uid://dgetus6yvt1hi" path="res://scenes/objects/earth_attack_folder/effects/water_hand/textures/water_particles_shape.png" id="5_e26qh"]
+[ext_resource type="Shader" uid="uid://bq7wd1jj4t4xf" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/small_drop_particles.gdshader" id="5_fbb7n"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q8mmj"]
 noise_type = 2
 fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nj12l"]
-seamless = true
 noise = SubResource("FastNoiseLite_q8mmj")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_77baq"]
 render_priority = 0
@@ -220,8 +220,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yrxv4"]
 _data = {
-"RESET": SubResource("Animation_qat07"),
-"splash": SubResource("Animation_4gi0b")
+&"RESET": SubResource("Animation_qat07"),
+&"splash": SubResource("Animation_4gi0b")
 }
 
 [node name="WaterSplash" type="Node3D"]
@@ -259,5 +259,5 @@ draw_pass_1 = SubResource("QuadMesh_sddr5")
 [node name="SplashPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_yrxv4")
+&"": SubResource("AnimationLibrary_yrxv4")
 }
