@@ -66,7 +66,6 @@ blend = 0.1
 
 [sub_resource type="BTAction" id="BTAction_hfkjk"]
 script = ExtResource("4_aeqyo")
-avoid_var = &"detected_player"
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_kde0j"]
 time_limit = 7.0
@@ -115,7 +114,6 @@ blend = 0.2
 [sub_resource type="BTAction" id="BTAction_05aup"]
 script = ExtResource("4_aeqyo")
 target_position_var = &"patrol_pos"
-speed_mode = "walk"
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_aeqyo"]
 children = [SubResource("BTAction_05aup")]
