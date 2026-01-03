@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db2ubfcggijr"
-path="res://.godot/imported/small_rock_normal.png-32f9bfa4eb24d0fd0e936db68fcd4e13.ctex"
+path="res://.godot/imported/small_rock_normal.png-7b2d93c1725ab2f8ca5708b5c0dd1916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/objects/earth_attack/textures/small_rock_normal.png"
-dest_files=["res://.godot/imported/small_rock_normal.png-32f9bfa4eb24d0fd0e936db68fcd4e13.ctex"]
+source_file="res://Scenes/objects/earth_attack/textures/small_rock_normal.png"
+dest_files=["res://.godot/imported/small_rock_normal.png-7b2d93c1725ab2f8ca5708b5c0dd1916.ctex"]
 
 [params]
 

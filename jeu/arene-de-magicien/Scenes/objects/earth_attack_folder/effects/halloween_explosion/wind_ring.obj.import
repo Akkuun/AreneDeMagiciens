@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://bafknch2m4dmy"
-path="res://.godot/imported/wind_ring.obj-9acb07eeea3c1a73ac4225419b305455.mesh"
+path="res://.godot/imported/wind_ring.obj-91a9816c7ad8d429a15b958e7dcc16ed.mesh"
 
 [deps]
 
-files=["res://.godot/imported/wind_ring.obj-9acb07eeea3c1a73ac4225419b305455.mesh"]
+files=["res://.godot/imported/wind_ring.obj-91a9816c7ad8d429a15b958e7dcc16ed.mesh"]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/halloween_explosion/wind_ring.obj"
-dest_files=["res://.godot/imported/wind_ring.obj-9acb07eeea3c1a73ac4225419b305455.mesh", "res://.godot/imported/wind_ring.obj-9acb07eeea3c1a73ac4225419b305455.mesh"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/wind_ring.obj"
+dest_files=["res://.godot/imported/wind_ring.obj-91a9816c7ad8d429a15b958e7dcc16ed.mesh", "res://.godot/imported/wind_ring.obj-91a9816c7ad8d429a15b958e7dcc16ed.mesh"]
 
 [params]
 

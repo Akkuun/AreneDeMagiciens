@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dfha3vt2clmfq"
-path="res://.godot/imported/water_hand.glb-31941d9f002ec46314d3a18586159063.scn"
+path="res://.godot/imported/water_hand.glb-e4ad462506a6f8b76272fc6b4b433cf8.scn"
 
 [deps]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/water_hand/mesh/water_hand.glb"
-dest_files=["res://.godot/imported/water_hand.glb-31941d9f002ec46314d3a18586159063.scn"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/water_hand/mesh/water_hand.glb"
+dest_files=["res://.godot/imported/water_hand.glb-e4ad462506a6f8b76272fc6b4b433cf8.scn"]
 
 [params]
 

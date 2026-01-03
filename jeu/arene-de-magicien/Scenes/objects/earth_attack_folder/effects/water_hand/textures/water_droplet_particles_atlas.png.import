@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://u4ev7651y4nx"
-path="res://.godot/imported/water_droplet_particles_atlas.png-d955727a58dcf215e67e3510eae4604a.ctex"
+path="res://.godot/imported/water_droplet_particles_atlas.png-53923e385fe400572464f7cad603f5b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/water_hand/textures/water_droplet_particles_atlas.png"
-dest_files=["res://.godot/imported/water_droplet_particles_atlas.png-d955727a58dcf215e67e3510eae4604a.ctex"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/water_hand/textures/water_droplet_particles_atlas.png"
+dest_files=["res://.godot/imported/water_droplet_particles_atlas.png-53923e385fe400572464f7cad603f5b7.ctex"]
 
 [params]
 

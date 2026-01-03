@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://b48famqpe5dwl"
-path="res://.godot/imported/splash_shell.obj-c3761ff26bdffa29c061f9499993ad02.mesh"
+path="res://.godot/imported/splash_shell.obj-255610328d1da6e86d11a21c75f21133.mesh"
 
 [deps]
 
-files=["res://.godot/imported/splash_shell.obj-c3761ff26bdffa29c061f9499993ad02.mesh"]
+files=["res://.godot/imported/splash_shell.obj-255610328d1da6e86d11a21c75f21133.mesh"]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/water_hand/mesh/splash_shell.obj"
-dest_files=["res://.godot/imported/splash_shell.obj-c3761ff26bdffa29c061f9499993ad02.mesh", "res://.godot/imported/splash_shell.obj-c3761ff26bdffa29c061f9499993ad02.mesh"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/water_hand/mesh/splash_shell.obj"
+dest_files=["res://.godot/imported/splash_shell.obj-255610328d1da6e86d11a21c75f21133.mesh", "res://.godot/imported/splash_shell.obj-255610328d1da6e86d11a21c75f21133.mesh"]
 
 [params]
 

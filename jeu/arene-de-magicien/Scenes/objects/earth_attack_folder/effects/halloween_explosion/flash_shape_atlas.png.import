@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0fu57qcy18r5"
-path="res://.godot/imported/flash_shape_atlas.png-9927ab04cfa43f7d5b8f23a8c9d0bbd6.ctex"
+path="res://.godot/imported/flash_shape_atlas.png-81a74d0b825174eab8371f9754300430.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/halloween_explosion/flash_shape_atlas.png"
-dest_files=["res://.godot/imported/flash_shape_atlas.png-9927ab04cfa43f7d5b8f23a8c9d0bbd6.ctex"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/flash_shape_atlas.png"
+dest_files=["res://.godot/imported/flash_shape_atlas.png-81a74d0b825174eab8371f9754300430.ctex"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dnnls4fwxqvxy"
-path="res://.godot/imported/jack_o_lantern.glb-b7cbf85b5058dbc6d9e6502f86acb6f0.scn"
+path="res://.godot/imported/jack_o_lantern.glb-d445e78eac5be8894ca9326f5ce13cfa.scn"
 
 [deps]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/halloween_explosion/mesh/jack_o_lantern.glb"
-dest_files=["res://.godot/imported/jack_o_lantern.glb-b7cbf85b5058dbc6d9e6502f86acb6f0.scn"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/mesh/jack_o_lantern.glb"
+dest_files=["res://.godot/imported/jack_o_lantern.glb-d445e78eac5be8894ca9326f5ce13cfa.scn"]
 
 [params]
 

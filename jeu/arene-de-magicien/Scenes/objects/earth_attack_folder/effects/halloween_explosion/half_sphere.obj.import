@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://bi5h5leket31d"
-path="res://.godot/imported/half_sphere.obj-883dd6128355253356c8f016410359d3.mesh"
+path="res://.godot/imported/half_sphere.obj-42b36e3f24134c19634c76f1b2225bf7.mesh"
 
 [deps]
 
-files=["res://.godot/imported/half_sphere.obj-883dd6128355253356c8f016410359d3.mesh"]
+files=["res://.godot/imported/half_sphere.obj-42b36e3f24134c19634c76f1b2225bf7.mesh"]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/halloween_explosion/half_sphere.obj"
-dest_files=["res://.godot/imported/half_sphere.obj-883dd6128355253356c8f016410359d3.mesh", "res://.godot/imported/half_sphere.obj-883dd6128355253356c8f016410359d3.mesh"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/half_sphere.obj"
+dest_files=["res://.godot/imported/half_sphere.obj-42b36e3f24134c19634c76f1b2225bf7.mesh", "res://.godot/imported/half_sphere.obj-42b36e3f24134c19634c76f1b2225bf7.mesh"]
 
 [params]
 
