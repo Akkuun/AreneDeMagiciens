@@ -1,7 +1,7 @@
 @tool
 extends XRToolsPickable
 
-enum WandState {IDLE, VACUUM, FIRE_BALL}
+enum WandState {IDLE, VACUUM, FIRE_BALL, TORNADO}
 
 @export var lock_position : bool = false
 @export var can_rotate : bool = false
@@ -10,7 +10,9 @@ func change_state(new_state: WandState) -> void:
 	if new_state == WandState.VACUUM:
 		$Spells.change_state("Vacuum")
 	elif new_state == WandState.FIRE_BALL:
-		$Spells.change_state("FireBall")
+		$Spells.change_state("Projectile", {"type" : "fire"})
+	elif new_state == WandState.TORNADO:
+		$Spells.change_state("Projectile", {"type" : "tornado"})
 	else:
 		$Spells.change_state("Idle")
 
@@ -76,10 +78,14 @@ func process_spell():
 	
 	if fail:
 		play_fail()
+	elif throw:
+		if tornado:
+			change_state(WandState.TORNADO)
+		else:
+			change_state(WandState.FIRE_BALL)
 	elif tornado:
 		change_state(WandState.VACUUM)
-	elif throw:
-		change_state(WandState.FIRE_BALL)
+	
 	
 	move_enum_list.clear()
 	move_list.clear()

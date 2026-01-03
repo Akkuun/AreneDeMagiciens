@@ -18,6 +18,7 @@ var velocity_history: Array[float] = []
 var max_velocity_history: int = 10
 
 var last_tilt: float = 0.0
+var initial_tilt: float = 0.0
 var tilt_acc = 0.0
 
 @export var tilt_down_threshold: float = 0.5
@@ -30,6 +31,7 @@ func get_state_name() -> String:
 func state_enter(args: Dictionary) -> bool:
 	tilt_acc = 0.0
 	last_tilt = wand.global_transform.basis.y.y
+	initial_tilt = last_tilt
 	position_history.clear()
 	velocity_history.clear()
 	return true

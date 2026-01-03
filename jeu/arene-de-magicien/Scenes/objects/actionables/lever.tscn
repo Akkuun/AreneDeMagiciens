@@ -1,85 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://fafe387i2dki"]
+[gd_scene load_steps=5 format=3 uid="uid://fafe387i2dki"]
 
 [ext_resource type="Script" uid="uid://dtntg5kv6jfk0" path="res://scenes/objects/actionables/lever.gd" id="1_ymqxt"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_emci5"]
+[ext_resource type="PackedScene" uid="uid://4b3ll6mxdyvd" path="res://assets/meshes/blender/lever.blend" id="3_emci5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5vpai"]
 radius = 0.11476315
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_2hvso"]
-top_radius = 0.05
-bottom_radius = 0.05
-height = 0.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_ymqxt"]
-size = Vector3(0.2, 0.225, 0.75)
-
-[sub_resource type="Animation" id="Animation_ymqxt"]
-resource_name = "Activating"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PickableObject:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.286, 0), Vector3(0, 0.10632315, -0.27170587)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PickableObject:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.3089969, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_emci5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PickableObject:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.25, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PickableObject:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vpai"]
-_data = {
-&"Activating": SubResource("Animation_ymqxt"),
-&"RESET": SubResource("Animation_emci5")
-}
-
-[node name="Lever" type="Node3D"]
+[node name="Lever" type="Node3D" node_paths=PackedStringArray("anim_player")]
 script = ExtResource("1_ymqxt")
-pivot_offset = Vector3(0, -0.75, 0)
+anim_player = NodePath("lever/AnimationPlayer")
 
 [node name="PickableObject" parent="." instance=ExtResource("2_emci5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286, 0)
 collision_layer = 1024
 collision_mask = 196608
 freeze = true
@@ -87,24 +19,17 @@ freeze_mode = 0
 picked_up_layer = 0
 
 [node name="CollisionShape3D" parent="PickableObject" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21604568, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6555917, 0)
 shape = SubResource("SphereShape3D_5vpai")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PickableObject"]
-mesh = SubResource("CylinderMesh_2hvso")
-skeleton = NodePath("../..")
+[node name="lever" parent="." instance=ExtResource("3_emci5")]
+transform = Transform3D(-9.616506e-09, 0, -0.22, 0, 0.22, 0, 0.22, 0, -9.616506e-09, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18342495)
-mesh = SubResource("BoxMesh_ymqxt")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-reset_on_save = false
-libraries = {
-&"": SubResource("AnimationLibrary_5vpai")
-}
+[node name="Skeleton3D" parent="lever/Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0, -0.014902946, 0.999889)
 
 [connection signal="picked_up" from="PickableObject" to="." method="_on_pickable_object_picked_up"]
 [connection signal="released" from="PickableObject" to="." method="_on_pickable_object_released"]
 
 [editable path="PickableObject"]
+[editable path="lever"]

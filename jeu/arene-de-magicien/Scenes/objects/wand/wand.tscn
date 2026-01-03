@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cchm02t2nltlx" path="res://scripts/patterns/state_manager.gd" id="7_fk80e"]
 [ext_resource type="Script" uid="uid://c8hmqfnxov54a" path="res://scenes/objects/wand/idle_state.gd" id="8_foi4m"]
 [ext_resource type="Script" uid="uid://lj50rsn2caqs" path="res://scenes/objects/wand/vacuum_state.gd" id="9_wc181"]
-[ext_resource type="Script" uid="uid://bwqgdw02d1hw3" path="res://scenes/objects/wand/fire_ball_state.gd" id="10_foi4m"]
+[ext_resource type="Script" uid="uid://bwqgdw02d1hw3" path="res://scenes/objects/wand/projectile_state.gd" id="10_foi4m"]
 [ext_resource type="Script" uid="uid://bynyse6gajyha" path="res://scenes/objects/wand/movements/armed_move_state.gd" id="12_3jn2n"]
 [ext_resource type="Script" uid="uid://cr8xly1rucjke" path="res://scenes/objects/wand/movements/idle_move_state.gd" id="12_h2r10"]
 [ext_resource type="Script" uid="uid://xosfw0gdsy58" path="res://scenes/objects/wand/movements/tilting_move_state.gd" id="13_h2r10"]
@@ -64,7 +64,7 @@ vacuum_width = 0.5
 vacuum_segment_length = 3.0
 collision_mask = 22
 
-[node name="FireBallState" type="Node" parent="Spells" index="2" node_paths=PackedStringArray("wand_muzzle")]
+[node name="ProjectileState" type="Node" parent="Spells" index="2" node_paths=PackedStringArray("wand_muzzle")]
 script = ExtResource("10_foi4m")
 wand_muzzle = NodePath("../../Muzzle")
 
