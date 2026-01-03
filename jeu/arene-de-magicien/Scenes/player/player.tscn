@@ -37,7 +37,7 @@ items = Array[PackedScene]([ExtResource("13_g7b1g"), ExtResource("7_6vj4j")])
 max_size = 4
 metadata/_custom_type_script = "uid://ev1c638ra2q6"
 
-[node name="Player" type="XROrigin3D" node_paths=PackedStringArray("cam", "menu")]
+[node name="Player" type="XROrigin3D" node_paths=PackedStringArray("cam", "menu") groups=["player"]]
 script = ExtResource("1_lvxji")
 cam = NodePath("XRCamera3D")
 menu = NodePath("Viewport2Din3D")

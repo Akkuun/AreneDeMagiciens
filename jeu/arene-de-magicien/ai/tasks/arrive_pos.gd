@@ -1,14 +1,17 @@
 @tool
 extends BTAction
-## Déplace l'agent vers la position spécifiée dans le plan horizontal (XZ).
-## Utilise NavigationAgent3D pour suivre un chemin calculé sur le NavigationMesh.
-## Retourne SUCCESS quand proche de la position cible ;
-## sinon retourne RUNNING.
+# Déplace l'agent vers la position spécifiée dans le plan horizontal (XZ).
+# Utilise NavigationAgent3D pour suivre un chemin calculé sur le NavigationMesh.
+# Retourne SUCCESS quand proche de la position cible ;
+# sinon retourne RUNNING.
 
 @export var target_position_var := &"pos"
 
-# vitesse désirée (float)
-@export var speed_var := &"speed"
+# Mode de vitesse : walk (marche) ou run (course)
+@export_enum("run", "walk", "custom") var speed_mode: String = "run"
+
+# Vitesse personnalisée (utilisée si speed_mode == "custom")
+@export var custom_speed: float = 5.0
 
 # distance minimale à la position cible pour retourner SUCCESS.
 @export var tolerance := 0.5
@@ -32,20 +35,30 @@ func _tick(_delta: float) -> Status:
 	if distance < tolerance:
 		return SUCCESS
 
-	# récupère la vitesse depuis le blackboard ou utilise move_speed de l'agent
-	var speed: float = agent.move_speed if agent.get("move_speed") != null else 5.0
-	if blackboard.has_var(speed_var):
-		speed = blackboard.get_var(speed_var, speed)
+	# Détermine la vitesse selon le mode
+	var speed: float
+	match speed_mode:
+		"walk":
+			speed = agent.walk_speed if agent.get("walk_speed") != null else 2.0
+		"run":
+			speed = agent.run_speed if agent.get("run_speed") != null else 5.0
+		"custom":
+			speed = custom_speed
+		_:
+			speed = agent.move_speed if agent.get("move_speed") != null else 5.0
+	
+	# print("speed mode: %s -> %s" % [speed_mode, speed])
+	
 	
 	var dir_3d: Vector3
 	
 	# utilise NavigationAgent3D si disponible
-	if agent.has_method("set_navigation_target") and agent.has_method("get_next_navigation_position"):
-		#configure la destination du NavigationAgent
-		agent.set_navigation_target(target_pos)
+	if agent._navigation_agent and is_instance_valid(agent._navigation_agent):
+		# configure la destination du NavigationAgent
+		agent._navigation_agent.target_position = target_pos
 		
-		# obtient la prochaine position sur le chemin calculé
-		var next_pos: Vector3 = agent.get_next_navigation_position()
+		# obtien la prochaine position sur le chemin calculé
+		var next_pos: Vector3 = agent._navigation_agent.get_next_path_position()
 		
 		# direction vers le prochain waypoint
 		dir_3d = (next_pos - agent.global_position)

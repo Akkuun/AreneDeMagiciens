@@ -4,29 +4,31 @@ extends CharacterBody3D
 
 signal death
 
-#vitesse de déplacement de l'agent
-@export var move_speed: float = 5.0
+@export_group("Movement")
+@export var move_speed: float = 5.0 #vitesse de déplacement de l'agent
+@export var walk_speed: float = 2.0 #vitesse de marche
+@export var run_speed: float = 5.0 #vitesse de course
+@export var rotation_speed: float = 10.0 #vitesse de rotation de l'agent
 
-#vitesse de rotation de l'agent
-@export var rotation_speed: float = 10.0
-
-# Utilise le système de navigation de Godot pour éviter les obstacles
-@export var use_navigation: bool = true
+@export_group("Navigation")
+@export var use_navigation: bool = true #utilise le système de navigation de Godot pour éviter les obstacles
+@export var navigation_radius: float = 0.5  # rayon de l'agent
+@export var navigation_height: float = 2.0  # hauteur de l'agent
 
 var _is_dead: bool = false
 var _moved_this_frame: bool = false
 var _navigation_agent: NavigationAgent3D = null
 
-@onready var root: Node3D = $root
+@onready var root: Node3D = $CharacterArmature
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 # @onready var health: Health = $Health  # pour rajouter un nœud Health
-# @onready var animation_player: AnimationPlayer = $AnimationPlayer  # si on rajoute de l'animation
 
 
 func _ready() -> void:
 	# health.damaged.connect(_damaged)
 	# health.death.connect(die)
 	
-	# Crée et configure le NavigationAgent3D si nécessaire
+	# crée et configure le NavigationAgent3D si nécessaire
 	if use_navigation:
 		_setup_navigation_agent()
 
@@ -104,16 +106,13 @@ func apply_knockback(knockback: Vector3, frames: int = 10) -> void:
 # callback quand l'agent prend des dégâts
 func _damaged(_amount: float, knockback: Vector3) -> void:
 	apply_knockback(knockback)
-	# if animation_player:
-	# 	animation_player.play(&"hurt")
+	if animation_player:
+		pass
 	
 	var btplayer := get_node_or_null(^"BTPlayer") as BTPlayer
 	if btplayer:
 		btplayer.set_active(false)
-	
 
-	# if animation_player:
-	# 	await animation_player.animation_finished
 	await get_tree().create_timer(0.3).timeout
 	
 	if btplayer and not _is_dead:
@@ -125,12 +124,13 @@ func die() -> void:
 	death.emit()
 	_is_dead = true
 	
+	root.process_mode = Node.PROCESS_MODE_DISABLED
 	set_physics_process(false)
 	collision_layer = 0
 	collision_mask = 0
 	
-	# if animation_player:
-	# 	animation_player.play(&"death")
+	if animation_player:
+		animation_player.play(&"Death")
 	
 	# désactive le BehaviorTree
 	var btplayer := get_node_or_null(^"BTPlayer") as BTPlayer
@@ -163,25 +163,57 @@ func _setup_navigation_agent() -> void:
 	add_child(_navigation_agent)
 	_navigation_agent.path_desired_distance = 0.5
 	_navigation_agent.target_desired_distance = 0.5
-	_navigation_agent.radius = 0.5
-	_navigation_agent.height = 2.0
+	
+	# Utilise les paramètres exportés ou tente de les déduire du CollisionShape
+	var collision_shape = _get_collision_shape()
+	if collision_shape:
+		_navigation_agent.radius = _calculate_agent_radius(collision_shape)
+		_navigation_agent.height = _calculate_agent_height(collision_shape)
+	else:
+		_navigation_agent.radius = navigation_radius
+		_navigation_agent.height = navigation_height
+	
 	_navigation_agent.avoidance_enabled = true
 
 
-#définit la destination du NavigationAgent
-func set_navigation_target(target_pos: Vector3) -> void:
-	if _navigation_agent:
-		_navigation_agent.target_position = target_pos
+# Récupère le CollisionShape3D de l'agent
+func _get_collision_shape() -> CollisionShape3D:
+	for child in get_children():
+		if child is CollisionShape3D:
+			return child
+	return null
 
 
-#retourne la prochaine position vers laquelle se déplacer (utilise la navigation)
-func get_next_navigation_position() -> Vector3:
-	if _navigation_agent:
-		if not _navigation_agent.is_navigation_finished():
-			var next = _navigation_agent.get_next_path_position()
-			return next
+# Calcule le rayon basé sur la forme de collision
+func _calculate_agent_radius(collision_shape: CollisionShape3D) -> float:
+	var shape = collision_shape.shape
+	if shape is CapsuleShape3D:
+		return shape.radius
+	elif shape is CylinderShape3D:
+		return shape.radius
+	elif shape is BoxShape3D:
+		return max(shape.size.x, shape.size.z) / 2.0
+	elif shape is SphereShape3D:
+		return shape.radius
+	return navigation_radius
 
+
+# Calcule la hauteur basée sur la forme de collision
+func _calculate_agent_height(collision_shape: CollisionShape3D) -> float:
+	var shape = collision_shape.shape
+	if shape is CapsuleShape3D:
+		return shape.height
+	elif shape is CylinderShape3D:
+		return shape.height
+	elif shape is BoxShape3D:
+		return shape.size.y
+	elif shape is SphereShape3D:
+		return shape.radius * 2.0
+	return navigation_height
+
+
+# déplace l'agent le long d'un chemin de navigation
+func navigate_along_path() -> Vector3i:
+	if _navigation_agent and not _navigation_agent.is_navigation_finished():
+		return _navigation_agent.get_next_path_position()
 	return global_position
-
-# func get_health() -> Health:
-# 	return health
