@@ -83,3 +83,24 @@ func process_spell():
 	
 	move_enum_list.clear()
 	move_list.clear()
+
+
+
+
+
+
+#func launchFireball():
+	#var fireball_instance = fireball.instantiate()
+	#var hand_transform = left_hand_controller.global_transform
+	#var direction = -hand_transform.basis.z
+	#fireball_instance.init(self, direction)
+	#get_parent().add_child(fireball_instance)
+	#fireball_instance.global_transform = Transform3D().looking_at(direction, Vector3.UP).translated(hand_transform.origin)
+#
+#func launchTornado():
+	#var tornado_instance = tornado.instantiate()
+	#var hand_transform = left_hand_controller.global_transform
+	#var direction = -hand_transform.basis.z
+	#tornado_instance.init(self, direction)
+	#get_parent().add_child(tornado_instance)
+	#tornado_instance.global_transform = Transform3D().looking_at(direction, Vector3.UP).translated(hand_transform.origin)

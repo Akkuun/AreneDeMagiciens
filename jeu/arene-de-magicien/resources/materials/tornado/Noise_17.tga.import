@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsfmrxdnbaemh"
 path.s3tc="res://.godot/imported/Noise_17.tga-84c15e53361cc32a695c1850e6dd9920.s3tc.ctex"
+path.etc2="res://.godot/imported/Noise_17.tga-84c15e53361cc32a695c1850e6dd9920.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/materials/tornado/Noise_17.tga"
-dest_files=["res://.godot/imported/Noise_17.tga-84c15e53361cc32a695c1850e6dd9920.s3tc.ctex"]
+dest_files=["res://.godot/imported/Noise_17.tga-84c15e53361cc32a695c1850e6dd9920.s3tc.ctex", "res://.godot/imported/Noise_17.tga-84c15e53361cc32a695c1850e6dd9920.etc2.ctex"]
 
 [params]
 

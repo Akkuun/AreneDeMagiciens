@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bj4utga64hbu2"
 path.s3tc="res://.godot/imported/FireNoise1.tga-1c598a8d3cb296eaaaf53e08d7f31060.s3tc.ctex"
+path.etc2="res://.godot/imported/FireNoise1.tga-1c598a8d3cb296eaaaf53e08d7f31060.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/materials/tornado/FireNoise1.tga"
-dest_files=["res://.godot/imported/FireNoise1.tga-1c598a8d3cb296eaaaf53e08d7f31060.s3tc.ctex"]
+dest_files=["res://.godot/imported/FireNoise1.tga-1c598a8d3cb296eaaaf53e08d7f31060.s3tc.ctex", "res://.godot/imported/FireNoise1.tga-1c598a8d3cb296eaaaf53e08d7f31060.etc2.ctex"]
 
 [params]
 
