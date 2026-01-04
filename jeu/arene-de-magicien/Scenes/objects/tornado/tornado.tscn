@@ -1131,6 +1131,7 @@ material = ExtResource("4_nhgnl")
 size = Vector2(0.1, 0.1)
 
 [node name="Tornado" type="RigidBody3D" node_paths=PackedStringArray("timer")]
+collision_layer = 0
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 gravity_scale = 0.0

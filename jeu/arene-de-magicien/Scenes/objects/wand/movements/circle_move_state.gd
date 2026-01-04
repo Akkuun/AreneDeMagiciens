@@ -4,11 +4,11 @@ extends State
 @export var move_recognizer : MoveRecognizer
 
 func get_state_name() -> String:
-	return "Armed"
+	return "Circle"
+
 
 func state_process(delta: float) -> void:
 	if wand_root.is_picked_up():
 		if move_recognizer.current_move == MoveRecognizer.MoveType.THRUST_Y:
-			state_manager.change_state("Aim", {"Type": "Fire"})
-		elif move_recognizer.current_move == MoveRecognizer.MoveType.CIRCLE:
-			state_manager.change_state("Circle")
+			move_recognizer.consume_move()
+			state_manager.change_state("Aim", {"Type": "Tornado"})

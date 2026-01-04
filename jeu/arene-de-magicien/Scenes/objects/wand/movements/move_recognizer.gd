@@ -10,6 +10,10 @@ var current_move : MoveType = MoveType.NONE
 @export var thrust_min_amplitude : float = 1.0
 @export var thrust_y_sensibility : float = 0.5
 
+@export var circle_detection_points : int = 30
+@export var circle_radius_tolerance : float = 2.0
+@export var min_circle_radius : float = 1.0
+
 
 var position_history: Array[Vector3] = []
 var max_history_size: int = 30
@@ -37,16 +41,16 @@ func _physics_process(delta: float) -> void:
 	
 	_update_target_history(delta)
 	_compute_movement()
+	var is_circle := _detect_circular_motion()
+	debug_draw_circle_history()
 	
-	if alignement_up >= up_sensibility:
-		current_move = MoveType.UP
-	
-	if movement_amplitude >= thrust_min_amplitude:
+	if is_circle:
+		current_move = MoveType.CIRCLE
+	elif movement_amplitude >= thrust_min_amplitude:
 		if abs(avg_velocity_direciton.y) >= thrust_y_sensibility:
 			current_move = MoveType.THRUST_Y
-	
-	print(abs(avg_velocity_direciton.y))
-	DebugDraw3D.draw_line(target.global_position, target.global_position + target.global_basis.y * movement_amplitude)
+	elif alignement_up >= up_sensibility:
+		current_move = MoveType.UP
 
 func _update_target_history(delta: float) -> void:
 	var tip_position = target.global_position
@@ -75,3 +79,56 @@ func _compute_movement():
 			avg_velocity_direciton += frame_direction
 	
 	avg_velocity_direciton = avg_velocity_direciton.normalized()
+
+
+func _detect_circular_motion() -> bool:
+	if position_history.size() < circle_detection_points:
+		return false
+	
+	var center := Vector3.ZERO
+
+	center = Vector3.ZERO
+	for pos in position_history:
+		center += pos
+	center /= position_history.size()
+
+	var radius = 0.0
+	for pos in position_history:
+		radius += center.distance_to(pos)
+	radius /= position_history.size()
+
+	var radius_variance = 0.0
+	for pos in position_history:
+		var dist = center.distance_to(pos)
+		radius_variance += abs(dist - radius)
+	radius_variance /= position_history.size()
+
+	if radius_variance > circle_radius_tolerance:
+		return false
+	
+	var total_angle = 0.0
+	for i in range(1, position_history.size()):
+		var v1 = (position_history[i-1] - center).normalized()
+		var v2 = (position_history[i] - center).normalized()
+		
+		var angle = acos(clamp(v1.dot(v2), -1.0, 1.0))
+		total_angle += angle
+	
+	var min_angle_for_circle = PI * 1.5
+
+	var first_to_last = position_history[0].distance_to(position_history[-1])
+	var diameter = radius * 2.0
+	
+	var is_closed_loop = first_to_last < (diameter * 0.3)
+	
+	return total_angle >= min_angle_for_circle and is_closed_loop
+
+func debug_draw_circle_history() -> void:
+	if position_history.size() < 2:
+		return
+
+	var trajectory : PackedVector3Array = []	
+	for pos in position_history:
+		trajectory.push_back(pos)
+
+	DebugDraw3D.draw_line_path(trajectory)
