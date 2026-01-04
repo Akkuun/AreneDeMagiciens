@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0t0fvctdsdhq"]
+[gd_scene load_steps=18 format=3 uid="uid://d0t0fvctdsdhq"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_3yfio"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_73vin"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://bynyse6gajyha" path="res://Scenes/objects/wand/movements/armed_move_state.gd" id="12_3jn2n"]
 [ext_resource type="Script" uid="uid://cr8xly1rucjke" path="res://Scenes/objects/wand/movements/idle_move_state.gd" id="12_h2r10"]
 [ext_resource type="Script" uid="uid://xosfw0gdsy58" path="res://Scenes/objects/wand/movements/tilting_move_state.gd" id="13_h2r10"]
+[ext_resource type="Script" uid="uid://dpmxl8bo2cgg" path="res://Scenes/objects/wand/movements/move_recognizer.gd" id="14_8wp0l"]
+[ext_resource type="Script" uid="uid://dxstqnnertx5o" path="res://Scenes/objects/wand/movements/aim_move_state.gd" id="14_xlv2h"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l64fc"]
 height = 0.2
@@ -85,27 +87,35 @@ outline_size = 8
 [node name="SpellRecognition" type="Node" parent="." index="8"]
 script = ExtResource("7_fk80e")
 
-[node name="IdleMoveState" type="Node" parent="SpellRecognition" index="0" node_paths=PackedStringArray("wand_root")]
+[node name="IdleMoveState" type="Node" parent="SpellRecognition" index="0" node_paths=PackedStringArray("wand_root", "move_recognizer")]
 script = ExtResource("12_h2r10")
 wand_root = NodePath("../..")
-sensibility = 0.9
+move_recognizer = NodePath("../../MoveRecognizer")
 
 [node name="Duration" type="Timer" parent="SpellRecognition/IdleMoveState" index="0"]
 wait_time = 0.4
 one_shot = true
 
-[node name="ArmedMoveState" type="Node" parent="SpellRecognition" index="1" node_paths=PackedStringArray("wand_root")]
+[node name="ArmedMoveState" type="Node" parent="SpellRecognition" index="1" node_paths=PackedStringArray("wand_root", "move_recognizer")]
 script = ExtResource("12_3jn2n")
 wand_root = NodePath("../..")
+move_recognizer = NodePath("../../MoveRecognizer")
 
-[node name="TiltingMoveState" type="Node" parent="SpellRecognition" index="2" node_paths=PackedStringArray("wand")]
+[node name="TiltingMoveState" type="Node" parent="SpellRecognition" index="2"]
 script = ExtResource("13_h2r10")
-wand = NodePath("../..")
-tilt_down_threshold = 0.4
+
+[node name="AimMoveState" type="Node" parent="SpellRecognition" index="3" node_paths=PackedStringArray("wand_muzzle")]
+script = ExtResource("14_xlv2h")
+wand_muzzle = NodePath("../../Muzzle")
+
+[node name="MoveRecognizer" type="Node" parent="." index="9" node_paths=PackedStringArray("target")]
+script = ExtResource("14_8wp0l")
+target = NodePath("..")
+thrust_min_amplitude = 0.3
+thrust_y_sensibility = 0.4
 
 [connection signal="action_pressed" from="." to="." method="_on_action_pressed"]
 [connection signal="grabbed" from="." to="SpellRecognition/IdleMoveState" method="_on_wand_grabbed"]
 [connection signal="state_changed" from="Spells" to="." method="_on_spells_state_changed"]
 [connection signal="state_changed" from="SpellRecognition" to="." method="_on_spell_recognition_state_changed"]
 [connection signal="timeout" from="SpellRecognition/IdleMoveState/Duration" to="SpellRecognition/IdleMoveState" method="_on_duration_timeout"]
-[connection signal="move_detected" from="SpellRecognition/TiltingMoveState" to="." method="_on_tilting_move_state_move_detected"]

@@ -1,7 +1,7 @@
 extends State
 
 @export var wand_root : XRToolsPickable
-@export var sensibility : float = 0.1
+@export var move_recognizer : MoveRecognizer
 
 func get_state_name() -> String:
 	return "Idle"
@@ -11,8 +11,8 @@ func get_state_name() -> String:
 
 func state_process(delta: float) -> void:
 	if wand_root.get_picked_up_by_controller() != null:
-		var alignement := wand_root.global_basis.y.dot(Vector3.UP)
-		if alignement >= sensibility:
+		if move_recognizer.current_move == MoveRecognizer.MoveType.UP:
+			move_recognizer.consume_move()
 			if($Duration.is_stopped()):
 				$Duration.start()
 		else:
