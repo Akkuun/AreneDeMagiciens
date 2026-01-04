@@ -28,8 +28,6 @@ height = 0.2
 [node name="Wand" instance=ExtResource("1_3yfio")]
 transform = Transform3D(1, 0, 0, 0, 1.0004256, 0, 0, 0, 1.0004256, 0, 0, 0)
 script = ExtResource("2_yq5qq")
-lock_position = false
-can_rotate = false
 press_to_hold = false
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -52,7 +50,10 @@ hand_pose = ExtResource("5_xtfqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10784507, 0)
 target_position = Vector3(0, 100, 0)
 
-[node name="Spells" type="Node" parent="." index="5"]
+[node name="EffectLocation" type="Marker3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0.3344148, 0)
+
+[node name="Spells" type="Node" parent="." index="6"]
 script = ExtResource("7_fk80e")
 
 [node name="IdleState" type="Node" parent="Spells" index="0"]
@@ -69,13 +70,6 @@ collision_mask = 22
 [node name="ProjectileState" type="Node" parent="Spells" index="2" node_paths=PackedStringArray("wand_muzzle")]
 script = ExtResource("10_foi4m")
 wand_muzzle = NodePath("../../Muzzle")
-
-[node name="CurrentState" type="Label3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1469844, 0)
-billboard = 2
-text = "Current state"
-font_size = 24
-outline_size = 8
 
 [node name="DebugText" type="Label3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.33798057, 0)
@@ -101,9 +95,10 @@ script = ExtResource("12_3jn2n")
 wand_root = NodePath("../..")
 move_recognizer = NodePath("../../MoveRecognizer")
 
-[node name="AimMoveState" type="Node" parent="SpellRecognition" index="2" node_paths=PackedStringArray("wand_muzzle")]
+[node name="AimMoveState" type="Node" parent="SpellRecognition" index="2" node_paths=PackedStringArray("wand_muzzle", "effect_target")]
 script = ExtResource("14_xlv2h")
 wand_muzzle = NodePath("../../Muzzle")
+effect_target = NodePath("../../EffectLocation")
 
 [node name="CircleMoveState" type="Node" parent="SpellRecognition" index="3" node_paths=PackedStringArray("wand_root", "move_recognizer")]
 script = ExtResource("14_dfwcx")
@@ -120,6 +115,5 @@ min_circle_radius = 0.1
 
 [connection signal="action_pressed" from="." to="." method="_on_action_pressed"]
 [connection signal="grabbed" from="." to="SpellRecognition/IdleMoveState" method="_on_wand_grabbed"]
-[connection signal="state_changed" from="Spells" to="." method="_on_spells_state_changed"]
 [connection signal="state_changed" from="SpellRecognition" to="." method="_on_spell_recognition_state_changed"]
 [connection signal="timeout" from="SpellRecognition/IdleMoveState/Duration" to="SpellRecognition/IdleMoveState" method="_on_duration_timeout"]
