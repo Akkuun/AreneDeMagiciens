@@ -93,7 +93,6 @@ sides = 16
 material = SubResource("StandardMaterial3D_8e3xq")
 
 [node name="Player" parent="." instance=ExtResource("2_8e3xq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.978925, 0, 0)
 
 [node name="Props" type="Node3D" parent="."]
 
