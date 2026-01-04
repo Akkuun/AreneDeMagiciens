@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0y04trna5ols"
-path="res://.godot/imported/diffuse.png-0f82939d45766d687516020baccc1db3.ctex"
+path="res://.godot/imported/diffuse.png-6dcdbb6bd9183ba4e84eb843930757b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/halloween_explosion/mesh/diffuse.png"
-dest_files=["res://.godot/imported/diffuse.png-0f82939d45766d687516020baccc1db3.ctex"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/mesh/diffuse.png"
+dest_files=["res://.godot/imported/diffuse.png-6dcdbb6bd9183ba4e84eb843930757b0.ctex"]
 
 [params]
 

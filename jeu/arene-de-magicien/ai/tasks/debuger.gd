@@ -1,8 +1,8 @@
 @tool
 extends BTAction
 
-## Tâche BehaviorTree : Affiche des informations de debug dans la console
-## pour vérifier le contenu d'une variable du blackboard.
+# Tâche BehaviorTree : Affiche des informations de debug dans la console
+# pour vérifier le contenu d'une variable du blackboard.
 
 #nom de la variable du blackboard à débugger
 @export var var_to_debug: StringName = &"target"
@@ -36,13 +36,13 @@ func _tick(_delta: float) -> Status:
 		print("[DEBUG] /!\\  %s: '%s' = null" % [debug_message, var_to_debug])
 	else:
 		if show_type:
-			print("[DEBUG] ✓ %s: '%s' = %s (type: %s)" % [
+			print("[DEBUG] V %s: '%s' = %s (type: %s)" % [
 				debug_message, 
 				var_to_debug, 
 				value, 
 				type_string(typeof(value))
 			])
 		else:
-			print("[DEBUG] ✓ %s: '%s' = %s" % [debug_message, var_to_debug, value])
+			print("[DEBUG] V %s: '%s' = %s" % [debug_message, var_to_debug, value])
 	
 	return SUCCESS

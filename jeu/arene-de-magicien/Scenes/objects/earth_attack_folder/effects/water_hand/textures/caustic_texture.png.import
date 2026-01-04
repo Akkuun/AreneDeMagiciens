@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bax1k2etu2b3"
-path="res://.godot/imported/caustic_texture.png-b6f20957171ed552dd118eeb674f15d5.ctex"
+path="res://.godot/imported/caustic_texture.png-339003cb05eb3e9ff9dc12a4b6b9856c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/water_hand/textures/caustic_texture.png"
-dest_files=["res://.godot/imported/caustic_texture.png-b6f20957171ed552dd118eeb674f15d5.ctex"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/water_hand/textures/caustic_texture.png"
+dest_files=["res://.godot/imported/caustic_texture.png-339003cb05eb3e9ff9dc12a4b6b9856c.ctex"]
 
 [params]
 

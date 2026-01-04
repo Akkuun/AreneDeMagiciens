@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqmr2n7ym3yqh"
-path="res://.godot/imported/portal_thumbnail.png-d1ae3399598110cb1792726ca33b0463.ctex"
+path="res://.godot/imported/portal_thumbnail.png-0ac8b8527c52d57ccf36f6a5e2abe4ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/objects/earth_attack_folder/effects/tornado_portal/portal_thumbnail.png"
-dest_files=["res://.godot/imported/portal_thumbnail.png-d1ae3399598110cb1792726ca33b0463.ctex"]
+source_file="res://Scenes/objects/earth_attack_folder/effects/tornado_portal/portal_thumbnail.png"
+dest_files=["res://.godot/imported/portal_thumbnail.png-0ac8b8527c52d57ccf36f6a5e2abe4ba.ctex"]
 
 [params]
 
