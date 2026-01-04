@@ -1,9 +1,9 @@
 [gd_scene load_steps=30 format=3 uid="uid://ldem8o2w0156"]
 
 [ext_resource type="Script" path="res://effects/halloween_explosion/jack_o_lantern.gd" id="1_acisk"]
-[ext_resource type="PackedScene" uid="uid://dnnls4fwxqvxy" path="res://effects/halloween_explosion/mesh/jack_o_lantern.glb" id="1_lr0q6"]
-[ext_resource type="Material" uid="uid://d3pfxi4udjfxb" path="res://effects/halloween_explosion/mesh/jack_o_lantern_mat.tres" id="3_3nbxj"]
-[ext_resource type="AnimationLibrary" uid="uid://dcm2qc86snx3a" path="res://effects/halloween_explosion/mesh/animations/custom.res" id="4_1mtwm"]
+[ext_resource type="PackedScene" uid="uid://dnnls4fwxqvxy" path="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/mesh/jack_o_lantern.glb" id="1_lr0q6"]
+[ext_resource type="Material" uid="uid://d3pfxi4udjfxb" path="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/mesh/jack_o_lantern_mat.tres" id="3_3nbxj"]
+[ext_resource type="AnimationLibrary" uid="uid://dcm2qc86snx3a" path="res://Scenes/objects/earth_attack_folder/effects/halloween_explosion/mesh/animations/custom.res" id="4_1mtwm"]
 
 [sub_resource type="Animation" id="Animation_f7bho"]
 resource_name = "Explode"

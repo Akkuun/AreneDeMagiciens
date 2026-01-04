@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://bsb0kkp561qn5"]
 
 [ext_resource type="Material" uid="uid://kct761rk1ght" path="res://resources/materials/planks/planks_mat.tres" id="1_5keee"]
-[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://scenes/player/player.tscn" id="2_8e3xq"]
+[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="2_8e3xq"]
 [ext_resource type="Material" uid="uid://cqx2uv8nxppb8" path="res://resources/materials/world/base_ground_material.tres" id="2_bt4kb"]
-[ext_resource type="PackedScene" uid="uid://drael26wgkdw0" path="res://scenes/levels/object_spawner.tscn" id="3_8e3xq"]
-[ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="4_1spgc"]
-[ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="5_pcej5"]
-[ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://scenes/crafting/cauldron.tscn" id="6_bt4kb"]
-[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://scenes/objects/potions/fire_potion/fire_potion.tscn" id="8_ipxi7"]
+[ext_resource type="PackedScene" uid="uid://drael26wgkdw0" path="res://Scenes/levels/object_spawner.tscn" id="3_8e3xq"]
+[ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://Scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="4_1spgc"]
+[ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://Scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="5_pcej5"]
+[ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="6_bt4kb"]
+[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/potions/fire_potion/fire_potion.tscn" id="8_ipxi7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5keee"]
 albedo_color = Color(0.38431373, 0.30588236, 0.22745098, 1)

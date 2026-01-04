@@ -1,10 +1,10 @@
 [gd_scene load_steps=20 format=3 uid="uid://curc07g3hrmrs"]
 
 [ext_resource type="Shader" path="res://assets/ground_checkerboard.gdshader" id="1_4q7nc"]
-[ext_resource type="Texture2D" uid="uid://3ro0yvv3roj3" path="res://assets/checkerboard.svg" id="2_gmft6"]
-[ext_resource type="Material" uid="uid://bn560w5oht3yf" path="res://effects/force_field/materials/force_field_mat.tres" id="2_hcgsd"]
-[ext_resource type="ArrayMesh" uid="uid://dluxu7kw8er3m" path="res://effects/force_field/mesh/triangle_mesh.obj" id="4_gt02u"]
-[ext_resource type="PackedScene" uid="uid://cmj5l6xu36itg" path="res://turner/turner.tscn" id="5_na51v"]
+[ext_resource type="Texture2D" path="res://assets/checkerboard.svg" id="2_gmft6"]
+[ext_resource type="Material" uid="uid://bn560w5oht3yf" path="res://Scenes/objects/earth_attack_folder/effects/force_field/materials/force_field_mat.tres" id="2_hcgsd"]
+[ext_resource type="ArrayMesh" uid="uid://dluxu7kw8er3m" path="res://Scenes/objects/earth_attack_folder/effects/force_field/mesh/triangle_mesh.obj" id="4_gt02u"]
+[ext_resource type="PackedScene" path="res://turner/turner.tscn" id="5_na51v"]
 
 [sub_resource type="Environment" id="Environment_8nrla"]
 background_mode = 1

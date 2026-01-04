@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://drael26wgkdw0"]
 
-[ext_resource type="Script" path="res://Scenes/levels/object_spawner.gd" id="1_m7nwl"]
+[ext_resource type="Script" uid="uid://bmy45i03cljj1" path="res://Scenes/levels/object_spawner.gd" id="1_m7nwl"]
 [ext_resource type="PackedScene" uid="uid://fafe387i2dki" path="res://Scenes/objects/actionables/lever.tscn" id="2_taeo5"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_t2h24"]

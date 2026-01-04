@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://6xrhl8xrpiap"]
 
-[ext_resource type="Script" uid="uid://bh06rqf0rrgfh" path="res://scenes/components/physic/status_receiver.gd" id="1_l6ku0"]
+[ext_resource type="Script" uid="uid://bh06rqf0rrgfh" path="res://Scenes/components/physic/status_receiver.gd" id="1_l6ku0"]
 
 [node name="StatusReceiver" type="Area3D"]
 collision_layer = 0

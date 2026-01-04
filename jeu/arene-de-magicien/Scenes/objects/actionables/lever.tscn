@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fafe387i2dki"]
 
-[ext_resource type="Script" uid="uid://dtntg5kv6jfk0" path="res://scenes/objects/actionables/lever.gd" id="1_ymqxt"]
+[ext_resource type="Script" uid="uid://dtntg5kv6jfk0" path="res://Scenes/objects/actionables/lever.gd" id="1_ymqxt"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_emci5"]
 [ext_resource type="PackedScene" uid="uid://4b3ll6mxdyvd" path="res://assets/meshes/blender/lever.blend" id="3_emci5"]
 

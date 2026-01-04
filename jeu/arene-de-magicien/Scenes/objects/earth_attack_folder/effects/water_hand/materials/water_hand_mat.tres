@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://btc57c1fm5im1"]
 
-[ext_resource type="Shader" uid="uid://m2tfu5uwyiai" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/water.gdshader" id="1_xvrf0"]
-[ext_resource type="Texture2D" uid="uid://bax1k2etu2b3" path="res://scenes/objects/earth_attack_folder/effects/water_hand/textures/caustic_texture.png" id="2_8uy1l"]
+[ext_resource type="Shader" uid="uid://m2tfu5uwyiai" path="res://Scenes/objects/earth_attack_folder/effects/water_hand/materials/water.gdshader" id="1_xvrf0"]
+[ext_resource type="Texture2D" uid="uid://bax1k2etu2b3" path="res://Scenes/objects/earth_attack_folder/effects/water_hand/textures/caustic_texture.png" id="2_8uy1l"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xo6mr"]
 

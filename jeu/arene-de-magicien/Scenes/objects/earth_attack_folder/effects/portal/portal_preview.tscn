@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bikjvpb1cleel"]
 
 [ext_resource type="Shader" path="res://assets/ground_checkerboard.gdshader" id="1_auw3v"]
-[ext_resource type="Texture2D" uid="uid://3ro0yvv3roj3" path="res://assets/checkerboard.svg" id="2_j510k"]
-[ext_resource type="PackedScene" uid="uid://cmj5l6xu36itg" path="res://turner/turner.tscn" id="3_8d5m4"]
-[ext_resource type="PackedScene" uid="uid://ck7jc3h5tfgi" path="res://effects/portal/portal/portal.tscn" id="4_iv3mi"]
-[ext_resource type="PackedScene" uid="uid://ddjouhm76gjbx" path="res://assets/dummy/dummy_skin.tscn" id="5_qw72d"]
+[ext_resource type="Texture2D" path="res://assets/checkerboard.svg" id="2_j510k"]
+[ext_resource type="PackedScene" path="res://turner/turner.tscn" id="3_8d5m4"]
+[ext_resource type="PackedScene" uid="uid://ck7jc3h5tfgi" path="res://Scenes/objects/earth_attack_folder/effects/portal/portal/portal.tscn" id="4_iv3mi"]
+[ext_resource type="PackedScene" path="res://assets/dummy/dummy_skin.tscn" id="5_qw72d"]
 
 [sub_resource type="Environment" id="Environment_urjej"]
 background_mode = 1

@@ -1,15 +1,15 @@
 [gd_scene load_steps=32 format=3 uid="uid://clqfhoslbs2f"]
 
 [ext_resource type="Script" path="res://effects/tornado_portal/portal_preview.gd" id="1_uniox"]
-[ext_resource type="Texture2D" uid="uid://3ro0yvv3roj3" path="res://assets/checkerboard.svg" id="2_yf5rq"]
-[ext_resource type="Material" uid="uid://5dlygf08frjc" path="res://effects/tornado_portal/materials/portal_effect_mat.tres" id="4_8vccs"]
-[ext_resource type="Material" uid="uid://dcvf6avwqqxhu" path="res://effects/tornado_portal/materials/portal_light_mat.tres" id="5_oiel3"]
-[ext_resource type="Material" uid="uid://dq7edc1qpr6ct" path="res://effects/tornado_portal/materials/pull_deform_mat.tres" id="6_og3s2"]
-[ext_resource type="Material" uid="uid://b73q6qfh1ldan" path="res://effects/tornado_portal/materials/halo_light_mat.tres" id="7_jal61"]
-[ext_resource type="Material" uid="uid://cmsx7fp6tjcbi" path="res://effects/tornado_portal/materials/trail_particles_mat.tres" id="8_lptxy"]
+[ext_resource type="Texture2D" path="res://assets/checkerboard.svg" id="2_yf5rq"]
+[ext_resource type="Material" uid="uid://5dlygf08frjc" path="res://Scenes/objects/earth_attack_folder/effects/tornado_portal/materials/portal_effect_mat.tres" id="4_8vccs"]
+[ext_resource type="Material" uid="uid://dcvf6avwqqxhu" path="res://Scenes/objects/earth_attack_folder/effects/tornado_portal/materials/portal_light_mat.tres" id="5_oiel3"]
+[ext_resource type="Material" uid="uid://dq7edc1qpr6ct" path="res://Scenes/objects/earth_attack_folder/effects/tornado_portal/materials/pull_deform_mat.tres" id="6_og3s2"]
+[ext_resource type="Material" uid="uid://b73q6qfh1ldan" path="res://Scenes/objects/earth_attack_folder/effects/tornado_portal/materials/halo_light_mat.tres" id="7_jal61"]
+[ext_resource type="Material" uid="uid://cmsx7fp6tjcbi" path="res://Scenes/objects/earth_attack_folder/effects/tornado_portal/materials/trail_particles_mat.tres" id="8_lptxy"]
 [ext_resource type="Shader" path="res://effects/tornado_portal/materials/small_particles.gdshader" id="9_qn7hw"]
-[ext_resource type="PackedScene" uid="uid://cmj5l6xu36itg" path="res://turner/turner.tscn" id="9_wj2xm"]
-[ext_resource type="Material" uid="uid://q8vkh5skmqsn" path="res://effects/tornado_portal/materials/small_particles_mat.tres" id="10_i86j3"]
+[ext_resource type="PackedScene" path="res://turner/turner.tscn" id="9_wj2xm"]
+[ext_resource type="Material" uid="uid://q8vkh5skmqsn" path="res://Scenes/objects/earth_attack_folder/effects/tornado_portal/materials/small_particles_mat.tres" id="10_i86j3"]
 
 [sub_resource type="Environment" id="Environment_2m44q"]
 background_mode = 1

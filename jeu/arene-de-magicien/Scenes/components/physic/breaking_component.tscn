@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c52261dfbgtfq"]
 
-[ext_resource type="Script" uid="uid://cfnf38ot3yn30" path="res://scenes/components/physic/breaking_component.gd" id="1_fmani"]
+[ext_resource type="Script" uid="uid://cfnf38ot3yn30" path="res://Scenes/components/physic/breaking_component.gd" id="1_fmani"]
 
 [node name="BreakingComponent" type="Node"]
 script = ExtResource("1_fmani")

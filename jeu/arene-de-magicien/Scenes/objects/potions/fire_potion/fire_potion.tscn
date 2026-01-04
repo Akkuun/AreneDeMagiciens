@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://dl3muv5fxgmn8"]
 
-[ext_resource type="Script" uid="uid://bf24sumfv36tf" path="res://scenes/objects/potions/fire_potion/fire_potion.gd" id="1_m0v8l"]
+[ext_resource type="Script" uid="uid://bf24sumfv36tf" path="res://Scenes/objects/potions/fire_potion/fire_potion.gd" id="1_m0v8l"]
 [ext_resource type="PackedScene" uid="uid://b5csvx1ildoql" path="res://assets/meshes/blender/cube_bottle.blend" id="2_js5mk"]
-[ext_resource type="PackedScene" uid="uid://c5p8o46eknrhe" path="res://scenes/objects/potions/liquid_effect.tscn" id="2_m0v8l"]
+[ext_resource type="PackedScene" uid="uid://c5p8o46eknrhe" path="res://Scenes/objects/potions/liquid_effect.tscn" id="2_m0v8l"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_m0v8l"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_bx4u3"]
-[ext_resource type="PackedScene" uid="uid://c52261dfbgtfq" path="res://scenes/components/physic/breaking_component.tscn" id="6_6uhvu"]
+[ext_resource type="PackedScene" uid="uid://c52261dfbgtfq" path="res://Scenes/components/physic/breaking_component.tscn" id="6_6uhvu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rnp64"]
 size = Vector3(0.25757325, 0.5196692, 0.23)

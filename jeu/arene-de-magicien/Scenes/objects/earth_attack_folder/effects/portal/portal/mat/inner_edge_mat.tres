@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://ykdyx4anwwhq"]
 
 [ext_resource type="Shader" path="res://effects/portal/portal/mat/portal_edge.gdshader" id="1_sva16"]
-[ext_resource type="Texture2D" uid="uid://duoxqyy7qju2d" path="res://effects/portal/portal/portal_gradient.tres" id="2_icgcf"]
+[ext_resource type="Texture2D" uid="uid://duoxqyy7qju2d" path="res://Scenes/objects/earth_attack_folder/effects/portal/portal/portal_gradient.tres" id="2_icgcf"]
 
 [sub_resource type="Curve" id="Curve_cchdt"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0]

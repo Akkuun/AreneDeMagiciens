@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://effects/portal/portal/portal.gd" id="1_0p2fo"]
 [ext_resource type="Shader" path="res://effects/portal/portal/mat/portal.gdshader" id="2_0mcvt"]
-[ext_resource type="Material" uid="uid://drxqgegcf2dml" path="res://effects/portal/portal/mat/portal_deformation_mat.tres" id="2_0used"]
-[ext_resource type="Material" uid="uid://c4l216wujmnu0" path="res://effects/portal/portal/mat/outer_edge_mat.tres" id="3_ew0ub"]
-[ext_resource type="Material" uid="uid://ykdyx4anwwhq" path="res://effects/portal/portal/mat/inner_edge_mat.tres" id="4_bp3gq"]
+[ext_resource type="Material" uid="uid://drxqgegcf2dml" path="res://Scenes/objects/earth_attack_folder/effects/portal/portal/mat/portal_deformation_mat.tres" id="2_0used"]
+[ext_resource type="Material" uid="uid://c4l216wujmnu0" path="res://Scenes/objects/earth_attack_folder/effects/portal/portal/mat/outer_edge_mat.tres" id="3_ew0ub"]
+[ext_resource type="Material" uid="uid://ykdyx4anwwhq" path="res://Scenes/objects/earth_attack_folder/effects/portal/portal/mat/inner_edge_mat.tres" id="4_bp3gq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k8cij"]
 size = Vector3(3, 3, 2)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://be8q63n4je2yc"]
 
-[ext_resource type="PackedScene" uid="uid://crrib4ghmnya2" path="res://scenes/objects/tornado/tornado_ice.tscn" id="1_5ks7q"]
-[ext_resource type="PackedScene" uid="uid://d8wh0a0wia54" path="res://scenes/objects/tornado/tornado_poison.tscn" id="2_eefpy"]
-[ext_resource type="PackedScene" uid="uid://rbpnquxr0yad" path="res://scenes/objects/tornado/tornado_fire.tscn" id="3_j5jbc"]
+[ext_resource type="PackedScene" uid="uid://crrib4ghmnya2" path="res://Scenes/objects/tornado/tornado_ice.tscn" id="1_5ks7q"]
+[ext_resource type="PackedScene" uid="uid://d8wh0a0wia54" path="res://Scenes/objects/tornado/tornado_poison.tscn" id="2_eefpy"]
+[ext_resource type="PackedScene" uid="uid://rbpnquxr0yad" path="res://Scenes/objects/tornado/tornado_fire.tscn" id="3_j5jbc"]
 
 [sub_resource type="Environment" id="Environment_gd4g5"]
 background_mode = 1

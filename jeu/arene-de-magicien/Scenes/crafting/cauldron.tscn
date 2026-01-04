@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://cf5jd3t1yggbh"]
 
-[ext_resource type="Script" uid="uid://d3gu1lcda0vdn" path="res://scenes/crafting/cauldron.gd" id="1_b6rmn"]
+[ext_resource type="Script" uid="uid://d3gu1lcda0vdn" path="res://Scenes/crafting/cauldron.gd" id="1_b6rmn"]
 [ext_resource type="Script" uid="uid://cteqevfoqjlj" path="res://scripts/crafting/recipe.gd" id="2_d2nry"]
 [ext_resource type="Resource" uid="uid://y7uc85blxkem" path="res://resources/crafts/fire_potion_recipe.tres" id="3_m2tam"]
 [ext_resource type="Resource" uid="uid://os5ysj4hhn2u" path="res://resources/crafts/heal_potion_recipe.tres" id="4_m2tam"]
 [ext_resource type="PackedScene" uid="uid://b1hvquybv7inc" path="res://assets/meshes/blender/cauldron.blend" id="5_5m2py"]
-[ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://scenes/components/physic/status_receiver.tscn" id="8_3coew"]
+[ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://Scenes/components/physic/status_receiver.tscn" id="8_3coew"]
 [ext_resource type="Shader" uid="uid://c24bbjic8ni37" path="res://resources/materials/surface.gdshader" id="9_mohil"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3khmk"]

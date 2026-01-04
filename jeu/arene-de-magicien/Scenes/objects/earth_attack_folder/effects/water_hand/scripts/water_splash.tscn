@@ -1,11 +1,11 @@
 [gd_scene load_steps=28 format=3 uid="uid://obrsol71nwet"]
 
-[ext_resource type="Script" uid="uid://c1c6wup3w0r58" path="res://scenes/objects/earth_attack_folder/effects/water_hand/scripts/water_splash.gd" id="1_ctbb0"]
-[ext_resource type="Shader" uid="uid://clr84bgcq7p8a" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/water_droplet_particles.gdshader" id="2_7yqw3"]
-[ext_resource type="Material" uid="uid://btir5gntqbdb4" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/water_splash_mat.tres" id="2_tbwf0"]
-[ext_resource type="ArrayMesh" uid="uid://b48famqpe5dwl" path="res://scenes/objects/earth_attack_folder/effects/water_hand/mesh/splash_shell.obj" id="3_hivpj"]
-[ext_resource type="Texture2D" uid="uid://dgetus6yvt1hi" path="res://scenes/objects/earth_attack_folder/effects/water_hand/textures/water_particles_shape.png" id="5_e26qh"]
-[ext_resource type="Shader" uid="uid://bq7wd1jj4t4xf" path="res://scenes/objects/earth_attack_folder/effects/water_hand/materials/small_drop_particles.gdshader" id="5_fbb7n"]
+[ext_resource type="Script" uid="uid://c1c6wup3w0r58" path="res://Scenes/objects/earth_attack_folder/effects/water_hand/scripts/water_splash.gd" id="1_ctbb0"]
+[ext_resource type="Shader" uid="uid://clr84bgcq7p8a" path="res://Scenes/objects/earth_attack_folder/effects/water_hand/materials/water_droplet_particles.gdshader" id="2_7yqw3"]
+[ext_resource type="Material" uid="uid://btir5gntqbdb4" path="res://Scenes/objects/earth_attack_folder/effects/water_hand/materials/water_splash_mat.tres" id="2_tbwf0"]
+[ext_resource type="ArrayMesh" uid="uid://b48famqpe5dwl" path="res://Scenes/objects/earth_attack_folder/effects/water_hand/mesh/splash_shell.obj" id="3_hivpj"]
+[ext_resource type="Texture2D" uid="uid://dgetus6yvt1hi" path="res://Scenes/objects/earth_attack_folder/effects/water_hand/textures/water_particles_shape.png" id="5_e26qh"]
+[ext_resource type="Shader" uid="uid://bq7wd1jj4t4xf" path="res://Scenes/objects/earth_attack_folder/effects/water_hand/materials/small_drop_particles.gdshader" id="5_fbb7n"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q8mmj"]
 noise_type = 2

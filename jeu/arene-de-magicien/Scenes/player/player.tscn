@@ -14,10 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="7_je7p5"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="9_fm80t"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="10_gx1jg"]
-[ext_resource type="Script" path="res://Scenes/player/belt.gd" id="11_h0khc"]
+[ext_resource type="Script" uid="uid://iy0nutidc3cv" path="res://Scenes/player/belt.gd" id="11_h0khc"]
 [ext_resource type="PackedScene" uid="uid://dxcbfrl25gbok" path="res://Scenes/player/backpack.tscn" id="13_g7b1g"]
-[ext_resource type="Script" path="res://Scenes/player/inventory.gd" id="14_nyrd7"]
-[ext_resource type="Script" path="res://Scenes/player/inventory_resource.gd" id="15_ic3d6"]
+[ext_resource type="Script" uid="uid://b0085kxt4ol8i" path="res://Scenes/player/inventory.gd" id="14_nyrd7"]
+[ext_resource type="Script" uid="uid://ev1c638ra2q6" path="res://Scenes/player/inventory_resource.gd" id="15_ic3d6"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="17_kvlxm"]
 
 [sub_resource type="Curve" id="Curve_lgqa7"]

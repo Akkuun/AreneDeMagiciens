@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cahg2cogmbwae"]
 
-[ext_resource type="Script" uid="uid://bho3lehmadwfg" path="res://scenes/components/entities/health_bar.gd" id="1_atoxo"]
+[ext_resource type="Script" uid="uid://bho3lehmadwfg" path="res://Scenes/components/entities/health_bar.gd" id="1_atoxo"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_atoxo"]
 viewport_path = NodePath("SubViewport")

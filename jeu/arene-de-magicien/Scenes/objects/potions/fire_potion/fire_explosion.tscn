@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3pq2wrxw2ldl"]
 
-[ext_resource type="Script" uid="uid://rv6mifuwlolj" path="res://scenes/objects/potions/fire_potion/fire_explosion.gd" id="1_287cx"]
-[ext_resource type="PackedScene" uid="uid://bjafswckbbpeo" path="res://scenes/objects/potions/fire_potion/fire.tscn" id="2_bvp7s"]
+[ext_resource type="Script" uid="uid://rv6mifuwlolj" path="res://Scenes/objects/potions/fire_potion/fire_explosion.gd" id="1_287cx"]
+[ext_resource type="PackedScene" uid="uid://bjafswckbbpeo" path="res://Scenes/objects/potions/fire_potion/fire.tscn" id="2_bvp7s"]
 
 [node name="FireExplosion" type="Node3D"]
 script = ExtResource("1_287cx")

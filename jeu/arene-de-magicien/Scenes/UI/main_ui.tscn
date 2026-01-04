@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxvu3ytkxurew"]
 
-[ext_resource type="Script" uid="uid://b1kiwnopdn8bt" path="res://scenes/UI/main_ui.gd" id="1_7dr7o"]
-[ext_resource type="PackedScene" uid="uid://bcqnfty32hbhs" path="res://scenes/UI/game_settings.tscn" id="2_40uwi"]
+[ext_resource type="Script" uid="uid://b1kiwnopdn8bt" path="res://Scenes/UI/main_ui.gd" id="1_7dr7o"]
+[ext_resource type="PackedScene" uid="uid://bcqnfty32hbhs" path="res://Scenes/UI/game_settings.tscn" id="2_40uwi"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
