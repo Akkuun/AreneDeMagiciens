@@ -8,7 +8,7 @@ func _on_breaking_component_breaking(at: Vector3, speed: Vector3) -> void:
 	
 	var previous_position = at + Vector3.UP
 	
-	instance.global_position = previous_position
+	instance.position = previous_position
 	
 	get_tree().get_nodes_in_group("root_3d").front().add_child(instance)
 	queue_free()

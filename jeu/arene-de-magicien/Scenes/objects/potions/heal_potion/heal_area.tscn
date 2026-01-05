@@ -1,16 +1,74 @@
-[gd_scene load_steps=6 format=3 uid="uid://dypqc7lq213wf"]
+[gd_scene load_steps=17 format=3 uid="uid://dypqc7lq213wf"]
 
 [ext_resource type="Script" uid="uid://dh7qsctypns4" path="res://Scenes/objects/potions/heal_potion/heal_area.gd" id="1_iw03i"]
 [ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_wbdwm"]
+[ext_resource type="Shader" uid="uid://bolsf6hrdtl3w" path="res://resources/materials/heal/heal_area.gdshader" id="3_xkiae"]
+[ext_resource type="Texture2D" uid="uid://bjl0lpnkk1bl7" path="res://assets/images/shapes/cross.png" id="4_4fver"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_287cx"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iw03i"]
+height = 1.140625
+radius = 0.95751953
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8si8n"]
+[sub_resource type="Gradient" id="Gradient_san7d"]
+colors = PackedColorArray(0, 1.8247963, 0, 1, 0, 0.7350276, 1.1941766, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bie63"]
+gradient = SubResource("Gradient_san7d")
+
+[sub_resource type="Gradient" id="Gradient_rcqq4"]
+offsets = PackedFloat32Array(0.15, 0.325, 0.35625, 0.825, 0.98125, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86898494, 0.8689849, 0.8689849, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eybw2"]
+gradient = SubResource("Gradient_rcqq4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4fver"]
+render_priority = 0
+shader = ExtResource("3_xkiae")
+shader_parameter/radius = 0.5
+shader_parameter/color_gradient = SubResource("GradientTexture1D_bie63")
+shader_parameter/intensity_gradient = SubResource("GradientTexture1D_eybw2")
+shader_parameter/speed = 0.8
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xkiae"]
+material = SubResource("ShaderMaterial_4fver")
+
+[sub_resource type="Gradient" id="Gradient_n2wcp"]
+offsets = PackedFloat32Array(0, 0.2847222, 0.7430556, 1)
+colors = PackedColorArray(0, 1.8247963, 0.9063318, 0, 0, 1.8247963, 0.9063318, 1, 0, 1.8247963, 0.9063318, 0.8737864, 0, 1.8247963, 0.9063318, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h6qyy"]
+gradient = SubResource("Gradient_n2wcp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8b70u"]
+emission_shape_scale = Vector3(1, 0.5, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 0.7
+emission_ring_inner_radius = 1.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_h6qyy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7jr2"]
 transparency = 1
-albedo_color = Color(0.14901961, 0.94509804, 0.3882353, 0.44705883)
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("4_4fver")
+billboard_mode = 2
+billboard_keep_scale = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_c7goo"]
-material = SubResource("StandardMaterial3D_8si8n")
+[sub_resource type="QuadMesh" id="QuadMesh_u1vw3"]
+material = SubResource("StandardMaterial3D_n7jr2")
+size = Vector2(0.5, 0.5)
 
 [node name="HealArea" type="Node3D"]
 script = ExtResource("1_iw03i")
@@ -24,9 +82,15 @@ autostart = true
 status = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StatusGiver"]
-shape = SubResource("SphereShape3D_287cx")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4296875, 0)
+shape = SubResource("CylinderShape3D_iw03i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_c7goo")
+mesh = SubResource("PlaneMesh_xkiae")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25090402, 0)
+process_material = SubResource("ParticleProcessMaterial_8b70u")
+draw_pass_1 = SubResource("QuadMesh_u1vw3")
 
 [connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]

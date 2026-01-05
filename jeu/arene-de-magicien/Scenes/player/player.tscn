@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://eqpudws0tesx"]
+[gd_scene load_steps=26 format=3 uid="uid://eqpudws0tesx"]
 
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_gmlin"]
 [ext_resource type="Script" uid="uid://b1p7oa1fa7ix4" path="res://Scenes/player/player.gd" id="1_lvxji"]
@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="7_je7p5"]
 [ext_resource type="Resource" uid="uid://b8i4akvgtkn2t" path="res://resources/game_state/player_inventory.tres" id="8_nyrd7"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="9_fm80t"]
+[ext_resource type="PackedScene" uid="uid://cadnxif7rc8x6" path="res://Scenes/components/physic/status_manager.tscn" id="9_spm8d"]
+[ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://Scenes/components/physic/status_receiver.tscn" id="10_dpkfr"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="10_gx1jg"]
+[ext_resource type="Script" uid="uid://cfhgp433xp1ra" path="res://scripts/status_card.gd" id="10_kysaj"]
 [ext_resource type="Script" uid="uid://iy0nutidc3cv" path="res://Scenes/player/belt.gd" id="11_h0khc"]
 [ext_resource type="Script" uid="uid://b0085kxt4ol8i" path="res://Scenes/player/inventory.gd" id="14_nyrd7"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="17_kvlxm"]
@@ -28,6 +31,21 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+
+[sub_resource type="Resource" id="Resource_egohg"]
+script = ExtResource("10_kysaj")
+stoped_by = 2
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
+[sub_resource type="Resource" id="Resource_ua3np"]
+script = ExtResource("10_kysaj")
+tick_rate = 0.5
+damage_by_tick = 3.0
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kysaj"]
+radius = 0.3544922
+height = 1.6437988
 
 [node name="Player" type="XROrigin3D" node_paths=PackedStringArray("cam", "menu") groups=["player"]]
 script = ExtResource("1_lvxji")
@@ -67,6 +85,19 @@ transform = Transform3D(0.7352605, 0, 0.67778045, 0, 0.99999654, 0, -0.6777808, 
 [node name="Inventory" type="Node" parent="PlayerBody/Belt"]
 script = ExtResource("14_nyrd7")
 inventory_resource = ExtResource("8_nyrd7")
+
+[node name="StatusManager" parent="PlayerBody" instance=ExtResource("9_spm8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7743194, 0)
+status_managed = Dictionary[int, ExtResource("10_kysaj")]({
+1: SubResource("Resource_egohg"),
+3: SubResource("Resource_ua3np")
+})
+
+[node name="StatusReceiver" parent="PlayerBody/StatusManager" instance=ExtResource("10_dpkfr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody/StatusManager/StatusReceiver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036010742, 0)
+shape = SubResource("CapsuleShape3D_kysaj")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8493447, -0.18272701)

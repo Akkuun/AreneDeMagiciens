@@ -52,7 +52,6 @@ func _physics_process(delta: float) -> void:
 		current_move = MoveType.CIRCLE
 	elif movement_amplitude >= thrust_min_amplitude:
 		if abs(avg_velocity_direciton.y) >= thrust_y_sensibility:
-			print(avg_velocity_direciton.y)
 			current_move = MoveType.THRUST_Y
 	elif alignement_up >= up_sensibility:
 		current_move = MoveType.UP
