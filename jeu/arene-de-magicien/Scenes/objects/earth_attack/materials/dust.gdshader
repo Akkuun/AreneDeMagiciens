@@ -15,21 +15,24 @@ void start() {
 	uint alt_seed2 = hash(NUMBER + uint(10) + RANDOM_SEED);
 	uint alt_seed3 = hash(NUMBER + uint(20) + RANDOM_SEED);
 	uint alt_seed4 = hash(NUMBER + uint(30) + RANDOM_SEED);
-	
+
 	CUSTOM.x = rand_from_seed(alt_seed1);
-	
+
 	CUSTOM.y = 0.0;
 	TRANSFORM = EMISSION_TRANSFORM;
-	
+
 	float percent = float(INDEX) / float(particles_count);
 	float shape = texture(curve_sampler, vec2(percent, 0.0)).z;
-	
-	vec3 position = vec3(
+
+	vec3 local_position = vec3(
 		shape * 10.0,
 		0.0,
 		(CUSTOM.x - 0.5) * 4.5) * percent;
-		
-	TRANSFORM[3].xyz = position + EMISSION_TRANSFORM[3].xyz;
+
+	vec3 world_position = (EMISSION_TRANSFORM * vec4(local_position, 1.0)).xyz;
+	TRANSFORM[3].xyz = world_position;
+
+
 	VELOCITY.x = (rand_from_seed(alt_seed2) - 0.5) * 0.5;
 	VELOCITY.y = rand_from_seed(alt_seed3) * 0.5;
 	VELOCITY.z = (rand_from_seed(alt_seed4) - 0.5) * 0.5;
@@ -42,7 +45,7 @@ void process() {
 	vec3 curve = texture(curve_sampler, vec2(CUSTOM.y, 0.0)).xyz;
 	COLOR.a = curve.x;
 	VELOCITY *= 0.99;
-	
+
 	float scale = remap(CUSTOM.x, 0.0, 1.0, min_scale, max_scale);
 	TRANSFORM[0] = EMISSION_TRANSFORM[0] * scale * curve.y;
 	TRANSFORM[1] = EMISSION_TRANSFORM[1] * scale * curve.y;

@@ -10,6 +10,7 @@ func get_state_name() -> String:
 @export var vacuum_width : float = 1.0
 @export var vacuum_segment_length : float = 2.0
 @export var vacuum_segment_count : int = 6
+@export var move_recognizer : MoveRecognizer
 
 @export_flags_3d_physics var collision_mask : int 
 
@@ -120,7 +121,11 @@ func state_enter(args : Dictionary) -> bool:
 	
 	return true
 
-func state_process(delta: float):	
+func state_process(delta: float):
+	if move_recognizer.current_move == MoveRecognizer.MoveType.UP:
+		move_recognizer.consume_move()
+		state_manager.change_state("Idle")
+	
 	if wand_muzzle.is_colliding():
 		vacuum_start_position = wand_muzzle.get_collision_point()
 		vacuum_start_direction = wand_muzzle.get_collision_normal()

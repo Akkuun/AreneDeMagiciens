@@ -35,12 +35,13 @@ void process() {
 	
 	float percent = float(INDEX) / float(particles_count);
 	
-	vec3 position = vec3(
+	vec3 local_position = vec3(
 		percent * 10.0 + ((CUSTOM.x) - 0.5) * 0.5,
 		0.0,
 		(CUSTOM.x - 0.5) * (percent + 0.5) * 4.0);
 		
-	TRANSFORM[3].xyz = position + rotation_position + EMISSION_TRANSFORM[3].xyz;
+	vec3 world_position = (EMISSION_TRANSFORM * vec4(local_position + rotation_position, 1.0)).xyz;
+	TRANSFORM[3].xyz = world_position;
 	
 	if(emission_curves.y > 0.8){
 		mat4 custom_transform = TRANSFORM;

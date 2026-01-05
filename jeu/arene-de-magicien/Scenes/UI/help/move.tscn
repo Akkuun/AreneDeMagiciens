@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr1tiar1m3078"]
+
+[ext_resource type="Script" uid="uid://bfoc27t8wskch" path="res://Scenes/UI/help/move.gd" id="1_f4wk8"]
+[ext_resource type="Texture2D" uid="uid://cbrf262s14qfb" path="res://assets/images/stickmans/armed.png" id="2_ephwm"]
+
+[node name="Move" type="CenterContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_f4wk8")
+move = ExtResource("2_ephwm")
+
+[node name="Icon" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_ephwm")

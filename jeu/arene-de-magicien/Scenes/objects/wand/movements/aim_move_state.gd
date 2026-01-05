@@ -37,10 +37,10 @@ func state_enter(args : Dictionary) -> bool:
 	if args.Type == "Fire":
 		get_tree().create_timer(3).timeout.connect(func(): shoot(ProjType.FIRE))
 		effect = fireball_preparation_scene.instantiate()
-		get_tree().get_nodes_in_group("root_3d").front().add_child(effect)
 	else:
 		get_tree().create_timer(1).timeout.connect(func(): shoot(ProjType.TORNADO))
-	
+		effect = Node3D.new()
+	get_tree().get_nodes_in_group("root_3d").front().add_child(effect)
 	return true
 
 

@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://35q0jcym58c0"]
+
+[ext_resource type="PackedScene" uid="uid://cr1tiar1m3078" path="res://Scenes/UI/help/move.tscn" id="1_omosw"]
+[ext_resource type="Texture2D" uid="uid://ddgpwbnyn8j83" path="res://assets/images/stickmans/standing.png" id="2_gcaon"]
+[ext_resource type="Texture2D" uid="uid://d2fyy1sx76g64" path="res://assets/images/stickmans/throw.png" id="4_3jq5q"]
+[ext_resource type="Texture2D" uid="uid://w540iev88go2" path="res://assets/images/stickmans/circle.png" id="5_xbdta"]
+
+[node name="Spells" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Fire ball"
+
+[node name="FireBall" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Move" parent="FireBall" instance=ExtResource("1_omosw")]
+layout_mode = 2
+move = ExtResource("2_gcaon")
+
+[node name="Label" type="Label" parent="FireBall"]
+layout_mode = 2
+text = ">"
+
+[node name="Move2" parent="FireBall" instance=ExtResource("1_omosw")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="FireBall"]
+layout_mode = 2
+text = ">"
+
+[node name="Move3" parent="FireBall" instance=ExtResource("1_omosw")]
+layout_mode = 2
+move = ExtResource("4_3jq5q")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "Tornado"
+
+[node name="Tornado" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Move" parent="Tornado" instance=ExtResource("1_omosw")]
+layout_mode = 2
+move = ExtResource("2_gcaon")
+
+[node name="Label" type="Label" parent="Tornado"]
+layout_mode = 2
+text = ">"
+
+[node name="Move2" parent="Tornado" instance=ExtResource("1_omosw")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Tornado"]
+layout_mode = 2
+text = ">"
+
+[node name="Move3" parent="Tornado" instance=ExtResource("1_omosw")]
+layout_mode = 2
+move = ExtResource("5_xbdta")
+
+[node name="Label3" type="Label" parent="Tornado"]
+layout_mode = 2
+text = ">"
+
+[node name="Move4" parent="Tornado" instance=ExtResource("1_omosw")]
+layout_mode = 2
+move = ExtResource("4_3jq5q")

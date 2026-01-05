@@ -7,14 +7,21 @@ extends Node3D
 @onready var hit_zone = %HitZone
 @onready var hit_zone_collision = %HitZoneCollision
 
+signal finished
+
 func _ready():
-	var half_length = zone_length / 2.0
-	hit_zone.position.x = -half_length
+	hit_zone.position.z = 0
 	var t = create_tween()
-	t.tween_property(hit_zone, "position:x", half_length, 2.0)
+	t.tween_property(hit_zone, "position:z", zone_length, 2.0)
 	t.tween_callback(hit_zone_collision.set_deferred.bind("disabled", true))
 	
 	rocks_particles.emitting = true
 	dust_particles.emitting = true
-	await get_tree().create_timer(10.0).timeout
-	queue_free()
+	get_tree().create_timer(5).timeout.connect(func():
+		finished.emit()
+		queue_free())
+
+
+func init(owner: Node, dir: Vector3) -> void:
+	#owner_player = owner
+	look_at(-dir)

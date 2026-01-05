@@ -1,11 +1,13 @@
 class_name MoveRecognizer extends Node
 
-enum MoveType{NONE, UP, CIRCLE, THRUST_Y, THRUST_X, THRUST_DIAG}
+enum MoveType{NONE, UP, DOWN, FORWARD, CIRCLE, THRUST_Y, THRUST_X, THRUST_DIAG}
 
 var current_move : MoveType = MoveType.NONE
 
 @export var target : Node3D
 @export var up_sensibility : float = 0.9
+@export var down_sensibility : float = 0.9
+@export var forward_sensibility : float = 0.9
 
 @export var thrust_min_amplitude : float = 1.0
 @export var thrust_y_sensibility : float = 0.5
@@ -38,6 +40,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var alignement_up := target.global_basis.y.dot(Vector3.UP)
+	var alignement_down := target.global_basis.y.dot(Vector3.DOWN)
+	var alignement_forward := target.basis.y.dot(Vector3.FORWARD)
 	
 	_update_target_history(delta)
 	_compute_movement()
@@ -48,9 +52,14 @@ func _physics_process(delta: float) -> void:
 		current_move = MoveType.CIRCLE
 	elif movement_amplitude >= thrust_min_amplitude:
 		if abs(avg_velocity_direciton.y) >= thrust_y_sensibility:
+			print(avg_velocity_direciton.y)
 			current_move = MoveType.THRUST_Y
 	elif alignement_up >= up_sensibility:
 		current_move = MoveType.UP
+	elif alignement_down >= down_sensibility:
+		current_move = MoveType.DOWN
+	elif alignement_forward >= forward_sensibility:
+		current_move = MoveType.FORWARD
 
 func _update_target_history(delta: float) -> void:
 	var tip_position = target.global_position
