@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://projectile_basic"]
+[gd_scene load_steps=5 format=3 uid="uid://bymbxgpk838l0"]
 
-[ext_resource type="Script" path="res://Scenes/objects/projectile.gd" id="1"]
+[ext_resource type="Script" uid="uid://crv5snj015h6o" path="res://Scenes/objects/projectile.gd" id="1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1"]
 radius = 0.1
@@ -24,7 +24,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2
-collision_mask = 1
+collision_mask = 524295
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_1")

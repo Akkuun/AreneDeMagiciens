@@ -868,3 +868,6 @@ static func find_instance(node: Node) -> XRToolsPlayerBody:
 		XRHelpers.get_xr_origin(node),
 		"*",
 		"XRToolsPlayerBody") as XRToolsPlayerBody
+
+func take_damage(damage_amount: int) -> void:
+	print("Player took ", damage_amount, " damage.")

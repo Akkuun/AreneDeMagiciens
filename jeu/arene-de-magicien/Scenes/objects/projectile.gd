@@ -10,6 +10,16 @@ var _max_distance: float = 20.0
 var _traveled_distance: float = 0.0
 
 
+func _ready() -> void:
+	print("Projectile created at: ", global_position)
+	if has_node("Area3D"):
+		var area = get_node("Area3D")
+		print("  Area3D monitoring: ", area.monitoring)
+		print("  Area3D monitorable: ", area.monitorable)
+		print("  Area3D collision_layer: ", area.collision_layer)
+		print("  Area3D collision_mask: ", area.collision_mask)
+
+
 func _physics_process(delta: float) -> void:
 	var movement = direction * speed * delta
 	global_position += movement
@@ -37,9 +47,17 @@ func launch(target_position: Vector3, start_position: Vector3, max_distance: flo
 
 # a appelé quand le projectile touche quelque chose
 func _on_area_entered(area: Area3D) -> void:
-	var body = area.get_parent()
-	if body and body.has_method("take_damage"):
-		body.take_damage(damage)
+	var target = area.get_parent()
+	
+	while target and not target.has_method("take_damage"):
+		target = target.get_parent()
+		if target == null or target is Node3D and target.is_in_group("player"):
+			break
+	
+	if target and target.has_method("take_damage"):
+		print("Calling take_damage on: ", target.name)
+		target.take_damage(damage)
+	
 	queue_free()
 
 # a appelé quand le projectile entre en collision avec un corps
