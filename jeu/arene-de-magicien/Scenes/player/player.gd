@@ -6,6 +6,9 @@ extends XROrigin3D
 @export var menu_interpolation : Curve
 @export var interpolation_speed: float = 1.0  
 
+@export var left_hand_controller : XRController3D
+var fireball : PackedScene = preload("res://Scenes/objects/fire_ball/fire_ball.tscn")
+
 func _ready():
 	var interface = XRServer.find_interface("name of the plugin")
 	if interface and interface.initialize():
@@ -31,11 +34,21 @@ func _physics_process(delta: float) -> void:
 		menu.position = menu.position.lerp(target_pos, curve_value)
 	menu.rotation = menu.rotation.lerp(cam.rotation, curve_value)
 
+func launchFireball():
+	var fireball_instance = fireball.instantiate()
+	var hand_transform = left_hand_controller.global_transform
+	var direction = -hand_transform.basis.z
+	fireball_instance.init(self, direction)
+	get_parent().add_child(fireball_instance)
+	fireball_instance.global_transform = Transform3D().looking_at(direction, Vector3.UP).translated(hand_transform.origin)
 
 func _on_hand_button_pressed(name: String) -> void:
+	print("Button pressed: ", name)
 	if name == "menu_button":
 		menu.visible = !menu.visible
 		menu.global_position = cam.global_position - cam.global_basis.z * dist_menu_from_cam
+	if name == "trigger_click":
+		launchFireball()
 
 
 func _on_centering_timer_timeout() -> void:

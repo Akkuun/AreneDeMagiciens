@@ -18,10 +18,16 @@ extends Node3D
 var owner_player: Node
 var _dir: Vector3 = Vector3.ZERO
 var _age := 0.0
+var _traveled_distance: float = 0.0
+var _max_distance: float = 20.0
 
 # optional VFX nodes if you use them:
 
 var valid : bool = true
+
+# Indique au projectile enfant que le parent gère le mouvement
+func _handle_projectile_movement() -> void:
+	pass
 
 func init(owner: Node, dir: Vector3) -> void:
 	owner_player = owner
@@ -37,11 +43,13 @@ func _ready() -> void:
 		look_at(global_position + _dir, Vector3.UP)
 
 func _physics_process(delta: float) -> void:
-
 	if valid:
-		global_position += _dir * speed * delta
+		var movement = _dir * speed * delta
+		global_position += movement
+		_traveled_distance += movement.length()
+		
 		_age += delta
-		if _age >= life_time:
+		if _age >= life_time or _traveled_distance >= _max_distance:
 			explode()
 		
 

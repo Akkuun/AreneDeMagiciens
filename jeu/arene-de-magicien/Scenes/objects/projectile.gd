@@ -21,6 +21,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Si ce projectile a un parent qui gère le mouvement, ne bouge pas
+	if get_parent() and get_parent().has_method("_handle_projectile_movement"):
+		return
+	
 	var movement = direction * speed * delta
 	global_position += movement
 	_traveled_distance += movement.length()
@@ -47,6 +51,7 @@ func launch(target_position: Vector3, start_position: Vector3, max_distance: flo
 
 # a appelé quand le projectile touche quelque chose
 func _on_area_entered(area: Area3D) -> void:
+	print("Projectile hit area: ", area.name)
 	var target = area.get_parent()
 	
 	while target and not target.has_method("take_damage"):
@@ -62,5 +67,9 @@ func _on_area_entered(area: Area3D) -> void:
 
 # a appelé quand le projectile entre en collision avec un corps
 func _on_body_entered(body: Node3D) -> void:
+	print("Projectile hit body: ", body.name)
 	if body is StaticBody3D or body is CharacterBody3D:
+		if body.has_method("_damaged"):
+			print("Calling _damaged on: ", body.name)
+			body._damaged(damage, direction * 5.0)
 		queue_free()

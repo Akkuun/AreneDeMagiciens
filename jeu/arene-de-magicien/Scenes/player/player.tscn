@@ -29,13 +29,14 @@ _data = {
 }
 point_count = 3
 
-[node name="Player" type="XROrigin3D" node_paths=PackedStringArray("cam", "menu") groups=["player"]]
+[node name="Player" type="XROrigin3D" node_paths=PackedStringArray("cam", "menu", "left_hand_controller") groups=["player"]]
 script = ExtResource("1_lvxji")
 cam = NodePath("XRCamera3D")
 menu = NodePath("Viewport2Din3D")
 dist_menu_from_cam = 2.0
 menu_interpolation = SubResource("Curve_lgqa7")
 interpolation_speed = 0.5
+left_hand_controller = NodePath("LeftHand")
 
 [node name="Viewport2Din3D" parent="." instance=ExtResource("2_lgqa7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2718488, -1.6202573)

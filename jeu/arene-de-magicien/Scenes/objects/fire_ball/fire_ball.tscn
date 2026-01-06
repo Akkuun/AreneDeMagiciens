@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://365incy5omk3"]
+[gd_scene load_steps=57 format=4 uid="uid://365incy5omk3"]
 
 [ext_resource type="Script" uid="uid://vcuuscb3053v" path="res://scripts/fireballs_proj.gd" id="1_5u8wk"]
 [ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_8jl72"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bixx121w4ms23" path="res://scripts/light_flicker.gd" id="4_5u8wk"]
 [ext_resource type="Material" uid="uid://ks1kly3dfqvc" path="res://resources/materials/smoke_billboard.material" id="4_nhgnl"]
 [ext_resource type="Material" uid="uid://cjgoj12p3pb0g" path="res://resources/materials/fire_billboard.material" id="4_toowk"]
+[ext_resource type="PackedScene" uid="uid://bymbxgpk838l0" path="res://Scenes/objects/projectile.tscn" id="7_fxbew"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dpp8x"]
 radius = 0.1
@@ -479,6 +480,8 @@ draw_pass_1 = SubResource("ArrayMesh_kncba")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.424942, 0)
 light_color = Color(2, 1.2, 0, 1)
 omni_range = 2.0
+
+[node name="Projectile" parent="." instance=ExtResource("7_fxbew")]
 
 [connection signal="body_entered" from="StatusGiver" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="StatusGiver/Timer" to="." method="_on_timer_timeout"]
