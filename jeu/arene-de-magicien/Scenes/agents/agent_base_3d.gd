@@ -114,6 +114,8 @@ func _damaged(_amount: float, knockback: Vector3) -> void:
 		btplayer.set_active(false)
 
 	await get_tree().create_timer(0.3).timeout
+
+	die() # not health management yet
 	
 	if btplayer and not _is_dead:
 		btplayer.restart()

@@ -29,6 +29,9 @@ signal player_teleported(delta_transform)
 ## Signal emitted when the player bounces.
 signal player_bounced(collider, magnitude)
 
+## Signal emitted when the player takes damage.
+signal player_damage_taken(damage_amount)
+
 ## Signal emitted when the player has moved (excluding teleport).
 ## This only captures movement handled by the player body logic.
 signal player_moved(delta_transform)
@@ -871,3 +874,4 @@ static func find_instance(node: Node) -> XRToolsPlayerBody:
 
 func take_damage(damage_amount: int) -> void:
 	print("Player took ", damage_amount, " damage.")
+	player_damage_taken.emit(damage_amount)

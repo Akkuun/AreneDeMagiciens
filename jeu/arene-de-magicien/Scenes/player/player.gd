@@ -7,6 +7,8 @@ extends XROrigin3D
 @export var interpolation_speed: float = 1.0  
 
 @export var left_hand_controller : XRController3D
+@export var damage_overlay: MeshInstance3D  # Référence vers le damage overlay
+
 var fireball : PackedScene = preload("res://Scenes/objects/fire_ball/fire_ball.tscn")
 
 func _ready():
@@ -14,6 +16,11 @@ func _ready():
 	if interface and interface.initialize():
 		# turn the main viewport into an ARVR viewport:
 		get_viewport().arvr = true
+	
+	# Connecte le signal take_damage du PlayerBody au damage overlay
+	var player_body = $PlayerBody
+	if player_body:
+		player_body.player_damage_taken.connect(_on_player_damage_taken)
 
 var update_needed : bool = false
 var interpolation_progress: float = 0.0  
@@ -53,3 +60,8 @@ func _on_hand_button_pressed(name: String) -> void:
 
 func _on_centering_timer_timeout() -> void:
 	update_needed = false
+
+
+func _on_player_damage_taken(damage_amount: int) -> void:
+	if damage_overlay and damage_overlay.has_method("show_damage"):
+		damage_overlay.show_damage()
