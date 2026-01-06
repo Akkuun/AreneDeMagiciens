@@ -13,6 +13,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.50354, 0.10367036)
 shape = SubResource("CylinderShape3D_7afpt")
 
 [node name="NavigationObstacle3D" parent="." index="3"]
+height = 7.0
 vertices = PackedVector3Array(-0.585, 0, 0, 0, 0, -0.535, 0.635, 0, -0.175, 0.42, 0, 0.51, -0.25, 0, 0.56)
 
 [node name="Mesh" parent="." index="4" instance=ExtResource("2_dwtsf")]
