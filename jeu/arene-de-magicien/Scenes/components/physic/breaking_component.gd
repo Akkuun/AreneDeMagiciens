@@ -15,10 +15,12 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 
 func _ready() -> void:
-	parent = get_parent() as RigidBody3D
-	parent.body_entered.connect(collision_with)
-	parent.contact_monitor = true
-	parent.max_contacts_reported = 8
+	var p = get_parent()
+	if p != null and p is RigidBody3D:
+		parent = get_parent() as RigidBody3D
+		parent.body_entered.connect(collision_with)
+		parent.contact_monitor = true
+		parent.max_contacts_reported = 8
 	
 	
 	

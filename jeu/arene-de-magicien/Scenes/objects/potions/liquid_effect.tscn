@@ -17,7 +17,7 @@ frequency = 0.012
 noise = SubResource("FastNoiseLite_qh5dr")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5p5v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1e0g3"]
 render_priority = 0
 shader = ExtResource("1_yj4gv")
 shader_parameter/fill_rate = 0.5
@@ -28,10 +28,10 @@ shader_parameter/top_color = Color(1, 0, 0, 1)
 shader_parameter/use_top_color = true
 shader_parameter/refraction_noise = SubResource("NoiseTexture2D_27ojh")
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_b5p5v"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eddii"]
 flip_faces = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y0c3n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0kyi"]
 render_priority = 1
 shader = ExtResource("1_yj4gv")
 shader_parameter/fill_rate = 0.5
@@ -42,7 +42,7 @@ shader_parameter/top_color = Color(0.8761463, 7.710546e-05, 0.6864947, 1)
 shader_parameter/use_top_color = false
 shader_parameter/refraction_noise = SubResource("NoiseTexture2D_27ojh")
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_y0c3n"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vahd2"]
 
 [node name="LiquidEffect" type="Node3D"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -54,11 +54,11 @@ fill_rate = 0.35
 mesh = SubResource("CapsuleMesh_pvq8n")
 
 [node name="Top" type="MeshInstance3D" parent="."]
-material_override = SubResource("ShaderMaterial_b5p5v")
-mesh = SubResource("CapsuleMesh_b5p5v")
+material_override = SubResource("ShaderMaterial_1e0g3")
+mesh = SubResource("CapsuleMesh_eddii")
 skeleton = NodePath("")
 
 [node name="Bot" type="MeshInstance3D" parent="."]
-material_override = SubResource("ShaderMaterial_y0c3n")
-mesh = SubResource("CapsuleMesh_y0c3n")
+material_override = SubResource("ShaderMaterial_a0kyi")
+mesh = SubResource("CapsuleMesh_vahd2")
 skeleton = NodePath("../Top")

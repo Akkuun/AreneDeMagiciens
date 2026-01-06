@@ -15,7 +15,7 @@ func state_enter(args : Dictionary) -> bool:
 	return true
 
 func state_process(delta: float) -> void:
-	if wand_root.is_picked_up():
+	if wand_root.get_picked_up_by_controller() != null:
 		if move_recognizer.current_move == MoveRecognizer.MoveType.THRUST_Y:
 			if is_from_bot:
 				state_manager.change_state("Earth")

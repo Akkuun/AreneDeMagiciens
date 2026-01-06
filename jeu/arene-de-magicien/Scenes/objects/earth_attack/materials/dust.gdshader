@@ -6,9 +6,9 @@ uniform float max_scale = 1.2;
 uniform int particles_count = 128;
 uniform float zone_length = 10.0;
 
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/hash.gdshaderinc"
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/rand_from_seed.gdshaderinc"
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/remap.gdshaderinc"
+#include "res://resources/earth_folder_shaders/hash.gdshaderinc"
+#include "res://resources/earth_folder_shaders/rand_from_seed.gdshaderinc"
+#include "res://resources/earth_folder_shaders/remap.gdshaderinc"
 
 void start() {
 	uint alt_seed1 = hash(NUMBER + uint(1) + RANDOM_SEED);

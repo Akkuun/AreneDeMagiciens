@@ -37,6 +37,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35485125, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35485125, 0)
 
 [node name="BreakingComponent" parent="." index="5" instance=ExtResource("7_gl30b")]
-breaking_speed = 0.01
 
 [connection signal="breaking" from="BreakingComponent" to="." method="_on_breaking_component_breaking"]

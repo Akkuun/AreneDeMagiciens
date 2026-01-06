@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0435yc13dhc4"]
+
+[ext_resource type="PackedScene" uid="uid://cwbm3oq23lilt" path="res://Scenes/levels/props/trees/tree_base.tscn" id="1_0hrsp"]
+[ext_resource type="PackedScene" uid="uid://chwfdrccqonfc" path="res://assets/Quaternius_natural_pack/glTF/CommonTree_2.gltf" id="2_6pw0p"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n2v20"]
+height = 4.640991
+radius = 0.5546875
+
+[node name="CommonTree2" instance=ExtResource("1_0hrsp")]
+
+[node name="CollisionShape3D" parent="StatusManager/StatusReceiver" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01928246, 2.0872197, 0.1810295)
+shape = SubResource("CylinderShape3D_n2v20")
+
+[node name="NavigationObstacle3D" parent="." index="3"]
+vertices = PackedVector3Array(-0.595, 0, 0, 0.025, 0, -0.74, 0.755, 0, -0.325, 0.58, 0, 0.51, -0.12, 0, 0.705)
+
+[node name="Mesh" parent="." index="4" instance=ExtResource("2_6pw0p")]

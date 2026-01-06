@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwbm3oq23lilt"]
+
+[ext_resource type="PackedScene" uid="uid://6kwajc2m7wut" path="res://Scenes/components/entities/life_component.tscn" id="1_7khod"]
+[ext_resource type="Script" uid="uid://do7xn7x32u6o4" path="res://Scenes/levels/props/trees/tree_base.gd" id="1_witdt"]
+[ext_resource type="PackedScene" uid="uid://cadnxif7rc8x6" path="res://Scenes/components/physic/status_manager.tscn" id="2_witdt"]
+[ext_resource type="Script" uid="uid://cfhgp433xp1ra" path="res://scripts/status_card.gd" id="3_tjfol"]
+[ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://Scenes/components/physic/status_receiver.tscn" id="4_y8fmq"]
+[ext_resource type="PackedScene" uid="uid://datc8y8oatieh" path="res://Scenes/components/crafting/item_dropper_component.tscn" id="6_tjfol"]
+[ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://Scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="7_y8fmq"]
+
+[sub_resource type="Resource" id="Resource_w1778"]
+script = ExtResource("3_tjfol")
+propagate = true
+stoped_by = 2
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
+[node name="TreeBase" type="Node3D"]
+script = ExtResource("1_witdt")
+
+[node name="LifeComponent" parent="." instance=ExtResource("1_7khod")]
+
+[node name="ItemDropperComponent" parent="." instance=ExtResource("6_tjfol")]
+item_to_drop = ExtResource("7_y8fmq")
+
+[node name="StatusManager" parent="." node_paths=PackedStringArray("emit_shape") instance=ExtResource("2_witdt")]
+emit_shape = NodePath("StatusReceiver/CollisionShape3D")
+status_managed = Dictionary[int, ExtResource("3_tjfol")]({
+1: SubResource("Resource_w1778")
+})
+
+[node name="StatusReceiver" parent="StatusManager" instance=ExtResource("4_y8fmq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusManager/StatusReceiver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5742188, 0)
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+
+[connection signal="dead" from="LifeComponent" to="." method="_on_life_component_dead"]
+[connection signal="dead" from="LifeComponent" to="ItemDropperComponent" method="drop"]
+[connection signal="dammage_taken" from="StatusManager" to="LifeComponent" method="take_damage"]

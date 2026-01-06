@@ -5,7 +5,7 @@ uniform sampler2D normal_texture : hint_normal;
 uniform vec3 fresnel_color : source_color;
 varying vec3 object_normal;
 
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/fresnel.gdshaderinc"
+#include "res://resources/earth_folder_shaders/fresnel.gdshaderinc"
 
 void vertex() {
 	object_normal = NORMAL;

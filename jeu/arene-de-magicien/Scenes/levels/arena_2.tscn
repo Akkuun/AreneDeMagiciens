@@ -1,0 +1,185 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3ui4oy1vkbtc"]
+
+[ext_resource type="Material" uid="uid://cqx2uv8nxppb8" path="res://resources/materials/world/base_ground_material.tres" id="1_lxo4l"]
+[ext_resource type="Texture2D" uid="uid://bbw28sblrutd" path="res://assets/images/sky/sky_19_2k.png" id="2_rdhmg"]
+[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="3_oa8et"]
+[ext_resource type="PackedScene" uid="uid://domjfukawe16f" path="res://Scenes/agents/agent_spawner.tscn" id="4_oa8et"]
+[ext_resource type="PackedScene" uid="uid://drxdhmg1xpe64" path="res://Scenes/agents/range_agent.tscn" id="5_4suey"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4suey"]
+panorama = ExtResource("2_rdhmg")
+
+[sub_resource type="Sky" id="Sky_ena7j"]
+sky_material = SubResource("PanoramaSkyMaterial_4suey")
+
+[sub_resource type="Environment" id="Environment_tnvy7"]
+background_mode = 2
+sky = SubResource("Sky_ena7j")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4suey"]
+vertices = PackedVector3Array(-49.75, 0.5, -77.47646, -49.75, 0.5, 47.023537, 49.75, 0.5, 47.023537, 49.75, 0.5, -77.47646)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+sample_partition_type = 1
+agent_radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13cwf"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ena7j"]
+material = SubResource("StandardMaterial3D_13cwf")
+size = Vector2(100, 125)
+orientation = 1
+
+[node name="Arena2" type="Node3D" groups=["root_3d"]]
+
+[node name="Shape" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_lxo4l")
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.616638, 0, -16.504791)
+size = Vector3(111.59619, 1, 129.17432)
+
+[node name="Pillar1" type="CSGBox3D" parent="Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.269077, 7.6138115, 11.379364)
+size = Vector3(20, 14.45, 20)
+
+[node name="Interior" type="CSGBox3D" parent="Shape/Pillar1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0777588, 0.506073, 1.3717499)
+operation = 2
+size = Vector3(16.494385, 11.049255, 13.798309)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Shape/Pillar1/Interior"]
+transform = Transform3D(1, 0, 0, 0, 0.9536958, 0.30077237, 0, -0.30077237, 0.9536958, 5.7095337, 6.521987, 0.48224354)
+size = Vector3(1.8104248, 2.0317688, 8.705025)
+
+[node name="Platform" type="CSGBox3D" parent="Shape/Pillar1/Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5454965, 0.24780273, -4.028322)
+operation = 2
+size = Vector3(5.5358276, 0.50439453, 6.17688)
+
+[node name="Stair" type="CSGBox3D" parent="Shape/Pillar1/Interior/Platform"]
+transform = Transform3D(0.8989624, -0.438026, 0, 0.438026, 0.8989624, 0, 0, 0, 1, 9.8239155, 3.202814, -2.273223)
+size = Vector3(16.479614, 1, 1)
+
+[node name="Platform2" type="CSGBox3D" parent="Shape/Pillar1/Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.579775, 4.1706676, -5.1819124)
+operation = 2
+size = Vector3(3.6239014, 0.20361328, 4.294922)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Shape/Pillar1/Interior/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 0.95371693, 0.3007058, 0, -0.3007058, 0.95371693, -0.9329796, 0.6557903, 3.9449768)
+size = Vector3(1.7085571, 0.17132568, 4.345764)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.850317, 13.44784, 7.8188963)
+operation = 2
+size = Vector3(3.4421387, 2.0894775, 3.7767334)
+
+[node name="Pillar2" type="CSGBox3D" parent="Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.341949, 7.6138115, 11.379364)
+size = Vector3(20, 14.45, 20)
+
+[node name="Floor2" type="CSGBox3D" parent="Shape/Pillar2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.517557, -0.2163353)
+operation = 2
+size = Vector3(20, 5.6523438, 20.540161)
+
+[node name="Pillar" type="CSGCylinder3D" parent="Shape/Pillar2/Floor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67342, 0.02149582, 5.1401863)
+operation = 2
+radius = 4.286133
+height = 5.9101563
+sides = 32
+
+[node name="Stair" type="CSGBox3D" parent="Shape/Pillar2/Floor2/Pillar"]
+transform = Transform3D(0.67667687, -0.2826855, -0.6798509, 0.38547125, 0.9227199, 0, 0.62731206, -0.26206306, 0.7333502, -7.395952, 0.11452007, -7.018544)
+size = Vector3(17.668457, 0.5541992, 2.0352783)
+
+[node name="Floor1" type="CSGBox3D" parent="Shape/Pillar2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3261719, -0.2163353)
+operation = 2
+size = Vector3(20, 5.6523438, 20.540161)
+
+[node name="Pillar1" type="CSGCylinder3D" parent="Shape/Pillar2/Floor1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.206535, 0.025634766, -6.4483166)
+operation = 2
+radius = 0.83251953
+height = 5.894043
+
+[node name="Pillar2" type="CSGCylinder3D" parent="Shape/Pillar2/Floor1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5315323, 0.025634766, -6.4483166)
+operation = 2
+radius = 0.83251953
+height = 5.894043
+
+[node name="Pillar3" type="CSGCylinder3D" parent="Shape/Pillar2/Floor1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.206535, 0.025634766, 8.678215)
+operation = 2
+radius = 0.83251953
+height = 5.894043
+
+[node name="Pillar4" type="CSGCylinder3D" parent="Shape/Pillar2/Floor1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.71537, 0.025634766, 8.678215)
+operation = 2
+radius = 0.83251953
+height = 5.894043
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Shape/Pillar2"]
+transform = Transform3D(1, 0, 0, 0, 0.9654089, 0.2607404, 0, -0.2607404, 0.9654089, -8.734253, -5.299457, -7.769328)
+operation = 2
+size = Vector3(4.5637207, 2.3547363, 11)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Shape/Pillar2"]
+transform = Transform3D(1, 0, 0, 0, 0.9001516, -0.43557677, 0, 0.43557677, 0.9001516, 5.3806543, -0.47978497, -0.6906948)
+operation = 2
+size = Vector3(2.322754, 3.2998047, 17.081665)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Shape/Pillar2"]
+transform = Transform3D(1, 0, 0, 0, 0.9001516, -0.43557677, 0, 0.43557677, 0.9001516, 5.3806543, -1.7474895, -1.2197771)
+size = Vector3(2.322754, 0.5566406, 16.92981)
+
+[node name="Connexion" type="CSGBox3D" parent="Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.262207, 14.347563, 17.367573)
+size = Vector3(9.618164, 1, 2.0880127)
+
+[node name="Outside" type="CSGCombiner3D" parent="Shape"]
+
+[node name="Wall" type="CSGCylinder3D" parent="Shape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5845146, 0)
+radius = 47.996582
+height = 9.3671875
+sides = 16
+
+[node name="Inside" type="CSGCylinder3D" parent="Shape/Wall"]
+operation = 2
+radius = 45.501953
+height = 9.3671875
+sides = 16
+
+[node name="Opening" type="CSGBox3D" parent="Shape/Wall/Inside"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.827942, 0.20013428, -45.72739)
+size = Vector3(12.733032, 11.029175, 5.8137207)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tnvy7")
+
+[node name="Player" parent="." instance=ExtResource("3_oa8et")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.7799153, -74.7268)
+
+[node name="Spawners" type="Node3D" parent="."]
+
+[node name="AgentSpawner" parent="Spawners" instance=ExtResource("4_oa8et")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.999385, 3.1301727, -47.72485)
+entity = ExtResource("5_4suey")
+initial_spawn_count = 3
+continuous_spawn = false
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_4suey")
+
+[node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.226463)
+mesh = SubResource("QuadMesh_ena7j")
+skeleton = NodePath("../../Decoration")

@@ -29,7 +29,7 @@ ambient_light_source = 3
 ambient_light_color = Color(0.7084869, 0.77969486, 0.7348123, 1)
 ambient_light_sky_contribution = 0.7
 
-[node name="Arena1" type="Node3D"]
+[node name="Arena1" type="Node3D" groups=["root_3d"]]
 
 [node name="Prototype" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("2_bt4kb")
@@ -92,6 +92,18 @@ radius = 13.634766
 height = 1.112793
 sides = 16
 material = SubResource("StandardMaterial3D_8e3xq")
+
+[node name="Sector2" type="CSGCylinder3D" parent="Prototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18014193, 1.0187988, 20.96028)
+radius = 20.219727
+height = 4.0375977
+sides = 17
+
+[node name="Arena" type="CSGCylinder3D" parent="Prototype/Sector2"]
+operation = 2
+radius = 19.50879
+height = 4.0375977
+sides = 17
 
 [node name="Player" parent="." instance=ExtResource("2_8e3xq")]
 

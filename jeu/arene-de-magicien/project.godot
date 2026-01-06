@@ -29,6 +29,10 @@ settings/addon_root_folder="res://addons/debug_draw_3d"
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 
+[global_group]
+
+root_3d=""
+
 [input]
 
 debug_switch_camera={

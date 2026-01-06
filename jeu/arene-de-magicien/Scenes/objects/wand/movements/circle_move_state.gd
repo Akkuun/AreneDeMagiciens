@@ -8,7 +8,7 @@ func get_state_name() -> String:
 
 
 func state_process(delta: float) -> void:
-	if wand_root.is_picked_up():
+	if wand_root.get_picked_up_by_controller():
 		if move_recognizer.current_move == MoveRecognizer.MoveType.THRUST_Y:
 			move_recognizer.consume_move()
 			state_manager.change_state("Aim", {"Type": "Tornado"})

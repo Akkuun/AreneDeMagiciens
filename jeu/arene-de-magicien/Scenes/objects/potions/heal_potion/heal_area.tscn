@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dypqc7lq213wf"]
+[gd_scene load_steps=19 format=3 uid="uid://dypqc7lq213wf"]
 
 [ext_resource type="Script" uid="uid://dh7qsctypns4" path="res://Scenes/objects/potions/heal_potion/heal_area.gd" id="1_iw03i"]
 [ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_wbdwm"]
@@ -15,6 +15,13 @@ colors = PackedColorArray(0, 1.8247963, 0, 1, 0, 0.7350276, 1.1941766, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bie63"]
 gradient = SubResource("Gradient_san7d")
 
+[sub_resource type="Gradient" id="Gradient_4fver"]
+offsets = PackedFloat32Array(0, 0.1625, 0.55, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.9375, 0.9375, 0.9375, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_san7d"]
+gradient = SubResource("Gradient_4fver")
+
 [sub_resource type="Gradient" id="Gradient_rcqq4"]
 offsets = PackedFloat32Array(0.15, 0.325, 0.35625, 0.825, 0.98125, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86898494, 0.8689849, 0.8689849, 1, 0, 0, 0, 1)
@@ -27,7 +34,8 @@ render_priority = 0
 shader = ExtResource("3_xkiae")
 shader_parameter/radius = 0.5
 shader_parameter/color_gradient = SubResource("GradientTexture1D_bie63")
-shader_parameter/intensity_gradient = SubResource("GradientTexture1D_eybw2")
+shader_parameter/wave_gradient = SubResource("GradientTexture1D_eybw2")
+shader_parameter/intensity_gradient = SubResource("GradientTexture1D_san7d")
 shader_parameter/speed = 0.8
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xkiae"]

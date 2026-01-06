@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var scene_to_spawn : PackedScene
+@export var interactible : bool
 
 func spawn():
 	var instance = scene_to_spawn.instantiate()

@@ -3,7 +3,7 @@ extends Node3D
 
 @export var animation_speed: float = 1
 @export var animation_curve : Curve = Curve.new()
-@export_tool_button("Simulate") var add_impulse_action = func(): add_x_impulse(Vector2(0.2,0.6), 0.5)
+@export_tool_button("Simulate") var add_impulse_action = func(): add_impulse(Vector2(0.2,0.6), 0.5)
 @export var base_color = Color() :
 	set(value): 
 		base_color_set(value)
@@ -58,6 +58,9 @@ var impulse_strength: float
 var impulse_direction: Vector2
 var t:float
 
+var last_world_pos: Vector3 = Vector3.ZERO
+var threshold: float = 0.05
+
 func _ready() -> void:
 	shader_instances = [load("res://resources/materials/liquid_contained.tres").duplicate(), load("res://resources/materials/liquid_contained.tres").duplicate()]
 	$Top.material_override = shader_instances[0]
@@ -75,7 +78,7 @@ func update_global_param(param_name: String, value):
 	for s in shader_instances:
 		s.set_shader_parameter(param_name, value)
 
-func add_x_impulse(direction: Vector2, strength: float):
+func add_impulse(direction: Vector2, strength: float):
 	impulse_strength = strength
 	impulse_direction = direction
 	t = 0
@@ -86,6 +89,17 @@ func _process(delta: float) -> void:
 	var stabilisation = animation_curve.sample(t) * impulse_strength
 	update_wobble(stabilisation * impulse_direction)
 
+func _physics_process(delta: float) -> void:
+	var current_pos := global_transform.origin
+	var delta_move := current_pos - last_world_pos
+
+	var dist := delta_move.length()
+	if dist > threshold:
+		var dir2d := Vector2(delta_move.x, delta_move.z).normalized()
+		var strength := dist# * delta
+		add_impulse(dir2d, strength)
+
+	last_world_pos = current_pos
 
 func update_wobble(value: Vector2):
 	update_global_param("wobble_x", value.x)

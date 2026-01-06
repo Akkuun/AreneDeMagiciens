@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://domjfukawe16f"]
+
+[ext_resource type="Script" uid="uid://ceh414gy1o5kb" path="res://Scenes/agents/agent_spawner.gd" id="1_lorjt"]
+
+[node name="AgentSpawner" type="Node3D"]
+script = ExtResource("1_lorjt")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

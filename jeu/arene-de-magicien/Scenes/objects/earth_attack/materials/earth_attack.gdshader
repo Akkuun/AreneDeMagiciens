@@ -4,11 +4,11 @@ uniform int particles_count = 12;
 uniform float tilt = 0.7;
 uniform sampler2D curve_sampler : repeat_disable;
 
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/hash.gdshaderinc"
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/rand_from_seed.gdshaderinc"
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/remap.gdshaderinc"
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/rotate_y.gdshaderinc"
-#include "res://Scenes/objects/earth_attack_folder/shared/shaders/rotate_z.gdshaderinc"
+#include "res://resources/earth_folder_shaders/hash.gdshaderinc"
+#include "res://resources/earth_folder_shaders/rand_from_seed.gdshaderinc"
+#include "res://resources/earth_folder_shaders/remap.gdshaderinc"
+#include "res://resources/earth_folder_shaders/rotate_y.gdshaderinc"
+#include "res://resources/earth_folder_shaders/rotate_z.gdshaderinc"
 
 void start() {
 	uint alt_seed1 = hash(NUMBER + uint(1) + RANDOM_SEED);

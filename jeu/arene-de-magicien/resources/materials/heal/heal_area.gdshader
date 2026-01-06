@@ -4,6 +4,7 @@ render_mode unshaded;
 
 uniform float radius = 0.5;
 uniform sampler2D color_gradient;
+uniform sampler2D wave_gradient;
 uniform sampler2D intensity_gradient;
 uniform float speed = 1.0;
 
@@ -19,14 +20,18 @@ void fragment() {
 	}
 	
 	float radius_ratio = current_radius / radius;
-	radius_ratio = fract(radius_ratio - TIME * speed);
-	float intensity = texture(intensity_gradient, vec2(radius_ratio)).r;
-	intensity = max(intensity, 0.02);
 	
-	vec3 color = texture(color_gradient, vec2(intensity)).rgb;
+	float radial_intensity = texture(intensity_gradient, vec2(radius_ratio)).r;
+	
+	float animated_radius_ratio = fract(radius_ratio - TIME * speed);
+	float wave_intensity = texture(wave_gradient, vec2(animated_radius_ratio)).r;
+	
+	wave_intensity = max(wave_intensity * radial_intensity, 0.05 * radial_intensity);
+	
+	vec3 color = texture(color_gradient, vec2(wave_intensity)).rgb;
 	
 	ALBEDO = color;
-	ALPHA = intensity;
+	ALPHA = wave_intensity;
 }
 
 //void light() {
