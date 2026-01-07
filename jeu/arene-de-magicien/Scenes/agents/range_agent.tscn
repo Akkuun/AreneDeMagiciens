@@ -1,9 +1,14 @@
-[gd_scene load_steps=37 format=4 uid="uid://drxdhmg1xpe64"]
+[gd_scene load_steps=59 format=4 uid="uid://drxdhmg1xpe64"]
 
 [ext_resource type="Script" uid="uid://cq72sqoq51o2h" path="res://Scenes/agents/agent_base_3d.gd" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://bnh1gjsliltbc" path="res://assets/Quaternius_RPG_Characters/RPG Characters - Nov 2020/glTF/Wizard_Wizard_Texture.png" id="2_8ylce"]
 [ext_resource type="BehaviorTree" uid="uid://cqdkws254vlu4" path="res://ai/trees/range_agent.tres" id="3_tree"]
 [ext_resource type="Texture2D" uid="uid://b2xirkj1l6qp4" path="res://assets/Quaternius_RPG_Characters/RPG Characters - Nov 2020/glTF/Wizard_Wizard_Staff_Texture.png" id="3_x7iyg"]
+[ext_resource type="PackedScene" uid="uid://cadnxif7rc8x6" path="res://Scenes/components/physic/status_manager.tscn" id="5_80hvi"]
+[ext_resource type="Script" uid="uid://cfhgp433xp1ra" path="res://scripts/status_card.gd" id="6_ijdcg"]
+[ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://Scenes/components/physic/status_receiver.tscn" id="7_jhjvl"]
+[ext_resource type="PackedScene" uid="uid://6kwajc2m7wut" path="res://Scenes/components/entities/life_component.tscn" id="8_jhjvl"]
+[ext_resource type="PackedScene" uid="uid://cahg2cogmbwae" path="res://Scenes/components/entities/health_bar.tscn" id="9_8gq3i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gft57"]
 resource_name = "Wizard_Texture"
@@ -308,7 +313,7 @@ bind/31/bone = -1
 bind/31/pose = Transform3D(1, 0, 7.152559e-07, -5.684342e-14, 1.0000001, -1.192093e-07, -7.152557e-07, 0, 1.0000001, 0.21000677, -0.72211725, -0.9630323)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8ylce"]
-height = 3.3293915
+height = 3.0514145
 radius = 0.78222656
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_v4t0u"]
@@ -4698,6 +4703,90 @@ _data = {
 &"Walk": SubResource("Animation_s3164")
 }
 
+[sub_resource type="Resource" id="Resource_8gq3i"]
+script = ExtResource("6_ijdcg")
+tick_rate = 0.0
+damage_by_tick = 0.0
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
+[sub_resource type="Resource" id="Resource_2bnoo"]
+script = ExtResource("6_ijdcg")
+propagate = true
+stoped_by = 2
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
+[sub_resource type="Resource" id="Resource_yh6f0"]
+script = ExtResource("6_ijdcg")
+tick_rate = 0.0
+damage_by_tick = 0.0
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
+[sub_resource type="Resource" id="Resource_80hvi"]
+script = ExtResource("6_ijdcg")
+tick_rate = 0.5
+damage_by_tick = -1.0
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v4t0u"]
+height = 2.909912
+radius = 0.8041992
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2bnoo"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_jhjvl"]
+offsets = PackedFloat32Array(0, 0.28426397, 1)
+colors = PackedColorArray(0.9314077, 0.29748532, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8gq3i"]
+gradient = SubResource("Gradient_jhjvl")
+
+[sub_resource type="Curve" id="Curve_2bnoo"]
+
+[sub_resource type="Curve" id="Curve_yh6f0"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), 0.054469943, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_v4t0u"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4nrn0"]
+curve_x = SubResource("Curve_2bnoo")
+curve_y = SubResource("Curve_yh6f0")
+curve_z = SubResource("Curve_v4t0u")
+
+[sub_resource type="Curve" id="Curve_vhhgl"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.41573036), 0.0, 0.0, 0, 0, Vector2(1, 5), -0.0321233, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nv4jw"]
+curve = SubResource("Curve_vhhgl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lr13w"]
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.7, 0.5)
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_4nrn0")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_nv4jw")
+color_ramp = SubResource("GradientTexture1D_8gq3i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vbhi"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_482pu"]
+material = SubResource("StandardMaterial3D_8vbhi")
+radius = 0.4
+height = 0.8
+
 [node name="RangeAgent" type="CharacterBody3D" groups=["agents"]]
 script = ExtResource("1_base")
 move_speed = 4.0
@@ -4988,7 +5077,7 @@ mesh = SubResource("ArrayMesh_2bnoo")
 skin = SubResource("Skin_yh6f0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3573129, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4963014, 0)
 shape = SubResource("CylinderShape3D_8ylce")
 
 [node name="BTPlayer" type="BTPlayer" parent="."]
@@ -4999,3 +5088,39 @@ blackboard_plan = SubResource("BlackboardPlan_v4t0u")
 libraries = {
 &"": SubResource("AnimationLibrary_smpax")
 }
+
+[node name="StatusManager" parent="." node_paths=PackedStringArray("emit_shape") instance=ExtResource("5_80hvi")]
+emit_shape = NodePath("StatusReceiver/CollisionShape3D")
+status_managed = Dictionary[int, ExtResource("6_ijdcg")]({
+0: SubResource("Resource_8gq3i"),
+1: SubResource("Resource_2bnoo"),
+2: SubResource("Resource_yh6f0"),
+3: SubResource("Resource_80hvi")
+})
+
+[node name="StatusReceiver" parent="StatusManager" instance=ExtResource("7_jhjvl")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusManager/StatusReceiver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3737538, 0)
+shape = SubResource("CylinderShape3D_v4t0u")
+
+[node name="LifeComponent" parent="." instance=ExtResource("8_jhjvl")]
+
+[node name="HealthBar" parent="." instance=ExtResource("9_8gq3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.269358, 0)
+texture = SubResource("ViewportTexture_2bnoo")
+
+[node name="Burning" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022900105, 1.4870303, 0)
+visible = false
+amount = 10
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_lr13w")
+draw_pass_1 = SubResource("SphereMesh_482pu")
+
+[connection signal="dammage_taken" from="StatusManager" to="LifeComponent" method="take_damage"]
+[connection signal="first_hit_status_taken" from="StatusManager" to="." method="_damaged"]
+[connection signal="status_applied" from="StatusManager" to="." method="_on_status_manager_status_applied"]
+[connection signal="status_removed" from="StatusManager" to="." method="_on_status_manager_status_removed"]
+[connection signal="dead" from="LifeComponent" to="." method="die"]
+[connection signal="new_value" from="LifeComponent" to="HealthBar" method="update_value"]

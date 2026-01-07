@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dl3muv5fxgmn8"]
+[gd_scene load_steps=10 format=3 uid="uid://bfb3roujx5kvc"]
 
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_6uhvu"]
 [ext_resource type="Script" uid="uid://bf24sumfv36tf" path="res://Scenes/objects/potions/fire_potion/fire_potion.gd" id="1_m0v8l"]
 [ext_resource type="PackedScene" uid="uid://b5csvx1ildoql" path="res://assets/meshes/blender/cube_bottle.blend" id="2_js5mk"]
 [ext_resource type="PackedScene" uid="uid://c5p8o46eknrhe" path="res://Scenes/objects/potions/liquid_effect.tscn" id="2_m0v8l"]
@@ -7,39 +8,38 @@
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_bx4u3"]
 [ext_resource type="PackedScene" uid="uid://c52261dfbgtfq" path="res://Scenes/components/physic/breaking_component.tscn" id="6_6uhvu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rnp64"]
-size = Vector3(0.25757325, 0.5196692, 0.23)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wbbrr"]
+height = 0.5966797
+radius = 0.16894531
 
-[sub_resource type="BoxMesh" id="BoxMesh_js5mk"]
+[sub_resource type="BoxMesh" id="BoxMesh_ru7a2"]
 
-[node name="FirePotion" type="RigidBody3D"]
-collision_layer = 6
-collision_mask = 7
+[node name="FirePotion" instance=ExtResource("1_6uhvu")]
 contact_monitor = true
 max_contacts_reported = 8
 script = ExtResource("1_m0v8l")
-metadata/_custom_type_script = "uid://0p0evtue2h4p"
 
-[node name="cube_bottle" parent="." instance=ExtResource("2_js5mk")]
+[node name="cube_bottle" parent="." index="0" instance=ExtResource("2_js5mk")]
 transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002321776, 0.12675598, 0)
-shape = SubResource("BoxShape3D_rnp64")
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009765625, 0.16235352, 0.0032043457)
+shape = SubResource("CylinderShape3D_wbbrr")
 
-[node name="MeshInstance3D" parent="." instance=ExtResource("2_m0v8l")]
+[node name="MeshInstance3D" parent="." index="2" instance=ExtResource("2_m0v8l")]
 transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0, 0, 0)
 base_color = Color(0.96862745, 0.11764706, 0.3019608, 1)
 top_color = Color(0.23529412, 0.79607844, 0.7882353, 1)
 fill_rate = 0.55
-mesh = SubResource("BoxMesh_js5mk")
+mesh = SubResource("BoxMesh_ru7a2")
 
-[node name="GrabPointHandLeft" parent="." instance=ExtResource("3_m0v8l")]
+[node name="GrabPointHandLeft" parent="." index="3" instance=ExtResource("3_m0v8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033096164, 0.1531982, -0.104833186)
 
-[node name="GrabPointHandRight" parent="." instance=ExtResource("4_bx4u3")]
+[node name="GrabPointHandRight" parent="." index="4" instance=ExtResource("4_bx4u3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019675635, 0.15671818, -0.10412979)
 
-[node name="BreakingComponent" parent="." instance=ExtResource("6_6uhvu")]
+[node name="BreakingComponent" parent="." index="5" instance=ExtResource("6_6uhvu")]
+breaking_speed = 8.0
 
 [connection signal="breaking" from="BreakingComponent" to="." method="_on_breaking_component_breaking"]

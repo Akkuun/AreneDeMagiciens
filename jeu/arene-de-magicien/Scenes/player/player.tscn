@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://eqpudws0tesx"]
+[gd_scene load_steps=27 format=3 uid="uid://eqpudws0tesx"]
 
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_gmlin"]
 [ext_resource type="Script" uid="uid://b1p7oa1fa7ix4" path="res://Scenes/player/player.gd" id="1_lvxji"]
@@ -41,6 +41,12 @@ metadata/_custom_type_script = "uid://cfhgp433xp1ra"
 script = ExtResource("10_kysaj")
 tick_rate = 0.5
 damage_by_tick = 3.0
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
+[sub_resource type="Resource" id="Resource_dpkfr"]
+script = ExtResource("10_kysaj")
+tick_rate = 0.0
+damage_by_tick = 0.0
 metadata/_custom_type_script = "uid://cfhgp433xp1ra"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kysaj"]
@@ -89,6 +95,7 @@ inventory_resource = ExtResource("8_nyrd7")
 [node name="StatusManager" parent="PlayerBody" instance=ExtResource("9_spm8d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7743194, 0)
 status_managed = Dictionary[int, ExtResource("10_kysaj")]({
+0: SubResource("Resource_dpkfr"),
 1: SubResource("Resource_egohg"),
 3: SubResource("Resource_ua3np")
 })

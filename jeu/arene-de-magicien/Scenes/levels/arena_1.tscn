@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsb0kkp561qn5"]
+[gd_scene load_steps=14 format=3 uid="uid://bsb0kkp561qn5"]
 
 [ext_resource type="Material" uid="uid://kct761rk1ght" path="res://resources/materials/planks/planks_mat.tres" id="1_5keee"]
 [ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="2_8e3xq"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://Scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="4_1spgc"]
 [ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://Scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="5_pcej5"]
 [ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="6_bt4kb"]
-[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/potions/fire_potion/fire_potion.tscn" id="8_ipxi7"]
 [ext_resource type="PackedScene" uid="uid://btlxnvawfkcf4" path="res://Scenes/objects/potions/heal_potion/heal_potion.tscn" id="9_71eqc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5keee"]
@@ -125,10 +124,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08371055, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1spgc")
-
-[node name="FirePotion" parent="." instance=ExtResource("8_ipxi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2915406, 7.5362253, -5.779026)
-linear_velocity = Vector3(0, -15, 0)
 
 [node name="HealPotion" parent="." instance=ExtResource("9_71eqc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8631637, 9.189676, -1.1987379)

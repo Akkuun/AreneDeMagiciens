@@ -1139,6 +1139,7 @@ script = ExtResource("1_ahg26")
 timer = NodePath("StatusGiver/Timer")
 
 [node name="StatusGiver" parent="." instance=ExtResource("1_ab3cf")]
+damage = 5
 
 [node name="Timer" type="Timer" parent="StatusGiver"]
 
