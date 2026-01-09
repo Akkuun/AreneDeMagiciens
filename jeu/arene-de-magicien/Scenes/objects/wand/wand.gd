@@ -16,7 +16,8 @@ func _physics_process(delta: float) -> void:
 	current_frame = (current_frame + 1) % sample_rate
 
 func _on_spell_recognition_state_changed(new_state: String) -> void:
-	$DebugText.text = new_state
+	pass
+	#$DebugText.text = new_state
 
 
 func _on_action_pressed(pickable: Variant) -> void:
@@ -25,4 +26,8 @@ func _on_action_pressed(pickable: Variant) -> void:
 
 func _on_action_released(pickable: Variant) -> void:
 	draw = false
-	$Drawing.get_drawing()
+	$Drawing/GestureNode.classiffy_gesture($Drawing.get_drawing())
+
+
+func _on_gesture_node_gesture_classified(GestureName: StringName) -> void:
+	$DebugText.text = GestureName

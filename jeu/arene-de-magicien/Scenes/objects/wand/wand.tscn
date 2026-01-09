@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0t0fvctdsdhq"]
+[gd_scene load_steps=19 format=3 uid="uid://d0t0fvctdsdhq"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_3yfio"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_73vin"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cd2oywdpnsvoe" path="res://Scenes/objects/wand/movements/circle_move_state.gd" id="14_dfwcx"]
 [ext_resource type="Script" uid="uid://dxstqnnertx5o" path="res://Scenes/objects/wand/movements/aim_move_state.gd" id="14_xlv2h"]
 [ext_resource type="Script" uid="uid://bnukwpbbrirfg" path="res://Scenes/objects/wand/drawing.gd" id="15_xlv2h"]
+[ext_resource type="Script" uid="uid://dhtmoa2ax2c" path="res://scripts/gestures/gesture_node.gd" id="16_dfwcx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l64fc"]
 height = 0.2
@@ -113,8 +114,12 @@ min_circle_radius = 0.1
 [node name="Drawing" type="Node" parent="." index="9"]
 script = ExtResource("15_xlv2h")
 
+[node name="GestureNode" type="Node2D" parent="Drawing" index="0"]
+script = ExtResource("16_dfwcx")
+
 [connection signal="action_pressed" from="." to="." method="_on_action_pressed"]
 [connection signal="action_released" from="." to="." method="_on_action_released"]
 [connection signal="grabbed" from="." to="SpellRecognition/IdleMoveState" method="_on_wand_grabbed"]
 [connection signal="state_changed" from="SpellRecognition" to="." method="_on_spell_recognition_state_changed"]
 [connection signal="timeout" from="SpellRecognition/IdleMoveState/Duration" to="SpellRecognition/IdleMoveState" method="_on_duration_timeout"]
+[connection signal="gesture_classified" from="Drawing/GestureNode" to="." method="_on_gesture_node_gesture_classified"]
