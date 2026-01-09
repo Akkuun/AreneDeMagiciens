@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs07tygspqgjv"]
+[gd_scene load_steps=5 format=3 uid="uid://bs07tygspqgjv"]
 
 [ext_resource type="Script" uid="uid://tthulq1cqrvx" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://bsb0kkp561qn5" path="res://Scenes/levels/arena_1.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://1cq06a2g1xud" path="res://Scenes/main.gd" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cie0soipixey4" path="res://Scenes/levels/util/loading_box.tscn" id="4_kry3j"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("loading_animation_scene")]
+script = ExtResource("1_8gbba")
+loading_animation_scene = NodePath("LoadingBox")
 
 [node name="XRToolsStartXR" type="Node" parent="."]
 script = ExtResource("1_0wfyh")
@@ -11,4 +15,11 @@ metadata/_custom_type_script = "uid://tthulq1cqrvx"
 
 [node name="DefaultRoot3D" type="Node3D" parent="." groups=["root_3d"]]
 
-[node name="Arena1" parent="." instance=ExtResource("2_0wfyh")]
+[node name="LoadingBox" parent="." instance=ExtResource("4_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6754904, 0)
+
+[node name="Player" parent="." instance=ExtResource("4_jjvhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312333, 0)
+
+[connection signal="emptying_animation_finished" from="LoadingBox" to="." method="_on_loading_box_emptying_animation_finished"]
+[connection signal="filling_animation_finished" from="LoadingBox" to="." method="_on_loading_box_filling_animation_finished"]

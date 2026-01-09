@@ -32,6 +32,7 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addon
 [global_group]
 
 root_3d=""
+scatter_node=""
 
 [input]
 

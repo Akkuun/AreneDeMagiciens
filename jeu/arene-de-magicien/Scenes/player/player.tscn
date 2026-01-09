@@ -55,13 +55,15 @@ dist_menu_from_cam = 2.0
 menu_interpolation = SubResource("Curve_lgqa7")
 interpolation_speed = 0.5
 
-[node name="Viewport2Din3D" parent="." instance=ExtResource("2_lgqa7")]
+[node name="Viewport2Din3D" parent="." node_paths=PackedStringArray("settings_panel") instance=ExtResource("2_lgqa7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2718488, -1.6202573)
 visible = false
 scene = ExtResource("3_8ydkj")
 viewport_size = Vector2(600, 400)
 unshaded = true
-scene_properties_keys = PackedStringArray()
+scene_properties_keys = PackedStringArray("main_ui.gd", "settings_panel", "level_selection_available")
+settings_panel = NodePath("Viewport/MainUI/GameSettings")
+level_selection_available = false
 
 [node name="CenteringTimer" type="Timer" parent="Viewport2Din3D"]
 wait_time = 0.5

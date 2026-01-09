@@ -6,6 +6,16 @@ extends XROrigin3D
 @export var menu_interpolation : Curve
 @export var interpolation_speed: float = 1.0  
 
+var _disable_move : bool = false
+@export var disable_move : bool:
+	set(value):
+		if _disable_move == value:
+			return
+		_disable_move = value
+		$LeftHand/MovementDirect.enabled = !_disable_move
+	get():
+		return _disable_move
+
 func _ready():
 	var interface = XRServer.find_interface("name of the plugin")
 	if interface and interface.initialize():

@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://cie0soipixey4"]
+
+[ext_resource type="Shader" uid="uid://fqwmpnragwu0" path="res://resources/materials/lobby/room.gdshader" id="1_ojuuf"]
+[ext_resource type="Texture2D" uid="uid://d32lqm7i0uqqt" path="res://resources/materials/planks/planks_mat_albedo.png" id="2_ms3mx"]
+[ext_resource type="Texture2D" uid="uid://buejy4vxyyjpq" path="res://resources/materials/planks/planks_mat_normal.png" id="3_sst01"]
+[ext_resource type="Script" uid="uid://brwotw6y2qn8f" path="res://Scenes/levels/util/loading_box.gd" id="4_ms3mx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4c1y"]
+render_priority = 0
+shader = ExtResource("1_ojuuf")
+shader_parameter/sphere_center = Vector3(0, -5, 0)
+shader_parameter/sphere_radius = 2.0
+shader_parameter/_albedo = ExtResource("2_ms3mx")
+shader_parameter/_normal = ExtResource("3_sst01")
+shader_parameter/scale = Vector2(6.135, 2.58)
+
+[sub_resource type="BoxMesh" id="BoxMesh_olncb"]
+material = SubResource("ShaderMaterial_u4c1y")
+flip_faces = true
+size = Vector3(8, 8, 8)
+
+[node name="LoadingBox" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_olncb")
+script = ExtResource("4_ms3mx")

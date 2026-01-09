@@ -2,7 +2,6 @@
 
 [ext_resource type="Material" uid="uid://cqx2uv8nxppb8" path="res://resources/materials/world/base_ground_material.tres" id="1_lxo4l"]
 [ext_resource type="Texture2D" uid="uid://bbw28sblrutd" path="res://assets/images/sky/sky_19_2k.png" id="2_rdhmg"]
-[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="3_oa8et"]
 [ext_resource type="PackedScene" uid="uid://domjfukawe16f" path="res://Scenes/agents/agent_spawner.tscn" id="4_oa8et"]
 [ext_resource type="PackedScene" uid="uid://drxdhmg1xpe64" path="res://Scenes/agents/range_agent.tscn" id="5_4suey"]
 [ext_resource type="Script" uid="uid://ooqpbvlktpny" path="res://addons/proton_scatter/src/scatter.gd" id="6_p8612"]
@@ -16,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dexatu501pgoy" path="res://addons/proton_scatter/src/scatter_shape.gd" id="14_wc31g"]
 [ext_resource type="Script" uid="uid://bgqtv41ish8nw" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="15_kqk8n"]
 [ext_resource type="Script" uid="uid://ijnjx31grslj" path="res://addons/proton_scatter/src/modifiers/clusterize.gd" id="16_1ittm"]
+[ext_resource type="PackedScene" uid="uid://dn45rgmhvnn24" path="res://Scenes/levels/util/player_spawn.tscn" id="17_7dc01"]
 [ext_resource type="Script" uid="uid://bqgkl8advg2wn" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="17_p8612"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4suey"]
@@ -294,9 +294,6 @@ size = Vector3(12.733032, 11.029175, 5.8137207)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tnvy7")
 
-[node name="Player" parent="." instance=ExtResource("3_oa8et")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.7799153, -74.7268)
-
 [node name="Spawners" type="Node3D" parent="."]
 
 [node name="AgentSpawner" parent="Spawners" instance=ExtResource("4_oa8et")]
@@ -313,7 +310,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.226463)
 mesh = SubResource("QuadMesh_ena7j")
 skeleton = NodePath("../../Decoration")
 
-[node name="ProtonScatter" type="Node3D" parent="NavigationRegion3D"]
+[node name="ProtonScatter" type="Node3D" parent="NavigationRegion3D" groups=["scatter_node"]]
 script = ExtResource("6_p8612")
 modifier_stack = SubResource("Resource_orf8e")
 Performance/use_chunks = true
@@ -350,7 +347,7 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, -1
 script = ExtResource("14_wc31g")
 shape = SubResource("Resource_gb2fb")
 
-[node name="ProtonScatter2" type="Node3D" parent="."]
+[node name="ProtonScatter2" type="Node3D" parent="." groups=["scatter_node"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.27322, 0, -62.144493)
 script = ExtResource("6_p8612")
 modifier_stack = SubResource("Resource_ritip")
@@ -371,7 +368,7 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 1.703327
 script = ExtResource("14_wc31g")
 shape = SubResource("Resource_7csxl")
 
-[node name="ProtonScatter" type="Node3D" parent="."]
+[node name="ProtonScatter" type="Node3D" parent="." groups=["scatter_node"]]
 script = ExtResource("6_p8612")
 modifier_stack = SubResource("Resource_twtfb")
 Performance/use_chunks = true
@@ -399,3 +396,6 @@ script = ExtResource("14_wc31g")
 negative = true
 shape = SubResource("Resource_wgtwi")
 metadata/_custom_type_script = "uid://dexatu501pgoy"
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("17_7dc01")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.3589706, 0.84215844, -72.87876)

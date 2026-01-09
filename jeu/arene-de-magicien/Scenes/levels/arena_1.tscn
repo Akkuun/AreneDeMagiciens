@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsb0kkp561qn5"]
+[gd_scene load_steps=14 format=3 uid="uid://bsb0kkp561qn5"]
 
 [ext_resource type="Material" uid="uid://kct761rk1ght" path="res://resources/materials/planks/planks_mat.tres" id="1_5keee"]
-[ext_resource type="PackedScene" uid="uid://eqpudws0tesx" path="res://Scenes/player/player.tscn" id="2_8e3xq"]
 [ext_resource type="Material" uid="uid://cqx2uv8nxppb8" path="res://resources/materials/world/base_ground_material.tres" id="2_bt4kb"]
 [ext_resource type="PackedScene" uid="uid://drael26wgkdw0" path="res://Scenes/levels/object_spawner.tscn" id="3_8e3xq"]
 [ext_resource type="PackedScene" uid="uid://6h03v3j46w6y" path="res://Scenes/crafting/ingredients/yellow_plant_ingredient_pickable.tscn" id="4_1spgc"]
@@ -104,8 +103,6 @@ operation = 2
 radius = 19.50879
 height = 4.0375977
 sides = 17
-
-[node name="Player" parent="." instance=ExtResource("2_8e3xq")]
 
 [node name="Props" type="Node3D" parent="."]
 
