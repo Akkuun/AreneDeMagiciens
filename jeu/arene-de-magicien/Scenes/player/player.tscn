@@ -94,6 +94,7 @@ level_selection_available = false
 wait_time = 0.5
 
 [node name="PlayerBody" parent="." instance=ExtResource("2_p47bc")]
+collision_mask = 1019
 
 [node name="player" parent="PlayerBody" instance=ExtResource("3_h0khc")]
 transform = Transform3D(0.464956, -0.004044635, 0.0049594427, 0.003995696, 0.4649602, 0.0045915893, -0.004998956, -0.004548539, 0.4649509, 0, 1.1981537, 0)
@@ -101,7 +102,6 @@ transform = Transform3D(0.464956, -0.004044635, 0.0049594427, 0.003995696, 0.464
 [node name="Belt" type="Node3D" parent="PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029629707, 1.2319984, -0.03950596)
 script = ExtResource("11_h0khc")
-slot_count = null
 
 [node name="SlotPath" type="Path3D" parent="PlayerBody/Belt"]
 curve = SubResource("Curve3D_spm8d")
@@ -137,7 +137,7 @@ current = true
 script = ExtResource("13_kysaj")
 
 [node name="Viewport2Din3D" parent="XRCamera3D" instance=ExtResource("2_lgqa7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17593157, -1.4949934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17593157, -1.9403914)
 enabled = false
 scene_properties_keys = PackedStringArray()
 

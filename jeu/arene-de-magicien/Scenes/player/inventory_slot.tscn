@@ -6,7 +6,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y6r1t"]
 resource_local_to_scene = true
-radius = 0.15962751
+radius = 0.06946395
 
 [node name="InventorySlot" instance=ExtResource("1_ydsvx")]
 script = ExtResource("2_y6r1t")
@@ -15,6 +15,6 @@ script = ExtResource("2_y6r1t")
 shape = SubResource("SphereShape3D_y6r1t")
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="2"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 billboard = 1
 texture = ExtResource("2_gvvys")

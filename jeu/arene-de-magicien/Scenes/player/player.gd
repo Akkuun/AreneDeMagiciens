@@ -57,7 +57,9 @@ func set_menu_interaction(state: bool):
 	$RightHand/FunctionPointer.visible = state
 	$LeftHand/FunctionPointer.enabled = state
 	$LeftHand/FunctionPointer.visible = state
-	
+
+func set_belt_visibility(state: bool):
+	$PlayerBody/Belt.set_visibility(state)
 
 func _on_centering_timer_timeout() -> void:
 	update_needed = false

@@ -16,6 +16,9 @@ func _ready() -> void:
 	
 	Global.level_loading.connect(load_level)
 	$Player.set_menu_interaction(true)
+	
+	$Player.call_deferred("set_belt_visibility", false)
+	$Player.set_belt_visibility(false)
 
 func get_player() -> Node:
 	return get_tree().get_nodes_in_group("player").front()
@@ -56,4 +59,5 @@ func _on_loading_box_filling_animation_finished() -> void:
 func _on_loading_box_emptying_animation_finished() -> void:
 	loading_animation_scene.visible = false
 	$Player.disable_move = false
+	$Player.set_belt_visibility(true)
 	$Player.set_menu_interaction(false)

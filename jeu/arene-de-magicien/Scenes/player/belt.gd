@@ -23,3 +23,12 @@ func _ready() -> void:
 
 func set_slot_item(item: XRToolsPickable, index: int):
 	slots[index].set_item(item)
+
+
+func set_visibility(state: bool):
+	for slot in slots:
+		if state:
+			slot.show_slot()
+		else:
+			slot.hide_slot()
+	
