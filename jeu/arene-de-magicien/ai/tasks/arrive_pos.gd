@@ -23,7 +23,7 @@ extends BTAction
 @export var avoid_var: StringName
 
 # active le marqueur visuel de debug
-@export var show_debug_marker: bool = true
+@export var show_debug_marker: bool = false
 
 var _debug_marker: MeshInstance3D = null
 
