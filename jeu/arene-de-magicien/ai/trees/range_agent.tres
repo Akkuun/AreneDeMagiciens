@@ -48,7 +48,7 @@ duration = 2.0
 [sub_resource type="BTSequence" id="BTSequence_xoe3s"]
 custom_name = "Attack"
 children = [SubResource("BTCondition_t88kj"), SubResource("BTAction_1uvjn"), SubResource("BTPlayAnimation_73vhv"), SubResource("BTWait_g37qj"), SubResource("BTAction_deuai"), SubResource("BTWait_nbewg")]
-metadata/_weight_ = 14.344999999999995
+metadata/_weight_ = 4497.157499999997
 
 [sub_resource type="BTAction" id="BTAction_8hgky"]
 script = ExtResource("3_rsv4q")
