@@ -6,6 +6,7 @@ extends XRToolsPickable
 var current_frame: int = 0
 var draw : bool = false
 func _ready():
+	super._ready()
 	$Drawing.points_count = sample_count
 
 func _physics_process(delta: float) -> void:
