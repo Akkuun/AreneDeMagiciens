@@ -151,18 +151,18 @@ func _tick(_delta: float) -> Status:
 			var to_avoid: Vector3 = avoid_node.global_position - agent.global_position
 			to_avoid.y = 0
 			var distance_to_avoid: float = to_avoid.length()
+			var dot_product = dir_3d.normalized().dot(to_avoid.normalized())
 			
-			# Si on se dirige vers l'objet à éviter
-			if dir_3d.normalized().dot(to_avoid.normalized()) > 0.5:
-				var safety_radius := 2.0
-				
-				# Si trop proche, applique une force d'évitement
-				if distance_to_avoid < safety_radius:
-					var side := Vector3(-dir_3d.normalized().z, 0, dir_3d.normalized().x)
-					var strength: float = remap(distance_to_avoid, 0.5, safety_radius, 1.5, 0.3)
-					strength = clampf(strength, 0.0, 1.5)
-					var avoidance := side * signf(-side.dot(to_avoid)) * strength
-					dir_3d += avoidance
+			var detection_radius := 5.0
+			var min_distance := 2.5
+			
+			# Si on se dirige vers l'objet à éviter ET qu'on entre dans la zone de détection
+			if dot_product > 0.5 and distance_to_avoid < detection_radius:
+				var side := Vector3(-dir_3d.normalized().z, 0, dir_3d.normalized().x)
+				var strength: float = remap(distance_to_avoid, min_distance, detection_radius, 3.0, 0.5)
+				strength = clampf(strength, 0.0, 3.0)
+				var avoidance := side * signf(-side.dot(to_avoid)) * strength
+				dir_3d += avoidance
 
 	#décélération en approchant de la cible
 	var speed_multiplier: float = 1.0

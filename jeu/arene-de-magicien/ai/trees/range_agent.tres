@@ -89,7 +89,7 @@ script = ExtResource("2_mi6ct")
 [sub_resource type="BTSequence" id="BTSequence_68vw0"]
 custom_name = "Change flank"
 children = [SubResource("BTAction_8hgky"), SubResource("BTPlayAnimation_xlr4d"), SubResource("BTTimeLimit_kde0j"), SubResource("BTPlayAnimation_t88kj"), SubResource("BTAction_t88kj")]
-metadata/_weight_ = 4.53
+metadata/_weight_ = 1420.1549999999986
 
 [sub_resource type="BTProbabilitySelector" id="BTProbabilitySelector_0k0x4"]
 children = [SubResource("BTSequence_xoe3s"), SubResource("BTSequence_68vw0")]
