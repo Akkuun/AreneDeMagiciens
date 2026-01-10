@@ -15,6 +15,7 @@ func _ready() -> void:
 	loading_animation_scene.put_in_place(get_player_position())
 	
 	Global.level_loading.connect(load_level)
+	$Player.set_menu_interaction(true)
 
 func get_player() -> Node:
 	return get_tree().get_nodes_in_group("player").front()
@@ -55,3 +56,4 @@ func _on_loading_box_filling_animation_finished() -> void:
 func _on_loading_box_emptying_animation_finished() -> void:
 	loading_animation_scene.visible = false
 	$Player.disable_move = false
+	$Player.set_menu_interaction(false)

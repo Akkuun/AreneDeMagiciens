@@ -17,7 +17,6 @@ metadata/_custom_type_script = "uid://tthulq1cqrvx"
 
 [node name="LoadingBox" parent="." instance=ExtResource("4_kry3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6754904, 0)
-offset_y = 4.0
 
 [node name="Player" parent="." instance=ExtResource("4_jjvhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312333, 0)

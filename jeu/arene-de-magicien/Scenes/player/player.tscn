@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_p47bc"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="5_0owmy"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_qek5x"]
-[ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="7_je7p5"]
 [ext_resource type="Resource" uid="uid://b8i4akvgtkn2t" path="res://resources/game_state/player_inventory.tres" id="8_nyrd7"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="9_fm80t"]
 [ext_resource type="PackedScene" uid="uid://cadnxif7rc8x6" path="res://Scenes/components/physic/status_manager.tscn" id="9_spm8d"]
@@ -22,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bj0qtn1xope1i" path="res://Scenes/UI/player/player_ui.tscn" id="14_egohg"]
 [ext_resource type="Script" uid="uid://b0085kxt4ol8i" path="res://Scenes/player/inventory.gd" id="14_nyrd7"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="17_kvlxm"]
+[ext_resource type="PackedScene" uid="uid://drs4eeq721ojn" path="res://addons/godot-xr-tools/functions/movement_sprint.tscn" id="19_ua3np"]
 [ext_resource type="PackedScene" uid="uid://6kwajc2m7wut" path="res://Scenes/components/entities/life_component.tscn" id="23_ua3np"]
 
 [sub_resource type="Curve" id="Curve_lgqa7"]
@@ -63,7 +63,7 @@ size = Vector2(3, 2)
 [sub_resource type="ViewportTexture" id="ViewportTexture_ua3np"]
 viewport_path = NodePath("XRCamera3D/Viewport2Din3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnu3u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ua3np"]
 transparency = 1
 cull_mode = 2
 albedo_texture = SubResource("ViewportTexture_ua3np")
@@ -81,14 +81,13 @@ dist_menu_from_cam = 2.0
 menu_interpolation = SubResource("Curve_lgqa7")
 interpolation_speed = 0.5
 
-[node name="Viewport2Din3D" parent="." node_paths=PackedStringArray("settings_panel") instance=ExtResource("2_lgqa7")]
+[node name="Viewport2Din3D" parent="." instance=ExtResource("2_lgqa7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2718488, -1.6202573)
 visible = false
 scene = ExtResource("3_8ydkj")
 viewport_size = Vector2(600, 400)
 unshaded = true
-scene_properties_keys = PackedStringArray("main_ui.gd", "settings_panel", "level_selection_available")
-settings_panel = NodePath("Viewport/MainUI/GameSettings")
+scene_properties_keys = PackedStringArray("main_ui.gd", "level_selection_available")
 level_selection_available = false
 
 [node name="CenteringTimer" type="Timer" parent="Viewport2Din3D"]
@@ -146,7 +145,7 @@ scene_properties_keys = PackedStringArray()
 
 [node name="Screen" parent="XRCamera3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_egohg")
-surface_material_override/0 = SubResource("StandardMaterial3D_mnu3u")
+surface_material_override/0 = SubResource("StandardMaterial3D_ua3np")
 
 [node name="CollisionShape3D" parent="XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_rwmec")
@@ -163,7 +162,9 @@ grab_collision_mask = 328708
 [node name="MovementDirect" parent="LeftHand" instance=ExtResource("5_0owmy")]
 strafe = true
 
-[node name="MovementCrouch" parent="LeftHand" instance=ExtResource("7_je7p5")]
+[node name="FunctionPointer" parent="LeftHand" instance=ExtResource("17_kvlxm")]
+
+[node name="MovementSprint" parent="LeftHand" instance=ExtResource("19_ua3np")]
 
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.772748, 0.7, 0)
@@ -180,9 +181,6 @@ grab_collision_mask = 328708
 jump_button_action = "A/X button"
 
 [node name="FunctionPointer" parent="RightHand" instance=ExtResource("17_kvlxm")]
-
-[node name="MovementJump2" parent="RightHand" instance=ExtResource("10_gx1jg")]
-jump_button_action = "ax_button"
 
 [node name="LifeComponent" parent="." instance=ExtResource("23_ua3np")]
 max_life = 60

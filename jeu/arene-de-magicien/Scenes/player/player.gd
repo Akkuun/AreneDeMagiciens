@@ -46,11 +46,18 @@ func _physics_process(delta: float) -> void:
 	menu.rotation = menu.rotation.lerp(cam.rotation, curve_value)
 
 
-func _on_hand_button_pressed(name: String) -> void:
-	if name == "menu_button":
+func _on_hand_button_pressed(interaction_name: String) -> void:
+	if interaction_name == "menu_button":
 		menu.visible = !menu.visible
+		set_menu_interaction(menu.visible)
 		menu.global_position = cam.global_position - cam.global_basis.z * dist_menu_from_cam
 
+func set_menu_interaction(state: bool):
+	$RightHand/FunctionPointer.enabled = state
+	$RightHand/FunctionPointer.visible = state
+	$LeftHand/FunctionPointer.enabled = state
+	$LeftHand/FunctionPointer.visible = state
+	
 
 func _on_centering_timer_timeout() -> void:
 	update_needed = false
