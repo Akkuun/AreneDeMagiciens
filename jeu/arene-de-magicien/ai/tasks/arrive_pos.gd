@@ -14,13 +14,18 @@ extends BTAction
 @export var custom_speed: float = 5.0
 
 # distance minimale à la position cible pour retourner SUCCESS.
-@export var tolerance := 0.5
+@export var tolerance := 0.01
 
 # distance à partir de laquelle l'agent commence a ralentir
 @export var slowdown_radius := 2.0
 
 # noeud a éviter (Node3D valide attendu).
 @export var avoid_var: StringName
+
+# active le marqueur visuel de debug
+@export var show_debug_marker: bool = true
+
+var _debug_marker: MeshInstance3D = null
 
 
 func _generate_name() -> String:
@@ -33,11 +38,40 @@ func _generate_name() -> String:
 func _tick(_delta: float) -> Status:
 	var target_pos: Vector3 = blackboard.get_var(target_position_var, Vector3.ZERO)
 	
+	# Projette target_pos sur le NavMesh pour avoir une position valide
+	if agent._navigation_agent and is_instance_valid(agent._navigation_agent):
+		var nav_map = agent._navigation_agent.get_navigation_map()
+		if nav_map.is_valid():
+			target_pos = NavigationServer3D.map_get_closest_point(nav_map, target_pos)
+	
+	# debug marker position d'arivée
+	if show_debug_marker:
+		if not _debug_marker:
+			_debug_marker = MeshInstance3D.new()
+			var sphere = SphereMesh.new()
+			sphere.radius = 0.3
+			sphere.height = 0.6
+			_debug_marker.mesh = sphere
+			
+			var material = StandardMaterial3D.new()
+			material.albedo_color = Color.RED
+			material.emission_enabled = true
+			material.emission = Color.RED
+			material.emission_energy_multiplier = 2.0
+			_debug_marker.material_override = material
+			
+			agent.get_tree().root.add_child(_debug_marker)
+		
+		_debug_marker.global_position = target_pos
+	
 	# vérifie si on est arrivé
 	var distance: float = agent.global_position.distance_to(target_pos)
 	if distance < tolerance:
 		agent.move(Vector3.ZERO)
 		agent.velocity = Vector3.ZERO
+		if _debug_marker:
+			_debug_marker.queue_free()
+			_debug_marker = null
 		return SUCCESS
 
 	# Détermine la vitesse selon le mode
@@ -62,12 +96,47 @@ func _tick(_delta: float) -> Status:
 		# configure la destination du NavigationAgent
 		agent._navigation_agent.target_position = target_pos
 		
-		# obtien la prochaine position sur le chemin calculé
-		var next_pos: Vector3 = agent._navigation_agent.get_next_path_position()
+		#si le NavigationAgent dit que l'on est arriver
+		if agent._navigation_agent.is_navigation_finished():
+			agent.move(Vector3.ZERO)
+			agent.velocity = Vector3.ZERO
+			if _debug_marker:
+				_debug_marker.queue_free()
+				_debug_marker = null
+			return SUCCESS
 		
-		# direction vers le prochain waypoint
-		dir_3d = (next_pos - agent.global_position)
-		dir_3d.y = 0 
+		# Vérifie si la cible est atteignable car sur le level de test on est en float donc parfois on est trop loin
+		if not agent._navigation_agent.is_target_reachable():
+			# Essaie quand même d'obtenir next_pos, au cas où on peut se rapprocher
+			var next_pos: Vector3 = agent._navigation_agent.get_next_path_position()
+			dir_3d = (next_pos - agent.global_position)
+			dir_3d.y = 0
+			
+			# si next_pos est invalide (trop proche = pas de chemin), utilise la cible directement
+			if dir_3d.length() < 0.01:
+				dir_3d = target_pos - agent.global_position
+				dir_3d.y = 0
+		else:
+			# obtien la prochaine position sur le chemin calculé
+			var next_pos: Vector3 = agent._navigation_agent.get_next_path_position()
+			
+			# direction vers le prochain waypoint
+			dir_3d = (next_pos - agent.global_position)
+			dir_3d.y = 0
+			
+			# si next_pos est quasi identique (erreur du NavigationAgent), utilise la cible
+			if dir_3d.length() < 0.01:
+				dir_3d = target_pos - agent.global_position
+				dir_3d.y = 0
+		
+		# si la distance à la destination finale est plus petite que le seuil de tolerance
+		if distance < tolerance:
+			agent.move(Vector3.ZERO)
+			agent.velocity = Vector3.ZERO
+			if _debug_marker:
+				_debug_marker.queue_free()
+				_debug_marker = null
+			return SUCCESS 
 		
 	else:
 		# Fallback : déplacement direct sans navigation

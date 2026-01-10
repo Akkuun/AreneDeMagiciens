@@ -48,7 +48,7 @@ duration = 2.0
 [sub_resource type="BTSequence" id="BTSequence_xoe3s"]
 custom_name = "Attack"
 children = [SubResource("BTCondition_t88kj"), SubResource("BTAction_1uvjn"), SubResource("BTPlayAnimation_73vhv"), SubResource("BTWait_g37qj"), SubResource("BTAction_deuai"), SubResource("BTWait_nbewg")]
-metadata/_weight_ = 14.344999999999997
+metadata/_weight_ = 14.344999999999995
 
 [sub_resource type="BTAction" id="BTAction_8hgky"]
 script = ExtResource("3_rsv4q")
@@ -67,6 +67,7 @@ blend = 0.1
 
 [sub_resource type="BTAction" id="BTAction_hfkjk"]
 script = ExtResource("4_aeqyo")
+tolerance = 0.5
 avoid_var = &"detected_player"
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_kde0j"]
@@ -117,6 +118,7 @@ blend = 0.2
 script = ExtResource("4_aeqyo")
 target_position_var = &"patrol_pos"
 speed_mode = "walk"
+tolerance = 0.7
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_aeqyo"]
 children = [SubResource("BTAction_05aup")]

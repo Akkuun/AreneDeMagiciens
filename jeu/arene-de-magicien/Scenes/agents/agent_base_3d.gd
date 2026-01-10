@@ -173,6 +173,9 @@ func _setup_navigation_agent() -> void:
 		_navigation_agent.height = navigation_height
 	
 	_navigation_agent.avoidance_enabled = true
+	
+	# IMPORTANT : Attend le prochain frame physics pour que le NavigationAgent soit prêt
+	await get_tree().physics_frame
 
 
 # Récupère le CollisionShape3D de l'agent
