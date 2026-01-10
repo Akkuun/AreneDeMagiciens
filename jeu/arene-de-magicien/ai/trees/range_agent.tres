@@ -67,7 +67,7 @@ blend = 0.1
 
 [sub_resource type="BTAction" id="BTAction_hfkjk"]
 script = ExtResource("4_aeqyo")
-tolerance = 0.5
+tolerance = 0.7
 avoid_var = &"detected_player"
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_kde0j"]

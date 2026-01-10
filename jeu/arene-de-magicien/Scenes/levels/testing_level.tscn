@@ -228,7 +228,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5611058, 1.4482718, -3.2103
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24303055, 6.2131286, -3.983619)
 
 [node name="RangeAgent" parent="." instance=ExtResource("20_5e1nm")]
-transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -5.9377213, 0.0068604946, 17.043064)
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -5.9377213, 0.0068604946, 3.1306705)
 
 [node name="corps" type="MeshInstance3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3129926, 0, -0.2800579)
