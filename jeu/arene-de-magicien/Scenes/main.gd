@@ -38,10 +38,13 @@ func load_level(scene : PackedScene):
 	waiting_scene = scene.instantiate()
 	waiting_scene.ready.connect(func() : 
 		var scatter_nodes = get_tree().get_nodes_in_group("scatter_node")
-		for scatter in scatter_nodes:
-			if scatter is ProtonScatter:
-				scatter_unfinished_count += 1
-				scatter.build_completed.connect(scatter_finished)
+		if scatter_nodes.is_empty():
+			loading_animation_scene.reverse()
+		else:
+			for scatter in scatter_nodes:
+				if scatter is ProtonScatter:
+					scatter_unfinished_count += 1
+					scatter.build_completed.connect(scatter_finished)
 		loading_animation_scene.put_in_place(get_player_position()))
 
 func scatter_finished():

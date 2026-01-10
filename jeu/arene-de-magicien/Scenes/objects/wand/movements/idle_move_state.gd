@@ -9,8 +9,17 @@ func get_state_name() -> String:
 var init_move : MoveRecognizer.MoveType
 func state_enter(args : Dictionary) -> bool:
 	init_move = move_recognizer.current_move
+	Global.gesture_node.gesture_classified.connect(evaluate_move)
 	return true
 
+
+func evaluate_move(move : String):
+	if move == "circle":
+		state_manager.change_state("Circle")
+	elif move == "spirale":
+		state_manager.change_state("Vacuum")
+	else:
+		state_manager.change_state("Fail")
 
 func state_process(delta: float) -> void:
 	if wand_root.get_picked_up_by_controller() != null:
@@ -31,6 +40,7 @@ func state_process(delta: float) -> void:
 
 func state_leave() -> void:
 	move_recognizer.consume_move()
+	Global.gesture_node.gesture_classified.disconnect(evaluate_move)
 
 func _on_duration_timeout() -> void:
 	state_manager.change_state("Armed", {"initial_orientation" :  move_recognizer.current_move})

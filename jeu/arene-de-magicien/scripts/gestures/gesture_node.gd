@@ -34,6 +34,9 @@ var LUT = {}
 @export var cap_mode : int = 2
 #endregion
 
+func _enter_tree() -> void:
+	Global.gesture_node = self
+
 var can_draw : bool = false
 var stroke : Line2D
 func _input(event: InputEvent) -> void:

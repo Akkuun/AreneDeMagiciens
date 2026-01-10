@@ -4,6 +4,8 @@ enum MoveType{NONE, UP, DOWN, FORWARD, CIRCLE, THRUST_Y, THRUST_X, THRUST_DIAG}
 
 var current_move : MoveType = MoveType.NONE
 
+@export var disable : bool = false
+
 @export var target : Node3D
 @export var up_sensibility : float = 0.9
 @export var down_sensibility : float = 0.9
@@ -39,6 +41,8 @@ func _ready() -> void:
 	consume_move()
 
 func _physics_process(delta: float) -> void:
+	if disable:
+		return
 	var alignement_up := target.global_basis.y.dot(Vector3.UP)
 	var alignement_down := target.global_basis.y.dot(Vector3.DOWN)
 	var alignement_forward := target.basis.y.dot(Vector3.FORWARD)

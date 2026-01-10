@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="InventoryResource" load_steps=4 format=3 uid="uid://b8i4akvgtkn2t"]
+[gd_resource type="Resource" script_class="InventoryResource" load_steps=5 format=3 uid="uid://b8i4akvgtkn2t"]
 
 [ext_resource type="PackedScene" uid="uid://dxcbfrl25gbok" path="res://Scenes/player/backpack.tscn" id="1_0w46b"]
 [ext_resource type="Script" uid="uid://ev1c638ra2q6" path="res://scripts/inventory_resource.gd" id="1_3v0jm"]
 [ext_resource type="PackedScene" uid="uid://d0t0fvctdsdhq" path="res://Scenes/objects/wand/wand.tscn" id="2_updqx"]
+[ext_resource type="PackedScene" uid="uid://btlxnvawfkcf4" path="res://Scenes/objects/potions/heal_potion/heal_potion.tscn" id="3_updqx"]
 
 [resource]
 script = ExtResource("1_3v0jm")
-items = Array[PackedScene]([ExtResource("1_0w46b"), ExtResource("2_updqx")])
+items = Array[PackedScene]([ExtResource("1_0w46b"), ExtResource("2_updqx"), ExtResource("3_updqx")])
 max_size = 4
 metadata/_custom_type_script = "uid://ev1c638ra2q6"

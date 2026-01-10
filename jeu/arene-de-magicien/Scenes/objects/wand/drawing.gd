@@ -1,10 +1,13 @@
-extends Node
+class_name DrawingRecognizer extends Node
 var points_count : int
 var point_history: Array[Vector3]
 var planned_points : PackedVector3Array
 var x_dir := Vector3.ZERO
 var y_dir := Vector3.ZERO
 var center := Vector3.ZERO
+
+func _enter_tree() -> void:
+	Global.draw_recog = self
 
 func _process(delta: float) -> void:
 	DebugDraw3D.draw_points(planned_points, DebugDraw3D.PointType.POINT_TYPE_SPHERE, 0.05)

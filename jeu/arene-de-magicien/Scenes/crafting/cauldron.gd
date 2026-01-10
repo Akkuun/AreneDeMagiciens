@@ -98,8 +98,7 @@ func free_ingredient(ingredient: Recipe.IngredientType):
 func _on_craft_timer_timeout() -> void:
 	craft()
 
-
-func _on_status_receiver_status_entered(status: int) -> void:
+func _on_status_receiver_status_entered(status: int, damage: int, position: Vector3) -> void:
 	if status == Global.StatusEnum.FIRE:
 		active = true
 	if status == Global.StatusEnum.WATER:
