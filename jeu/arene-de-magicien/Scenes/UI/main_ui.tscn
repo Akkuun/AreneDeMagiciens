@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bcqnfty32hbhs" path="res://Scenes/UI/game_settings.tscn" id="2_40uwi"]
 [ext_resource type="PackedScene" uid="uid://bu7ts6e20g8qs" path="res://Scenes/UI/lobby_ui.tscn" id="3_xltjf"]
 
-[node name="MainUI" type="Control" node_paths=PackedStringArray("settings_panel")]
+[node name="MainUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7dr7o")
-settings_panel = NodePath("GameSettings")
 
 [node name="Navigation" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -49,6 +48,10 @@ grow_vertical = 1
 visible = false
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="Navigation/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Navigation/Levels" to="." method="_on_levels_pressed"]
