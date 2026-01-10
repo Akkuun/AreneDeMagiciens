@@ -22,3 +22,4 @@ size = Vector3(8, 8, 8)
 [node name="LoadingBox" type="MeshInstance3D"]
 mesh = SubResource("BoxMesh_olncb")
 script = ExtResource("4_ms3mx")
+offset_y = 4.0
