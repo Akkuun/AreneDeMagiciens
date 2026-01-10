@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu7ts6e20g8qs"]
+[gd_scene load_steps=7 format=3 uid="uid://bu7ts6e20g8qs"]
 
 [ext_resource type="Script" uid="uid://obux4iaigunv" path="res://Scenes/UI/lobby_ui.gd" id="1_7vxlf"]
+[ext_resource type="Script" uid="uid://cg05utdkvfaox" path="res://scripts/level_resource.gd" id="2_p7rx8"]
+[ext_resource type="PackedScene" uid="uid://bsb0kkp561qn5" path="res://Scenes/levels/arena_1.tscn" id="3_q1fgt"]
+[ext_resource type="PackedScene" uid="uid://c3ui4oy1vkbtc" path="res://Scenes/levels/arena_2.tscn" id="4_ifh3s"]
+
+[sub_resource type="Resource" id="Resource_7e6r4"]
+script = ExtResource("2_p7rx8")
+level_name = "Testing range"
+level_packed_scene = ExtResource("3_q1fgt")
+metadata/_custom_type_script = "uid://cg05utdkvfaox"
+
+[sub_resource type="Resource" id="Resource_uim73"]
+script = ExtResource("2_p7rx8")
+level_name = "Level 1"
+level_packed_scene = ExtResource("4_ifh3s")
+metadata/_custom_type_script = "uid://cg05utdkvfaox"
 
 [node name="LobbyUi" type="VBoxContainer"]
 anchors_preset = 15
@@ -9,3 +24,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7vxlf")
+levels = Array[ExtResource("2_p7rx8")]([SubResource("Resource_7e6r4"), SubResource("Resource_uim73")])

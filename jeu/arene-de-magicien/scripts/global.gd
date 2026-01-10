@@ -9,3 +9,8 @@ enum StatusEnum {
 
 
 enum MoveTypeEnum {SEND, TORNADO, WAVE}
+
+
+signal level_loading(level: PackedScene)
+func load_level(level: PackedScene):
+	level_loading.emit(level)
