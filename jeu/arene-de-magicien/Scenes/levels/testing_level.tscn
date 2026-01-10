@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cn2suidvwy8og" path="res://Scenes/levels/testing_level.gd" id="1_6bo2y"]
 [ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://Scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
 [ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://Scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
-[ext_resource type="PackedScene" uid="uid://dl3muv5fxgmn8" path="res://Scenes/objects/potions/fire_potion/fire_potion.tscn" id="4_sxg75"]
 [ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="5_6bo2y"]
 [ext_resource type="PackedScene" uid="uid://bmeufrswafh4b" path="res://Scenes/crafting/ingredients/wood_ingredient_pickable.tscn" id="6_s4w6r"]
 [ext_resource type="PackedScene" uid="uid://dxcbfrl25gbok" path="res://Scenes/player/backpack.tscn" id="8_s4w6r"]
@@ -217,12 +216,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8509804, 1.1830263, -3.9699
 
 [node name="WoodBox3" parent="Props" instance=ExtResource("2_otqx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06938326, 1.1830263, -3.9699404)
-
-[node name="FirePotion" parent="Props" instance=ExtResource("4_sxg75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56924975, 4.4004087, -4.092132)
-
-[node name="FirePotion2" parent="Props" instance=ExtResource("4_sxg75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0359589, 1.4160049, -1.9112533)
 
 [node name="Backpack" parent="Props" instance=ExtResource("8_s4w6r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5611058, 1.4482718, -3.2103736)

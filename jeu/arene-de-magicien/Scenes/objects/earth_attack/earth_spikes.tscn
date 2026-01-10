@@ -118,6 +118,7 @@ draw_pass_1 = SubResource("QuadMesh_t0we4")
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("10_87sew")
+damage = 10
 metadata/_custom_type_script = "uid://enq82v1do81s"
 
 [node name="HitZoneCollision" type="CollisionShape3D" parent="HitZone"]

@@ -5,6 +5,7 @@ const StatusEnum = Global.StatusEnum
 signal status_applied(status: StatusEnum)
 signal status_removed(status: StatusEnum)
 signal dammage_taken(quantity: int)
+signal first_hit_status_taken(dammage: int, direction: Vector3)
 
 var status_giver_scene: PackedScene
 
@@ -29,9 +30,13 @@ func _ready() -> void:
 			child.status_leaved.connect(leaved)
 
 
-func received(status: StatusEnum):
+func received(status: StatusEnum, dammage: int, position: Vector3):
 	if(!status_managed.has(status)):
 		return
+	else:
+		var knockback : Vector3 = global_position - position
+		first_hit_status_taken.emit(dammage, knockback)
+		dammage_taken.emit(dammage)
 	
 	var received_status_card := status_managed[status]
 	

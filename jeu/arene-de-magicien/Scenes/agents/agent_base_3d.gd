@@ -9,6 +9,7 @@ signal death
 @export var walk_speed: float = 2.0 #vitesse de marche
 @export var run_speed: float = 5.0 #vitesse de course
 @export var rotation_speed: float = 10.0 #vitesse de rotation de l'agent
+@export var gravity_strength: float = 20
 
 @export_group("Navigation")
 @export var use_navigation: bool = true #utilise le système de navigation de Godot pour éviter les obstacles
@@ -16,13 +17,13 @@ signal death
 @export var navigation_height: float = 2.0  # hauteur de l'agent
 
 var _is_dead: bool = false
-var _moved_this_frame: bool = false
 var _navigation_agent: NavigationAgent3D = null
 
 @onready var root: Node3D = $CharacterArmature
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-# @onready var health: Health = $Health  # pour rajouter un nœud Health
 
+var knock_backed: bool = false
+var next_frame_velocity: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	# health.damaged.connect(_damaged)
@@ -34,22 +35,23 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	_post_physics_process.call_deferred()
+	var target_vel := Vector3(next_frame_velocity.x, 0, next_frame_velocity.z)
+	velocity = velocity.lerp(target_vel, _delta)
+	if !is_on_floor():
+		velocity.y -= gravity_strength * _delta
+	
+	move_and_slide()
+	
+	next_frame_velocity = Vector3.ZERO
 
 
 
-func _post_physics_process() -> void:
-	if not _moved_this_frame:
-		velocity = lerp(velocity, Vector3.ZERO, 0.5)
-	_moved_this_frame = false
 
 
 
 # déplace l'agent avec la vélocité spécifiée
 func move(p_velocity: Vector3) -> void:
-	velocity = lerp(velocity, p_velocity, 0.2)
-	move_and_slide()
-	_moved_this_frame = true
+	next_frame_velocity = p_velocity
 
 
 # déplace l'agent en direction d'une position cible
@@ -99,12 +101,12 @@ func apply_knockback(knockback: Vector3, frames: int = 10) -> void:
 	if knockback.is_zero_approx():
 		return
 	for i in range(frames):
-		move(knockback)
-		await get_tree().physics_frame
+		knock_backed = true
+		velocity = knockback
 
 
 # callback quand l'agent prend des dégâts
-func _damaged(_amount: float, knockback: Vector3) -> void:
+func _damaged(_amount: int, knockback: Vector3) -> void:
 	apply_knockback(knockback)
 	if animation_player:
 		pass
@@ -138,9 +140,8 @@ func die() -> void:
 		btplayer.set_active(false)
 	
 	# supprime l'agent après un délai
-	if get_tree():
-		await get_tree().create_timer(10.0).timeout
-		queue_free()
+	get_tree().create_timer(10.0).timeout.connect(func ():
+		queue_free())
 
 func is_dead() -> bool:
 	return _is_dead
@@ -217,3 +218,13 @@ func navigate_along_path() -> Vector3i:
 	if _navigation_agent and not _navigation_agent.is_navigation_finished():
 		return _navigation_agent.get_next_path_position()
 	return global_position
+
+
+func _on_status_manager_status_applied(status: int) -> void:
+	if status == Global.StatusEnum.FIRE:
+		$Burning.visible = true
+
+
+func _on_status_manager_status_removed(status: int) -> void:
+	if status == Global.StatusEnum.FIRE:
+		$Burning.visible = false
