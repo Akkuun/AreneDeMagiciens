@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://eqpudws0tesx"]
+[gd_scene load_steps=34 format=3 uid="uid://eqpudws0tesx"]
 
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_gmlin"]
 [ext_resource type="Script" uid="uid://b1p7oa1fa7ix4" path="res://Scenes/player/player.gd" id="1_lvxji"]
@@ -18,8 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="10_gx1jg"]
 [ext_resource type="Script" uid="uid://cfhgp433xp1ra" path="res://scripts/status_card.gd" id="10_kysaj"]
 [ext_resource type="Script" uid="uid://iy0nutidc3cv" path="res://Scenes/player/belt.gd" id="11_h0khc"]
+[ext_resource type="Script" uid="uid://djl472a1gxfp0" path="res://Scenes/player/damage_overlay.gd" id="13_kysaj"]
+[ext_resource type="PackedScene" uid="uid://bj0qtn1xope1i" path="res://Scenes/UI/player/player_ui.tscn" id="14_egohg"]
 [ext_resource type="Script" uid="uid://b0085kxt4ol8i" path="res://Scenes/player/inventory.gd" id="14_nyrd7"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="17_kvlxm"]
+[ext_resource type="PackedScene" uid="uid://6kwajc2m7wut" path="res://Scenes/components/entities/life_component.tscn" id="23_ua3np"]
 
 [sub_resource type="Curve" id="Curve_lgqa7"]
 _data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -32,6 +35,12 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Resource" id="Resource_dpkfr"]
+script = ExtResource("10_kysaj")
+tick_rate = 0.0
+damage_by_tick = 0.0
+metadata/_custom_type_script = "uid://cfhgp433xp1ra"
+
 [sub_resource type="Resource" id="Resource_egohg"]
 script = ExtResource("10_kysaj")
 stoped_by = 2
@@ -43,15 +52,26 @@ tick_rate = 0.5
 damage_by_tick = 3.0
 metadata/_custom_type_script = "uid://cfhgp433xp1ra"
 
-[sub_resource type="Resource" id="Resource_dpkfr"]
-script = ExtResource("10_kysaj")
-tick_rate = 0.0
-damage_by_tick = 0.0
-metadata/_custom_type_script = "uid://cfhgp433xp1ra"
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kysaj"]
 radius = 0.3544922
 height = 1.6437988
+
+[sub_resource type="QuadMesh" id="QuadMesh_egohg"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ua3np"]
+viewport_path = NodePath("XRCamera3D/Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnu3u"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_ua3np")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwmec"]
+resource_local_to_scene = true
+size = Vector3(3, 2, 0.02)
 
 [node name="Player" type="XROrigin3D" node_paths=PackedStringArray("cam", "menu") groups=["player"]]
 script = ExtResource("1_lvxji")
@@ -114,6 +134,23 @@ current = true
 
 [node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_gmlin")]
 
+[node name="DamageOverlay" type="MeshInstance3D" parent="XRCamera3D"]
+script = ExtResource("13_kysaj")
+
+[node name="Viewport2Din3D" parent="XRCamera3D" instance=ExtResource("2_lgqa7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17593157, -1.4949934)
+enabled = false
+scene_properties_keys = PackedStringArray()
+
+[node name="PlayerUi" parent="XRCamera3D/Viewport2Din3D/Viewport" index="0" instance=ExtResource("14_egohg")]
+
+[node name="Screen" parent="XRCamera3D/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_egohg")
+surface_material_override/0 = SubResource("StandardMaterial3D_mnu3u")
+
+[node name="CollisionShape3D" parent="XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_rwmec")
+
 [node name="LeftHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.82960695, 0.7, 0)
 tracker = &"left_hand"
@@ -147,7 +184,16 @@ jump_button_action = "A/X button"
 [node name="MovementJump2" parent="RightHand" instance=ExtResource("10_gx1jg")]
 jump_button_action = "ax_button"
 
+[node name="LifeComponent" parent="." instance=ExtResource("23_ua3np")]
+max_life = 60
+
 [connection signal="timeout" from="Viewport2Din3D/CenteringTimer" to="." method="_on_centering_timer_timeout"]
 [connection signal="inventory_item_instantiated" from="PlayerBody/Belt/Inventory" to="PlayerBody/Belt" method="set_slot_item"]
+[connection signal="dammage_taken" from="PlayerBody/StatusManager" to="." method="_on_status_manager_dammage_taken"]
+[connection signal="dammage_taken" from="PlayerBody/StatusManager" to="LifeComponent" method="take_damage"]
 [connection signal="button_pressed" from="LeftHand" to="." method="_on_hand_button_pressed"]
 [connection signal="button_pressed" from="RightHand" to="." method="_on_hand_button_pressed"]
+[connection signal="dead" from="LifeComponent" to="." method="_on_life_component_dead"]
+[connection signal="new_value" from="LifeComponent" to="XRCamera3D/Viewport2Din3D/Viewport/PlayerUi" method="set_health"]
+
+[editable path="XRCamera3D/Viewport2Din3D"]

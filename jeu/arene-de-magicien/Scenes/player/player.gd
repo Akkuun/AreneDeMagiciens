@@ -4,8 +4,10 @@ extends XROrigin3D
 @export var menu : XRToolsViewport2DIn3D
 @export var dist_menu_from_cam : float = 5.0
 @export var menu_interpolation : Curve
-@export var interpolation_speed: float = 1.0  
+@export var interpolation_speed: float = 1.0
 
+@onready var player_ui : Control = $XRCamera3D/Viewport2Din3D/Viewport/PlayerUi
+ 
 var _disable_move : bool = false
 @export var disable_move : bool:
 	set(value):
@@ -21,6 +23,8 @@ func _ready():
 	if interface and interface.initialize():
 		# turn the main viewport into an ARVR viewport:
 		get_viewport().arvr = true
+	
+	player_ui.set_max_health($LifeComponent.max_life)
 
 var update_needed : bool = false
 var interpolation_progress: float = 0.0  
@@ -50,3 +54,12 @@ func _on_hand_button_pressed(name: String) -> void:
 
 func _on_centering_timer_timeout() -> void:
 	update_needed = false
+
+
+func _on_status_manager_dammage_taken(quantity: int) -> void:
+	if quantity > 0:
+		$XRCamera3D/DamageOverlay.show_damage()
+
+
+func _on_life_component_dead() -> void:
+	player_ui.show_death_screen()

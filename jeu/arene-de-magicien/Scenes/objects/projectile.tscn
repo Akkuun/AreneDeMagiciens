@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://projectile_basic"]
+[gd_scene load_steps=6 format=3 uid="uid://bymbxgpk838l0"]
 
-[ext_resource type="Script" path="res://Scenes/objects/projectile.gd" id="1"]
+[ext_resource type="Script" uid="uid://crv5snj015h6o" path="res://Scenes/objects/projectile.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="2_e65hv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1"]
 radius = 0.1
@@ -12,8 +13,8 @@ emission_enabled = true
 emission = Color(1, 1, 0, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_1"]
-radius = 0.15
+[sub_resource type="SphereShape3D" id="SphereShape3D_mg0jy"]
+radius = 0.1543386
 
 [node name="Projectile" type="Node3D"]
 script = ExtResource("1")
@@ -22,12 +23,11 @@ script = ExtResource("1")
 mesh = SubResource("SphereMesh_1")
 surface_material_override/0 = SubResource("StandardMaterial3D_1")
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 1
+[node name="StatusGiver" parent="." instance=ExtResource("2_e65hv")]
+damage = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_1")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusGiver"]
+shape = SubResource("SphereShape3D_mg0jy")
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[connection signal="area_entered" from="StatusGiver" to="." method="_on_status_giver_area_entered"]
+[connection signal="body_entered" from="StatusGiver" to="." method="_on_status_giver_body_entered"]

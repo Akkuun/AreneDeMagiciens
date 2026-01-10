@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ai/tasks/is_player_detected.gd" id="1_rsv4q"]
 [ext_resource type="Script" path="res://ai/tasks/is_in_range.gd" id="2_07ai8"]
-[ext_resource type="PackedScene" path="res://Scenes/objects/projectile.tscn" id="2_jswlx"]
+[ext_resource type="PackedScene" uid="uid://bymbxgpk838l0" path="res://Scenes/objects/projectile.tscn" id="2_jswlx"]
 [ext_resource type="Script" path="res://ai/tasks/face_target.gd" id="2_mi6ct"]
 [ext_resource type="Script" path="res://ai/tasks/shoot_projectile.gd" id="3_mi6ct"]
 [ext_resource type="Script" uid="uid://dmx4g6vr6u2c6" path="res://ai/tasks/select_flanking_pos.gd" id="3_rsv4q"]

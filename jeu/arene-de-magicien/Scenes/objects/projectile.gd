@@ -35,14 +35,9 @@ func launch(target_position: Vector3, start_position: Vector3, max_distance: flo
 		look_at(global_position + direction, Vector3.UP)
 
 
-# a appelé quand le projectile touche quelque chose
-func _on_area_entered(area: Area3D) -> void:
-	var body = area.get_parent()
-	if body and body.has_method("take_damage"):
-		body.take_damage(damage)
+func _on_status_giver_body_entered(body: Node3D) -> void:
 	queue_free()
 
-# a appelé quand le projectile entre en collision avec un corps
-func _on_body_entered(body: Node3D) -> void:
-	if body is StaticBody3D or body is CharacterBody3D:
-		queue_free()
+
+func _on_status_giver_area_entered(area: Area3D) -> void:
+	queue_free()

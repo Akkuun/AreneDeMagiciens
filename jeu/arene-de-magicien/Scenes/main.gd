@@ -54,3 +54,4 @@ func _on_loading_box_filling_animation_finished() -> void:
 
 func _on_loading_box_emptying_animation_finished() -> void:
 	loading_animation_scene.visible = false
+	$Player.disable_move = false
