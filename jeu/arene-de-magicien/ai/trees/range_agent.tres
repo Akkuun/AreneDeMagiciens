@@ -1,14 +1,14 @@
 [gd_resource type="BehaviorTree" load_steps=44 format=3 uid="uid://cqdkws254vlu4"]
 
-[ext_resource type="Script" path="res://ai/tasks/is_player_detected.gd" id="1_rsv4q"]
-[ext_resource type="Script" path="res://ai/tasks/is_in_range.gd" id="2_07ai8"]
+[ext_resource type="Script" uid="uid://dt7wqjp2mu2xk" path="res://ai/tasks/is_player_detected.gd" id="1_rsv4q"]
+[ext_resource type="Script" uid="uid://by7d5tsqwbafb" path="res://ai/tasks/is_in_range.gd" id="2_07ai8"]
 [ext_resource type="PackedScene" uid="uid://bymbxgpk838l0" path="res://Scenes/objects/projectile.tscn" id="2_jswlx"]
-[ext_resource type="Script" path="res://ai/tasks/face_target.gd" id="2_mi6ct"]
-[ext_resource type="Script" path="res://ai/tasks/shoot_projectile.gd" id="3_mi6ct"]
+[ext_resource type="Script" uid="uid://bjnw6bprdrgl7" path="res://ai/tasks/face_target.gd" id="2_mi6ct"]
+[ext_resource type="Script" uid="uid://uja7ux25b6vd" path="res://ai/tasks/shoot_projectile.gd" id="3_mi6ct"]
 [ext_resource type="Script" uid="uid://dmx4g6vr6u2c6" path="res://ai/tasks/select_flanking_pos.gd" id="3_rsv4q"]
 [ext_resource type="Script" uid="uid://nrg0phxx4b66" path="res://ai/tasks/arrive_pos.gd" id="4_aeqyo"]
-[ext_resource type="Script" path="res://ai/tasks/update_loose_point.gd" id="5_mh77e"]
-[ext_resource type="Script" path="res://ai/tasks/select_random_patrol_pos.gd" id="6_jswlx"]
+[ext_resource type="Script" uid="uid://cpbl4mrwds458" path="res://ai/tasks/update_loose_point.gd" id="5_mh77e"]
+[ext_resource type="Script" uid="uid://dpuxx3ag1bpqv" path="res://ai/tasks/select_random_patrol_pos.gd" id="6_jswlx"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ocnie"]
 
@@ -48,6 +48,7 @@ duration = 2.0
 [sub_resource type="BTSequence" id="BTSequence_xoe3s"]
 custom_name = "Attack"
 children = [SubResource("BTCondition_t88kj"), SubResource("BTAction_1uvjn"), SubResource("BTPlayAnimation_73vhv"), SubResource("BTWait_g37qj"), SubResource("BTAction_deuai"), SubResource("BTWait_nbewg")]
+metadata/_weight_ = 14.344999999999997
 
 [sub_resource type="BTAction" id="BTAction_8hgky"]
 script = ExtResource("3_rsv4q")
@@ -66,6 +67,7 @@ blend = 0.1
 
 [sub_resource type="BTAction" id="BTAction_hfkjk"]
 script = ExtResource("4_aeqyo")
+avoid_var = &"detected_player"
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_kde0j"]
 time_limit = 7.0
@@ -86,7 +88,7 @@ script = ExtResource("2_mi6ct")
 [sub_resource type="BTSequence" id="BTSequence_68vw0"]
 custom_name = "Change flank"
 children = [SubResource("BTAction_8hgky"), SubResource("BTPlayAnimation_xlr4d"), SubResource("BTTimeLimit_kde0j"), SubResource("BTPlayAnimation_t88kj"), SubResource("BTAction_t88kj")]
-metadata/_weight_ = 0.2827090815802975
+metadata/_weight_ = 4.53
 
 [sub_resource type="BTProbabilitySelector" id="BTProbabilitySelector_0k0x4"]
 children = [SubResource("BTSequence_xoe3s"), SubResource("BTSequence_68vw0")]

@@ -16,6 +16,9 @@ extends BTAction
 # distance minimale à la position cible pour retourner SUCCESS.
 @export var tolerance := 0.5
 
+# distance à partir de laquelle l'agent commence a ralentir
+@export var slowdown_radius := 2.0
+
 # noeud a éviter (Node3D valide attendu).
 @export var avoid_var: StringName
 
@@ -33,6 +36,8 @@ func _tick(_delta: float) -> Status:
 	# vérifie si on est arrivé
 	var distance: float = agent.global_position.distance_to(target_pos)
 	if distance < tolerance:
+		agent.move(Vector3.ZERO)
+		agent.velocity = Vector3.ZERO
 		return SUCCESS
 
 	# Détermine la vitesse selon le mode
@@ -90,7 +95,12 @@ func _tick(_delta: float) -> Status:
 					var avoidance := side * signf(-side.dot(to_avoid)) * strength
 					dir_3d += avoidance
 
-	var desired_velocity: Vector3 = dir_3d.normalized() * speed
+	#décélération en approchant de la cible
+	var speed_multiplier: float = 1.0
+	if distance < slowdown_radius:
+		speed_multiplier = clampf(distance / slowdown_radius, 0.2, 1.0)
+	
+	var desired_velocity: Vector3 = dir_3d.normalized() * speed * speed_multiplier
 	agent.move(desired_velocity)
 	agent.update_facing()
 	return RUNNING
