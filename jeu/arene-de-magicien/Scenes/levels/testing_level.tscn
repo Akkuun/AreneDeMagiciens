@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://3sf17jrqljre"]
+[gd_scene load_steps=32 format=3 uid="uid://3sf17jrqljre"]
 
-[ext_resource type="Script" path="res://Scenes/levels/testing_level.gd" id="1_6bo2y"]
+[ext_resource type="Script" uid="uid://cn2suidvwy8og" path="res://Scenes/levels/testing_level.gd" id="1_6bo2y"]
 [ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://Scenes/objects/wood_box/wood_box.tscn" id="2_otqx3"]
 [ext_resource type="PackedScene" uid="uid://365incy5omk3" path="res://Scenes/objects/fire_ball/fire_ball.tscn" id="3_w33dm"]
 [ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="5_6bo2y"]
@@ -14,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://c6cnppu22yx17" path="res://assets/Quaternius_natural_pack/glTF/CommonTree_4.gltf" id="15_dpmn2"]
 [ext_resource type="PackedScene" uid="uid://b2sf1hhiim1pi" path="res://assets/Quaternius_natural_pack/glTF/CommonTree_5.gltf" id="16_egiun"]
 [ext_resource type="ArrayMesh" uid="uid://bcxcdg5d0yh1x" path="res://resources/meshes/bush_flowers.res" id="17_fqr2o"]
+[ext_resource type="PackedScene" uid="uid://bhgq0wadoe7tw" path="res://Scenes/objects/fire_ball/fire_ball_projectile.tscn" id="17_g7xxo"]
 [ext_resource type="ArrayMesh" uid="uid://dcpekeuar6ahu" path="res://resources/meshes/grass_short.res" id="18_xppsf"]
+[ext_resource type="PackedScene" uid="uid://b5ve3mq1ebuso" path="res://Scenes/objects/tornado/tornado.tscn" id="18_yxjl5"]
 [ext_resource type="PackedScene" uid="uid://btlxnvawfkcf4" path="res://Scenes/objects/potions/heal_potion/heal_potion.tscn" id="19_yxjl5"]
 [ext_resource type="PackedScene" uid="uid://drxdhmg1xpe64" path="res://Scenes/agents/range_agent.tscn" id="20_5e1nm"]
 
@@ -219,13 +221,19 @@ transform = Transform3D(0.27649283, 0.480508, -0.83226424, 0, 0.8660254, 0.5, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8509804, 1.1830263, -3.9699404)
 
 [node name="WoodBox3" parent="Props" instance=ExtResource("2_otqx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06938326, 1.1830263, -3.9699404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06938326, 2.7577374, -3.9699404)
 
 [node name="Backpack" parent="Props" instance=ExtResource("8_s4w6r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5611058, 1.4482718, -3.2103736)
 
 [node name="HealPotion" parent="Props" instance=ExtResource("19_yxjl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24303055, 6.2131286, -3.983619)
+
+[node name="FireBallProjectile" parent="Props" instance=ExtResource("17_g7xxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19569564, 2.7809842, -4.109022)
+
+[node name="Tornado" parent="Props" instance=ExtResource("18_yxjl5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93073964, 5.0222397)
 
 [node name="RangeAgent" parent="." instance=ExtResource("20_5e1nm")]
 transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -5.9377213, 0.0068604946, 3.1306705)

@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bys22x45dv6r1"]
+
+[ext_resource type="Shader" uid="uid://byu3ldd2wksr6" path="res://resources/materials/magic/fire_preparation.gdshader" id="1_8o133"]
+[ext_resource type="Texture2D" uid="uid://dp1mli1hw33sm" path="res://assets/images/noises/SuperPerlin_03-512x512.png" id="2_miwbl"]
+
+[sub_resource type="Gradient" id="Gradient_s8uk8"]
+offsets = PackedFloat32Array(0.68421054, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ka8v1"]
+gradient = SubResource("Gradient_s8uk8")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8o133")
+shader_parameter/shape = ExtResource("2_miwbl")
+shader_parameter/gradient = SubResource("GradientTexture1D_ka8v1")
+shader_parameter/color = Color(1.3528494, 0.47064534, 0.19634652, 1)
+shader_parameter/speed = Vector2(0, -0.8)
+shader_parameter/angle = 1.25

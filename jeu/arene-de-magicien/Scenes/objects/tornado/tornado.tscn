@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://b5ve3mq1ebuso"]
+[gd_scene load_steps=130 format=3 uid="uid://b5ve3mq1ebuso"]
 
 [ext_resource type="PackedScene" uid="uid://cfher8otowoge" path="res://Scenes/components/physic/status_giver.tscn" id="1_ab3cf"]
 [ext_resource type="Script" uid="uid://ohuqr20qwm5h" path="res://scripts/tornado_proj.gd" id="1_ahg26"]
@@ -8,7 +8,13 @@
 [ext_resource type="Material" uid="uid://ks1kly3dfqvc" path="res://resources/materials/smoke_billboard.material" id="4_nhgnl"]
 [ext_resource type="Material" uid="uid://cjgoj12p3pb0g" path="res://resources/materials/fire_billboard.material" id="4_toowk"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a8vi2"]
+radius = 0.31591797
+height = 2.449707
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g752n"]
+radius = 0.72021484
+height = 3.5833912
 
 [sub_resource type="Gradient" id="Gradient_ahg26"]
 offsets = PackedFloat32Array(0, 0.49586776, 1)
@@ -1138,30 +1144,32 @@ gravity_scale = 0.0
 script = ExtResource("1_ahg26")
 timer = NodePath("StatusGiver/Timer")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0883766, 0)
+shape = SubResource("CapsuleShape3D_a8vi2")
+
 [node name="StatusGiver" parent="." instance=ExtResource("1_ab3cf")]
+status = 2
 damage = 5
 
 [node name="Timer" type="Timer" parent="StatusGiver"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StatusGiver"]
-transform = Transform3D(0.365, 0, 0, 0, 0.52, 0, 0, 0, 0.365, 0, 0.268, 0)
-shape = SubResource("CapsuleShape3D_g752n")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.365, 0, 0, 0, 0.52, 0, 0, 0, 0.365, 0, 0.268, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.504993, 0)
 shape = SubResource("CapsuleShape3D_g752n")
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(0.585, 0, 0, 0, 0.585, 0, 0, 0, 0.585, 0, 0, 0)
+transform = Transform3D(1.87, 0, 0, 0, 1.87, 0, 0, 0, 1.87, 0, 0.54802275, 0)
 
 [node name="twhite" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.125, 0, 0, 0, 0.1, 0, 0.185, 0)
+visible = false
 material_override = SubResource("ShaderMaterial_btf6a")
 mesh = ExtResource("2_ivdro")
 skeleton = NodePath("../..")
 
 [node name="twhite2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.10000002, 0, 0, 0, 0.10000002, 0, 0, 0, 0.10000002, 0, 0.26570302, 0)
 material_override = SubResource("ShaderMaterial_6mudy")
 mesh = ExtResource("4_g752n")
 skeleton = NodePath("../..")

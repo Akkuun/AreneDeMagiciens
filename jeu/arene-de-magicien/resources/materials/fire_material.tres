@@ -4,7 +4,7 @@
 
 [sub_resource type="Gradient" id="Gradient_iavew"]
 offsets = PackedFloat32Array(0, 0.5509259, 0.7152778)
-colors = PackedColorArray(0, 0, 0, 0, 0.18, 0.054000005, 0, 1, 1, 0, 0, 1)
+colors = PackedColorArray(1.3528494, 0.47064534, 0.19634652, 0, 1.353, 0.471, 0.196, 1, 1.353, 0.471, 0.196, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bvs0t"]
 gradient = SubResource("Gradient_iavew")

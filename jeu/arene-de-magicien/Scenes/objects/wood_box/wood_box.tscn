@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://2c5wbo30qr6t"]
 
 [ext_resource type="Script" uid="uid://co05522ifjsgl" path="res://Scenes/objects/wood_box/wood_box.gd" id="1_v73se"]
-[ext_resource type="Material" uid="uid://djjwuh3t4tgsg" path="res://resources/materials/fire_material.tres" id="2_v73se"]
+[ext_resource type="Material" uid="uid://bys22x45dv6r1" path="res://resources/materials/burning.tres" id="2_okb26"]
 [ext_resource type="PackedScene" uid="uid://cadnxif7rc8x6" path="res://Scenes/components/physic/status_manager.tscn" id="3_vcypb"]
 [ext_resource type="PackedScene" uid="uid://6xrhl8xrpiap" path="res://Scenes/components/physic/status_receiver.tscn" id="4_1bmi6"]
 [ext_resource type="Script" uid="uid://cfhgp433xp1ra" path="res://scripts/status_card.gd" id="4_co25n"]
@@ -11,7 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dnj7i0e6pjer8" path="res://resources/meshes/crate.res" id="7_vrsi6"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="8_6adf6"]
 
-[sub_resource type="Resource" id="Resource_k0pqv"]
+[sub_resource type="Resource" id="Resource_co25n"]
 resource_local_to_scene = true
 script = ExtResource("4_co25n")
 propagate = true
@@ -20,7 +20,7 @@ damage_by_tick = 10.0
 stoped_by = 2
 metadata/_custom_type_script = "uid://cfhgp433xp1ra"
 
-[sub_resource type="Resource" id="Resource_3ekcd"]
+[sub_resource type="Resource" id="Resource_skd42"]
 resource_local_to_scene = true
 script = ExtResource("4_co25n")
 tick_rate = 0.1
@@ -28,7 +28,6 @@ damage_by_tick = -1.0
 metadata/_custom_type_script = "uid://cfhgp433xp1ra"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bmi6"]
-size = Vector3(0.21, 0.21, 0.21)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v73se"]
 size = Vector3(0.6617676, 0.6688965, 0.6588165)
@@ -43,17 +42,17 @@ size = Vector3(0.6437546, 0.6411499, 0.6461426)
 collision_layer = 6
 collision_mask = 196615
 script = ExtResource("1_v73se")
-on_fire_material = ExtResource("2_v73se")
+on_fire_material = ExtResource("2_okb26")
 metadata/_custom_type_script = "uid://0p0evtue2h4p"
 
 [node name="StatusManager" parent="." node_paths=PackedStringArray("emit_shape") instance=ExtResource("3_vcypb")]
-emit_shape = NodePath("StatusReceiver2/CollisionShape3D")
+emit_shape = NodePath("CollisionShape3D2")
 status_managed = Dictionary[int, ExtResource("4_co25n")]({
-1: SubResource("Resource_k0pqv"),
-3: SubResource("Resource_3ekcd")
+1: SubResource("Resource_co25n"),
+3: SubResource("Resource_skd42")
 })
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StatusManager"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StatusManager"]
 shape = SubResource("BoxShape3D_1bmi6")
 
 [node name="StatusReceiver2" parent="StatusManager" instance=ExtResource("4_1bmi6")]
@@ -67,7 +66,7 @@ current_life = 100
 
 [node name="HealthBar" parent="." instance=ExtResource("7_vcypb")]
 texture = SubResource("ViewportTexture_vquhi")
-y_offset = 50
+y_offset = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011542961, 0.0017272756, -0.0004638359)

@@ -1,28 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://df1gr5hipunlr"]
+[gd_scene load_steps=11 format=3 uid="uid://df1gr5hipunlr"]
 
-[ext_resource type="Shader" uid="uid://byu3ldd2wksr6" path="res://resources/materials/magic/fire_preparation.gdshader" id="1_rn6u7"]
-[ext_resource type="Texture2D" uid="uid://dp1mli1hw33sm" path="res://assets/images/noises/SuperPerlin_03-512x512.png" id="2_78o5b"]
+[ext_resource type="Material" uid="uid://ddovtwn0t3n66" path="res://resources/materials/magic/fire_preparation.tres" id="1_7ob8l"]
 [ext_resource type="Texture2D" uid="uid://bippdmocbf02" path="res://assets/images/T_VFX_basic1.PNG" id="3_l70oc"]
 
-[sub_resource type="Gradient" id="Gradient_s8uk8"]
-offsets = PackedFloat32Array(0.2375, 0.6125)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ka8v1"]
-gradient = SubResource("Gradient_s8uk8")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8uk8"]
-render_priority = 0
-shader = ExtResource("1_rn6u7")
-shader_parameter/shape = ExtResource("2_78o5b")
-shader_parameter/gradient = SubResource("GradientTexture1D_ka8v1")
-shader_parameter/color = Color(1.3528494, 0.47064534, 0.19634652, 1)
-shader_parameter/speed = Vector2(-0.25, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_ka8v1"]
-material = SubResource("ShaderMaterial_s8uk8")
-radius = 0.2
-height = 0.4
+material = ExtResource("1_7ob8l")
+radius = 0.1
+height = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7m1v"]
 transparency = 1
@@ -32,8 +16,8 @@ albedo_color = Color(1, 0.73006314, 0.45775273, 0.558)
 
 [sub_resource type="SphereMesh" id="SphereMesh_nsdpl"]
 material = SubResource("StandardMaterial3D_h7m1v")
-radius = 0.1
-height = 0.2
+radius = 0.05
+height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2834"]
 blend_mode = 1
@@ -71,7 +55,7 @@ size = Vector2(0.05, 0.1)
 mesh = SubResource("SphereMesh_ka8v1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, 0, -0.09151903, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, 0, -0.034139335, 0)
 mesh = SubResource("SphereMesh_nsdpl")
 
 [node name="Sparks" type="GPUParticles3D" parent="."]

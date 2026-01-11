@@ -31,15 +31,6 @@ func _ready() -> void:
 
 
 func received(status: StatusEnum, dammage: int, position: Vector3):
-	if(!status_managed.has(status)):
-		return
-	else:
-		var knockback : Vector3 = global_position - position
-		first_hit_status_taken.emit(dammage, knockback)
-		dammage_taken.emit(dammage)
-	
-	var received_status_card := status_managed[status]
-	
 	for status_type in StatusEnum.values():
 		if !status_managed.has(status_type):
 			continue
@@ -47,7 +38,22 @@ func received(status: StatusEnum, dammage: int, position: Vector3):
 		if current_status_card.currently_applied and status_type != status:
 			if current_status_card.stoped_by == status:
 				remove_status(status_type)
-			elif received_status_card.stoped_by == status_type:
+	
+	if(!status_managed.has(status)):
+		return
+	else:
+		var knockback : Vector3 = global_position - position
+		first_hit_status_taken.emit(dammage, knockback)
+		dammage_taken.emit(dammage)
+		
+	var received_status_card := status_managed[status]
+	
+	for status_type in StatusEnum.values():
+		if !status_managed.has(status_type):
+			continue
+		var current_status_card := status_managed[status_type]
+		if current_status_card.currently_applied and status_type != status:
+			if received_status_card.stoped_by == status_type:
 				return
 	
 	if !received_status_card.currently_applied:
