@@ -11,16 +11,17 @@
 [ext_resource type="ArrayMesh" uid="uid://dnj7i0e6pjer8" path="res://resources/meshes/crate.res" id="7_vrsi6"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="8_6adf6"]
 
-[sub_resource type="Resource" id="Resource_co25n"]
+[sub_resource type="Resource" id="Resource_okb26"]
 resource_local_to_scene = true
 script = ExtResource("4_co25n")
 propagate = true
+time_before_propagation = 1.0
 tick_rate = 0.5
 damage_by_tick = 10.0
 stoped_by = 2
 metadata/_custom_type_script = "uid://cfhgp433xp1ra"
 
-[sub_resource type="Resource" id="Resource_skd42"]
+[sub_resource type="Resource" id="Resource_co25n"]
 resource_local_to_scene = true
 script = ExtResource("4_co25n")
 tick_rate = 0.1
@@ -48,8 +49,8 @@ metadata/_custom_type_script = "uid://0p0evtue2h4p"
 [node name="StatusManager" parent="." node_paths=PackedStringArray("emit_shape") instance=ExtResource("3_vcypb")]
 emit_shape = NodePath("CollisionShape3D2")
 status_managed = Dictionary[int, ExtResource("4_co25n")]({
-1: SubResource("Resource_co25n"),
-3: SubResource("Resource_skd42")
+1: SubResource("Resource_okb26"),
+3: SubResource("Resource_co25n")
 })
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StatusManager"]

@@ -64,7 +64,10 @@ func received(status: StatusEnum, dammage: int, position: Vector3):
 			new_giver.status = status
 			new_giver.add_child(emit_shape.duplicate())
 			active_givers[status] = new_giver
-			add_child(new_giver)
+			get_tree().create_timer(received_status_card.time_before_propagation).timeout.connect(func():
+				if is_instance_valid(new_giver):
+					add_child(new_giver)
+				)
 		
 		if(received_status_card.tick_rate != 0):
 			var timer := Timer.new()
