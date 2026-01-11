@@ -53,6 +53,7 @@ metadata/_weight_ = 4497.157499999997
 [sub_resource type="BTAction" id="BTAction_8hgky"]
 script = ExtResource("3_rsv4q")
 target_var = &"detected_player"
+flank_side = 1
 range_min = 5.0
 range_max = 8.0
 
