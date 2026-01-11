@@ -4,7 +4,7 @@ extends State
 func get_state_name() -> String:
 	return "Vacuum"
 
-@export var wand_root_node : Node3D
+@export var wand_root_node : XRToolsPickable
 @export var wand_muzzle : RayCast3D
 
 @export var vacuum_width : float = 1.0
@@ -119,7 +119,10 @@ func state_enter(args : Dictionary) -> bool:
 		for b in area.get_overlapping_bodies():
 			add_body_count(b)
 	
+	#wand_root_node.action_pressed.connect()
+	
 	return true
+
 
 func state_process(delta: float):
 	if move_recognizer.current_move == MoveRecognizer.MoveType.UP:

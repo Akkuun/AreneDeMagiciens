@@ -14,10 +14,14 @@ func state_enter(args : Dictionary) -> bool:
 
 
 func evaluate_move(move : String):
-	if move == "circle":
+	if move == "Circle":
 		state_manager.change_state("Circle")
-	elif move == "spirale":
-		state_manager.change_state("Vacuum")
+	elif move == "X" or move == "Crossbow":
+		state_manager.change_state("Aim", {"Type": "Fire"})
+	elif move == "H":
+		state_manager.change_state("Earth")
+	#elif move == "Spiral":
+		#state_manager.change_state("Vacuum")
 	else:
 		state_manager.change_state("Fail")
 

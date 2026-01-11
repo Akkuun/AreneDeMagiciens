@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c52261dfbgtfq" path="res://Scenes/components/physic/breaking_component.tscn" id="7_gl30b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lctku"]
-height = 0.60528564
-radius = 0.16210938
+height = 0.29665565
+radius = 0.075683594
 
 [node name="HealPotion" instance=ExtResource("1_eogkg")]
 contact_monitor = true
@@ -18,23 +18,23 @@ max_contacts_reported = 8
 script = ExtResource("2_hgk3m")
 
 [node name="cylinder_bottle" parent="." index="0" instance=ExtResource("2_sfyuk")]
-transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, -0.07286301, 0)
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, -0.07286301, 0)
 
 [node name="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.044052124, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0033006668, 0)
 shape = SubResource("CylinderShape3D_lctku")
 
 [node name="LiquidEffect" parent="." index="2" instance=ExtResource("2_lctku")]
-transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 0, 0, 0)
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -0.010495894, 0)
 base_color = Color(0.11764706, 0.84313726, 0.23921569, 1)
 top_color = Color(1, 1, 0, 1)
 fill_rate = 1.0
 
 [node name="GrabPointHandLeft" parent="." index="3" instance=ExtResource("3_sfyuk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35485125, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-08, 0.11231698, -0.09442517)
 
 [node name="GrabPointHandRight" parent="." index="4" instance=ExtResource("4_hgk3m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35485125, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-08, 0.11231698, -0.09442517)
 
 [node name="BreakingComponent" parent="." index="5" instance=ExtResource("7_gl30b")]
 breaking_speed = 8.0

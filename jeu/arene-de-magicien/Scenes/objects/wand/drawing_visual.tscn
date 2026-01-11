@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb2lnln6sv2c3"]
+
+[ext_resource type="Script" uid="uid://c8bd6kg50corx" path="res://Scenes/objects/wand/drawing_visual.gd" id="1_ohwek"]
+
+[node name="DrawingVisual" type="Node3D"]
+script = ExtResource("1_ohwek")

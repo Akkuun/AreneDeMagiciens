@@ -17,18 +17,24 @@ func _physics_process(delta: float) -> void:
 	current_frame = (current_frame + 1) % sample_rate
 
 func _on_spell_recognition_state_changed(new_state: String) -> void:
-	pass
-	#$DebugText.text = new_state
+	$DebugText.text = new_state
 
 
 func _on_action_pressed(pickable: Variant) -> void:
 	draw = true
 
+func analyze_gesture():
+	
+	$Drawing/GestureNode.classiffy_gesture($Drawing.get_drawing())
+	
+	var drawing_instance = load("res://Scenes/objects/wand/drawing_visual.tscn").instantiate() as Node3D
+	get_parent_node_3d().add_child(drawing_instance)
+	drawing_instance.show_drawing($Drawing.planned_points, $Drawing.x_dir, $Drawing.y_dir, 5)
+	
+	$Drawing.clear_history()
+	
 
 func _on_action_released(pickable: Variant) -> void:
 	draw = false
-	$Drawing/GestureNode.classiffy_gesture($Drawing.get_drawing())
-
-
-func _on_gesture_node_gesture_classified(GestureName: StringName) -> void:
-	$DebugText.text = GestureName
+	call_deferred_thread_group("analyze_gesture")
+	#$Drawing/GestureNode.classiffy_gesture($Drawing.get_drawing())

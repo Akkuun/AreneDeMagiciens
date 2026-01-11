@@ -142,5 +142,3 @@ func debug_draw_circle_history() -> void:
 	var trajectory : PackedVector3Array = []	
 	for pos in position_history:
 		trajectory.push_back(pos)
-
-	DebugDraw3D.draw_line_path(trajectory)

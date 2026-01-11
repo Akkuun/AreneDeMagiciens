@@ -9,17 +9,15 @@ var center := Vector3.ZERO
 func _enter_tree() -> void:
 	Global.draw_recog = self
 
-func _process(delta: float) -> void:
-	DebugDraw3D.draw_points(planned_points, DebugDraw3D.PointType.POINT_TYPE_SPHERE, 0.05)
-	
-	DebugDraw3D.draw_line(center, center + x_dir)
-	DebugDraw3D.draw_line(center, center + y_dir)
 
 func register_new_point(point: Vector3):
 	if point_history.size() > points_count:
 		point_history.pop_front()
 	
 	point_history.push_back(point)
+
+func clear_history():
+	point_history.clear()
 
 func compute_barycentre() -> Vector3:
 	var point_sum := Vector3.ZERO
