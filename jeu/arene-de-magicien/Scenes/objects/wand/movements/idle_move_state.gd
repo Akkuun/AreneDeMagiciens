@@ -18,11 +18,12 @@ func evaluate_move(move : String):
 		state_manager.change_state("Circle")
 	elif move == "X" or move == "Crossbow":
 		state_manager.change_state("Aim", {"Type": "Fire"})
-	elif move == "H":
+	elif move == "Arrow":
 		state_manager.change_state("Earth")
 	#elif move == "Spiral":
 		#state_manager.change_state("Vacuum")
 	else:
+		print("not recognized gesture: " + move)
 		state_manager.change_state("Fail")
 
 func state_process(delta: float) -> void:

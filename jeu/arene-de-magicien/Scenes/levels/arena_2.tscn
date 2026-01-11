@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c3ui4oy1vkbtc"]
+[gd_scene load_steps=49 format=3 uid="uid://c3ui4oy1vkbtc"]
 
 [ext_resource type="Material" uid="uid://cqx2uv8nxppb8" path="res://resources/materials/world/base_ground_material.tres" id="1_lxo4l"]
 [ext_resource type="Texture2D" uid="uid://bbw28sblrutd" path="res://assets/images/sky/sky_19_2k.png" id="2_rdhmg"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://dn45rgmhvnn24" path="res://Scenes/levels/util/player_spawn.tscn" id="17_7dc01"]
 [ext_resource type="Script" uid="uid://bqgkl8advg2wn" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="17_p8612"]
 [ext_resource type="PackedScene" uid="uid://cf5jd3t1yggbh" path="res://Scenes/crafting/cauldron.tscn" id="18_7csxl"]
-[ext_resource type="PackedScene" uid="uid://bfb3roujx5kvc" path="res://Scenes/objects/potions/fire_potion/fire_potion.tscn" id="18_7dc01"]
 [ext_resource type="PackedScene" uid="uid://2c5wbo30qr6t" path="res://Scenes/objects/wood_box/wood_box.tscn" id="19_xmdte"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4suey"]
@@ -661,6 +660,3 @@ transform = Transform3D(0.81347644, 0, -0.58159775, 0, 1, 0, 0.58159775, 0, 0.81
 
 [node name="WoodBox64" parent="Dynamic_objects/Boxes/Cauldron" instance=ExtResource("19_xmdte")]
 transform = Transform3D(0.95704657, 0, -0.289934, 0, 1, 0, 0.289934, 0, 0.95704657, 0.5276792, 3.2696872, -2.3117714)
-
-[node name="FirePotion" parent="Dynamic_objects" instance=ExtResource("18_7dc01")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.779321, -28.33952)
