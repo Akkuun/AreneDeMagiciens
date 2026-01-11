@@ -24,8 +24,7 @@ func _on_action_pressed(pickable: Variant) -> void:
 	draw = true
 
 func analyze_gesture():
-	
-	$Drawing/GestureNode.classiffy_gesture($Drawing.get_drawing())
+	await $Drawing/GestureNode.classify_gesture_async($Drawing.get_drawing())
 	
 	var drawing_instance = load("res://Scenes/objects/wand/drawing_visual.tscn").instantiate() as Node3D
 	get_parent_node_3d().add_child(drawing_instance)
