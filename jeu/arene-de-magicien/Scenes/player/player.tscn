@@ -63,7 +63,7 @@ size = Vector2(3, 2)
 [sub_resource type="ViewportTexture" id="ViewportTexture_ua3np"]
 viewport_path = NodePath("XRCamera3D/Viewport2Din3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ua3np"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnu3u"]
 transparency = 1
 cull_mode = 2
 albedo_texture = SubResource("ViewportTexture_ua3np")
@@ -145,7 +145,7 @@ scene_properties_keys = PackedStringArray()
 
 [node name="Screen" parent="XRCamera3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_egohg")
-surface_material_override/0 = SubResource("StandardMaterial3D_ua3np")
+surface_material_override/0 = SubResource("StandardMaterial3D_mnu3u")
 
 [node name="CollisionShape3D" parent="XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_rwmec")

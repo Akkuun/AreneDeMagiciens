@@ -24,7 +24,6 @@ func _physics_process(delta: float) -> void:
 			var v = body.linear_velocity.y
 			var damping = -v * 5.0
 			var pushing_force : Vector3 = Vector3.UP * (buoyancy + damping)
-			DebugDraw3D.draw_arrow(body.global_position, body.global_position + pushing_force)
 			body.apply_central_force(pushing_force)
 
 func _on_ingredient_entry_body_entered(body: Node3D) -> void:

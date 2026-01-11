@@ -53,6 +53,7 @@ shape = SubResource("CylinderShape3D_3khmk")
 
 [node name="ExpectedResult" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9357855, 0)
+visible = false
 billboard = 2
 text = "Une potion"
 

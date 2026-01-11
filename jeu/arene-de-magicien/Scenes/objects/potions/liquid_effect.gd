@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	var dist := delta_move.length()
 	if dist > threshold:
 		var dir2d := Vector2(delta_move.x, delta_move.z).normalized()
-		var strength := dist# * delta
+		var strength := dist * delta
 		add_impulse(dir2d, strength)
 
 	last_world_pos = current_pos

@@ -25,10 +25,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0033006668, 0)
 shape = SubResource("CylinderShape3D_lctku")
 
 [node name="LiquidEffect" parent="." index="2" instance=ExtResource("2_lctku")]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -0.010495894, 0)
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, -0.04375821, 0)
 base_color = Color(0.11764706, 0.84313726, 0.23921569, 1)
 top_color = Color(1, 1, 0, 1)
-fill_rate = 1.0
+fill_rate = 0.55
 
 [node name="GrabPointHandLeft" parent="." index="3" instance=ExtResource("3_sfyuk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-08, 0.11231698, -0.09442517)
@@ -37,6 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-08, 0.11231698, -0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-08, 0.11231698, -0.09442517)
 
 [node name="BreakingComponent" parent="." index="5" instance=ExtResource("7_gl30b")]
-breaking_speed = 8.0
+breaking_speed = 6.0
 
 [connection signal="breaking" from="BreakingComponent" to="." method="_on_breaking_component_breaking"]

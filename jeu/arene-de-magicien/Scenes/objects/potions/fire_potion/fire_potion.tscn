@@ -41,6 +41,6 @@ visible = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747969, 0.13630237, -0.09205972)
 
 [node name="BreakingComponent" parent="." index="5" instance=ExtResource("6_6uhvu")]
-breaking_speed = 8.0
+breaking_speed = 6.0
 
 [connection signal="breaking" from="BreakingComponent" to="." method="_on_breaking_component_breaking"]
