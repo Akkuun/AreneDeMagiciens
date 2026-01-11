@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsb0kkp561qn5"]
+[gd_scene load_steps=13 format=3 uid="uid://bsb0kkp561qn5"]
 
 [ext_resource type="Material" uid="uid://kct761rk1ght" path="res://resources/materials/planks/planks_mat.tres" id="1_5keee"]
 [ext_resource type="Material" uid="uid://cqx2uv8nxppb8" path="res://resources/materials/world/base_ground_material.tres" id="2_bt4kb"]

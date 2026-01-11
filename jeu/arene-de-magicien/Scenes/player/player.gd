@@ -7,7 +7,7 @@ extends XROrigin3D
 @export var interpolation_speed: float = 1.0
 
 @onready var player_ui : Control = $XRCamera3D/Viewport2Din3D/Viewport/PlayerUi
- 
+
 var _disable_move : bool = false
 @export var disable_move : bool:
 	set(value):
@@ -72,3 +72,38 @@ func _on_status_manager_dammage_taken(quantity: int) -> void:
 
 func _on_life_component_dead() -> void:
 	player_ui.show_death_screen()
+
+
+func make_object_levitate(object: XRToolsPickable):
+	if object != null and !object.is_picked_up():
+		object.freeze = true
+
+		var start_pos = object.global_position
+		var target_pos = Vector3(start_pos.x, cam.global_position.y, start_pos.z)
+		
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_CUBIC)
+		
+		tween.tween_property(object, "global_position", target_pos, 1.0)
+		
+		tween.parallel().tween_property(object, "rotation:y", object.rotation.y + PI * 0.5, 10.0)
+		
+		get_tree().create_timer(10).timeout.connect(func (): 
+			if object.is_picked_up():
+				return
+			object.freeze = false)
+
+var object_ready_to_levitate : Dictionary[RigidBody3D, SceneTreeTimer]
+func _on_levitate_body_entered(body: Node3D) -> void:
+	if body is RigidBody3D and !object_ready_to_levitate.has(body):
+		var obj_timer = get_tree().create_timer(3)
+		obj_timer.timeout.connect(func (): 
+			make_object_levitate(body)
+			object_ready_to_levitate.erase(body))
+		object_ready_to_levitate[body as RigidBody3D] = obj_timer
+
+
+func _on_levitate_body_exited(body: Node3D) -> void:
+	if body is RigidBody3D and object_ready_to_levitate.has(body):
+		object_ready_to_levitate.erase(body as RigidBody3D)

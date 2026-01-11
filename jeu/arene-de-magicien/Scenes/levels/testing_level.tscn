@@ -66,9 +66,10 @@ albedo_color = Color(0.5962105, 0.37723807, 0.18742597, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g7xxo"]
 
-[node name="TestingLevel" type="Node3D" node_paths=PackedStringArray("debug_cameras") groups=["root_3d"]]
+[node name="TestingLevel" type="Node3D" node_paths=PackedStringArray("debug_cameras", "bodies") groups=["root_3d"]]
 script = ExtResource("1_6bo2y")
 debug_cameras = [NodePath("MobCam"), NodePath("GreenBlockCam"), NodePath("CauldronCam")]
+bodies = [NodePath("Ingredients/WoodIngredientPickable"), NodePath("Ingredients/WoodIngredientPickable2"), NodePath("Ingredients/YellowPlantIngredientPickable"), NodePath("Ingredients/YellowPlantIngredientPickable2")]
 
 [node name="GreenBlockCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9458647, 0.32456133, 0, -0.32456133, 0.9458647, 0.23432761, 1.8693538, 0.2629686)
