@@ -26,9 +26,6 @@ var knock_backed: bool = false
 var next_frame_velocity: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
-	# health.damaged.connect(_damaged)
-	# health.death.connect(die)
-	
 	# crée et configure le NavigationAgent3D si nécessaire
 	if use_navigation:
 		_setup_navigation_agent()
@@ -36,7 +33,8 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var target_vel := Vector3(next_frame_velocity.x, 0, next_frame_velocity.z)
-	velocity = velocity.lerp(target_vel, _delta)
+	var lerp_weight = 10.0 * _delta
+	velocity = velocity.lerp(target_vel, lerp_weight)
 	if !is_on_floor():
 		velocity.y -= gravity_strength * _delta
 	
@@ -175,6 +173,9 @@ func _setup_navigation_agent() -> void:
 		_navigation_agent.height = navigation_height
 	
 	_navigation_agent.avoidance_enabled = true
+	
+	# IMPORTANT : Attend le prochain frame physics pour que le NavigationAgent soit prêt
+	await get_tree().physics_frame
 
 
 # Récupère le CollisionShape3D de l'agent

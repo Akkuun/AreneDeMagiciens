@@ -51,9 +51,9 @@ func _tick(_delta: float) -> Status:
 	var flank_direction: Vector3
 	match flank_side:
 		AgentSide.FARTHEST:
-			flank_direction = to_agent.normalized()
-		AgentSide.CLOSEST:
 			flank_direction = -to_agent.normalized()
+		AgentSide.CLOSEST:
+			flank_direction = to_agent.normalized()
 		AgentSide.BACK:
 			# si on sais ou elle regarde
 			if target.has_method("get_facing_direction"):
