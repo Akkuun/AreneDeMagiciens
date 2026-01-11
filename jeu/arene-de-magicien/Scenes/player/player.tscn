@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://eqpudws0tesx"]
+[gd_scene load_steps=36 format=3 uid="uid://eqpudws0tesx"]
 
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_gmlin"]
 [ext_resource type="Script" uid="uid://b1p7oa1fa7ix4" path="res://Scenes/player/player.gd" id="1_lvxji"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="10_gx1jg"]
 [ext_resource type="Script" uid="uid://cfhgp433xp1ra" path="res://scripts/status_card.gd" id="10_kysaj"]
 [ext_resource type="Script" uid="uid://iy0nutidc3cv" path="res://Scenes/player/belt.gd" id="11_h0khc"]
-[ext_resource type="Script" uid="uid://dqijwk03qksqb" path="res://scenes/player/voice_recognition.gd" id="12_fm80t"]
+[ext_resource type="Script" uid="uid://dqijwk03qksqb" path="res://Scenes/player/voice_recognition.gd" id="12_fm80t"]
 [ext_resource type="Script" uid="uid://djl472a1gxfp0" path="res://Scenes/player/damage_overlay.gd" id="13_kysaj"]
 [ext_resource type="PackedScene" uid="uid://bj0qtn1xope1i" path="res://Scenes/UI/player/player_ui.tscn" id="14_egohg"]
 [ext_resource type="Script" uid="uid://b0085kxt4ol8i" path="res://Scenes/player/inventory.gd" id="14_nyrd7"]
@@ -61,13 +61,13 @@ height = 1.6437988
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ua3np"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mnu3u"]
 viewport_path = NodePath("XRCamera3D/Viewport2Din3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnu3u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwmec"]
 transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_ua3np")
+albedo_texture = SubResource("ViewportTexture_mnu3u")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwmec"]
@@ -148,7 +148,7 @@ scene_properties_keys = PackedStringArray()
 
 [node name="Screen" parent="XRCamera3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_egohg")
-surface_material_override/0 = SubResource("StandardMaterial3D_mnu3u")
+surface_material_override/0 = SubResource("StandardMaterial3D_rwmec")
 
 [node name="CollisionShape3D" parent="XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_rwmec")
@@ -200,8 +200,8 @@ bus = &"Record"
 [connection signal="inventory_item_instantiated" from="PlayerBody/Belt/Inventory" to="PlayerBody/Belt" method="set_slot_item"]
 [connection signal="dammage_taken" from="PlayerBody/StatusManager" to="." method="_on_status_manager_dammage_taken"]
 [connection signal="dammage_taken" from="PlayerBody/StatusManager" to="LifeComponent" method="take_damage"]
-[connection signal="button_pressed" from="LeftHand" to="." method="_on_hand_button_pressed"]
 [connection signal="button_pressed" from="LeftHand" to="." method="_on_left_hand_button_pressed"]
+[connection signal="button_pressed" from="LeftHand" to="." method="_on_hand_button_pressed"]
 [connection signal="button_pressed" from="RightHand" to="." method="_on_hand_button_pressed"]
 [connection signal="dead" from="LifeComponent" to="." method="_on_life_component_dead"]
 [connection signal="new_value" from="LifeComponent" to="XRCamera3D/Viewport2Din3D/Viewport/PlayerUi" method="set_health"]
