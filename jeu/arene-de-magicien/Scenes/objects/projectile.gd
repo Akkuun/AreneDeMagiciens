@@ -3,7 +3,6 @@ extends Node3D
 
 
 @export var speed: float = 15.0
-@export var damage: float = 10.0
 
 var direction: Vector3 = Vector3.FORWARD
 var _max_distance: float = 20.0

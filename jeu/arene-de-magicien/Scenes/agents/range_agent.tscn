@@ -4789,6 +4789,7 @@ move_speed = 4.0
 rotation_speed = 8.0
 
 [node name="CharacterArmature" type="Node3D" parent="."]
+transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0, 0, 0)
 
 [node name="Wizard" type="Node3D" parent="CharacterArmature"]
 
