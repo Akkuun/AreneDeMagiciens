@@ -5,6 +5,7 @@ extends XROrigin3D
 @export var dist_menu_from_cam : float = 5.0
 @export var menu_interpolation : Curve
 @export var interpolation_speed: float = 1.0
+@export var resultVoiceRecognition : Label3D 
 
 @onready var player_ui : Control = $XRCamera3D/Viewport2Din3D/Viewport/PlayerUi
  
@@ -25,6 +26,12 @@ func _ready():
 		get_viewport().arvr = true
 	
 	player_ui.set_max_health($LifeComponent.max_life)
+	
+	# Connect voice recognition if available
+	if has_node("VoiceRecognition") and resultVoiceRecognition:
+		$VoiceRecognition.connect("state_update", func(content: String):
+			resultVoiceRecognition.text = content
+		)
 
 var update_needed : bool = false
 var interpolation_progress: float = 0.0  
@@ -51,6 +58,15 @@ func _on_hand_button_pressed(interaction_name: String) -> void:
 		menu.visible = !menu.visible
 		set_menu_interaction(menu.visible)
 		menu.global_position = cam.global_position - cam.global_basis.z * dist_menu_from_cam
+
+func _on_left_hand_button_pressed(name: String) -> void:
+	if name == "by_button" and has_node("VoiceRecognition"):
+		# Launch voice_recognition
+		$VoiceRecognition.detect_voice()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") and has_node("VoiceRecognition"):
+		$VoiceRecognition.detect_voice()
 
 func set_menu_interaction(state: bool):
 	$RightHand/FunctionPointer.enabled = state
